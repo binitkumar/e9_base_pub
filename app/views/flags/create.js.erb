@@ -1,0 +1,4 @@
+$("tr#ids_<%= parent.id %>").html("<%= escape_javascript(render 'admin/comments/row', :comment => parent) %>");
+var $el = $("a[href$=/<%= parent_class.model_name.collection %>/<%= parent.to_param %>/flag]");
+$el.parents("ul").prepend("<li><span class=\"action-link\"><%= e9_t(:abuse_reported) %></span></li>");
+$el.replaceWith("<%= escape_javascript(flag_link(parent)) %>");

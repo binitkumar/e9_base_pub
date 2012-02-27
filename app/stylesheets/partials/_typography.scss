@@ -1,0 +1,60 @@
+@import 'includes/typography';
+@import 'includes/lists';
+@import 'includes/theming';
+
+.sans         { @include sans; }
+.serif        { @include serif; }
+.fixed        { @include fixed_width; }
+.bold         { font-weight: bold !important; }
+.italic       { font-style: italic !important; }
+
+.xx-small     { @include xx-small; }
+.x-small      { @include x-small; }
+.small        { @include small; }
+.medium       { @include medium; }
+.large        { @include large; }
+.x-large      { @include x-large; }
+.xx-large     { @include xx-large; }
+
+a               { text-decoration:none;}
+img             { margin: 0; }
+p               { margin: 0.5em 0;}
+p:empty         { margin-bottom: 0; }
+blockquote      { margin: 0 4em 0 2.5em; font-style: italic; color:#000; }
+blockquote p    { margin: 0 4em 0 2.5em; font-style: italic; color:#000; }
+strong, dfn     { font-weight: bold; }
+em, dfn         { font-style: italic; }
+sup, sub        { line-height: 0; }
+abbr, acronym   { border-bottom: 1px dotted; }
+address         { margin: 0 0 1.5em; font-style: italic; }
+pre             { margin: 1.5em 0; white-space: pre; }
+pre, code, tt   { @include fixed-width; }
+ul, ol          { margin: 0 1.2em 1.2em 0; padding-left: 2em; list-style-position: outside; }
+li ul, li ol    { margin: 0; }
+ul              { list-style-type:square; }
+ol              { list-style-type: decimal; clear:both;}
+li              { padding: 5px 0; }
+dl              { margin: 0 0 1.5em 0;
+dt              { font-weight: bold; } }
+dd              { margin-left: 1.5em; }
+
+hr { 
+  width: 100%; 
+  border:none;
+  background-color:$theme-border-color;
+  float:left;
+  height:1px;
+  margin-top:1em;
+  &.space {
+    border-bottom: none;
+    visibility: hidden;
+  }
+}
+
+ul.menu, 
+.actions ul,
+.action-links ul {
+  &, ul {
+    @include blank-list;
+  }
+}

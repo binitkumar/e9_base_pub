@@ -1,0 +1,17 @@
+- if resource.published? || admin?
+  - meta_tags(resource)
+
+  .left-block
+    = content_avatar(resource)
+    = content_action_links(resource)
+  .block
+    .date-and-byline
+      = content_dateline(resource)
+      = content_byline(resource)
+    = content_labels(resource)
+
+  = content_body(resource)
+  = content_comments(resource)
+
+- else
+  %h2.error= e9_t(:unpublished_page_error)

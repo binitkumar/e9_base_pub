@@ -1,0 +1,29 @@
+@import "compass/utilities/general/clearfix";
+@import "includes/typography";
+@import "includes/colors";
+@import "includes/blueprint";
+
+body.controller-slideshows {
+  .slideshow {
+    .header {
+      margin-bottom: 8px;
+    }
+  }
+  
+  .slide-slice {
+    @include clearfix;
+    margin-bottom: 8px;
+    img {
+      display: block;
+    }
+  }
+
+  .slide-slice a {
+    display: block;
+    float: left;
+    margin-left: 8px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

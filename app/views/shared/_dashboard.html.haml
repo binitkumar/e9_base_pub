@@ -1,0 +1,15 @@
+%fieldset.dashboard
+
+  .label
+    = e9_t(:actions)
+
+  %ul
+    - if content.kind_of?(Favoritable)
+      %li.favorite-toggle= favorite_toggle(content)
+
+    - unless local_assigns[:hide_print]
+      %li.print-friendly-page= print_friendly_page_link()
+    
+    - if admin?
+      %li.edit-element=   edit_element_link(content)
+      %li.delete-element= delete_element_link(content)

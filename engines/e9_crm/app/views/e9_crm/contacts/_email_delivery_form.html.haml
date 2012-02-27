@@ -1,0 +1,27 @@
+= form_for EmailDelivery.new(:contact_ids => @contact_ids), :url => form_admin_email_deliveries_url, :html => { 'data-empty' => e9_t(:no_contacts_notification) } do |f|
+  = f.hidden_field :contact_ids, :id => "contact_ids"
+
+  .field
+    = radio_button_tag "mailing-list", '', true, :id => "mailing-list-none", 'data-scope' => 'subscribed_to', :class => 'scope-selects'
+    = label_tag "mailing-list-none", 'No Email'
+
+  - MailingList.newsletters.includes(:emails).order('name ASC').each do |ml|
+    - data_scope = 'subscribed_to'
+    - active = params[data_scope].to_i == ml.id
+    .field
+      = radio_button_tag "mailing-list", ml.id, active, :id => "mailing-list-#{ml.id}", 'data-scope' => data_scope, :class => 'scope-selects'
+      = label_tag "mailing-list-#{ml.id}", ml.name
+      - if active
+        .fields
+          = contact_mailer_select_tag(ml.emails.newsletter, :class => "newsletter")
+          = submit_tag e9_t(:send_email_template), :name => nil
+
+  .field
+    - data_scope = 'ok_to_email'
+    - active = E9.true_value?(params[data_scope])
+    = radio_button_tag "mailing-list", 1, active, :id => "mailing-list-crm", 'data-scope' => data_scope, :class => 'scope-selects'
+    = label_tag "mailing-list-crm", "Ok to Send CRM Email"
+    - if active
+      .fields
+        = contact_mailer_select_tag(UserEmail.crm_template)
+        = submit_tag e9_t(:send_email_template), :name => nil

@@ -1,0 +1,16 @@
+- if current_user
+  .avatar
+    = avatar_image_for(current_user)
+
+  = form_for (comment = current_user.comments.build), :url => content_view_comments_path(resource), :remote => true do |f|
+    .form-inner
+      = render 'comments/form_inner', :resource => comment
+    .actions
+      = f.submit e9_t(:save_link)
+- else
+  .actions
+    .instructions
+      = e9_t(:log_in_to_comment_text, :scope => :comments)
+    %ul
+      %li= link_to('Login', new_user_session_path(store_referrer_params), :class => 'action-link sign-in')
+      %li= link_to('Register', new_user_registration_path(store_referrer_params), :class => 'action-link sign-up')

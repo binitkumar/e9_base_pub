@@ -1,0 +1,26 @@
+$scrollbar-background: #666666 !default
+$scrollbar-hover-background: lighten($scrollbar-background, 50%) !default
+$scrollbar-handle-background: #999 !default
+$scrollbar-handle-hover-background: lighten($scrollbar-handle-background, 80%) !default
+
+.scrollbar-pane
+  margin-right: 10px
+
+.scrollbar-handle-container
+  background: #e9e9e9
+  width: 10px
+
+.scrollbar-handle
+  width: 10px
+  background: $scrollbar-background
+  &:hover
+    background: $scrollbar-background
+  &.move
+    background: $scrollbar-background
+
+.scrollbar-handle-up, .scrollbar-handle-down
+  width: 10px
+  height: 10px
+  background: $scrollbar-handle-background
+  &:hover
+    background: $scrollbar-handle-hover-background

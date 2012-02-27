@@ -1,0 +1,4 @@
+<% if !resource.errors.any? %>
+  try { $.colorbox.close() } catch(e) {}
+  $.e9.notes.destroy(<%= resource.id %>);
+<% end %>

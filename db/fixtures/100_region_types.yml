@@ -1,0 +1,58 @@
+_defaults: &defaults
+  _finder: domid
+
+top_nav:
+  <<: *defaults
+  name: Top Nav
+  domid: top-nav
+
+main_nav:
+  <<: *defaults
+  name: Main Nav
+  domid: main-nav
+
+bottom_footer:
+  <<: *defaults
+  name: Bottom Footer
+  domid: bottom-footer
+
+footer:
+  <<: *defaults
+  name: Footer
+  domid: footer 
+  role: administrator
+
+banner:
+  <<: *defaults
+  name: Main Banner
+  domid: main-banner
+  role: administrator
+  identifier: banner_main
+
+right_column:
+  <<: *defaults
+  name: Right Column
+  domid: right
+  role: administrator
+
+content_bottom:
+  <<: *defaults
+  name: Content Bottom
+  domid: content-bottom
+  role: administrator
+
+#middle_column:
+  #<<: *defaults
+  #name: Middle Column
+  #domid: middle
+  #role: administrator
+#left_column:
+  #<<: *defaults
+  #name: Left Column
+  #domid: left
+  #role: administrator
+#content_top:
+  #<<: *defaults
+  #name: Content Top
+  #domid: content-top
+  #role: administrator

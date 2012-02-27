@@ -1,0 +1,2 @@
+- if (count = banner.images.attached.count) > 0
+  = image_mount_tag banner.images.attached.limit(1).offset(rand(count)).first

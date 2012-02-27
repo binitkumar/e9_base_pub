@@ -1,0 +1,9 @@
+= form_for resource, :remote => request.xhr?, :html => { :multipart => !request.xhr? } do |f|
+
+  .errors= resource_error_messages!
+
+  = render 'form_inner', :f => f
+
+  .actions
+    = f.submit
+    = yield :additional_actions

@@ -1,0 +1,19 @@
+.flash-messages{
+	.flash{
+		padding-top:10px;
+		padding-bottom:10px;
+		width:100%;
+		padding-left:10px;
+		font-weight:bold;
+	}
+	.alert{
+		background-color:lighten(#F23C3C,30%);
+		color:#F23C3C;
+		padding:10px;
+		
+	}
+	.notice{
+		background-color:#F4F794;
+		padding:10px;
+	}
+}

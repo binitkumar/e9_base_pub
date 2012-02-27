@@ -1,0 +1,17 @@
+= form_for resource, :url => polymorphic_path([:admin, @faq, resource]) do |f|
+  = resource_error_messages!
+  .field
+    = f.label :faq_id, nil, :class => :req
+    = f.select :faq_id, faq_select_array(:force_id => true)
+  .field
+    = f.label :title, nil, :class => :req
+    = f.text_field :title
+  .field{:class => request.xhr? ? 'tinymcexhr' : 'tinymce'}
+    = f.label :body, nil, :class => :req
+    = f.text_area :body
+
+  = image_mount_field(resource.thumb, :f => f)
+
+  .actions
+    = f.submit 'Save'
+    = yield :actions

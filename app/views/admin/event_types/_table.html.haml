@@ -1,0 +1,23 @@
+= form_tag polymorphic_path([:update_order, :admin, resource_class]) do
+  %table.records.sortable
+    %thead
+      %tr
+        %th= resource_humanize(:position)
+        %th= resource_humanize(:name)
+        %th= resource_humanize(:permalink)
+        %th= e9_t(:actions)
+    %tbody
+      - if collection.empty?
+        %tr
+          %td{:colspan => 4}= e9_t(:no_records_text)
+      - else
+        - collection.each do |record|
+          %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+            %td
+              .handle +++
+            %td.txt= record.name
+            %td.txt
+              = link_to_link typed_events_path(record.permalink)
+            %td.actions
+              = edit_admin_resource_link(record)
+              = destroy_admin_resource_link(record)

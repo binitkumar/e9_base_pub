@@ -1,0 +1,6 @@
+.notes-container
+  %h2= e9_t(:active_notes_header)
+  = render 'e9_crm/notes/index', :notable => resource, :url_params => { :active => 'true' }
+.notes-container
+  %h2= e9_t(:completed_notes_header)
+  = render 'e9_crm/notes/index', :notable => resource, :url_params => { :active => 'false' }, :paging => true, :active => false

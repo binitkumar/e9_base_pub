@@ -1,0 +1,35 @@
+.comment{:id => comment.to_anchor, :class => local_assigns[:remove_on_unflag] ? "remove-on-unflag" : nil}
+  %div{:name => "c#{comment.id}", :class => 'anchor'}
+
+  .avatar
+    = comment.deleted? ? default_avatar_image_tag : avatar_link_for(comment.author)
+
+  .block
+    - if local_assigns[:show_title]
+      .title= comment_link(comment)
+
+    - if comment.deleted?
+      .prefix
+      .body
+        = e9_t(:deleted_text, :scope => :comments, :deleter => comment_deleter(comment))
+    - else
+      .prefix
+        = e9_t(:comment_prefix, :scope => :comments, :author => comment.author.try(:username), :at => l(comment.created_at)).html_safe
+      .body
+        = comment_body_escape(comment.body) 
+
+    .action-links
+      %ul
+        - unless comment.deleted?
+          - if comment.flagged?
+            %li
+              %span.action-link= e9_t(:abuse_reported, :scope => :flags)
+
+          - if !comment.flagged? && user?
+            %li= flag_link(comment)
+
+          - elsif comment.flagged? && ( admin? || comment.flag.user == current_user ) 
+            %li= flag_link(comment)
+
+          - if admin? || comment.author == current_user
+            %li= delete_comment_link(comment)

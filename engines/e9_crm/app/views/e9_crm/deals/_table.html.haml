@@ -1,0 +1,50 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:name)
+      %th= orderable_column_link('campaign_name', :campaign)
+      %th= orderable_column_link(:status)
+      %th= orderable_column_link(:category)
+      %th= orderable_column_link('owner_name', :owner)
+      %th= orderable_column_link(:value)
+      %th= t(:actions)
+  %tbody
+    -# prepare a hash to store the accumulated row data for calculations
+    - dat = Hash.new {|k,v| k[v] = [] }
+
+    - if collection.empty?
+      %tr
+        %td{:colspan => 7}= e9_t(:no_records_text, :scope => 'e9_crm.deals')
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td.record-name
+            = record.name
+          %td.record-campaign
+            = record.campaign.to_s
+          %td.record-status
+            = record.status.titleize
+          %td.record-category
+            = record.category
+          %td.record-owner
+            = record.owner_name
+          %td.record-value.num
+            - dat[:value] << record.value
+            = record.value.to_money.format
+          %td.actions
+            = link_to_show_resource(record)
+            = link_to_edit_resource(record)
+            - if record.won? && record.dated_costs.present?
+              = link_to "Edit Costs", edit_costs_deal_path(record), :rel => :popup
+            = link_to_destroy_resource(record)
+
+    %tfooter
+      %tr{:class => 'record-totals'}
+        %td.record-totals-label{:colspan => 5}
+          #{t(:total)}:
+        %td.record-totals.num
+          = dat[:value].sum.to_money.format
+        %td
+
+- if controller.send(:should_paginate_index)
+  = will_paginate collection

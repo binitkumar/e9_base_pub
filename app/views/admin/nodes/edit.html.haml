@@ -1,0 +1,11 @@
+= title e9_t(:update_title, :scope => node_update_i18n_scope)
+
+= form_for resource, :url => polymorphic_path([:admin, resource]), :remote => true do |f|
+  .errors= resource_error_messages!
+
+  - unless resource.errors[:renderable_id].present?
+    .field
+      = f.label :renderable_id, e9_t(:renderable_field_label, :scope => node_update_i18n_scope)
+      = f.select :renderable_id, node_renderable_select_options(@node_renderable_option_scope)
+
+  = f.submit e9_t(:submit)

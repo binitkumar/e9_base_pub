@@ -1,0 +1,33 @@
+$pie-behavior: stylesheet-url("/stylesheets/PIE.htc") !default;
+@import "compass/css3/pie";
+
+
+/* border radius */
+$default-border-radius: 0.5em !default;
+@import 'compass/css3/border-radius';
+
+/* box shadow */
+$default-box-shadow-h-offset: 1px !default;
+$default-box-shadow-v-offset: 1px !default;
+$default-box-shadow-blur: 3px !default;
+$default-box-shadow-color: #333 !default;
+@import 'compass/css3/box-shadow';
+
+/* text shadow */
+$default-text-shadow-color: rgba(0, 0, 0, 0.3) !default;
+$default-text-shadow-blur: 0px !default;
+$default-text-shadow-h-offset: 1px !default;
+$default-text-shadow-v-offset: 1px !default;
+@import 'compass/css3/text-shadow';
+
+@mixin text-shadow-color($color: $default-text-shadow-color) {
+  @include text-shadow($color $default-text-shadow-h-offset $default-text-shadow-v-offset $default-text-shadow-blur);
+}
+
+/* images (gradients) */
+@import 'compass/css3/images';
+
+@mixin linear-gradient($c1, $c2, $direction: top) {
+	
+  @include background(linear-gradient($direction, $c1, $c2));
+}

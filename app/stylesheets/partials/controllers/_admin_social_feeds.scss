@@ -1,0 +1,26 @@
+@import 'includes/common';
+
+.social-feed-title {
+  line-height: 35px;
+  a.social-link {
+    width: auto;
+    .text {
+      display: none;
+    }
+  } 
+}
+
+body.controller-admin-social-feeds {
+  #content {
+    table {
+      @include spaceless; 
+      width: 370px; }
+    tbody td {
+      border: none;
+      padding: 0 0 0.5em 0;
+      vertical-align: top; }
+    tbody tr.hover {
+      background-color: transparent; 
+    } 
+  }
+}

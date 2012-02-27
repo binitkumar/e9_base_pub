@@ -1,0 +1,23 @@
+#comments
+  - if local_assigns[:comments]
+    .list
+      %div
+        - if comments.length > 0
+          = render_profile_comments(comments)
+        - else
+          .listing
+            = e9_t(:no_comments_text, :scope => :comments)
+    .show-more 
+      = show_more_profile_comments_link(comments)
+  - else
+    .list
+    .show-more
+    - content_for :javascripts do
+      :javascript
+        jQuery(function($) {
+          $.ajax({
+            url: "#{ comments_path(:by_user_distinct_on_commentable => current_user.id) }",
+            dataType: 'script',
+            method: 'post'
+          })
+        });

@@ -1,0 +1,32 @@
+= title (@index_title || e9_t(:index_title))
+
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag(resource_class, :method => :get, :class => 'scope-selects', :'data-type' => 'json') do
+      .field.clear
+        %a{:rel => 'clear', :href => collection_path} Clear
+      .field
+        = label_tag 'tasks-search', t(:filter_by, :attribute => resource_class.human_attribute_name(:search))
+        = text_field_tag 'search', params[:search], :class => 'keyup-submit', :placeholder => 'Search...'
+      .field
+        = label_tag 'tasks-status', t(:filter_by, :attribute => resource_class.human_attribute_name(:status))
+        %select{:name => 'active', :id => 'tasks-status'}
+          = options_for_select([['Active', true],['Completed', false]])
+      .field
+        = label_tag 'tasks-owner', t(:filter_by, :attribute => resource_class.human_attribute_name(:owner))
+        %select{:name => 'contact', :id => 'tasks-owner'}
+          = options_for_select administrator_contacts.map {|c| [c.label, c.id] }.unshift(['Any', ''])
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to_new_resource(Task, :rel => :popup)
+    = link_to_new_resource(Note, :rel => :popup)
+   
+= render 'shared/admin/toolbar'
+
+.admin-content-main
+  .notes-container
+    %h2= e9_t(:active_notes_header)
+    = render 'index', :paging => true, :query_params => { :active => true, :contact => current_user.contact_id }
+
+= render 'dashboard_sidebar'

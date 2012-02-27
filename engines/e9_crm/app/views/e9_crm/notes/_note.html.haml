@@ -1,0 +1,16 @@
+.note{:id => note.to_anchor }
+  .note-completion{:class => note.completed? ? 'complete' : 'incomplete' }
+  .note-title
+    = note.title
+  .note-details
+    = k(note.details)
+
+  %fieldset.note-responsible
+    %legend Responsible
+    = link_to_resource(note.owner.name, note.owner)
+
+  - if note.assignments.any?
+    %fieldset.note-attached
+      %legend Attached
+      - note.assignments.each do |assignment|
+        = link_to_resource(assignment.assigned.name, assignment.assigned)

@@ -1,0 +1,7 @@
+<% if resource.errors.blank? %>
+  var $row = $("#ids_<%= resource.id %>");
+  $row.html("<%= escape_javascript(render(row_partial, :record => resource)) %>");
+  <% if resource.newly_published? && should_show_social_feeds_form_for?(resource) %>
+    <%= render 'shared/social/call' %>
+  <% end %>
+<% end %>

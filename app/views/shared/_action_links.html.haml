@@ -1,0 +1,18 @@
+.action-links
+  %ul
+    = yield
+
+    - if content.display_actions?
+      %li
+        = link_to e9_t(:actions), '#', :class => 'action-link dashboard-link'
+        .tooltip
+          = render 'shared/dashboard', :content  => content, :legend => false, :hide_print => local_assigns[:hide_print]
+
+    - if content.display_social_bookmarks?
+      %li
+        = link_to e9_t(:share), '#', :class => 'action-link share-bar-link'
+        .tooltip
+          = render 'shared/share_bar', :content  => content, :legend => false
+
+    - if content.allow_comments?
+      %li= comments_count_link(content)

@@ -1,0 +1,18 @@
+= title @index_title
+
+.toolbar
+  .toolbar-left
+    = form_tag(resource_class, :method => :get, :id => 'user_search_form') do
+      = text_field_tag 'search', params[:search], :id => 'search'
+      = submit_tag t(:search), :name => nil
+  .toolbar-right
+
+.users
+  - if collection.empty?
+    .no-records
+      = t(:no_users_found)
+  - else
+    = render collection
+
+.users-pagination
+  = will_paginate collection

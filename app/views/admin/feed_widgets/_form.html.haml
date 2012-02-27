@@ -1,0 +1,107 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]), :remote => request.xhr? do |f|
+  .errors= resource_error_messages!
+
+  = f.fields_for resource.options do |ff|
+    .col
+      .field
+        = f.label :name, nil, :class => :req
+        = f.text_field :name
+
+      %fieldset.feed-types.checkbox
+        %legend= 'Feed Type Options'
+
+        .field
+          = label_tag 'feed_type', 'Type'
+          = feed_widget_feed_type_select
+
+        #ft-mixed.feed-type.checkbox
+          = label_tag 'Content Type'
+          = feed_widget_content_type_check_box
+          = feed_widget_content_type_check_box(UserPage)
+          = feed_widget_content_type_check_box(BlogPost)
+          = feed_widget_content_type_check_box(Topic)
+          = feed_widget_content_type_check_box(Slide)
+          = feed_widget_content_type_check_box(Question)
+
+        #ft-specific.feed-type
+          = label_tag 'Contents'
+          = widget_specific_content_select
+          %ul.select
+            - resource.contents.each do |o|
+              %li.ui-state-default
+                %span.content= widget_select_option_text(o)
+                %input{:type => :hidden, :name => "feed_widget[options][content_id][]", :value => o.id}
+                  %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+        #ft-blog.feed-type
+          = label_tag Blog.model_name.human.pluralize
+          = widget_blog_select
+          %ul.select
+            - resource.blogs.each do |o|
+              %li.ui-state-default
+                %span.content= widget_select_option_text(o)
+                %input{:type => :hidden, :name => "feed_widget[options][blog_id][]", :value => o.id}
+                  %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+        #ft-event.feed-type
+          = label_tag 'feed_widget_options_event_type', Event.model_name.human
+          = ff.hidden_field(:event_feed)
+          = ff.collection_select(:event_type, EventType.order('name ASC').all, :id, :name, { :include_blank => 'All Types' })
+
+        #ft-forum.feed-type
+          = label_tag Forum.model_name.human.pluralize
+          = widget_forum_select
+          %ul.select
+            - resource.forums.each do |o|
+              %li.ui-state-default
+                %span.content= widget_select_option_text(o)
+                %input{:type => :hidden, :name => "feed_widget[options][forum_id][]", :value => o.id}
+                  %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+        #ft-slideshow.feed-type
+          = label_tag Slideshow.model_name.human.pluralize
+          = widget_slideshow_select
+          %ul.select
+            - resource.slideshows.each do |o|
+              %li.ui-state-default
+                %span.content= widget_select_option_text(o)
+                %input{:type => :hidden, :name => "feed_widget[options][slideshow_id][]", :value => o.id}
+                  %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+      %fieldset
+        %legend Sort/Limit Options
+
+        #feed-sort-value.field.col9.colborder
+          = ff.label :sort
+          = ff.select :sort, widget_sort_select_options
+        #feed-sort-reverse.field.col2
+          = ff.label :reverse
+          = ff.check_box :reverse
+        .field.col2
+          = ff.label :limit
+          = ff.text_field :limit
+
+    .col
+      = render 'shared/form_partials/widget_tag_options'
+
+      %fieldset
+        .field
+          = ff.label :header_text
+          = ff.text_field :header_text
+
+      %fieldset
+        %legend= f.label(:template_id)
+        .field
+          = f.collection_select(:template_id, WidgetTemplate.order(:name).all, :id, :name, :prompt => true)
+
+      - if request.xhr?
+        - resource.region_type_ids.each_with_index do |id, i|
+          = hidden_field_tag "#{resource_instance_name}[region_type_ids][]", id, :id => "#{resource_instance_name}_region_type_ids_#{i}"
+        - if resource.new_record?
+          - resource.node_ids.each_with_index do |id, i|
+            = hidden_field_tag "#{resource_instance_name}[node_ids][]", id, :id => "#{resource_instance_name}_node_ids_#{i}"
+      - else
+        = render 'shared/admin/region_type_select', :f => f
+
+  .actions.clear
+    = f.submit

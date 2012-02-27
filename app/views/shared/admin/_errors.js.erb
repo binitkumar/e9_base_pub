@@ -1,0 +1,3 @@
+$('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+$("<%= resource.errors.keys.map {|key| "[name$='[#{key}]']" }.join(',') %>").closest(".field").children().wrap('<div class="field_with_errors" />');
+jQuery('html').animate({scrollTop: 0}, 200);

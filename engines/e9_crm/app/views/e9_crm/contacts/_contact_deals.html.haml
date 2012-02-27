@@ -1,0 +1,24 @@
+.contact-deals
+  %h2
+    %span.contact-subheader Deals
+    %span.contact-actions
+      = link_to_new_resource(Deal, :deal => { :contact_ids => [resource.id] })
+  %table
+    %thead
+      %tr
+        %th= Deal.human_attribute_name(:name)
+        %th= Deal.human_attribute_name(:status)
+        %th= Deal.human_attribute_name(:value)
+    %tbody
+      - if (deals = resource.associated_deals.leads(false)).blank?
+        %tr
+          %td{:colspan => 3}= resource_humanize(:no_deals)
+      - else
+        - deals.each do |deal|
+          %tr
+            %td.contact-deal-name
+              = link_to deal.name, deal
+            %td.contact-deal-status
+              = deal.status
+            %td.contact-deal-value
+              = deal.value.format

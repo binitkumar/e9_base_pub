@@ -1,0 +1,24 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(Search, :created_at)
+      %th= ordered_on_link(Search, :query)
+      %th= ordered_on_link(Search, :search_count)
+      %th= ordered_on_link(Search, :results_count)
+      %th= ordered_on_link(Search, :user_id)
+      %th= ordered_on_link(Search, :role)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 7}= e9_t(:no_records_text)
+    - else
+      - collection.each do |search|
+        %tr{:id => "ids_#{search.id}", :class => cycle('odd', 'even')}
+          %td.date= l(search.created_at.to_date)
+          %td.txt= link_to_new_window(search.query, search)
+          %td.num= search.search_count
+          %td.num= search.results_count
+          %td.text= truncated_span(search.user.try(:email), :length => 25)
+          %td.txt= search.role
+
+= will_paginate collection

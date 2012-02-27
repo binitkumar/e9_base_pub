@@ -1,0 +1,11 @@
+%td.date= l(record.published_at)
+%td.thumbnail= image_mount_tag(record.thumb)
+%td.txt= record.title
+%td.txt= published_status_text(record)
+%td.actions
+  = content_publish_link(record)
+  = edit_admin_resource_link(record)
+  = change_page_layout_link(record)
+  = preview_page_link(record) if !record.permalink.blank?
+  = social_feed_link(record)
+  = destroy_admin_resource_link(record)

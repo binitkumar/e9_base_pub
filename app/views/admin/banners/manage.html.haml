@@ -1,0 +1,11 @@
+= title @manage_title
+
+- content_for :toolbar_right do
+  = toolbar_forms do
+    - image = resource.images.unattached.last || resource.images.create
+    = image_mount_field(image, :upload_only => true)
+
+= render 'shared/admin/toolbar'
+
+#banner-images
+  = render :partial => 'images'

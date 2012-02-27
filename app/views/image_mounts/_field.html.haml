@@ -1,0 +1,46 @@
+- uploadify_operation   = resource.should_crop? ? 'upload_and_crop' : 'upload'
+- index                 = local_assigns[:index] || image_mount_index(true)
+- field_id              = "image-mount-#{index}"
+- fld_args              = {:id => field_id, :'data-index' => index}
+- fld_args['data-tags'] = resource.default_image_tags.join('|') if admin?
+- f                     = local_assigns[:f]
+
+.image-mount.field{fld_args}
+  -# for new records we append the nested_attribute fields to the form
+  - if f && resource.new_record?
+    = f.fields_for(resource.mounted_association) do |mf|
+      .mount-fields{'data-name' => mf.object_name}
+        = mf.hidden_field :mounted_as
+
+        - if resource.image_id.present?
+          = mf.hidden_field :image_id, :class => 'tocopy'
+        - if resource.spec_id.present?
+          = mf.hidden_field :spec_type, :class => 'tocopy'
+          = mf.hidden_field :spec_id, :class => 'tocopy'
+        - if resource.instructions.present?
+          = mf.hidden_field :instructions, :value => resource.instructions.to_hash.to_yaml, :class => 'tocopy'
+
+  - unless local_assigns[:upload_only]
+    .attachment
+      = label_tag field_id, resource.spec_name, (resource.spec_required? ? {:class => 'req'} : {})
+      = image_mount_tag(resource, :class => 'image-mount', :force_blank => true)
+
+  .action-buttons
+    %a.browse
+      = e9_t(:browse_image)
+      %input{:type => 'file', :name => 'attachment', :id => "#{field_id}-file"}
+
+    - unless local_assigns[:hide_select]
+      = link_to_image_mount_select(resource)
+
+    - unless local_assigns[:upload_only]
+      = link_to_image_mount_crop(resource)
+      = link_to_image_mount_reset(resource)
+
+  .upload-queue{:id => "#{field_id}-queue"}
+
+  = render "image_mounts/#{uploadify_operation}", :resource => resource, :field_id => field_id
+  
+- if resource.persisted? && resource.attachment.present?
+  - resource.versions.each do |v|
+    = render "image_mounts/field", :f => f, :resource => v

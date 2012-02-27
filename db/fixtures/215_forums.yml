@@ -1,0 +1,10 @@
+_defaults: &defaults
+  _finder: title
+  role: user
+  layout: forum
+  author: conrad
+
+forum:
+  <<: *defaults
+  title: General Topics
+  layout: forum

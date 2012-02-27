@@ -1,0 +1,10 @@
+- @nested_association_options = capture do
+  = f.fields_for f.object.options do |ff|
+    .field
+      = ff.text_field :year, :class => 'short', :placeholder => f.object.class.human_attribute_name(:year)
+    - if (types = SchoolAttribute.types).present?
+      = f.fields_for f.object.options do |ff|
+        .field
+          = ff.select :type, types
+
+= render RecordAttribute::LAYOUT_PARTIAL, :f => f

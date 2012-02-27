@@ -1,0 +1,28 @@
+= title current_page.title
+= content_body(current_page)
+- slice_length = E9::Config[:slide_pagination_records]
+
+.slideshows
+  - if collection.blank?
+    = e9_t(:no_records_text)
+  - else
+    - collection.each do |slideshow|
+      - slides = slideshow.slides.published.for_role(current_user_or_public_role); next if slideshow.slides.blank?
+
+      .slideshow.list-container{:id => slideshow.to_anchor}
+        .header
+          = slideshow.title 
+          - if slides.count > slice_length
+            %span.actions
+              %span.show-more-link= t(:show_more)
+
+        - if slideshow.description.present?
+          .description
+            = k(slideshow.description)
+
+        .slide-slices
+          - slides.each_slice(slice_length).with_index do |slice, i|
+            .slide-slice{:style => "display: #{i == 0 ? 'block' : 'none'};"}
+              - slice.each do |slide|
+                = link_to polymorphic_url(slideshow, :anchor => slide.to_param), :title => slide.title do
+                  = image_mount_tag(slide.wide_thumb)

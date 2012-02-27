@@ -1,0 +1,18 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:event_time)
+      %th= orderable_column_link(:title)
+      %th= orderable_column_link(:published)
+      %th= orderable_column_link(:registration_count, '#')
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 5}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          = render 'row', :record => record
+
+= will_paginate(collection)

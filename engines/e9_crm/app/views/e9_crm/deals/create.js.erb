@@ -1,0 +1,11 @@
+<% if resource.errors.any? %>
+  $('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+  try { $.fn.colorbox.resize(); } catch(e) {}
+<% else %>
+  try { $.fn.colorbox.close(); } catch(e) {}
+  $('form .errors').html("");
+  <% if contact = resource.contacts.first %>
+    $('#contact-deals').html("<%= escape_javascript(render 'e9_crm/contacts/contact_deals', :resource => contact) %>");
+    $('#contact-leads').html("<%= escape_javascript(render 'e9_crm/contacts/contact_leads', :resource => contact) %>");
+  <% end %>
+<% end %>

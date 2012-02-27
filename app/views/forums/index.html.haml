@@ -1,0 +1,8 @@
+= title(current_page.title)
+
+#forums
+  - unless @forums.empty?
+    .forums.list
+      = render @forums
+  - else
+    = e9_t(:no_records_text)

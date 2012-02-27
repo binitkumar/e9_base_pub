@@ -1,0 +1,6 @@
+%span.handle
+  +++
+%span.content 
+  = f.object.form_field_name.blank? ? 'DISPLAY_NAME' : f.object.form_field_name 
+= remove_link_unless_new_record(f)
+= f.hidden_field :renderable_id, :value => f.object.renderable_id || 'RENDERABLE_ID'

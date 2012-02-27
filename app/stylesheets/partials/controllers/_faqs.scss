@@ -1,0 +1,25 @@
+@import 'includes/typography';
+
+body.controller-faqs {
+	.header {
+    @include x-large;
+		font-weight: bold;
+	}
+
+  .questions {
+		margin-bottom: 1.5em;
+
+    .question { 
+      @include large;
+      cursor: pointer; 
+			margin: 0.67em 0;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+    .answer { 
+      margin: 5px 0 5px 1em;
+		}
+  }
+}

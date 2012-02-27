@@ -1,0 +1,50 @@
+<div id="note_<%= id %>" data-id="<%= id %>" data-url="<%= url %>" class="note task <%= status %> <%= completed ? '' : 'incomplete'%>">
+  <div class="controls-wrapper">
+    <div class="note-status" title="<%= completed ? 'Click to mark as incomplete' : 'Click to mark as completed' %>">
+      <%= status %>
+    </div>  
+    <div class="note-dates">
+      <% if (completed) { %>
+        <div id="note-completed-date"> <%= completed_at %> </div>
+      <% } else { %>
+        <div id="note-due-date"> <%= due_date %> </div> 
+      <% };%>
+    </div>
+    <div class="note-title"> <%= title %> </div>
+    <div class="note-edit action-buttons">
+      <a href="<%= edit_url %>" rel="popup">Edit</a>
+    </div>
+  </div>
+  <div class="note-info-wrapper">
+    <div class="note-responsible">
+      Responsible: <span><%= owner.name %></span>
+    </div>
+    <div class="note-assigned">
+      <% if(assignments.length) { %>
+        Attached:
+        <% _.each(assignments, function(assignment) { %>
+          <a href="<%= assignment.assigned.url %>"><span><%= assignment.assigned.name %></span></a>
+        <% }); %>
+      <% }; %>
+    </div>
+    <div class="note-details">
+      <%= details %>
+    </div> 
+    <% if (attachments.length) { %>
+      <ul class="attachments">
+        <div class="actions">Attached Files <a href="<%= edit_url %>">Edit</a></div>
+        <% _.each(attachments, function(attachment) { %>
+          <li class="attachment">
+            <a href="<%= attachment.url %>" title="<%= attachment.name %>" class="attachment-<%= attachment.file_type %>" target="_blank">
+              <% if (attachment.thumb) { %>
+                <img src="<%= attachment.thumb %>" alt="<%= attachment.name %>" />
+              <% } else { %>
+                <%= attachment.name %>
+              <% }; %>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+    <% }; %>
+  </div>
+</div>

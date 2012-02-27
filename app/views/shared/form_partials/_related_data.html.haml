@@ -1,0 +1,16 @@
+- if resource.images.present? || resource.placements.present?
+  %fieldset.related-data
+    %legend= e9_t(:related_data)
+
+    - if resource.images.present?
+      .related-image-fields
+        - resource.images.each do |image|
+          = image_mount_field(image, :f => f)
+
+    - if resource.placements.present?
+      .related-text-fields
+        - f.fields_for :placements do |pf|
+          = pf.hidden_field :associated_id
+          .field
+            = help_label(pf, :template, :text => pf.object.name, :key => :markdown_help, :header => 'Markdown Help')
+            = pf.send(pf.object.length > 255 ? :text_area: :text_field, :template)

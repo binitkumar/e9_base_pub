@@ -1,0 +1,36 @@
+- content_for :slide do
+  #slide-content
+    = content_for?(:slide_content) ? yield(:slide_content) : yield
+    #slide-info
+      = yield :slide_info
+
+- if request.xhr?
+  = yield :slide
+
+- else
+  - content_for :minimal_content do
+    #flash-messages
+      = flash_messages
+    = breadcrumbs_helper
+    #slideshow-title
+      = yield :slideshow_title
+    #slideshow-simple-pagination
+      = yield :slideshow_simple_pagination
+    #slide
+      = yield :slide
+    #slide-dashboard
+      = yield :slide_dashboard
+    #bottom
+      = render_region 'bottom'
+
+    - if content_for?(:slide_selector)
+      #slide-selector
+        = yield :slide_selector
+
+    - if content_for?(:slide_comments)
+      #slide-comments
+        = yield :slide_comments
+  
+
+  - add_body_class("slide")
+  = render :file => 'layouts/application/minimal'

@@ -1,0 +1,30 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]) do |f|
+  = resource_error_messages!
+  .field
+    = f.label :title, nil, :class => :req
+    = f.text_field :title
+  .field
+    = help_label(f, :description, :key => :markdown_help, :header => 'Markdown Help')
+    = f.text_area :description
+  .field
+    = f.label :meta_description
+    = f.text_area :meta_description
+  .field
+    = f.label :meta_keywords, (resource_humanize(:meta_keywords) << %Q| <span class="help" rel="tooltip" title="#{e9_t(:meta_keywords_instructions)}">[?]</span>|).html_safe
+    = f.text_area :meta_keywords
+
+  %fieldset.grouping
+    %legend= e9_t(:advanced_settings)
+    .fields
+      .field
+        = f.label :user_id, nil, :class => :req
+        = f.select :user_id, author_select_options, {}, :id => 'author-select'
+      %fieldset.checkbox
+        %legend= label_tag e9_t(:settings_form_legend, :scope => 'admin.pages')
+        .field.checkbox
+          = f.label :display_slide_selector
+          = f.check_box :display_slide_selector
+
+  .actions
+    = f.submit
+    = yield :actions

@@ -1,0 +1,23 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(resource_class, :created_at)
+      %th= ordered_on_link(resource_class, :sub_type)
+      %th= ordered_on_link(resource_class, :subject)
+      %th= ordered_on_link(resource_class, :requests)
+      %th= t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 6}= e9_t(:no_records_text)
+    - else
+      - collection.each do |resource|
+        %tr{:id => "ids_#{resource.id}", :class => cycle('odd', 'even')}
+          %td.date= I18n.l(resource.created_at)
+          %td.txt= resource.sub_type.presence && resource_humanize(resource.sub_type)
+          %td.txt= resource.subject
+          %td.num= resource.requests
+          %td.actions
+            = link_to_show_resource(resource)
+
+= will_paginate collection

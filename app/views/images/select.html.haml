@@ -1,0 +1,17 @@
+- current_tags = Array.wrap(params[:tagged])
+
+= title @select_title || e9_t(:select_title)
+
+.image-management
+  = form_tag select_images_path, :method => :get do
+    %ul
+      - all_image_tags.each_with_index do |t, i|
+        %li
+          %input{:type => 'checkbox', :name => 'tagged[]', :value => t, :id => "t#{i+1}", :checked => current_tags.member?(t) }
+          %label{:for => "t#{i+1}"}= t
+  .images
+    - if current_tags.empty?
+      %p Find an image by selecting tags
+
+    - else
+      = render :partial => 'listed_image', :collection => collection

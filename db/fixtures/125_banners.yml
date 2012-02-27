@@ -1,0 +1,11 @@
+_defaults: &defaults
+  _finder: name
+  _validate: false
+
+main:
+  <<: *defaults
+  name: "Main Banner"
+  height: <%= E9::Config[:banner_height] %>
+  width: <%= E9::Config[:banner_width] %>
+  region_types: banner
+  role: 'user'

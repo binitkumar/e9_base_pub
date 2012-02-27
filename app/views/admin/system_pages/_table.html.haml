@@ -1,0 +1,18 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(resource_class, :title)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 2}= e9_t(:no_records_text)
+    - else
+      - collection.each do |page|; page = page.becomes(SystemPage)
+        %tr{:id => "ids_#{page.id}", :class => cycle('odd', 'even')}
+          %td.txt
+            = page.title
+          %td.actions
+            = edit_admin_resource_link(page)
+
+= will_paginate(collection)

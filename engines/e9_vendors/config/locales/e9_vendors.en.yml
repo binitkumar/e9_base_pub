@@ -1,0 +1,155 @@
+en:
+  activerecord:
+    errors:
+      models:
+        vendor:
+          attributes:
+            vendor_categories:
+              blank: "You must select at least one category."
+
+    # Translate model names. Used in Model.human_name().
+    models:
+      vendor_proxy: Vendor
+      vendor_category: Vendor Category
+      vendor_member: Member
+    
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    attributes:
+      vendor:
+        vendor_category: Category
+        discount_percentage: Default Member Discount
+        nickname: Company
+        interpolation_instructions: |
+          <h3>Variables:</h3>
+          <p>You can insert the following to render variable data in the field</p>
+          <p>
+          &#123;&#123;member_name&#125;&#125;<br/>
+          &#123;&#123;vendor_tracking_code&#125;&#125;<br/>
+          &#123;&#123;vendor_name&#125;&#125;<br/>
+          &#123;&#123;vendor_company&#125;&#125;<br/>
+          &#123;&#123;vendor_landing_page&#125;&#125;<br/>
+          &#123;&#123;vendor_sales_email&#125;&#125;<br/>
+          &#123;&#123;vendor_sales_full_name&#125;&#125;<br/>
+          &#123;&#123;vendor_sales_phone&#125;&#125;<br/>
+          &#123;&#123;vendor_sales_title&#125;&#125;<br/>
+          </p>
+          <h3>Markdown:</h3>
+          <p>You can style the text in this field using the Markdown syntax as follows:</p>
+          <p>A line break is created by putting 2 spaces at the end of the line above and then a return.</p>
+          <p>A paragraph is created by putting a blank line between the first paragraph and the second paragraph.</p>
+          <p>*italics*</p>
+          <p>**bold**</p>
+          <p>***bold and italic text***</p>
+          <p>
+            * Item in a bulleted list<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;* A sub-item, indented with 4 spaces<br/>
+            * Another item in a bulleted list
+          </p>
+          <p>
+            1. Item in numbered list<br/>
+            2. Another Item in numbered list<br/>
+            3. Another Item in numbered list
+          </p>
+          <p># First-level heading</p>
+          <p>## Second-level heading</p>
+          <p>### Third-level heading</p>
+          <p>#### Fourth-level heading</p>
+          <p>
+            > This is a blockquote.<br/>
+            > Blockquote with hard wrap<br/>
+            ><br/>
+            > This is the second paragraph in the blockquote.<br/>
+            ><br/>
+            > ## This is an H2 in a blockquote
+          </p>
+          <p>[This is a link](http://www.google.com "Google")</p>
+          <p>![Image Alt Text](image url "Image Title")</p>
+          <p>--- Horizontal rules are created by 3 hyphens</p>
+          <p>If you need to actually render the following characters AND they are NOT rendering, place a backslash before the character like \*italics\* will actually render with the asterisks instead of italicizing the word.</p>
+          <p>&#92;&#09;backslash</p>
+          <p>*&#09;asterisk</p>
+          <p>&#09;_underscore</p>
+          <p>{}&#09;curly braces</p>
+          <p>[]&#09;square brackets</p>
+          <p>()&#09;parentheses</p>
+          <p>#&#09;hash mark</p>
+          <p>+&#09;plus sign</p>
+          <p>-&#09;minus sign (hyphen)</p>
+          <p>.&#09;dot</p>
+          <p>!&#09;exclamation mark</p>
+      settings:
+        e9_vendors_email_to: Email To
+        e9_vendors_email_from: Email From
+        e9_vendors_email_subject: Email Subject
+        e9_vendors_email_intro: Email Introduction
+        e9_vendors_widget_title: Widget Title
+        e9_vendors_widget_form_title: Widget Subtitle
+        e9_vendors_widget_form_text: Widget Description
+        e9_vendors_widget_settings: Widget Settings
+        e9_vendors_widget_help: |
+          <h3>Variables:</h3>
+          <p>You can insert the following to render variable data in the field</p>
+          <p>&#123;&#123;member_name&#125;&#125;</p>
+          <h3>Markdown:</h3>
+          <p>You can style the text in this field using the Markdown syntax as follows:</p>
+          <p>A line break is created by putting 2 spaces at the end of the line above and then a return.</p>
+          <p>A paragraph is created by putting a blank line between the first paragraph and the second paragraph.</p>
+          <p>*italics*</p>
+          <p>**bold**</p>
+          <p>***bold and italic text***</p>
+          <p>
+            * Item in a bulleted list<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;* A sub-item, indented with 4 spaces<br/>
+            * Another item in a bulleted list
+          </p>
+          <p>
+            1. Item in numbered list<br/>
+            2. Another Item in numbered list<br/>
+            3. Another Item in numbered list
+          </p>
+          <p># First-level heading</p>
+          <p>## Second-level heading</p>
+          <p>### Third-level heading</p>
+          <p>#### Fourth-level heading</p>
+          <p>
+            > This is a blockquote.<br/>
+            > Blockquote with hard wrap<br/>
+            ><br/>
+            > This is the second paragraph in the blockquote.<br/>
+            ><br/>
+            > ## This is an H2 in a blockquote
+          </p>
+          <p>[This is a link](http://www.google.com "Google")</p>
+          <p>![Image Alt Text](image url "Image Title")</p>
+          <p>--- Horizontal rules are created by 3 hyphens</p>
+          <p>If you need to actually render the following characters AND they are NOT rendering, place a backslash before the character like \*italics\* will actually render with the asterisks instead of italicizing the word.</p>
+          <p>&#92;&#09;backslash</p>
+          <p>*&#09;asterisk</p>
+          <p>&#09;_underscore</p>
+          <p>{}&#09;curly braces</p>
+          <p>[]&#09;square brackets</p>
+          <p>()&#09;parentheses</p>
+          <p>#&#09;hash mark</p>
+          <p>+&#09;plus sign</p>
+          <p>-&#09;minus sign (hyphen)</p>
+          <p>.&#09;dot</p>
+          <p>!&#09;exclamation mark</p>
+      vendor_proxy:
+        discount_code: Tracking Code
+  e9:
+    e9_vendors:
+      vendor_members:
+        manage: Manage Vendors
+        get_widget_code: Get Widget Code
+        widget_code_title: Widget Code
+      vendor_proxies:
+        edit: Edit Vendor Details
+        index_title: "Manage Vendors for %{member}"
+        view_landing_page: View Landing Page
+        vendor_defaults_instructions: Leave Fields Below Blank to Use Default Values
+        vendor_default: "(Default: %{default_value})"
+      vendors:
+        widget_settings_legend: Widget Settings
+      settings:
+        index_title: Vendors Settings
+        vendorboon_widget_settings_legend: Widget Settings

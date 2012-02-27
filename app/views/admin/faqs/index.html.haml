@@ -1,0 +1,10 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = label_tag :faq_role, t(:filter_by, :attribute => resource_class.human_attribute_name(:role))
+    = select_tag :role, options_for_select(current_user.role.roles.sort.map {|r| [r.titleize, r]}, params[:role]), :id => :faq_role_select
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to_new_resource(resource_class)
+
+= render 'shared/admin/index', :collection => collection

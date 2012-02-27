@@ -1,0 +1,9 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]) do |f|
+  = resource_error_messages!
+
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+
+  .actions
+    = f.submit

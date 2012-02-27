@@ -1,0 +1,9 @@
+- if any_social_feeds_configured?
+  = link_to e9_t(:social_publish), '#social-feed', :id => "social-feed-#{resource.id}"
+  :javascript
+    $(function() {
+      $("#social-feed-#{resource.id}").socialFormify({ 
+        event: 'click', 
+        url: "#{polymorphic_url([:social_form_admin, resource])}" 
+      });
+    });

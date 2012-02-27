@@ -1,0 +1,47 @@
+.user
+  .avatar
+    = image_mount_tag(resource.avatar, :alt => resource.name)
+  .user-body
+    .user-info.user-section
+      = title @show_title
+      .user-email
+        = link_to resource.email, "mailto:#{resource.email}"
+      .user-company
+        = resource.company
+      .user-title
+        = resource.title
+      - if resource.dob
+        .user-dob
+          Birthdate: #{I18n.l(resource.dob)}
+    .user-bio.user-section
+      .header= t(:bio_information)
+      = resource.bio.present? && k(resource.bio) || t(:no_bio_text)
+    .user-school.user-section
+      .header= t(:school_information)
+      - resource.school_attributes.each do |attr|
+        .attr= attr
+    .user-contact.user-section
+      .header= t(:contact_information)
+      .attr-category
+        .attr-category-name Phone Numbers
+        - resource.phone_number_attributes.each do |attr|
+          .attr= attr
+      .attr-category
+        .attr-category-name Other Email Addresses
+        - resource.email_attributes.each do |attr|
+          .attr= link_to(attr, "mailto:#{attr.value}")
+      .attr-category
+        .attr-category-name Websites
+        - resource.website_attributes.each do |attr|
+          .attr= attr.to_html
+      .attr-category
+        .attr-category-name IM
+        - resource.instant_messaging_handle_attributes.each do |attr|
+          .attr= attr
+      .attr-category
+        .attr-category-name Addresses
+        - resource.address_attributes.each do |attr|
+          .attr
+            .address= attr
+            .map= attr.link
+

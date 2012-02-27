@@ -1,0 +1,35 @@
+- if resource.published? || admin?
+  - meta_tags(resource)
+
+  .left-block
+    = content_thumb(resource)
+    = content_action_links(resource)
+  .block
+    .event-time
+      = l(resource.event_time, :format => :event)
+    = content_labels(resource)
+
+  = content_body(resource)
+
+  #event_transaction_form
+    - if resource.accepting_registrations?
+      = spinner
+      - content_for :bottom_javascripts do
+        :javascript
+          $(function() { 
+            $('#event_transaction_form').load_event_form("#{new_event_event_transaction_url(resource)}");
+          })
+    - else
+      %fieldset
+        %legend= e9_t(:event_registration_legend, :scope => 'event_transactions')
+        - if resource.registrations_closed?
+          .alert
+            = resource_humanize(:registrations_closed)
+        - elsif resource.at_capacity?
+          .alert
+            = resource_humanize(:at_capacity)
+
+  = content_comments(resource)
+
+- else
+  %h2.error= e9_t(:unpublished_page_error)

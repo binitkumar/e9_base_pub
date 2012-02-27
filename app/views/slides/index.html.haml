@@ -1,0 +1,29 @@
+- meta_tags parent
+
+- content_for :slideshow_title do
+  = index_title
+
+  - content_for :slide_bottom do
+    - if parent.display_slide_selector?
+      #slide-selector
+        = render 'slide_selector'
+
+    #slide-comments
+
+- if collection.empty?
+  - content_for :slide_content do
+    = e9_t(:no_records_text)
+
+- else
+  - content_for :javascripts do
+    = include_javascripts :slides
+    = recaptcha_script(:comments)
+
+  - content_for :bottom_javascripts do
+    :javascript
+      $(function() {
+        $.slideshow_load({
+          url:   "#{contextual_slide_url(parent)}", 
+          slide: "#{resource.to_param}"
+        });
+      });

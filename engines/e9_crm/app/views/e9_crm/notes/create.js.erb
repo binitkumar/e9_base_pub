@@ -1,0 +1,27 @@
+<% if resource.errors.any? %>
+$('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+try { $.fn.colorbox.resize(); } catch(e) {}
+<% elsif params[:commit_and_edit] %>
+setTimeout(function(){ location.href="<%= response.headers['Location'] %>"; },0)
+<% else %>
+try { $.fn.colorbox.close(); } catch(e) {}
+
+var data = JSON.parse("<%= escape_javascript(raw resource.decorate.to_json) %>");
+
+var $form = $('form.notes-' + (data.completed ? 'completed' : 'active'));
+
+if ($form.length) {
+  $.e9.notes.append(data, $form);
+} 
+
+//else {
+//  var $f = $('form.scope-selects');
+//  $form = $('form.notes-' + (data.completed ? 'active' : 'completed'));
+//
+//  if ($f.length && $form.length) {
+//    $.query = {};
+//    if (data.completed) { $.query['active'] = 'false'; }
+//    $.submit_with_query(true, { form: $form });
+//  }
+//}
+<% end %>

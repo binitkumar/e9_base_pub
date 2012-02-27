@@ -1,0 +1,9 @@
+.layout{:id => "ids_#{layout.id}"}
+  .layout-name{:title => layout.name}
+    = truncate(layout.name, :length => 18)
+  .actions
+    = edit_admin_resource_link(layout)
+    = new_admin_resource_link(resource_class, :text => e9_t(:copy_link_text), :path_args => { :layout_id => layout })
+    = destroy_admin_resource_link(layout)
+  .layout-preview
+    = edit_admin_resource_link(layout, :text => layout_preview_image_tag(layout))

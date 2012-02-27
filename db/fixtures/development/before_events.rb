@@ -1,0 +1,1 @@
+CostAttribute.delete_all

@@ -1,0 +1,7 @@
+- url_args = local_assigns[:per_page] ? { :per_page => local_assigns[:per_page] } : {}
+#twitter-statuses
+  :javascript
+    $(function(){ $.ajax({ url: "#{twitter_statuses_path(url_args)}", method: 'GET', dataType: 'script' }) });
+  .feed
+    = spinner
+  .pagination

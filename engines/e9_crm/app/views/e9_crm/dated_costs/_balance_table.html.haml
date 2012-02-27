@@ -1,0 +1,27 @@
+- col_count = params[:print] ? 5 : 6 
+
+%table.records#balance-table
+  %thead
+    %tr
+      %th Created Date
+      %th Closed Date
+      %th Status
+      %th Description
+      %th Amount
+      - unless params[:print]
+        %th Actions
+
+  - if collection.empty?
+    %tbody
+      %tr
+        %td{:colspan => col_count }= e9_t(:no_records_text)
+  - else
+    %tfoot
+      %tr
+        %td{:colspan => 4} Balance
+        %td.cost#ctotal &nbsp;
+        - unless params[:print]
+          %td &nbsp;
+    %tbody
+      - collection.each do |record|
+        = render 'balance_row', :record => record

@@ -1,0 +1,20 @@
+= render 'who', :record => record
+
+- if record.phone_number_attributes.any?
+  .contact-phone-numbers
+    - record.phone_number_attributes.each do |phone_number_attribute|
+      .contact-phone-number= phone_number_attribute
+
+- if record.users.any?
+  .contact-emails
+    - unless record.ok_to_email?
+      .contact-email-warning
+        = resource_humanize(:not_ok_to_email)
+    - record.users.each do |user|
+      .contact-email
+        = render 'contact_user', :user => user, :contact => record
+
+- if (tags = record.tags(:show_all => true)).present?
+  .contact-tags
+    %label #{Tag.model_name.human.pluralize}:
+    = contact_tag_list(tags.sort {|a, b| a.upcase <=> b.upcase })

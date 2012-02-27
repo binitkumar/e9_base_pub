@@ -1,0 +1,9 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag('', :method => :get, :class => 'scope-selects') do
+      .field
+        = label_tag 'email-reports-month', t(:filter_by, :attribute => 'Month')
+        %select{:name => 'month', :id => 'email-reports-month'}
+          = date_select_options(:type => :in_month, :skip_current => true, :label => 'This Month', :date_format => '%B %Y', :from_date => Email.first.try(:created_at) || Date.today)
+
+= render 'shared/admin/index', :collection => collection

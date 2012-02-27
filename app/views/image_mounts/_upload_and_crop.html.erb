@@ -1,0 +1,31 @@
+<% crop_width, crop_height = resource.crop_dimensions %>
+<script type="text/javascript">
+  $(function() {
+    $("#<%= field_id %>").upload_and_crop({
+      crop_options: {
+        script: "<%= resource.persisted? ? url_for(resource) : temp_image_mounts_path %>",
+        image_id: "<%= resource.image_id %>",
+        crop_width: <%= crop_width %>,
+        crop_height: <%= crop_height %>, 
+        persisted: <%= resource.persisted? %>,
+        owner_id: "<%= resource.owner_id %>",
+        owner_type: "<%= resource.owner_type %>",
+        mounted_as: "<%= resource.mounted_as %>",
+        reload: <%= resource.persisted? && resource.versions.any? %>
+      },
+      upload_options: {
+        fileExt: "<%= resource.image_file_ext %>",
+        fileDesc: "<%= resource.image_file_desc %>",
+        queueID: "<%= field_id %>-queue",
+        inputID: "<%= field_id %>-file",
+        reload: <%= resource.persisted? && resource.versions.any? %>,
+        scriptData: {
+          format: "json",
+          _method: "post",
+          <%= session_key %>: encodeURIComponent("<%= u session_id  %>"),
+          <%= request_forgery_protection_token  %>: encodeURIComponent('<%= u form_authenticity_token if protect_against_forgery?  %>')
+        }
+      }
+    })
+  });
+</script>

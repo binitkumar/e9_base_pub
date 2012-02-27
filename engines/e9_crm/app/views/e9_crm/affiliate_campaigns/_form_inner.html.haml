@@ -1,0 +1,17 @@
+= render 'e9_crm/sales_campaigns/form_inner', :f => f
+
+%fieldset
+  %legend= e9_t(:affiliate_information_legend, :scope => 'e9_crm.campaigns')
+  .field
+    = f.label :affiliate, :class => :req, :for => 'campaign_affiliate_id'
+
+    - contact = f.object.affiliate
+    %input.contact-autocomplete.single{:type => 'text', :style => contact.blank? && '' || 'display:none'}
+    .contact-select{:style => contact.blank? && 'display:none' || ''}
+      %span.content= contact.try(:name)
+      %input{:type => :hidden, :name => "#{resource_instance_name}[affiliate_id]", :value => contact.try(:id)}
+      %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+  .field
+    = help_label f, :affiliate_fee
+    = f.text_field :affiliate_fee, :value => f.object.affiliate_fee.to_s

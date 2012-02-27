@@ -1,0 +1,27 @@
+%h2 Parties Involved
+
+%fieldset.deal-owner
+  %legend= t(:deal_owner_legend)
+  .deal-contact
+    - if resource.owner
+      = link_to resource.owner do
+        .contact-photo 
+          %img{:src => resource.owner.avatar_url, :alt => "Photo for #{resource.owner.name}"} 
+        .contact-name= resource.owner.name
+        .contact-title= title_and_or_company(resource.owner)
+    - else
+      .contact-photo 
+        %img{:src => User.new.avatar_url, :alt => "Default Contact Photo"} 
+      .contact-name
+        = t(:no_deal_owner)
+
+- if resource.contacts.any?
+  %fieldset.deal-contacts
+    %legend= t(:deal_contact_legend)
+    - resource.contacts.each do |contact|
+      .deal-contact
+        = link_to contact do
+          .contact-photo 
+            %img{:src => contact.avatar_url, :alt => "Photo for #{contact.name}"} 
+          .contact-name= contact.name
+          .contact-title= title_and_or_company(contact)

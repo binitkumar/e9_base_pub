@@ -1,0 +1,8 @@
+= form_for resource, :url => admin_event_event_registration_path(parent, resource), :remote => request.xhr? do |f|
+  = f.hidden_field :attended, :value => false
+  .errors= resource_error_messages!
+  .field
+    = f.label :event, nil, :for => :event_registration_event_id
+    = f.collection_select :event_id, Event.future.excluding(parent.id).order('content_views.event_time ASC'), :id, :label
+  .actions
+    = f.submit

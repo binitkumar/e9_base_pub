@@ -1,0 +1,9 @@
+<p>Hello <%= @resource.email %>!</p>
+
+<p>Your account has been deactivated.</p>
+
+<p>
+  If you ever want to reactive your account in the future, 
+  <%= link_to "click here", edit_user_password_url(:reset_password_token => @resource.reset_password_token) %> 
+  to reset your password.
+</p>

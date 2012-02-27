@@ -1,0 +1,18 @@
+- content_for :main_nav_content do
+  #banner
+    = render_region 'main-banner'
+  #main-nav
+    = render_region 'main-nav'
+
+- content_for :application_content do
+  #body
+    #left
+      = render_region 'left'
+    #content
+      .content-inner
+        = render_region 'content'
+    #right
+      = render_region 'right'
+
+- add_body_class('home-page')
+= render :file => 'layouts/application'

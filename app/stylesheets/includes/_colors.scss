@@ -1,0 +1,10 @@
+/**
+ * Misc
+ */
+@mixin classed-color($color, $hover-color: false) {
+  &, a { color: $color; }
+  a { text-decoration: underline; }
+  @if $hover-color {
+    a:hover { color: $hover-color; }
+  }
+}

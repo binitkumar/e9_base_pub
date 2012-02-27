@@ -1,0 +1,29 @@
+%td{:class => resource.cancelled? ? 'cancelled' : 'attended'}
+  - if resource.cancelled?
+    = resource_humanize(:cancelled)
+  - else 
+    = form_for(resource, :url => admin_event_event_registration_path(parent, resource), :html => { :class => 'toggle_event_attended' }) do |f|
+      = f.check_box :attended
+%td
+  = resource.respond_to?(:contact_name) && resource.contact_name || resource.contact.try(:name)
+%td
+  - user_email = resource.respond_to?(:user_email) && resource.user_email || resource.user.email
+  = link_to(user_email, "mailto:#{user_email}", 'data-user-id' => resource.user.id, 'data-contact-id' => resource.contact.id, :class => 'contact-mailto', 'data-type' => 'crm_template')
+%td.resource-info
+  - if resource.details.present?
+    %span.click{:rel => 'tooltip'} Details
+    .tooltip
+      = k(resource.details_as_markdown)
+%td
+  = resource.campaign_name
+%td
+  - if resource.transaction_id.present?
+    = link_to resource.transaction_id, params.merge(:transaction => resource.transaction_id)
+%td
+  = resource.promo_code
+  = link_to 'Edit', edit_voucher_admin_event_event_registration_path(parent, resource), :rel => 'popup'
+%td= resource.paid.format
+%td.actions
+  = link_to_resource(resource.contact)
+  = link_to 'Transfer', transfer_admin_event_event_registration_path(parent, resource), :rel => 'popup'
+  = link_to resource_humanize(resource.cancelled ? :uncancel : :cancel), admin_event_event_registration_path(parent, resource, { :event_registration => { :cancelled => !resource.cancelled } }), :method => :put, :remote => :true

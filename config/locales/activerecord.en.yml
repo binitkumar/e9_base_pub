@@ -1,0 +1,610 @@
+en:
+  filter_by: "%{attribute}"
+  markdown_help: &markdown_help |
+    <h3>Markdown:</h3>
+    <p>You can style the text in this field using the Markdown syntax as follows:</p>
+    <p>A line break is created by putting 2 spaces at the end of the line above and then a return.</p>
+    <p>A paragraph is created by putting a blank line between the first paragraph and the second paragraph.</p>
+    <p>*italics*</p>
+    <p>**bold**</p>
+    <p>***bold and italic text***</p>
+    <p>
+      * Item in a bulleted list<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;* A sub-item, indented with 4 spaces<br/>
+      * Another item in a bulleted list
+    </p>
+    <p>
+      1. Item in numbered list<br/>
+      2. Another Item in numbered list<br/>
+      3. Another Item in numbered list
+    </p>
+    <p># First-level heading</p>
+    <p>## Second-level heading</p>
+    <p>### Third-level heading</p>
+    <p>#### Fourth-level heading</p>
+    <p>
+      > This is a blockquote.<br/>
+      > Blockquote with hard wrap<br/>
+      ><br/>
+      > This is the second paragraph in the blockquote.<br/>
+      ><br/>
+      > ## This is an H2 in a blockquote
+    </p>
+    <p>[This is a link](http://www.google.com "Google")</p>
+    <p>![Image Alt Text](image url "Image Title")</p>
+    <p>--- Horizontal rules are created by 3 hyphens</p>
+    <p>If you need to actually render the following characters AND they are NOT rendering, place a backslash before the character like \*italics\* will actually render with the asterisks instead of italicizing the word.</p>
+    <p>&#92;&#09;backslash</p>
+    <p>*&#09;asterisk</p>
+    <p>&#09;_underscore</p>
+    <p>{}&#09;curly braces</p>
+    <p>[]&#09;square brackets</p>
+    <p>()&#09;parentheses</p>
+    <p>#&#09;hash mark</p>
+    <p>+&#09;plus sign</p>
+    <p>-&#09;minus sign (hyphen)</p>
+    <p>.&#09;dot</p>
+    <p>!&#09;exclamation mark</p>
+
+  helpers:
+    submit:
+      slide:
+        create: Save and Continue
+      event_transaction:
+        create: Submit Registration
+
+    label:
+      options:
+        image_class: CSS Class
+      settings:
+        use_captcha_registrations: Use CAPTCHA on the registration form?
+        use_captcha_comments: Use CAPTCHA on comment forms?
+
+  # NOTE activemodel translations don't look under the i18n lookup scope (in this case "activerecord") for generic attribute definitions, why?  good question.
+  attributes:
+    position: Order
+    meta_keywords: Meta Keywords
+    meta_description: Meta Description
+    dob: Birthdate
+
+    # roles
+    role_guest: All Users
+    role_user: Logged-in Users
+    role_employee: Employees
+    role_administrator: Administrators
+    role_superuser: Superusers
+    role_e9_user: E9 Users
+    markdown_help: *markdown_help
+
+    cost_attributes: Costs
+
+    from: 'Date Range: From'
+    until: 'Date Range: Before'
+
+  errors:
+    # errors.format is used in ActiveModel::Errors#full_messages
+    # The standard method of standardizing how attribute and message are
+    # interpolated has never seemed to make much sense.  So instead all errors
+    # in the app just use the "message" and interpoloate %{attribute}
+    format: "%{message}"
+
+  activerecord:
+    links:
+      index: "%{models}"
+      new: "New %{model}"
+      edit: "Edit"
+      destroy: "Delete"
+      show: "View"
+      confirm_destroy: Are you sure?  This cannot be undone.
+      new_with_layout: "New %{model} With Layout"
+
+    # You can define own errors for models or model attributes.
+    # The values :model, :attribute and :value are always available for interpolation.
+    #
+    # For example,
+    #   models:
+    #     user:
+    #       blank: "This is a custom blank message for %{model}: %{attribute}"
+    #       attributes:
+    #         login:
+    #           blank: "This is a custom blank message for User login"
+    # Will define custom blank validation message for User model and 
+    # custom blank validation message for login attribute of User model.
+
+    errors:
+      # 'template' is apparently the error_messages_for helper
+      template:
+        header:
+          one: "An error was encountered."
+          other: "%{count} errors were encountered."
+        body: "There were problems with the following fields:"
+
+      messages:
+
+        record_invalid: "Validation failed: %{errors}"
+        unknown: "Oops, something went wrong.  Please try again."
+
+        accepted: "%{attribute} must be accepted."
+        blank: "%{attribute} is required."
+        confirmation: "%{attribute} must match confirmation."
+        delete_restricted: "This %{model} has associated %{attribute} and can not be deleted until they are removed."
+        empty: "%{attribute} is required."
+        equal_to: "%{attribute} must be equal to %{count}."
+        even: "%{attribute} must be even."
+        exclusion: "%{attribute} is reserved."
+        greater_than: "%{attribute} must be greater than %{count}."
+        greater_than_or_equal_to: "%{attribute} must be greater than or equal to %{count}."
+        inclusion: "%{attribute} is not included in the list."
+        insufficient_permission: "You do not have sufficient permissions to perform this action."
+        invalid: "%{attribute} is not properly formatted."
+        less_than: "%{attribute} must be less than %{count}."
+        less_than_or_equal_to: "%{attribute} must be less than or equal to %{count}."
+        not_an_integer: "%{attribute} must be a whole number."
+        not_a_number: "%{attribute} is not a number."
+        not_future: "%{attribute} must be in the future."
+        odd: "%{attribute} must be odd."
+        reserved: "%{attribute} is reserved by the system and can not be used.  Please choose another."
+        taken: "%{attribute} is already in the system."
+        template: "%{attribute}: %{message}"
+        too_long: "%{attribute} is limited to %{count} characters."
+        too_short: "%{attribute} is too short (minimum is %{count} characters)."
+        wrong_length: "%{attribute} is the wrong length (should be %{count} characters)."
+      models:
+        banner:
+          delete_restricted: "You can't delete that banner because it's related to pages and/or layouts.  Please remove all instances from those locations."
+          attributes:
+            images: 
+              one: "1 banner is"
+              other: "%{count} banners are"
+              invalid: "%{count} are not cropped properly and must be re-uploaded.  All banners must be cropped to %{dimensions}"
+        content_view:
+          attributes:
+            soft_links:
+              delete_restricted: "This %{model} is being used in a menu. You can not delete it until you remove it from the menu."
+            title:
+              taken: "%{attribute} already exists.  Create another."
+              reserved: "Your %{attribute} would conflict with a system path.  Please choose another."
+              permalink: "Your title would create a duplicate permalink.  Please choose another."
+            images:
+              invalid: "%{failed}"
+        email:
+          attributes:
+            delivery_date:
+              invalid: "Delivery Date is not valid."
+              not_future: "Delivery Date must be in the future."
+        email_delivery:
+          attributes:
+            campaign:
+              code_taken: "Code must be unique or an existing email code."
+            contact_ids:
+              blank: "No contacts were found for your email.  Please check your selection."
+            user_ids:
+              blank: "No contacts with valid emails were found.  Please check your selection."
+
+        event_registration:
+          attributes:
+            email:
+              taken: "%{attribute} is already registered for this event."
+        node:
+          attributes:
+            renderable_id:
+              no_options: "Sorry, there are no other options available for this content area."
+        user:
+          invalid_unsubscribe_token: "We do not recognize the link from your email.  Please check the URL in your browser and try again."
+          attributes:
+            content_views:
+              delete_restricted: "This user is an author of content and cannot be deleted until it is removed."
+            reset_password_token:
+              invalid: "The url you followed was incorrect.  Please check it and try again."
+            dob: 
+              invalid: "%{attribute} must be in the format MM/DD/YYYY"
+        image:
+          attributes:
+            file:
+              crop_arguments: "Crop expects 4 numeric arguments: x, y, width, and height."
+              processing_error: "%{operation} failed due to a processing error."
+              image_spec: "%{specification_name} must be cropped to %{specified_dimensions}."
+        slide:
+          attributes:
+            slideshow_assignments:
+              delete_restricted: "This %{model} is being used in a slideshow. You can not delete it until you remove it from the slideshow."
+            image:
+              invalid: "The main image for the slide is invalid.  It must be cropped to %{dimensions}."
+            images: 
+              # count interpolation is here but not working (it's in the validator).  Should look into how to scope this properly with activemodel's i18n lookup
+              invalid: "%{count} missing or not cropped properly."
+        snippet:
+          delete_restricted: "This snippet is being used in a layout and/or by a page. You can not delete it until you remove all instances of it."
+          template: "There is an error in your template syntax.  Please check it and try again."
+          attributes:
+            revert_template:
+              empty: "Snippet could not be reverted because the revert template is not defined."
+        layout:
+          delete_restricted: "This layout is being used by a page. You can not deleteit until you remove it from that page."
+          insufficient_permission: "This layout was created by e9 Digital and can not be deleted."
+        faq:
+          delete_restricted: "This FAQ Category has related FAQS. You can not delete it until you remove the FAQs assigned to it."
+        forum:
+          delete_restricted: "This forum has topics in it.  You can not delete it until you delete all topics from it."
+        blog:
+          taken: "%{attribute} is already in the system. You need to choose a different name for this blog."
+          delete_restricted: "This blog has blog posts.  You can not delete it until you delete or move all associated blog posts."
+        mailing_list:
+          insufficient_permission: "This list is required by the system.  It can not be deleted."
+          delete_restricted: "This list has subscribers.  It can not be deleted."
+        menu:
+          delete_restricted: "This menu element has associated sub-elements.  You can not remove it until you remove all sub-elements."
+          attributes:
+            off_icon:
+              blank: "%{attribute}: If you want to upload icons, you must upload icons for all three states."
+            selected_icon:
+              blank: "%{attribute}: If you want to upload icons, you must upload icons for all three states."
+            hover_icon:
+              blank: "%{attribute}: If you want to upload icons, you must upload icons for all three states."
+            href:
+              invalid: "Link must be either a full URL beginning with http:// or https:// or a local URL beginning with /"
+        renderable:
+          attributes:
+            region_type_ids:
+              illegal_change: "Error"
+        soft_link:
+          attributes:
+            name:
+              blank: "%{attribute} cannot be blank unless you select to use the linked page's title."
+        share_site:
+          attributes:
+            url:
+              invalid: "Url must begin with http:// or https://"
+          
+    # Translate model names. Used in Model.human_name().
+    models:
+      address_attribute: Address
+      content_view: Content
+      blog_post: Blog Post
+      email_attribute: Additional Email
+      event_transaction: Registration
+      event_registration: Attendee
+      event_type: Event Type
+      faq: FAQ Category
+      feed_widget: Feed Widget
+      friend_email: Friend Email
+      hard_link: 'Menu Element: Link'
+      home_page: Home Page
+      image: Uploaded Image
+      image_spec: Associated Image
+      instant_messaging_handle_attribute: IM
+      menu_view: Menu
+      phone_number_attribute: Phone Number
+      question: FAQ
+      school_attribute: School
+      share_site: Share Site
+      slideshow_widget: Slideshow Widget
+      slide: Slide
+      slideshow: Slide Show
+      soft_link: 'Menu Element: Page'
+      system_email: System Email
+      system_page: System Page
+      topic: Forum Topic
+      user_email: Email Template
+      user_page: Page
+      event: Event
+      website_attribute: Website
+      email_delivery: Delivered Email
+
+    attributes:
+      banner:
+        name: Banner Name
+      blog:
+        link: Path
+        role: Viewable By
+        slug: Slug
+        title: Blog Name
+      blog_post:
+        blog_id: Blog
+        blog_name: Blog
+        published: Status
+      comment:
+        body: Comment Body
+      content_view:
+        body: Body
+        allow_comments: Allow Comments? 
+        custom_css_classes: Custom CSS Class
+        display_actions: Display Actions?
+        display_author_info: Display Author Info?
+        display_more_info: Display More Info?
+        display_date: Display Date?
+        display_labels: Display Tags? 
+        display_title: Display Title? 
+        display_social_bookmarks: Display Social Bookmarks?
+        labels: Tags
+        layout: Selected Layout
+        meta_description: Meta Description
+        permalink: Slug
+        previously_published: Previously Published
+        previously_published: Previously Published?
+        published_at: Publish Date
+        published: Status
+        role: Who Can View?
+        soft_links: Menu Links
+        text_version: Text Version
+        user: Author
+        user_id: Author
+      email:
+        from: From Address
+        reply_to: Reply-To Address
+        html_body: HTML Body
+        text_body: Text Body
+        active: Active
+        inactive: Inactive
+        active_label: Status
+        personalize: Send
+      email_delivery:
+        name: Email Template Name
+        from: From Address
+        created_at: Sent At
+        html_body: HMTL Body
+        text_body: Text Body
+        sub_type: Type
+        crm_template: CRM Template
+        newsletter: Newsletter
+        lead_nourishing: Lead Nourishing
+      event:
+        at_capacity: Event is sold out.
+        registrations_closed: Event registration is closed.
+        event_capacity: Capacity
+        event_is_free: Event Fee
+        event_is_free_true: Free
+        event_is_free_false: Cost Per Person
+        event_last_register_date: Last Date to Register
+        event_max_guests: Maximum Number of Guests
+        event_registration_message: Registration Success HTML
+        event_show_promo_code: Show Promo Code Field on Registration Form
+        event_time: Date & Time
+        event_type: Type
+        future: Upcoming Events
+        past: Past Events
+      event_registration:
+        name: First Name
+        paid: Event Fee
+        promo_code: Voucher Number
+      event_transaction:
+        cc_date: Card Expiration
+        cc_number: Credit Card Number
+        cc_expire_month: Expiration Month
+        cc_expire_year: Expiration Year
+        cc_cvv: "Security Code [<span class=\"img\" rel=\"tooltip\" data-title=\"Security Code Help\" data-src=\"/images/cvv.jpg\">?</span>]"
+        cc_first_name: First Name
+        cc_last_name: Last Name
+      event_type:
+        permalink: Link
+      facebook_post:
+        message: Message
+        link: Link
+        post: Post to Facebook?
+      faq:
+        title: FAQ Category
+        role: Viewable By
+      forum:
+        title: Forum Name
+        role: Editable By
+      friend_email:
+        message: Message
+        recipient_email: "Friend's Email"
+        sender_email: Your Email
+        subject: Subject
+      mailing_list:
+        description: Display Text
+        role_employee: Employees
+        role_guest: All Users
+        role_name: List Name
+        role: List Type
+        subscriptions_count: Subscribers
+      menu:
+        administrator: Show this menu element to Logged-in Administrators
+        delegate_title_to_link: Use Page Title as Menu Text
+        employee: Show this menu element to Logged-in Employees
+        guest: Show this menu element to All Users
+        href: Link
+        linkable: Page
+        link_id: Page
+        link: Page
+        logged_out_only: Show this menu element only when not Logged-in
+        name: Menu Element Text
+        new_window: This element will open in a new window
+        role: Viewable By
+        role_user: Show this menu element to Logged-in Users
+      newsletter:
+        mailing_list_name: Mailing List
+      note:
+        owner: Responsible Contact
+      question:
+        body: Answer
+        faq_id: Category
+        published_at: Date
+        title: Question
+      renderable:
+        author_class: CSS Class
+        feed_class: Feed CSS Class
+        feed_format: Feed Format
+        header_class: Header CSS Class
+        header_text: Header Text
+        image_class: CSS Class
+        image_height: Height
+        link: Link to Image?
+        image_width: Width
+        limit: "Max # of records to display"
+        published_date_class: CSS Class
+        region_type_ids: Region Types
+        reverse: Reverse?
+        show_rss_link: Show RSS?
+        sort: Sort
+        summary_class: CSS Class
+        summary_length: Length
+        summary_link: Link?
+        title_class: CSS Class
+        title_length: Length
+        updated_date_class: CSS Class
+      search:
+        created_at: Date
+        query: Search Query
+        results_count: Results
+        role: Role
+        search_count: All Time Count
+        search_type: Search Type
+      settings:
+        add_sales_contact_intro: Add Sales Contact Intro
+        admin_records_per_page: Admin Records Per Page
+        avatar_size: Avatar Size
+        blog_page_title: Blog Name
+        blog_pagination_records: Posts Per Page
+        blog_submenu: Submenu Type
+        blog_teaser_body_length: Teaser Body Length
+        blog_view: Blog View
+        can_spam_mailing_address: CAN SPAM Mailing Address
+        contact_form_page_text: Contact Form Page Text
+        contact_form_page_title: Contact Form Page Title
+        contact_thanks_page_text: Contact Thanks Page Text
+        contact_thanks_page_title: Contact Thanks Page Title
+        copyright_start_year: Copyright Start Year
+        debug_mode: Debug Mode?
+        default_blog_settings: Blog Defaults
+        default_faq_settings: FAQ Defaults
+        default_html_email: Default Html Email
+        default_meta_description: Meta Description
+        default_meta_keywords: Meta Keywords
+        default_page_setting: Page Defaults
+        default_text_email: Default Text Email
+        display_custom_help: Display Custom Help?
+        domain_name: Domain Name
+        excerpt_display_chars: Excerpted Text Length
+        facebook_access_token: Access Token
+        facebook_app_id: API Key
+        facebook_app_secret: Application Secret
+        facebook_company_page_id: Company Page ID
+        facebook_company_page_url: Company Page URL
+        facebook_forums_by_default: Forum Topics
+        facebook_blog_posts_by_default: Blog Posts
+        facebook_slides_by_default: Slides
+        facebook_slideshows_by_default: Slideshows
+        facebook_pages_by_default: Pages
+        facebook_forum_template: New Forum Topic Facebook Template
+        facebook_page_template: New Content Facebook Template
+        faq_show_author_info: Show Author Info?
+        faq_show_date: Show Date?
+        faqs_page_title: FAQ Name
+        feed_max_title_characters: Maximum Title Length
+        feed_record_limit: Feed Record Limit
+        feed_records: Records Per Page
+        feed_summary_characters: Search Result Summary Character Count
+        forum_pagination_records: Topics Per Page
+        forums_page_title: Forum Name
+        google_analytics_code: Google Analytics Code
+        google_site_verification_code: Google Site Verification Code
+        header_text: Custom Header HTML
+        home_records_per_page: Profile Pagination Count
+        layout_preview_height: Layout Preview Height
+        layout_preview_width: Layout Preview Width
+        linked_in_company_page_url: LinkedIn Company Page
+        m_gateway: Merchant Gateway
+        m_gateway_login: Merchant Gateway Login
+        m_gateway_pass: Merchant Gateway Password
+        m_gateway_test: Test Mode?
+        maximum_share_site_count: Share Site Count
+        menu_icon_size: Menu Icon Size
+        menu_record_count: Menu Record Count
+        page_submenu: Submenu Type
+        records_per_page: Records Per Page
+        sales_email: Sales Email
+        search_records_per_page: Search Results Per Page
+        share_site_icon_size: Share Site Icon Size
+        site_email_address: Site Email Address
+        site_name: Site Name
+        system_mailing_address: System Mailing Address
+        title_delimiter: Title Delimiter
+        twitter_access_secret: Access Token Secret
+        twitter_access_token: Access Token
+        twitter_app_id: Consumer Key
+        twitter_app_secret: Consumer Secret
+        twitter_forum_template: New Forum Topic Twitter Template
+        twitter_page_template: New Content Twitter Template
+        twitter_forums_by_default: Forum Topics
+        twitter_blog_posts_by_default: Blog Posts
+        twitter_slides_by_default: Slides
+        twitter_slideshows_by_default: Slideshows
+        twitter_pages_by_default: Pages
+      share_site:
+        name: Share Site Name
+        url: Share Site URL
+      slideshow:
+        role: Who Can View?
+        user_id: Author
+        user: Author
+      snippet:
+        name: Snippet Name
+        region_type_ids: Snippet Can Be Used In
+        set_revert_template_false: "Not yet"
+        set_revert_template: Set Revert
+        set_revert_template_true: "Yes.  Setting this will store a version for reverting."
+        template: Body
+      template:
+        css_class: CSS Class
+      topic:
+        forum: Forum
+        forum_id: Forum
+        title: Title
+      twitter_status:
+        text: Message
+        post: Post to Twitter?
+      user:
+        address_attributes: Addresses
+        administrators: Admin Users
+        auto_favorite: Auto Favorite
+        auto_favorite_false: "Off"
+        auto_favorite_true: "On - Should be used ONLY for Admin or Superusers. This will automatically \"favorite\" every page/blog/forum topic. Selecting this means the user will get an email update every time a comment is posted anywhere on the site."
+        content_views: Authored Content
+        default: All Users 
+        email_attributes: Additional Email Addresses
+        employees: Employees
+        event_registrations: Event Registrations
+        flagged: Users with Flagged Posts
+        instant_messaging_handle_attributes: IM
+        mailing_list_ids: Email Preferences
+        password_confirmation: Confirm Password
+        phone_number_attributes: Phone Numbers
+        primary: Primary
+        primary_flag: Primary
+        role: Type
+        school_attributes: Schools
+        superusers: Superusers
+        users: Public Users
+        has_bounced: Has email address with problems?
+        has_bounced_flag: Bad
+        website_attributes: Websites
+        role_guest: Guest User
+        role_user: User
+        role_prospect: Prospect
+        role_employee: Employee
+        role_administrator: Administrator
+        role_superuser: Superuser
+        role_e9_user: E9 User
+      user_email:
+        sub_type: Type
+        crm_template: CRM Template
+        newsletter: Newsletter
+        lead_nourishing: Lead Nourishing
+
+      # These attribute value names are only here for form validation of their
+      # related model, e.g. the message will be "An email address is not valid"
+      # if any of the email_attributes on User are invalid.
+      address_attribute:
+        value: An address
+      email_attribute:
+        value: An email address
+      instant_messaging_handle_attribute:
+        value: An IM
+      phone_number_attribute:
+        value: A phone number
+      school_attribute:
+        value: A school
+      website_attribute:
+        value: A website

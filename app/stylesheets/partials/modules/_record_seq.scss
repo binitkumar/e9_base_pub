@@ -1,0 +1,63 @@
+@import 'includes/colors';
+@import 'includes/typography';
+@import 'includes/theming';
+.record-seq {
+	@include clearfix;
+	margin-bottom:10px;
+	margin-left:10px;
+  border-bottom-width: $theme-border-width;
+  border-bottom:1px solid $theme-border-color;
+	
+  .record-seq-dateline, 
+  .record-seq-author, 
+  .record-seq-summary, 
+  .record-seq-title { 
+    //margin: 3px 0;
+    line-height:1.5em; 
+  }
+
+	.record-seq-title { 
+		font-weight: bold;
+		font-size:.8em; 
+	}
+
+  .record-seq-link {
+    font-size: $medium;
+    margin-bottom: 0.6em;
+
+    a {
+      color:$theme-alt-text-color;
+      text-decoration: none;
+      span { text-decoration: underline; }
+      margin-bottom: .7em;
+      font-weight: bold;
+    }
+  }
+
+  .record-seq-prev, .record-seq-next { 
+    float: left;
+    min-height:240px;
+    padding-top:5px;
+    padding-bottom:10px;
+
+    &.record-seq-next { 
+      width: 45%; 
+      padding-left: 4%; 
+    }
+
+    &.record-seq-prev { 
+      border-right:$theme-border-width $theme-border-style $theme-border-color;
+      width: 45%; 
+      padding-right: 3%; 
+    }
+  }
+
+  .record-seq-dateline, .record-seq-author { 
+    font-size: $xx-small;
+  }
+
+  .record-seq-summary { 
+    @include x-small;
+   margin-top:.35em;
+  }
+}

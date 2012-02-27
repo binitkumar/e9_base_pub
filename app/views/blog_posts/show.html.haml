@@ -1,0 +1,6 @@
+- if resource.role > E9::Roles.public
+  = title(resource)
+- else
+  = title_with_feed(resource, :url => blog_url(resource.blog, :format => :rss))
+
+= render resource

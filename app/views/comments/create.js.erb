@@ -1,0 +1,16 @@
+<% if @comment.errors.empty? %>
+  $("<%= escape_javascript(render(@comment)) %>").hide().appendTo($("#comments-container")).slideDown(function() {
+    $("#comments-container .no-results").fadeOut();
+  });
+
+  $("#comment_body").val('');
+
+  // NOTE comments-count is deprecrated 
+  $("#comments-count").html("<%= escape_javascript(comments_count_tag(@comment.commentable)) %>");
+  $("a.comments-link").replaceWith("<%= escape_javascript(comments_count_link(@comment.commentable)) %>");
+  $("span.comments-link").replaceWith("<%= escape_javascript(comments_count_link(@comment.commentable, :text_only => true)) %>");
+<% else %>
+  //$("#comment-form form .form-inner").html("<%= escape_javascript(render 'comments/form_inner', :resource => @comment) %>");
+<% end %>
+
+try { Recaptcha.reload() } catch(e) {}

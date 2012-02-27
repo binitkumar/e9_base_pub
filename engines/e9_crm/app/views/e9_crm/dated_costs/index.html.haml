@@ -1,0 +1,16 @@
+= title (@index_title || e9_t(:index_title))
+
+- unless params[:print]
+  - content_for :toolbar_right do
+    = toolbar_actions do
+      - link_text = parent.is_a?(Contact) ? 'Make Payment' : 'New Advertising Cost'
+      = link_to_new_resource(link_text, resource_class, :rel => :popup)
+
+      - if parent.is_a?(Contact)
+        = link_to('Print Friendly Version', { :print => true }, :rel => :external)
+
+  = render 'shared/admin/toolbar'
+
+%div#records_table
+  - partial = parent.is_a?(Contact) ? 'balance_table' : 'table'
+  = render partial, :resources => collection

@@ -1,0 +1,7 @@
+<% if @favorites.empty? %>
+  $("<div class=\"listing\"><%= e9_t(:no_favorites_text, :scope => :favorites) %></div>").hide().appendTo("#<%= favorites_div_id(@favorite_type) %> .list").fadeIn("fast");
+<% else %>
+  $("<div><%= escape_javascript(render_favorites(@favorites)) %></div>").hide().appendTo("#<%= favorites_div_id(@favorite_type) %> .list").fadeIn("fast", function() {
+    $("#<%= favorites_div_id(@favorite_type) %> .show-more").html("<%= escape_javascript(show_more_favorites_link(@favorites, :offset => params[:offset] || nil, :favorite_type => @favorite_type)) %>");
+  });
+<% end %>

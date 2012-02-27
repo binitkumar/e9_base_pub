@@ -1,0 +1,8 @@
+-#- url_args = local_assigns[:per_page] ? { :per_page => local_assigns[:per_page] } : {}
+- url_args = {} # NOTE facebook pagination needs to be reworked for per_page to function
+#facebook-posts
+  :javascript
+    $(function(){ $.ajax({ url: "#{facebook_posts_path(url_args)}", method: 'GET', dataType: 'script' }) });
+  .feed
+    = spinner
+  .pagination

@@ -1,0 +1,6 @@
+- if resource.errors.any?
+  #errorExplanation
+    %h3= "#{pluralize(resource.errors.count, 'error')} prevented this record from being saved:"
+    %ul
+      - resource.errors.each do |attribute, msg|
+        %li= msg

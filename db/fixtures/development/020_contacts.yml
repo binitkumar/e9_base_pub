@@ -1,0 +1,70 @@
+_defaults: &defaults
+  _finder: first_name
+
+conrad:
+  <<: *defaults
+  first_name: Conrad
+  last_name: Strabone
+  company_name: e9digital
+  title: President
+  users: conrad, conrad2
+  ok_to_email: true
+  tag_lists:
+    users__h__:
+      - alpha
+      - beta
+      - iota theta
+      - gamma sigma zeta
+      - delta kappa omega
+      - eta epsilon lambda
+      - mu psi chi phi
+      - omicron
+      - nu xi pi
+  phone_number_attributes_attributes:
+    - value: 646-233-1068
+      options:
+        type: Work
+    - value: 917-650-8985
+      options:
+        type: Mobile
+  instant_messaging_handle_attributes_attributes:
+    - value: conrad_strabone
+      options:
+        type: Skype
+  website_attributes_attributes:
+    - value: www.e9digital.com
+      options:
+        type: Work
+    - value: www.facebook.com/conradstrabone
+      options:
+        type: Personal
+  address_attributes_attributes:
+    - value: |
+        325 W. 38th Street, #901
+        New York, NY 10018
+      options:
+        type: Work
+    - value: |
+        320 W. 38th Street, #1207
+        New York, NY 10018
+      options:
+        type: Home
+  info: |
+    Conrad cut his teeth as a lead internet strategist in Silicon Alley. Fresh 
+    from Drexel, this competitive, all-star ice hockey player worked for others, 
+    directing projects for start-ups and big corporations like Sumitomo and Lehman 
+    Brothers.
+
+    But Conrad wanted to leverage his successes &mdash; and his mistakes &mdash; 
+    into solving problems for his own clients. In 2001, he founded and ran a 
+    successful software development company which he sold in 2006. A year later, 
+    e9digital was born.
+
+    At e9digital, Conrad's role is to help businesses grow. He oversees all client 
+    relationships, and helps identify and realize their strategic online marketing 
+    needs.
+
+    &ldquo;I live, eat, and breathe developing websites. I love sitting in my 
+    sunlit loft office in New York, and watching as our work makes a real-world 
+    impact on our clients, and their businesses,&rdquo; he says. Conrad lives in 
+    New York.

@@ -1,0 +1,7 @@
+= link_to(user.email, "mailto:#{user.email}", 'data-contact-id' => contact.id, 'data-user-id' => user.id, :class => 'contact-mailto', 'data-type' => 'crm_template')
+- if user.options.type
+  %span.email-type (#{user.options.type})
+- if user.primary?
+  %span.email-primary (#{User.human_attribute_name(:primary_flag)})
+- if user.has_bounced?
+  %span.email-bad (#{User.human_attribute_name(:has_bounced_flag)})

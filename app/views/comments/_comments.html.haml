@@ -1,0 +1,17 @@
+- comments = local_assigns[:comments] || commentable.comments
+
+#comments-container
+  #comments.anchor
+
+  .header= comments_count_link(commentable, :text_only => true, :show_count => true)
+
+  - if comments.present?
+    = render comments
+  - else
+    .no-results
+      = e9_t(:no_records_text, :scope => :comments)
+
+%fieldset#comment-form
+  %legend= Comment.model_name.element.titleize
+  .form
+    = render 'comments/form', :resource => commentable

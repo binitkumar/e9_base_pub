@@ -1,0 +1,103 @@
+_defaults: &defaults
+  _finder: key_and_value
+
+menu_option_1:
+  <<: *defaults
+  key: 'Deal Category'
+  value: 'Default'
+menu_option_2:
+  <<: *defaults
+  key: 'Email'
+  value: 'Work'
+menu_option_3:
+  <<: *defaults
+  key: 'Email'
+  value: 'Personal'
+menu_option_4:
+  <<: *defaults
+  key: 'Email'
+  value: 'Other'
+menu_option_5:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'AIM'
+menu_option_6:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'Google Talk'
+menu_option_7:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'ICQ'
+menu_option_8:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'Jabber'
+menu_option_9:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'MSN'
+menu_option_10:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'QQ'
+menu_option_11:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'Skype'
+menu_option_12:
+  <<: *defaults
+  key: 'Instant Messaging Handle'
+  value: 'Yahoo'
+menu_option_13:
+  <<: *defaults
+  key: 'Website'
+  value: 'Work'
+menu_option_14:
+  <<: *defaults
+  key: 'Website'
+  value: 'Personal'
+menu_option_15:
+  <<: *defaults
+  key: 'Website'
+  value: 'Other'
+menu_option_16:
+  <<: *defaults
+  key: 'Address'
+  value: 'Work'
+menu_option_17:
+  <<: *defaults
+  key: 'Address'
+  value: 'Personal'
+menu_option_18:
+  <<: *defaults
+  key: 'Address'
+  value: 'Other'
+menu_option_19:
+  <<: *defaults
+  key: 'Phone Number'
+  value: 'Work'
+menu_option_20:
+  <<: *defaults
+  key: 'Phone Number'
+  value: 'Personal'
+menu_option_21:
+  <<: *defaults
+  key: 'Phone Number'
+  value: 'Mobile'
+menu_option_22:
+  <<: *defaults
+  key: 'Phone Number'
+  value: 'Other'
+menu_option_23:
+  <<: *defaults
+  key: 'School'
+  value: 'High School'
+menu_option_24:
+  <<: *defaults
+  key: 'School'
+  value: 'College'
+menu_option_25:
+  <<: *defaults
+  key: 'School'
+  value: 'Graduate School'

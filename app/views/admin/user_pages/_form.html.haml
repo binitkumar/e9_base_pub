@@ -1,0 +1,15 @@
+= form_for(resource, :url => polymorphic_path([:admin, resource]), :remote => false) do |f|
+  .errors= resource_error_messages!
+  .fields
+    = f.hidden_field :layout_id
+    .field
+      = f.label :title, nil, :class => :req
+      = f.text_field :title
+    = render 'e9_tags/form', :f => f
+    = render 'admin/views/body', :f => f
+    = render 'shared/form_partials/related_data', :f => f
+    = image_mount_field(resource.thumb, :f => f)
+    = render 'admin/views/advanced_settings', :f => f
+
+  .actions
+    = f.submit

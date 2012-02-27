@@ -1,0 +1,12 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+
+slideshow_1:
+  <<: *defaults
+  title: Empire State of Mind Gallery
+  meta_description: Nisl esca illum tation vel hendrerit paratus capto vulputate verto. Nostrud odio, tamen paulatim appellatio iaceo antehabeo ea nostrud ventosus quidem voco. Verto nulla patria.
+
+slideshow_2:
+  <<: *defaults
+  title: We Know You Love New York and Much Longer

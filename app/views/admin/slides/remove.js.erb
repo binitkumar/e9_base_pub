@@ -1,0 +1,6 @@
+<% if !resource.errors.any? %>
+$("#ids_<%= resource.id %>").fadeOut(function() { $(this).remove(); });
+  <% if parent? %>
+$("#slide_id_select").html("<%= escape_javascript(available_slide_select_options(parent)) %>");
+  <% end %>
+<% end %>

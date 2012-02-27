@@ -1,0 +1,40 @@
+.deals-body
+  = title resource.name
+  .toolbar
+    .toolbar-inner
+      .toolbar-left
+        .deal-photo
+          %img{:src => "/images/defaults/deal_thumb.png", :alt => "Avatar for #{resource.name}"}
+        .deal-info
+          - if resource.category.present?
+            .deal-category
+              = resource.category     
+          .deal-value
+            Valued at 
+            %span.deal-value-text #{resource.value.format}
+            %span.deal-status-text (#{resource.status})
+        
+          %fieldset
+            %legend Background Info
+            = k(resource.info)
+      
+          %fieldset
+            %legend="Manage:"
+            .deals-links.actions
+              = link_to_edit_resource(resource)
+              - if resource.dated_costs.present?
+                = link_to "Edit Costs", edit_costs_deal_path(resource), :rel => :popup
+              = link_to_new_resource(Task, :deal_id => resource.id, :rel => :popup)
+              = link_to_new_resource(Note, :deal_id => resource.id, :rel => :popup)
+      .toolbar-middle
+
+      .toolbar-right
+        
+
+  .admin-content-main
+    #deal-notes
+      = render 'e9_crm/notes/notes', :resource => resource
+
+  .admin-sidebar-right
+    .deals-sidebar
+      = render 'sidebar'

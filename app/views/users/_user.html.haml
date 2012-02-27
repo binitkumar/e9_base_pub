@@ -1,0 +1,29 @@
+.user
+  .avatar
+    = link_to user do
+      = avatar_image_for(user)
+  .user-body
+    - if params[:search].blank?
+      .user-link 
+        = link_to("#{user.name} (#{user.username})", user)
+      .user-email
+        = link_to user.email, "mailto:#{user.email}"
+      .user-company
+        = user.company
+      .user-title
+        = user.title
+    - else
+      .user-link 
+        = link_to(highlight("#{user.name} (#{user.username})", params[:search]), user)
+      .user-email
+        = link_to(highlight(user.email, params[:search]), "mailto:#{user.email}")
+      .user-company
+        = highlight(user.company.to_s, params[:search])
+      .user-title
+        = highlight(user.title.to_s, params[:search])
+      .matches
+        - user.record_attributes.all.select {|attr| attr.value.to_s.downcase.include?(params[:search].to_s.downcase) }.each do |attr|
+          .match
+            %span.match-type Matching #{attr.class.model_name.human} - 
+            %span.match-value
+              = highlight(attr.to_s, params[:search])

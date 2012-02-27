@@ -1,0 +1,28 @@
+= form_for resource, :url => public_offer_deals_path(@offer) do |f|
+  .errors= resource_error_messages!
+  .notice
+
+  - if f.object.user.blank?
+    .field
+      = f.label :lead_email, nil, :class => :req
+      = f.text_field :lead_email, :class => 'email required'
+    .field
+      = f.label :lead_name, nil, :class => :req
+      = f.text_field :lead_name, :class => 'required'
+
+  = @offer.custom_form_html.html_safe
+
+  - if @offer.mailing_lists.any?
+    %fieldset
+      - @offer.mailing_lists.each do |ml|
+        .field.checkbox
+          = label_tag "#{resource_instance_name}_mailing_list_ids_#{ml.id}", ml.description
+          = check_box_tag "#{resource_instance_name}[mailing_list_ids][]", ml.id, true, :id => "#{resource_instance_name}_mailing_list_ids_#{ml.id}"
+
+  = checkbox_captcha
+
+  .actions
+    - if @offer.submit_button_text.present?
+      = f.submit @offer.submit_button_text
+    - else
+      = f.submit

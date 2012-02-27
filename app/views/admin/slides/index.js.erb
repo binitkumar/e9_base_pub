@@ -1,0 +1,4 @@
+$("select#slide_id_select").html("<%= escape_javascript(options_for_select(available_slide_select_options(parent))) %>");
+$("#records_table").html("<%= escape_javascript(render(parent? ? 'in_slideshow_table' : 'table', :collection => collection)) %>");  
+$("table.sortable").admin_sortable();
+<%= render 'shared/admin/reset_title', :new_title => @index_title %>

@@ -1,0 +1,27 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(resource_class, :username)
+      %th= ordered_on_link(resource_class, [:first_name, :last_name], :name)
+      %th= ordered_on_link(resource_class, :email)
+      %th= ordered_on_link(resource_class, :role)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 5}
+          = e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td.txt.wide= record.username
+          %td.txt= record.name
+          %td.txt= record.email
+          %td.txt= resource_class.human_attribute_name("role_#{record.role}")
+          %td.actions
+            = link_to_new_window('View', record) if record.profiled?
+            = link_to e9_t(:view_all_comments_link), admin_user_comments_path(record) unless record.prospect?
+            = edit_admin_resource_link(record)
+            = destroy_admin_resource_link(record)
+
+= will_paginate(collection)

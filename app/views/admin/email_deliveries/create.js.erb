@@ -1,0 +1,4 @@
+<% if resource.errors.any? %>
+$('#new_email_delivery .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+try { $.colorbox.resize() } catch(e) {}
+<% end %>

@@ -1,0 +1,19 @@
+@import 'includes/colors';
+$breadcrumbs-last-color: $theme-text-color !default;
+$breadcrumbs-line-height: $theme-h4-line-height !default;
+.breadcrumbs { 
+  @include horizontal-list(5px);
+  a { 
+    text-decoration:underline;
+    padding-right: 3px; 
+    line-height:$breadcrumbs-line-height;
+  }
+  li { 
+    font-style: italic; 
+  }
+  .last { 
+    color: $breadcrumbs-last-color;
+    font-style: normal;
+    font-weight: bold;
+  }    
+}

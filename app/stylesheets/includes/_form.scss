@@ -1,0 +1,44 @@
+$tinymce-height: 300px !default;
+@mixin e9-form-styles (
+  $background-color,
+  $border,
+  $focus-background-color,
+  $focus-border
+) {
+  input.text, 
+  input.title, 
+  input[type=email], 
+  input[type=text], 
+  input[type=password],
+  textarea,
+  select { 
+    @if $background-color {
+      background-color: $background-color;
+    }
+    @if $border {
+      border: $border;
+    }
+    @if $focus-background-color {
+      &:focus { background-color: $focus-background-color; }
+    }
+    @if $focus-border {
+      &:focus { border: $focus-border; }
+    }
+  }
+}
+@mixin e9-inline-form {
+  display: inline;
+  line-height: 3;
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline;
+  }
+  input[type=text] {
+    margin: 0;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}

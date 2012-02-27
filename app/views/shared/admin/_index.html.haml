@@ -1,0 +1,6 @@
+= title (@index_title || e9_t(:index_title)) unless local_assigns[:skip_title]
+
+= render 'shared/admin/toolbar'
+
+%div#records_table
+  = render local_assigns[:table] || 'table', :resources => collection

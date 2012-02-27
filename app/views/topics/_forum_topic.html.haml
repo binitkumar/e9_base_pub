@@ -1,0 +1,9 @@
+.topic.listing{:id => forum_topic.to_anchor }
+  .left-block
+    = content_avatar(forum_topic)
+  .block
+    = content_header_link(forum_topic)
+    .date-and-byline
+      = content_created_byline(forum_topic)
+      = topic_last_reply_byline(forum_topic)
+    = content_labels(forum_topic)

@@ -1,0 +1,20 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(resource_class, :name)
+      %th= ordered_on_link(resource_class, :role)
+      %th= ordered_on_link(resource_class, :subscriptions_count)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 4}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td.txt= record.name
+          %td.txt= resource_class.human_attribute_name(record.role)
+          %td.num= record.subscriptions_count
+          %td.actions
+            = edit_admin_resource_link(record)
+            = destroy_admin_resource_link(record)

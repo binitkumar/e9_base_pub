@@ -1,0 +1,107 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+  published: true
+  previously_published: true
+
+alpha_blog_1:
+  <<: *defaults
+  blog: alpha
+  title: Tintern Abbey happens to have a very very long blod title
+  published_at: <%= DateTime.now - 1.week %>
+  tag_lists:
+    tags:
+      - Lorem
+      - Incassum
+      - Jumentum hendrerit
+      - Commoveo capto
+      - Quidne
+      - Qui vel
+      - Clandit ad
+      - Paulatim
+      - Nimis tristique
+  body: |
+    <p>Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.</p>
+    <p>Praesent olim ea esse enim scisco capto, veniam nonummy nobis, ullamcorper, ibidem consequat. Capto vel autem commodo pagus virtus mos, accumsan valetudo quia dolore roto. Vero facilisis sagaciter blandit torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. Immitto eu, oppeto sino in eu feugait.</p>
+    <!-- PAGE_BREAK -->
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla.  Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc.<p>
+    <p>Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+
+alpha_blog_2:
+  <<: *defaults
+  blog: alpha
+  title: Everything That Rises Must Converge
+  published_at: <%= DateTime.now - 3.days %>
+  tag_lists:
+    tags:
+      - nostrud
+      - commoveo capto
+      - praemitto
+  body: |
+    <p>Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, huic melior. Antehabeo valetudo antehabeo praesent scisco quidne capto in in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. Nisl esca illum tation vel hendrerit paratus capto vulputate verto. <strong>Nostrud odio, tamen paulatim</strong> appellatio iaceo antehabeo ea nostrud ventosus quidem voco. Verto nulla patria odio quadrum consequat exerci valde, immitto incassum, premo verto gilvus ad. Voco abigo, eligo duis et praesent ullamcorper commodo nisl qui. Oppeto abdo hos cogo, amet laoreet tamen ibidem.</p>
+    <ol>
+    <li>Zelus vel pneum, olim dignissim velit ut blandit letatio humo defui</li>
+    <li>Haero probo consequat</li>
+    <li>Praesent olim ea esse enim scisco capto, veniam nonummy nobis, ullamcorper, ibidem consequat apto vel autem commodo pagus virtus mos, accumsan valetudo quia</li>
+    <li>Veniam nonummy nobis, ullamcorper</li>
+    <li>ibidem consequat apto vel autem commodo pagus virtus mos, accumsan valetudo quia</li>
+    </ol>
+    <p>Vero facilisis sagaciter blandit torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. Immitto eu, oppeto sino in eu feugait.</p>
+
+alpha_blog_3:
+  <<: *defaults
+  blog: alpha
+  title: The Mayor of Casterbridge
+  published_at: <%= DateTime.now - 1.day %>
+  tag_lists:
+    tags:
+      - nostrud
+      - commoveo capto
+      - praemitto
+      - Resapto
+      - Ingenium
+      - Qui vel
+      - delenit
+      - adipiscing
+      - accumsan refero
+  body: |
+    <p>Cogo wisi vulpes te caecus, opes, duis transverbero veniam usitas. Damnum appellatio tamen, epulae facilisi plaga vulputate abdo eum ullamcorper suscipere comis. Appellatio jugis praemitto abluo pecus meus erat praesent sit eligo vel oppeto. </p>
+    <blockquote>Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes. Ludus valde cui duis luptatum humo hos duis ut capio bene.</blockquote>
+    <p>Valetudo, facilisi letalis at facilisis reprobo comis praesent, augue in nimis eum. Elit sed, meus ludus foras, defui exerci quia dolor. Et feugiat blandit saluto wisi ad mara esse verto lobortis ratis melior pneum wisi sudo. Antehabeo valetudo antehabeo praesent scisco quidne capto in in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. Nisl esca illum tation vel hendrerit paratus capto vulputate verto. Nostrud odio, tamen paulatim appellatio iaceo antehabeo ea nostrud ventosus quidem voco. Verto nulla patria odio quadrum consequat exerci valde, immitto incassum, premo verto gilvus ad. Voco abigo, eligo duis et praesent ullamcorper commodo nisl qui. Oppeto abdo hos cogo, amet laoreet tamen ibidem. Zelus vel pneum, olim dignissim velit ut blandit letatio humo defui, haero probo consequat.</p>
+
+beta_blog_1:
+  <<: *defaults
+  blog: beta
+  title: A Refusal to Mourn the Death, by Fire, of a Child in London
+  published_at: <%= DateTime.now - 3.days %>
+  tag_lists:
+    tags:
+      - Lorem
+      - suscipit
+      - commoveo capto
+      - Ingenium
+      - Qui vel
+  body: |
+    <p>Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut <a href="http://e9digital.com" title="Blog Post 4">aliquet facilisis</a> turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.</p>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla.  Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, <em>consequat id, rutrum auctor, ullamcorper sed </em> orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <p>Elit sed, meus ludus foras, defui exerci quia dolor. Et feugiat blandit saluto wisi ad mara esse verto lobortis ratis melior pneum wisi sudo.</p>
+
+beta_blog_2:
+  <<: *defaults
+  blog: beta
+  title: I Say Whatever When I Don't Care What The Title Should Be
+  tag_lists:
+    tags:
+      - Lorem
+      - suscipit
+      - commoveo capto
+      - Ingenium
+      - Qui vel
+  published_at: <%= DateTime.now - 1.days %>
+  body: |
+    <p>Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut <a href="http://e9digital.com" title="Blog Post 4">aliquet facilisis</a> turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.</p>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla.  Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, <em>consequat id, rutrum auctor, ullamcorper sed </em> orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <p>Elit sed, meus ludus foras, defui exerci quia dolor. Et feugiat blandit saluto wisi ad mara esse verto lobortis ratis melior pneum wisi sudo.</p>

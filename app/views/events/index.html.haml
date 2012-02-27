@@ -1,0 +1,21 @@
+= title @index_title || e9_t(:index_title)
+
+.filter-links
+
+  .filter-link
+    = link_to_if params.values_at('event_type').any?, "All Events", events_path
+
+  - EventType.in_use.ordered.each do |event_type|
+    .filter-link
+      = link_to_unless_current event_type.name, typed_events_path(event_type.permalink)
+
+.list-container
+  .list 
+    - if collection.any?
+      - collection.each do |event|
+        = render 'listed_event', :listed_event => event
+    - else
+      .listing
+        = e9_t(:no_records_text)
+
+= will_paginate collection

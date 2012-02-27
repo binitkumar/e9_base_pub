@@ -1,0 +1,31 @@
+-# Meta & Misc
+%meta{'http-equiv' => 'Content-Type', :content => 'text/html; CHARSET=utf-8'}/
+%title= meta_title
+= meta_tags
+= favicon_link_tag
+= google_site_verification_meta_tag
+= csrf_meta_tag
+
+-# Stylesheets
+- unless local_assigns[:stylesheets] == false
+  = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+  = stylesheet_link_tag 'print.css', :media => 'print'
+  /[if lte IE 8]
+    = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+= yield :stylesheets 
+
+-# Javascripts
+= include_javascripts :base
+= javascript_include_tag '/js/tags.js'
+= if admin?
+  - content_for(:bottom_javascripts) do
+    :javascript
+      $(function() {
+        var _f;(_f = function(){$(".renderable-region").quick_edit()})();
+        $(document).ajaxComplete(_f);
+      })
+= yield :javascripts
+
+= yield :head
+- if (code = E9::Config[:header_text]).present?
+  = code.html_safe

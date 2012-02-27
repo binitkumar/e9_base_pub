@@ -1,0 +1,6 @@
+<% if !resource.errors.any? %>
+  $("#ids_<%= resource.id %>").fadeOut(function() {
+    $(this).remove();
+    $('#balance-table').totals('calculate');
+  });
+<% end %>

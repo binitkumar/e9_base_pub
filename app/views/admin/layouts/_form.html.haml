@@ -1,0 +1,14 @@
+= form_for(resource, :url => polymorphic_path([:admin, resource]), :html => {:multipart => true}) do |f|
+  = resource_error_messages!
+
+  = f.hidden_field :parent_id
+  = f.hidden_field :template
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  = render 'admin/views/region_manager', :f => f
+
+  .actions
+    = f.submit e9_t(:save_link)

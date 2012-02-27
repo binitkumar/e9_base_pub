@@ -1,0 +1,28 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag(resource_class, :method => :get, :class => 'scope-selects') do
+      .field
+        = label_tag 'pageview-campaign', t(:filter_by, :attribute => resource_class.human_attribute_name(:campaign))
+        %select{:name => 'campaign', :id => 'pageview-campaign'}
+          = page_view_campaign_select_options
+      .field
+        = label_tag 'pageview-from', t(:filter_by, :attribute => resource_class.human_attribute_name(:from))
+        %select{:name => 'from', :id => 'pageview-from'}
+          = page_view_date_select_options
+      .field
+        = label_tag 'pageview-until', t(:filter_by, :attribute => resource_class.human_attribute_name(:until))
+        %select{:name => 'until', :id => 'pageview-until'}
+          = page_view_date_select_options(:type => :until)
+
+      .field
+        = label_tag 'pageview-contact', t(:filter_by, :attribute => resource_class.human_attribute_name(:contact))
+        %input.contact-autocomplete.single{:type => :text, :style => @contact.blank? && '' || 'display:none', :placeholder => 'Enter Contact...', :id => 'pageview-contact'}
+        .contact-select{:style => @contact.blank? && 'display:none' || ''}
+          %span.content= @contact.try(:name_with_email)
+          %input{:type => :hidden, :name => "contact", :value => @contact.try(:id)}
+          %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to 'Marketing Report', marketing_report_url
+    = link_to 'Campaign Report', campaign_visits_path(Campaign.first)

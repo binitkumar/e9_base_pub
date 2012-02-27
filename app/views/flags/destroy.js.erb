@@ -1,0 +1,11 @@
+$("tr#ids_<%= parent.id %>").html("<%= escape_javascript(render 'admin/comments/row', :comment => parent) %>");
+
+var $el = $("a[href$=/<%= parent_class.model_name.collection %>/<%= parent.to_param %>/flag]");
+var $to_remove = $el.parents(".remove-on-unflag");
+if($to_remove.length > 0) {
+  $to_remove.slideUp(200, function() { $(this).remove(); });
+} else {
+  $el.closest("li").prev("li").remove();
+  $el.replaceWith("<%= escape_javascript(flag_link(parent)) %>");
+}
+$("#flagged-comments-count").html("<%= escape_javascript(flagged_comments_count_tag) %>");

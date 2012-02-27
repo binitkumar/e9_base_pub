@@ -1,0 +1,6 @@
+.header{:id => faq.to_anchor}= faq.title
+.questions
+  - faq.questions.ordered.each do |question|
+    .question{:id => question.to_anchor}
+      %a.question-link= question.title
+      .answer= question.body.html_safe

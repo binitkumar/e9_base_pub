@@ -1,0 +1,9 @@
+_defaults: &defaults
+  _finder: name
+  system: true
+
+slide_1:
+  <<: *defaults
+  name: Slide One
+  width: 505
+  height: 335

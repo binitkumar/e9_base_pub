@@ -1,0 +1,8 @@
+<% @results.each do |klass, results| %>
+  var $results = $("#<%= klass.model_name.element %>_results");
+
+  $("<div><%= escape_javascript(render(:partial => "#{klass.model_name.collection}/listing", :collection => results, :locals => { :query => @search.query })) %></div>").
+    hide().appendTo($results.find('.list')).fadeIn('fast', function() {
+      $results.find('.show-more').html("<%= escape_javascript(show_more_link(klass, results, @search)) %>").effect('highlight');
+    });
+<% end %>

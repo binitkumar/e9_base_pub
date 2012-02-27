@@ -1,0 +1,27 @@
+= title e9_t(:show_title)
+
+.field
+  = label_tag :created_at, resource_humanize(:created_at)
+  .value= I18n.l(resource.created_at)
+.field
+  = label_tag :name, resource_humanize(:name)
+  .value=resource.name
+.field
+  = label_tag :from, resource_humanize(:from)
+  .value= resource.from
+.field
+  = label_tag :subject, resource_humanize(:subject)
+  .value= resource.subject
+.field
+  = label_tag :html_body, resource_humanize(:html_body)
+  .value= simple_format(resource.html_body.html_safe)
+.field
+  = label_tag :text_body, resource_humanize(:text_body)
+  .value= simple_format(resource.text_body)
+.field
+  = label_tag :recipients, "#{resource_humanize(:recipients)} (#{resource.requests})"
+  .value
+    - if resource.recipients.present?
+      = resource.recipients.gsub(',', '<br/>').html_safe
+    - else
+      = e9_t(:no_recipients)

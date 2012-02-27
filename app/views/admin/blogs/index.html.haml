@@ -1,0 +1,5 @@
+- content_for :toolbar_right do
+  = toolbar_forms do
+    = new_with_layout_form(resource_class)
+
+= render 'shared/admin/index', :collection => collection

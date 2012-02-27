@@ -1,0 +1,86 @@
+en:
+  e9:
+    e9_crm:
+      no_records_text: "No records were found."
+      index_title: "%{models}"
+      edit_title: "Edit %{model}"
+      new_title: "New %{model}"
+      actions: Actions
+
+      campaigns:
+        no_campaign: No Campaign
+        no_group: No Group
+        campaign_information_legend: Campaign Information
+        salesperson_information_legend: Salesperson Information
+        affiliate_information_legend: Affiliate Information
+      contact_emails:
+        prepare_title: Edit Your Template
+        send_email: Send Email
+      contact_merges:
+        new_title: Merge Contacts
+        no_value: (No Value)
+      dated_costs:
+        advertising_costs_title: Add Advertising Costs
+        advertising_costs_breadcrumb: Add Advertising Costs
+        payments_breadcrumb: Affiliates & Salespeople
+        payments_title: Affiliates & Salespeople
+
+        contacts:
+          index_breadcrumb: Statement
+          index_title: "Statement for %{parent}"
+          edit_title: "Edit Payment for %{parent}"
+          new_title: "Add Payment for %{parent}"
+        advertising_campaigns:
+          index_breadcrumb: 'Costs for Campaign: %{parent}'
+          edit_breadcrumb: 'Costs for Campaign: %{parent}'
+          new_breadcrumb: 'Costs for Campaign: %{parent}'
+          index_title: "Costs for Campaign: %{parent}"
+          edit_title: "Edit Cost for Campaign: %{parent}"
+          new_title: "Add Cost for Campaign: %{parent}"
+          new_breadcrumb: "Add Cost"
+      contacts:
+        index_title_with_search: "%{models} matching \"%{search}\""
+        index_title_with_tags: "%{models} tagged \"%{tagged}\""
+        index_title_with_search_and_tags: "%{models} tagged \"%{tagged}\", matching \"%{search}\""
+        form_legend_email: Email Actions
+        form_legend_search: Search Filters
+        form_legend_contact: Contact Information
+        form_legend_standard: Personal Information
+        send_email_template: Go
+        send_email_newsletter: Send Newsletter
+        contact_newsletter_confirmation: "The system will send the newsletter to all of the selected contacts (%{count}) if they are subscribed to receieve email.  Are you sure you want to proceed?"
+        no_contacts_notification: "Either you have selected no contacts, or all of those selected are opted out of bulk email.  Please correct this and try again."
+        email_actions_legend: Send an Email
+        search_options_legend: Search Filters
+        edit_title_with_name: "Edit %{contact}"
+      deals:
+        new_title: "Create %{model}"
+        edit_costs_title: "Edit Costs"
+      email_templates:
+        select_submit: Send Email Now
+      leads:
+        index_title: Leads 
+        no_records_text: No leads exist.
+      notes:
+        flagged_comments_header: Flagged Comments
+        flagged_comments_message: "<b>%{count}</b> flagged post(s) require attention."
+        flagged_comments_link: View now.
+        flagged_comments_empty: There are no flagged comments.
+        new_leads_header: New Leads
+        new_leads_message: "There are <b>%{count}</b> new leads in the past %{days} days."
+        new_leads_link: View now.
+        new_leads_empty: There are no recent leads.
+        searches_header: Search Log
+        searches_empty: There are no recent searches.
+        facebook_header: Facebook Feed
+        twitter_header: Twitter Feed
+      page_views:
+        no_records_text: No activity exists.
+      visits:
+        no_records_text: No activity exists.
+      reports:
+        index_title: Marketing Report
+        no_records_text: No data exists for those query parameters.
+      visits:
+        breadcrumb_title: Campaign Activity
+        index_title: "Campaign: %{parent}"

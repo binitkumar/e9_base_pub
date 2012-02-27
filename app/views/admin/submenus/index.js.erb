@@ -1,0 +1,4 @@
+$('#records_table').html("<%= escape_javascript(render('table', :collection => collection)) %>");  
+$('table.sortable').admin_menu_sortable();
+$("ul.breadcrumbs").replaceWith("<%= escape_javascript(breadcrumbs_helper) %>");
+<%= render 'shared/admin/reset_title', :new_title => @index_title %>

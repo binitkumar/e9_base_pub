@@ -1,0 +1,22 @@
+= title @title
+
+#system-messages
+  %h2= e9_t(:system_messages_header)
+  - if system_messages.blank?
+    = e9_t(:no_system_messages_text)
+  - else
+    = system_messages
+
+#system-news
+  %h2= e9_t(:e9_news_header)
+  #blog-posts
+    - unless e9_updates?
+      = e9_t(:no_e9_updates_text)
+    - else
+      - content_for :bottom_javascripts do
+        - if e9_blog_exists?
+          :javascript
+            $(document).ready(function() { $.get("#{e9_blog_url}", null, null, 'script'); });
+        - else
+          :javascript
+            $(function() { $("#blog-posts").yqlLoad({url: "#{e9_page_url}"}); });

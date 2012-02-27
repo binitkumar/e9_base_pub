@@ -1,0 +1,82 @@
+@import 'includes/css3';
+@import 'compass/css3/inline-block';
+$theme-button-gradient-top          : false !default;
+$theme-button-gradient-bottom       : false !default;
+$theme-button-gradient-hover-top    : false !default;
+$theme-button-gradient-hover-bottom : false !default;
+$theme-button-gradient-active-top   : false !default;
+$theme-button-gradient-active-bottom: false !default;
+
+$theme-button-padding     :            0.5em 0.75em !default;
+$theme-button-margin      :                 0 0 3px !default;
+$theme-button-color       : $theme-foreground-color !default;
+$theme-button-bg-color    : $theme-background-color !default;
+$theme-button-text-color  :       $theme-text-color !default;
+$theme-button-line-height :                     1.4 !default;
+
+@mixin button($theme-button-bg-color,$color: false) {
+  @include inline-block;
+  @include border-radius;
+	@include box-shadow(#aaa 1px 1px 1px);
+
+  /* fallback to button-color */
+  @if not $color { $color: $theme-button-color; }
+  padding: $theme-button-padding;
+  margin: $theme-button-margin;
+  line-height: $theme-button-line-height;
+
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  border: solid 1px #666;
+	font-weight: bold;
+
+  outline: none;
+  &:-moz-focus-inner {
+    border: none;
+  }
+
+  &, &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+		@include box-shadow(transparent 0 0 0);
+  }
+   /* and only apply it if it's defined */
+  @if $color { @include button-color($theme-button-bg-color,$color); }
+}
+
+@mixin button-color($background: $theme-button-background-color, $color: $theme-button-text-color) {
+   $top : if($theme-button-gradient-top,$theme-button-gradient-top, lighten($background , 23%) );
+   $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 11%));
+  border: solid 1px darken($background, 4%);
+  background:$top;
+  @include linear-gradient($top, $bottom);
+  &, &:visited, &:hover {
+    color: mix($color, $background, 95%) !important;
+  }
+  &, &:visited {
+    
+    $top : if($theme-button-gradient-top,$theme-button-gradient-top, lighten($background , 23%) );
+    $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 11%));
+    @include linear-gradient($top, $bottom);
+    
+  }
+  &:hover {
+		$top : if($theme-button-gradient-top,$theme-button-gradient-top, lighten($background , 10%) );
+    $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 5%));
+    
+    @include linear-gradient($top, $bottom);
+    background:lighten($top , 10%);
+
+  }
+  &:active {
+    $top : if($theme-button-gradient-top,$theme-button-gradient-top, $background  );
+    $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 10%));
+    
+    color: mix($color,$background,70%);
+    @include linear-gradient($top, $bottom);
+
+  }
+}

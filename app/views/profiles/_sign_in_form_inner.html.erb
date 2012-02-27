@@ -1,0 +1,16 @@
+<h4 class="help"><%= link_to "Not Registered? Sign up", new_registration_path(resource_name) %></h4>
+
+<div class="field<%= " field_with_errors" if sign_in_auth_failure? %>">
+  <%= f.label :email, 'Email', :class => 'req' %>
+  <%= f.text_field :email, :id => 'sign_in_email' %>
+</div>
+
+<div class="field<%= " field_with_errors" if sign_in_auth_failure? %>">
+  <%= f.label :password, 'Password', :class => 'req' %>
+  <%= f.password_field :password, :id => 'sign_in_password' %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Sign in" %>
+  <%= render "devise/shared/links" %>
+</div>

@@ -1,0 +1,7 @@
+<% if @facebook_post.errors.empty? %>
+  $.fn.colorbox.close();
+  $("<div><%= escape_javascript(render(@facebook_post)) %></div>").hide().prependTo($("#facebook-posts .feed")).fadeIn();
+<% else %>
+  $('form#new_facebook_post').replaceWith("<%= escape_javascript(render('form')) %>");
+  $.fn.colorbox.resize();
+<% end %>

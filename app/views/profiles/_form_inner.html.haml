@@ -1,0 +1,51 @@
+.help
+  = t(:required_star_help)
+.field
+  = f.label :first_name, nil, :class => 'req'
+  = f.text_field :first_name
+.field
+  = f.label :last_name
+  = f.text_field :last_name
+.field
+  = f.label :email, nil, :class => 'req'
+  = f.text_field :email
+.field
+  = f.label :username, nil, :class => 'req'
+  = f.text_field :username
+.field
+  = f.label :company
+  = f.text_field :company
+.field
+  = f.label :title
+  = f.text_field :title
+.field
+  = f.label :dob
+  = f.text_field :dob, :value => I18n.l(resource.dob || '')
+
+- if params[:controller] == 'admin/users'
+  .field#user_avatar_field
+    = user_avatar_field(resource)
+
+- if resource.profiled?
+  %fieldset.info-contact
+    %legend Contact Information
+    = render_record_attribute_form(:email_attributes, f)
+    = render_record_attribute_form(:phone_number_attributes, f)
+    = render_record_attribute_form(:instant_messaging_handle_attributes, f)
+    = render_record_attribute_form(:website_attributes, f)
+    = render_record_attribute_form(:address_attributes, f)
+
+  %fieldset.info-school
+    %legend School Information
+    = render_record_attribute_form(:school_attributes, f)
+
+  %fieldset.info-bio
+    %legend= help_label(f, :bio, :key => :markdown_help, :header => 'Markdown Help')
+    = f.text_area :bio
+
+= render 'profiles/mailing_lists', :user => resource, :f => f
+
+- if params[:controller] == 'admin/users'
+  = render 'profiles/role_type', :user => resource, :f => f
+  - if superuser?
+    = render 'profiles/auto_favoriting', :user => resource, :f => f

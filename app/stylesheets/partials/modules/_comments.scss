@@ -1,0 +1,95 @@
+@import 'compass/css3/inline-block';
+@import 'compass/utilities/general/clearfix';
+@import 'includes/typography';
+@import 'includes/buttons';
+@import 'includes/theming';
+#comments-container{
+  .header{
+    border-bottom: theme-border-style($color:$theme-alt-text-color);
+    color: $theme-alt-text-color;
+    font-size:1.2em;
+    font-weight: bold;
+    line-height: 1.1em;
+    margin: 0 0 0.25em;
+    padding: 0 0 0.25em;
+  }
+  .comment{
+    float:left;
+    width:100%;
+    margin-bottom:18px;
+    position:relative;
+    .avatar{
+      float:left;
+      margin-right:10px;
+    }
+    .block{
+      .prefix{
+        font-size:.9em;
+      }
+      .action-links{
+        position:absolute;
+        float:left;
+        right:0;
+        top:0;
+        ul{
+          margin-right:10px;
+        }
+        a.action-link{
+          text-decoration: underline;
+          color: $theme-alt-text-color;
+          font-size: 0.8em;
+          text-decoration: underline;
+          float:left;
+          margin-right:5px;
+        }
+        span.action-link{
+          text-decoration:none;
+          color:#666;
+          float:left;
+          font-weight:Bold;
+          float:left;
+          margin-right:5px;
+          font-size:12px;
+        }
+      }
+    }
+  }
+}
+#comment-form{
+  .avatar{
+    float:left;
+    margin-right:10px;
+  }
+  .new_comment{
+    float:left;
+    width:500px;
+    label{
+      display:none;
+    }
+  }
+  .field{
+    
+    #comment_body{
+      margin-top:0px;
+    }
+    .info{
+        font-size:0.65em;
+    }
+  } 
+  .comment-email{
+    display:none;
+  }
+  .actions{
+    clear:both;
+    float:left;
+    ul{
+      margin-top:10px;
+      li{
+        margin:.5em;
+      }
+    }
+    a{
+      @include button;
+    }
+  }
+}

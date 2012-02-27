@@ -1,0 +1,27 @@
+- field_map = local_assigns[:field_map] || records_table_field_map
+
+%table.records
+  %thead
+    %tr
+      - field_map[:fields].keys.each do |key|
+        - if key.is_a?(Symbol)
+          %th= resource_class.human_attribute_name(key)
+        - else
+          %th= orderable_column_link(key)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => field_map[:fields].length + 1}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          - field_map[:fields].each do |key, value|
+            %td{:class => "record-#{key.to_s.dasherize}"}
+              = value.respond_to?(:call) ? value.call(record) : record.send(key)
+          %td.actions
+            - field_map[:links][record].each do |link|
+              = link
+
+- if controller.send(:should_paginate_index)
+  = will_paginate collection

@@ -1,0 +1,80 @@
+@import 'includes/common';
+@import 'compass/css3/inline-block';
+
+fieldset ul.attachments {
+  // this is in the form, there's a padding on top because the file
+  // field element is positioned absolutely there, always, even though
+  // it's the last li in the list
+  padding-top: 40px;
+}
+
+ul.attachments {
+  position: relative;
+  padding: 0;
+  margin: 0;
+
+  &, li {
+    list-style: none none;
+  }
+
+  li.attachment-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  li.attachment {
+    @include inline-block;
+    position: relative;
+
+    padding: 0;
+    margin: 0 5px 5px 0;
+
+    // a and div are both styles the same, new files in the form are divs
+    > a, > div {
+      // the thumbs are 72px
+      width: 74px;
+      height: 74px;
+
+      padding: 1px;
+      //border-width: 1px;
+      //border-style: solid;
+      //border-color: black;
+
+      display: block;
+      text-indent: -999em;
+
+      img { 
+        display: block;
+        margin: 0; 
+      }
+
+      /**
+       * individual styles for the different file types
+       */
+      &.attachment-image { background:transparent url(images/icon_file.png) top left no-repeat; }
+      &.attachment-html { background:transparent url(images/icon_html.png) top left no-repeat; }
+      &.attachment-xls { background:transparent url(images/icon_xls.png) top left no-repeat; } 
+      &.attachment-doc { background:transparent url(images/icon_doc.png) top left no-repeat; } 
+      &.attachment-ppt { background:transparent url(images/icon_ppt.png) top left no-repeat; }
+      &.attachment-file { background:transparent url(images/icon_file.png) top left no-repeat; }
+      &.attachment-pdf{ background:transparent url(images/icon_pdf.png) top left no-repeat; }
+    }
+
+    .delete-attachment {
+      display: block;
+      //width: 15px;
+      //height: 15px; 
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      cursor: pointer;
+      text-indent: -999em;
+      //background-color: red;
+			background-position: -32px -192px;
+			width: 16px;
+			height: 16px;
+			background-image: url(images/ui-icons_cccccc_256x240.png);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+- if editable_regions_for_view?(resource) 
+  %fieldset.regions.list
+    %legend
+      = label_tag 'regions', e9_t(:region_settings_form_legend, :scope => 'admin.regions')
+    #regions
+      - editable_regions_for_view(resource).each do |region|
+        = f.fields_for :regions, region do |rf|
+          - unless node_template_defined?
+            - content_for :javascripts do
+              :javascript
+                 node = "#{node_template(rf)}"
+          = render 'admin/views/region', :f => rf
+    
+    #selected-layout
+      - if f.object.is_a?(Layout)
+        = layout_image_tag(f.object)
+      - else
+        = label_tag "Layout: #{f.object.layout.name}"
+        = layout_image_tag(f.object.layout)

@@ -1,0 +1,19 @@
+.e9-poll{:"data-votes" => poll.votes}
+  - if poll.options.header_text.present?
+    .poll-header
+      = poll.options.header_text
+
+  .poll-question
+    = poll.question
+
+  .poll-answers
+    - if poll_answered?(poll)
+      = render(:partial => 'e9_polls/polls/results_inner', :locals => { :poll => poll })
+
+    - else
+      = form_for poll, :url => answer_poll_path(poll) do |f|
+        = render(:partial => PollAnswer.model_name.partial_path, :collection => poll.poll_answers, :locals => { :f => f })
+        .actions
+          = f.submit t(:submit_answer, :scope => :e9_polls)
+
+      = poll_results_link(poll)

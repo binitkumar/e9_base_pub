@@ -1,0 +1,47 @@
+en:
+  e9_polls:
+    destroy: Delete
+    edit: Edit
+    show: View
+    new: New
+    confirm_destroy: Are you sure?  This cannot be undone.
+    add_nested_attribute: Add
+    destroy_nested_attribute: Remove
+    poll_results_link: View the results!
+    poll_form_link: Answer now!
+    poll_show_link_title: Submit your Answer
+    poll_results_link_title: Results of this Poll
+    already_voted: You've already voted.
+    submit_answer: Submit!
+    your_vote: (Your answer)
+    success_message: Thanks for participating in the poll!
+    polls:
+      new: Add a Poll
+      show: View Results
+
+  # compat with e9_t translation
+  e9:
+    e9_polls:
+      polls:
+        results_title: Poll Results
+        show_title: Viewing Poll
+
+
+  # AR record translations
+  activerecord:
+    models:
+      poll: Poll
+      poll_answer: Poll Answer
+    
+    attributes:
+      poll:
+        template: Question
+
+    errors:
+      models:
+        poll:
+          attributes:
+            delete_restricted: "This poll is being used in a layout and/or by a page. You can not delete it until you remove all instances where it is used."
+            vote:
+              already_voted: "Sorry but you've already voted on this poll!"
+              no_argument: "Oops, sorry but your vote was not able to be processed!"

@@ -1,0 +1,20 @@
+#favorites
+  - if local_assigns[:favorites]
+    - if !favorites.empty?
+      .list
+        %div
+          = render_favorites(favorites)
+      .show-more 
+        = show_more_favorites_link(favorites)
+    - else
+      .list
+        .listing
+          = e9_t(:no_favorites_text, :scope => :favorites)
+      .show-more
+
+  - else
+    .list
+    .show-more
+    - content_for :javascripts do
+      :javascript
+        jQuery(function($) { $.ajax({ url: "#{ profile_favorites_path }", dataType: 'script', method: 'post' }) });

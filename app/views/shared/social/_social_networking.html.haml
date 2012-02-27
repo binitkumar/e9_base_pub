@@ -1,0 +1,87 @@
+-# This view was used to bind to a form and is no longer used.
+-# See e9/admin/social.js for the new method
+-#
+- if any_social_feeds_configured? && !f.object.previously_published?
+  - content_for :bottom_javascripts do
+    :javascript
+      var 
+
+      // The main content form
+      $form  = $("#content form"),
+
+      // state of cbox.  On form submit, if it's closed, open it with the
+      // popup social interstitial form.  If it's open, we're already in
+      // the interstitial form, commit.
+      cbopen = false,
+
+      // the "published" field, if we're not publishing, don't open the 
+      // social form
+      $pub = $form.find("select[id$=_published]"),
+
+      // function to determine whether we should open the social form
+      skipPublish  = function() {
+        return cbopen || $pub.length == 0 || $pub.val() == 'false';
+      },
+
+      // hook called when the social form is submitted:
+      // grab the newly interpolated values in the form and put them back
+      // into the main page form, then submit.
+      onSocSubmit  = function(e) {
+        e.preventDefault();
+        $form.find("#social-networking").values($(this).values());
+        $form.submit();
+      },
+       
+      // hook for when cbox opens:
+      // does some html manipulation on the social feeds page data then
+      // assigns the submit hook for the popup form.
+      cboxComplete = function() {
+        // get the popup form
+        var $snf = $("#social-networking-form");
+
+        // pull the legend out of the fieldset and make it h1
+        $("<h1/>").
+          insertBefore($snf).
+          html($snf.find("legend").detach().html());
+
+        $snf.
+          ensureTextareaMaxlength().
+          submit(onSocSubmit);
+      },
+
+      // main form submit hook, open the social interstitial if we should
+      // be posting to social feeds
+      submitHandler = function(e) {
+        if (skipPublish()) return true;
+        else {
+          e.preventDefault();
+          cbopen = true;
+          $.ajax({
+            url: "#{polymorphic_path([:social_admin, resource.class])}",
+            type: 'GET',
+            data: $form.serialize(),
+            dataType: 'script',
+            // the server will return forbidden if the content is not user/guest
+            // roled and thus not elegible for social feed posting
+            error: function(xhr, status) {
+              $form.unbind('submit', submitHandler).submit();
+            },
+            // otherwise it has returned the form, open it in colorbox
+            success: function(data, status, xhr) {
+              $.fn.colorbox({ 
+                html: data,
+                onComplete: cboxComplete,
+                onCleanup: function() { cbopen = false; }
+              });
+            }
+          });
+        }
+      }
+
+      $form.bind('submit', submitHandler);
+  
+  #social-networking
+    = render 'shared/social/form_inner', :f => f
+
+  :javascript
+    $("#social-networking").addClass("popup-display");

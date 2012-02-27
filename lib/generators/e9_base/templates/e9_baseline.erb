@@ -1,0 +1,10 @@
+class E9Baseline < ActiveRecord::Migration
+  def self.up
+    <%= schema %>
+  end
+  
+
+  def self.down
+    raise ActiveRecord::IrreversibleMigration.new
+  end
+end

@@ -1,0 +1,21 @@
+_defaults: &defaults
+  system: true
+  _finder: identifier
+
+default:
+  <<: *defaults
+  identifier: <%= MailingList::Identifiers::NEWSLETTER %>
+  name: Public Newsletter List
+  description: Please send me your newsletter
+comment_updates:
+  <<: *defaults
+  identifier: <%= MailingList::Identifiers::COMMENT_UPDATES %>
+  name: Comments and Topics Notification
+  description: Email me when people comment on topics & pages that I saved or where I commented
+  newsletter: false
+new_content_alerts:
+  <<: *defaults
+  identifier: <%= MailingList::Identifiers::NEW_CONTENT_ALERTS %>
+  name: New Content Posted Notification
+  description: Email me when new content is posted to the site
+  newsletter: false

@@ -1,0 +1,41 @@
+= form_for resource, :url => polymorphic_url([parent, resource]), :remote => request.xhr?, :html => { :class => 'validate' } do |f|
+  .errors= resource_error_messages!
+
+  = f.hidden_field :event_id
+
+  %fieldset.nested-associations{:'data-template-url' => new_event_event_registration_path(parent), :'data-max-guests' => parent.event_max_guests}
+    %legend= e9_t(:event_registration_legend)
+    = render_record_attribute_association(:event_registrations, f, :persist_first => true)
+
+    - if parent.accepts_guests?
+      = link_to_add_record_attribute(:event_registrations, 'Add a Guest')
+
+  - if parent.costs.any?
+    %fieldset.payment-information
+      %legend= e9_t(:payment_information_legend)
+      .field
+        = f.label :total_paid, nil, :for => 'ctotal'
+        #ctotal &nbsp;
+
+      #ctotal-toggle{:style => 'display: none'}
+        .cc-name-fields
+          .field
+            = f.label :cc_first_name
+            = f.text_field :cc_first_name
+          .field
+            = f.label :cc_last_name
+            = f.text_field :cc_last_name
+        .field
+          = f.label :cc_number
+          = f.text_field :cc_number
+        .field.date
+          = f.label :cc_date
+          = f.date_select :cc_date, cc_date_select_options
+        .field.cvv
+          %label{:for => 'event_transaction_cc_cvv'}= EventTransaction.human_attribute_name(:cc_cvv).html_safe
+          = f.text_field :cc_cvv
+
+  = checkbox_captcha
+
+  .actions
+    = f.submit

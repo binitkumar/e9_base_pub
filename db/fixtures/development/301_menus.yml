@@ -1,0 +1,82 @@
+_defaults: &defaults
+  _finder: identifier
+_hard_link_defaults: &hard_link_defaults
+  <<: *defaults
+  _klass: HardLink
+_soft_link_defaults: &soft_link_defaults
+  <<: *defaults
+  _klass: SoftLink
+
+main_menu_1:
+  <<: *soft_link_defaults
+  identifier: mm1
+  parent: main_menu
+  link: home (SystemPage)
+main_menu_2:
+  <<: *soft_link_defaults
+  identifier: mm2
+  parent: main_menu
+  link: blog (SystemPage)
+main_menu_3:
+  <<: *soft_link_defaults
+  identifier: mm3
+  parent: main_menu
+  link: faqs (SystemPage)
+main_menu_4:
+  <<: *soft_link_defaults
+  identifier: mm4
+  parent: main_menu
+  link: forum (SystemPage)
+main_menu_5:
+  <<: *soft_link_defaults
+  identifier: mm5
+  parent: main_menu
+  link: slideshows (SystemPage)
+wysiwyg:
+  <<: *soft_link_defaults
+  identifier: mm6
+  parent: main_menu
+  link: wysiwyg (UserPage)
+main_menu_8:
+  <<: *soft_link_defaults
+  identifier: mm7
+  parent: main_menu
+  link: profiles (SystemPage)
+  role: employee
+
+main_menu_7:
+  <<: *soft_link_defaults
+  identifier: mm8
+  parent: wysiwyg
+  link: normal_page_title (UserPage)
+
+footer_menu_1:
+  <<: *soft_link_defaults
+  identifier: fm1
+  parent: footer_menu
+  link: home (SystemPage)
+  show_children: false
+footer_menu_2:
+  <<: *soft_link_defaults
+  identifier: fm2
+  parent: footer_menu
+  link: blog (SystemPage)
+  show_children: false
+footer_menu_3:
+  <<: *soft_link_defaults
+  identifier: fm3
+  parent: footer_menu
+  link: faqs (SystemPage)
+  show_children: false
+footer_menu_4:
+  <<: *soft_link_defaults
+  identifier: fm4
+  parent: footer_menu
+  link: forum (SystemPage)
+  show_children: false
+footer_menu_5:
+  <<: *soft_link_defaults
+  parent: footer_menu
+  identifier: fm5
+  link: slideshows (SystemPage)
+  show_children: false

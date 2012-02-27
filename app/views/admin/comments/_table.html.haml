@@ -1,0 +1,18 @@
+%table.records
+  %thead
+    %tr
+      %th= e9_t(:comment)
+      %th= resource_humanize(:username)
+      %th= e9_t(:status)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 4}
+          = e9_t(:no_records_text)
+    - else
+      - collection.each do |comment|
+        %tr{:id => "ids_#{comment.id}", :class => cycle('odd', 'even')}
+          = render 'row', :comment => comment
+
+= will_paginate(collection)

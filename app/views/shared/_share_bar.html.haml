@@ -1,0 +1,20 @@
+%fieldset.share-bar
+
+  .section
+    .label= e9_t(:share)
+    %ul
+      - if content.kind_of?(Linkable)
+        %li.friend-email= friend_email_link(content)
+
+      - ShareSite.active.each do |share_site|
+        %li.share-site= share_site_link(share_site, :page => content)
+
+  .section
+    .label= e9_t(:permalink)
+    .permalink
+      %input{:readonly => true, :value => permalink(content)}
+
+  .section
+    .label= e9_t(:link_html)
+    .permalink
+      %input{:readonly => true, :value => link_html(content)}

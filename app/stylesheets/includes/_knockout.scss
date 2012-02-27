@@ -1,0 +1,22 @@
+@mixin knockout($image) {
+	@include -knockoutBase($image);
+  height: image-height($image);
+}
+
+@mixin hoverKnockout($image) {
+	@include -knockoutBase($image);
+  height: image-height($image) / 2;
+	&:hover {
+		background-position: bottom left;
+	}
+}
+
+@mixin -knockoutBase($image) {
+  display: block;
+	background: image_url($image, false, false) no-repeat top left;
+  width: image-width($image);
+  text-indent: -999em;
+	&:focus { 
+    outline: none; 
+  }
+}

@@ -1,0 +1,30 @@
+%table.records
+  %thead
+    %tr
+      %th Date
+      %th Requests
+      %th Delivered
+      %th Opened
+      %th Bounces
+      %th Spam Reports
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 6}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.object_id}", :class => cycle('odd', 'even')}
+          %td.record-date.date
+            = record['date']
+          %td.record-requests.num
+            = record['requests']
+          %td.record-delivered.num
+            = record['delivered']
+          %td.record-opened.num
+            = record['opens']
+          %td.record-bounces.num
+            - perc = record['requests'].zero? ? 0 : record['bounces'].to_f / record['requests'] * 100
+            - perc = "%d%%" % perc
+            = "#{record['bounces']} (#{perc})"
+          %td.record-spam-reports.num
+            = record['spamreports']

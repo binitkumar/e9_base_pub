@@ -1,0 +1,23 @@
+= form_tag polymorphic_path([:update_order, :admin, resource_class]) do
+  %table.records.sortable
+    %thead
+      %tr
+        %th= resource_humanize(:position)
+        %th= resource_humanize(:title)
+        %th= resource_humanize(:role)
+        %th= e9_t(:actions)
+    %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 3}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td
+            .handle +++
+          %td.txt= record.title
+          %td.txt= resource_humanize("role_#{record.role}")
+          %td.actions
+            = edit_admin_resource_link(record)
+            = change_page_layout_link(record)
+            = destroy_admin_resource_link(record)

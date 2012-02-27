@@ -1,0 +1,12 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]) do |f|
+  = resource_error_messages!
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+  .field
+    = f.label :description, nil, :class => :req
+    = f.text_field :description
+  -# pass all roles but "user", as "All Users" is handled by the "guest" role
+  = render 'shared/form_partials/roles_for_content', :f => f, :roles => (E9::Roles.content_assignable - %w(user))
+  .actions
+    = f.submit e9_t(:save_link)

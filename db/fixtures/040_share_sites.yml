@@ -1,0 +1,73 @@
+_defaults: &defaults
+  _finder: name
+
+share_site_1:
+  <<: *defaults
+  name: Facebook
+  url: "http://www.facebook.com/sharer.php?u={% page_url | uri_escape %}"
+  icon_index: 10
+share_site_2:
+  <<: *defaults
+  name: Twitter
+  url: "http://www.twitter.com/home?status=Check%20this%20out:{% page_url | uri_escape %}"
+  icon_index: 31
+share_site_3:
+  <<: *defaults
+  name: Google
+  url: "http://www.google.com/bookmarks/mark?op=add&bkmk={% page_url | uri_escape %}&title={% page_title | url_escape %}"
+  icon_index: 11
+share_site_4:
+  <<: *defaults
+  name: Google Buzz
+  url: "http://www.google.com/buzz/post?url={% page_url | uri_escape %}"
+  icon_index: 12
+share_site_5:
+  <<: *defaults
+  name: Kaboodle
+  url: "http://www.kaboodle.com/za/selectpage?p_pop=false&pa=url&u={% page_url | uri_escape %}"
+  icon_index: 14
+share_site_6:
+  <<: *defaults
+  name: Delicious
+  url: "http://delicious.com/post?url={% page_url | uri_escape %}&title={% page_title | uri_escape %}"
+  icon_index: 5
+share_site_7:
+  <<: *defaults
+  name: Propellor
+  url: "http://propeller.com/story/submit?url={% page_url | uri_escape %}&title={% page_title | uri_escape %}"
+  icon_index: 21
+share_site_8:
+  <<: *defaults
+  name: Yahoo! Buzz
+  url: "http://buzz.yahoo.com/buzz?src=addthis&targetUrl={% page_url | uri_escape %}&headline={% page_title | uri_escape %}"
+  icon_index: 1
+share_site_9:
+  <<: *defaults
+  name: StumbleUpon
+  url: "http://www.stumbleupon.com/submit?url={% page_url | uri_escape %}"
+  icon_index: 29
+share_site_10:
+  <<: *defaults
+  name: Reddit
+  url: "http://www.reddit.com/submit?url={% page_url | uri_escape %}&title={% page_title | uri_escape %}"
+  icon_index: 22
+share_site_11:
+  <<: *defaults
+  name: Digg
+  url: "http://digg.com/submit?phase=2&url={% page_url | uri_escape %}"
+  icon_index: 6
+share_site_12:
+  <<: *defaults
+  name: Mixx
+  url: "http://mixx.com/submit?page_url={% page_url | uri_escape %}"
+  icon_index: 18
+share_site_13:
+  <<: *defaults
+  name: Technorati
+  url: "http://technorati.com/faves?add={% page_url | uri_escape %}"
+  icon_index: 30
+share_site_14:
+  <<: *defaults
+  name: LinkedIn
+  url: "http://www.linkedin.com/shareArticle?mini=true&url={% page_url | uri_escape %}&title={% page_title | url_escape %}"
+  icon_index: 17

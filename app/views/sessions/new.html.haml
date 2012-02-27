@@ -1,0 +1,3 @@
+= form_for(sign_in_or_sign_up? == :sign_in ? resource : User.new, :as => resource_name, :url => session_path(resource_name), :html => { :id => 'sign_in_form', :name => 'sign_in_form' }) do |f|
+  = devise_error_messages!
+  = render 'profiles/sign_in_form_inner', :f => f

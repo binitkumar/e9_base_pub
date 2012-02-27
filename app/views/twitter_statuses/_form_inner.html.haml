@@ -1,0 +1,5 @@
+- content = local_assigns[:content]
+
+.field
+  = label :twitter_status, 'Message'
+  = text_area :twitter_status, :text, :value => @twitter_status.try(:text) || content.try(:twitter_comment)

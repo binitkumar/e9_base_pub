@@ -1,0 +1,13 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+  role: guest
+  layout: blog
+
+alpha:
+  <<: *defaults
+  title: Alpha Blog
+
+beta:
+  <<: *defaults
+  title: Beta Gamma Blog Has a Longer Name

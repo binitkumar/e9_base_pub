@@ -1,0 +1,18 @@
+- mount = resource.send(field)
+- current_field_id = "#{field}_current"
+.field.upload
+  = f.label field
+  = f.file_field field
+  %span.button.reset= t(:reset_upload)
+  = f.hidden_field :"#{field}_cache" 
+  - if mount.present?
+    .current
+      = label_tag(current_field_id, t(:current_upload))
+      .mounted
+        - if mount.class.respond_to?(:resize_to_fill)
+          = image_tag(mount.url, :id => current_field_id)
+        - else
+          %span{:id => current_field_id}= mount.filename
+      .checkbox
+        = f.label :"remove_#{field}", t(:remove_upload)
+        = f.check_box :"remove_#{field}"

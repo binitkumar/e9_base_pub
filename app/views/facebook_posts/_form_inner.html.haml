@@ -1,0 +1,20 @@
+- content = local_assigns[:content]
+
+.field
+  = label :facebook_post, 'Message'
+  = text_area :facebook_post, :message, :value => @facebook_post.try(:message) || content.try(:facebook_comment)
+
+- if content.present?
+  = content_thumb(content)
+  .info
+    .header
+      = content.title
+    -#.permalink
+      -#= permalink(content)
+    .description
+      = content.meta_description
+
+- else
+  .field
+    = label :facebook_post, 'Link'
+    = text_field :facebook_post, :link

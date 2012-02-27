@@ -1,0 +1,330 @@
+_defaults: &defaults
+  _finder: identifier
+_hard_link_defaults: &hard_link_defaults
+  <<: *defaults
+  _finder: name
+  _klass: HardLink
+_soft_link_defaults: &soft_link_defaults
+  <<: *defaults
+  _klass: SoftLink
+
+main_menu:
+  <<: *defaults
+  name: Main Menu
+  identifier: main_menu
+  system: true
+footer_menu:
+  <<: *defaults
+  name: Footer Menu
+  identifier: footer_menu
+  system: true
+admin_menu:
+  <<: *defaults
+  name: Admin Menu
+  identifier: admin_menu
+  system: true
+  editable: false
+
+top_nav:
+  <<: *defaults
+  name: Top Nav Menu
+  identifier: top_nav_menu
+  system: true
+top_nav_admin:
+  <<: *hard_link_defaults
+  parent: top_nav
+  name: 'Admin'
+  href: '/admin/dashboard'
+  role: 'administrator'
+  identifier: top_nav_admin
+top_nav_profile:
+  <<: *soft_link_defaults
+  name: 'Profile'
+  parent: top_nav
+  link: profile (SystemPage)
+  role: 'user'
+  identifier: top_nav_profile
+top_nav_edit_profile:
+  <<: *soft_link_defaults
+  name: 'Edit Profile'
+  parent: top_nav
+  link: edit_profile (SystemPage)
+  role: 'user'
+  identifier: top_nav_edit_profile
+top_nav_sign_out:
+  <<: *hard_link_defaults
+  parent: top_nav
+  name: 'Sign Out'
+  href: '/sign_out'
+  role: 'user'
+  identifier: top_nav_sign_out
+top_nav_sign_in:
+  <<: *soft_link_defaults
+  name: 'Sign In'
+  parent: top_nav
+  link: sign_in (SystemPage)
+  role: 'guest'
+  logged_out_only: true
+  identifier: top_nav_sign_in
+top_nav_sign_up:
+  <<: *soft_link_defaults
+  name: 'Sign Up'
+  parent: top_nav
+  link: sign_up (SystemPage)
+  role: 'guest'
+  logged_out_only: true
+  identifier: top_nav_sign_up
+
+admin_home:
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Admin Home"
+  href: "/admin/dashboard"
+admin_home_1:
+  <<: *hard_link_defaults
+  parent: admin_home
+  name: "Analytics"
+  href: "http://google.com/analytics"
+  external: true
+admin_home_2:
+  <<: *hard_link_defaults
+  parent: admin_home
+  name: "Flagged Comments"
+  href: "/admin/comments/flagged"
+admin_home_3:
+  <<: *hard_link_defaults
+  parent: admin_home
+  name: "Search Log"
+  href: "/admin/search_log"
+admin_home_4:
+  <<: *hard_link_defaults
+  parent: admin_home
+  name: "Social Feeds"
+  href: "/admin/social_feeds"
+admin_home_5:
+  <<: *hard_link_defaults
+  parent: admin_home
+  name: "Users"
+  href: "/admin/users"
+
+contacts_nav:
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Contacts"
+  href: "/admin/crm/contacts"
+contacts_nav_1:
+  <<: *hard_link_defaults
+  parent: contacts_nav
+  name: "Companies"
+  href: "/admin/crm/companies"
+contacts_nav_2:
+  <<: *hard_link_defaults
+  parent: contacts_nav
+  name: "Deals"
+  href: "/admin/crm/deals"
+contacts_nav_3:
+  <<: *hard_link_defaults
+  parent: contacts_nav
+  name: "Leads"
+  href: "/admin/crm/leads"
+contacts_nav_4:
+  <<: *hard_link_defaults
+  parent: contacts_nav
+  name: "Menu Manager"
+  href: "/admin/menu_options"
+
+marketing_nav: 
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Marketing"
+  href: "/admin/crm/marketing_report"
+marketing_nav_1: 
+  <<: *hard_link_defaults
+  parent: marketing_nav
+  name: "Campaign Report"
+  href: "/admin/crm/marketing_report"
+marketing_nav_2: 
+  <<: *hard_link_defaults
+  parent: marketing_nav
+  name: "Campaigns"
+  href: "/admin/crm/campaigns"
+marketing_nav_3: 
+  <<: *hard_link_defaults
+  parent: marketing_nav
+  name: "Campaign Groups"
+  href: "/admin/crm/campaigns/groups"
+marketing_nav_4: 
+  <<: *hard_link_defaults
+  parent: marketing_nav
+  name: "Offers"
+  href: "/admin/crm/offers"
+marketing_nav_5: 
+  <<: *hard_link_defaults
+  parent: marketing_nav
+  name: "Page View Report"
+  href: "/admin/crm/activity"
+
+email_nav:
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Email"
+  href: "/admin/email"
+email_nav_1:
+  <<: *hard_link_defaults
+  parent: email_nav
+  name: "Delivered"
+  href: "/admin/email/deliveries"
+email_nav_2:
+  <<: *hard_link_defaults
+  parent: email_nav
+  name: "Email Reports"
+  href: "/admin/email/reports"
+email_nav_3:
+  <<: *hard_link_defaults
+  parent: email_nav
+  name: "Mailing Lists"
+  href: "/admin/email/lists"
+email_nav_4:
+  <<: *hard_link_defaults
+  parent: email_nav
+  name: "System Email"
+  href: "/admin/email/system"
+
+content_nav:
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Content"
+  href: "/admin/pages"
+content_nav_1:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Blog Posts"
+  href: "/admin/blog_posts"
+content_nav_2:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Events"
+  href: "/admin/events"
+content_nav_3:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "FAQs"
+  href: "/admin/faqs"
+content_nav_4:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Layouts"
+  href: "/admin/layouts"
+content_nav_5:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Menus"
+  href: "/admin/menus/main/submenus"
+content_nav_6:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Pages"
+  href: "/admin/pages"
+content_nav_7:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Slides"
+  href: "/admin/slides"
+content_nav_8:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Slideshows"
+  href: "/admin/slideshows"
+content_nav_9:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "System Pages"
+  href: "/admin/system_pages"
+
+widget_nav:
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Widgets"
+  href: "/admin/feed_widgets"
+widget_nav_1:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Banners"
+  href: "/admin/banners"
+widget_nav_2:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Content Feed Widgets"
+  href: "/admin/feed_widgets"
+widget_nav_3:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Feed Templates"
+  href: "/admin/widget_templates"
+widget_nav_4:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Polls"
+  href: "/admin/polls"
+widget_nav_5:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Slideshow Widgets"
+  href: "/admin/slideshow_widgets"
+widget_nav_6:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Snippets"
+  href: "/admin/snippets"
+
+setting_nav: 
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Settings"
+  href: "/admin/settings"
+setting_nav_1: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Blogs"
+  href: "/admin/blogs"
+setting_nav_2: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Content Settings"
+  href: "/admin/settings/content"
+setting_nav_3: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Email Settings"
+  href: "/admin/settings/email"
+setting_nav_4: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Event Types"
+  href: "/admin/event_types"
+setting_nav_5: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Forums"
+  href: "/admin/forums"
+setting_nav_6: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "General Settings"
+  href: "/admin/settings/general"
+setting_nav_7: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Share Sites"
+  href: "/admin/settings/share_sites"
+setting_nav_8: 
+  <<: *hard_link_defaults
+  parent: setting_nav
+  name: "Social Settings"
+  href: "/admin/settings/social"
+
+help_nav:
+  <<: *hard_link_defaults
+  parent: admin_menu
+  name: "Help"
+  href: "/admin/help"

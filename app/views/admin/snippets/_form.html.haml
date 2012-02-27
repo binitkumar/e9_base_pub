@@ -1,0 +1,37 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]), :remote => request.xhr? do |f|
+  .errors= resource_error_messages!
+
+  - if resource.new_record?
+    -# hack used for "formatter"
+    = f.hidden_field :width
+
+    - if request.xhr?
+      - resource.node_ids.each_with_index do |id, i|
+        = hidden_field_tag 'snippet[node_ids][]', id, :id => "snippet_node_ids_#{i}"
+
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+
+  .field{:class => "#{f.object.formatter}#{'-xhr' if request.xhr?}"}
+    = f.label :template, nil, :class => :req
+    = f.text_area :template
+
+  - if request.xhr?
+    - resource.region_type_ids.each_with_index do |id, i|
+      = hidden_field_tag 'snippet[region_type_ids][]', id, :id => "snippet_region_type_ids_#{i}"
+  - else
+    = render 'shared/admin/region_type_select', :f => f
+
+    - if resource.revert_template.blank?
+      %fieldset.radios
+        %legend= f.label :set_revert_template
+        .field.radio
+          = f.radio_button :set_revert_template, false
+          = f.label :set_revert_template_false
+        .field.radio
+          = f.radio_button :set_revert_template, true
+          = f.label :set_revert_template_true
+
+  .actions
+    = f.submit

@@ -1,0 +1,26 @@
+= title e9_t(:index_title)
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    - if facebook_configured?
+      = link_to_popup e9_t(:new_title, :scope => :facebook_posts), new_facebook_post_path
+    - if twitter_configured?
+      = link_to_popup e9_t(:new_title, :scope => :twitter_statuses), new_twitter_status_path
+
+= render 'shared/admin/toolbar'
+
+- if facebook_configured?
+  .social-feed
+    .social-feed-title
+      = facebook_company_page_link
+      Facebook
+
+    = render 'facebook_posts/feed'
+
+- if twitter_configured?
+  .social-feed.last
+    .social-feed-title
+      = twitter_company_page_link
+      Twitter
+
+    = render 'twitter_statuses/feed'

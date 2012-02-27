@@ -1,0 +1,13 @@
+= form_for(resource, :url => polymorphic_path([:admin, resource]), :html => {:multipart => true}) do |f|
+  = resource_error_messages!
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+  .field
+    = f.label :icon_index, :class => :req
+    = f.text_field :icon_index
+  .field
+    = f.label :url, nil, :class => :req
+    = f.text_area :url 
+
+  = f.submit e9_t(:save_link)

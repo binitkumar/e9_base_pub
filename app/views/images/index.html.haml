@@ -1,0 +1,6 @@
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to 'Clear Tag Selection', images_path if params[:tagged]
+    = image_mount_field(ImageMount.new, :upload_only => true, :hide_select => true)
+
+= render 'shared/admin/index', :collection => collection

@@ -1,0 +1,207 @@
+en:
+  contact_search_placeholder: Type keyword, then hit enter...
+  tag_search_placeholder: Enter a tag...
+  email_taken_title: Oops!
+  duplicate_email_title: Oops!
+  edit_conflict: "<p>This email is already attached to another contact and cannot be used.</p><p>Do you want to merge these contacts now?</p><p>Be careful!  If you have made extensive edits you may want to save first and come back to merge.</p>"
+  merge_conflict: "<p>This email is already attached to another contact and cannot be used.</p><p>Do you want to edit that contact instead?</p>"
+  duplicate_email_warning: "<p>You cannot enter the same email twice.</p>"
+  no_offer_value: Admin Contact
+  deal_owner_legend: Responsible
+  no_deal_owner: No one is responsible
+  deal_contact_legend: Associated Contacts
+  
+  #legend text for toolbar in admin
+  form_legend_manage: Manage
+  form_legend_filter_campaigns: Filters
+  
+  edit_dated_costs: Edit Costs
+  actions: Actions
+  clear: Clear
+  clear_all_filters: Clear All Filters
+  go: Go
+  inline_help_link: '[?]'
+  map: Map
+  news: News
+  none: None
+  search: Search
+  total: Total
+  totals: Totals
+  view: View
+  save: Save
+
+  flash:
+    e9_crm:
+      contact_emails:
+        create:
+          notice: Contact email sent to recipients.
+
+  e9_crm:
+    add_record_attribute: Add
+    destroy_record_attribute: Remove
+
+  activerecord:
+    titles:
+      show: 'Show %{model}'
+      campaign:
+        show: '%{model}'
+    links:
+      index: "Manage %{models}"
+      new: "New %{model}"
+      edit: "Edit"
+      destroy: "Delete"
+      show: "View"
+      confirm_destroy: Are you sure?  This cannot be undone.
+      campaign_group: 
+        confirm_destroy: Are you sure?  This cannot be undone.  Any campaigns which are associated with this group will become groupless.
+      with_model:
+        show: "View %{name}"
+
+    errors:
+      models:
+        campaign:
+          not_a_number: "%{attribute} must be a number (maximum 2 decimal places)."
+          attributes:
+            code:
+              taken: "%{attribute} must be unique."
+              invalid: "%{attribute} must be comprised of letters and numbers only."
+              taken_by_page: "%{attribute} conflicts with a page's permalink and cannot be used."
+        contact:
+          delete_restricted: "You cannot delete a contact that has deals or leads."
+          attributes:
+            users:
+              taken: "Two or more of the login accounts entered share a duplicate email."
+              invalid: "One or more of the emails you entered is invalid."
+        offer:
+          attributes:
+            deals:
+              delete_restricted: "You cannot delete this offer because it has leads and/or deals."
+        contact_email:
+          attributes:
+            contact_ids:
+              blank: "Either you have selected no contacts, or all of those selected are opted out of bulk email.  Please correct this and try again."
+            user_ids:
+              blank: "None of the contacts selected are configured with primary emails.  Please correct this and try again."
+        dated_cost:
+          attributes:
+            deal:
+              delete_restricted: "You cannot delete costs associated with deals."
+        deal:
+          attributes:
+            campaign:
+              closed_no_change: You cannot change the campaign of a closed deal. To do so, you must commit the status as "pending" then try again.
+            status:
+              illegal_conversion: A Deal with "lead" status can only be converted to "pending"
+              illegal_reversion: A Deal that has been marked "won" or "lost" cannot be reverted to a "lead"
+              closed_no_destroy: You cannot delete a closed deal. To remove it, you must commit the status as "pending" then try again.
+              inclusion: "Status must be one of (%{options})"
+
+    models:
+      address_attribute: Address
+      advertising_campaign: Advertising Campaign
+      affiliate_campaign: Affiliate Campaign
+      campaign: Campaign
+      campaign_group: Campaign Group
+      company: Company
+      contact: Contact
+      contact_email: Contact Email
+      contact_offer: Contact Offer
+      dated_cost: Payment
+      deal: Deal
+      email_campaign: Email Campaign
+      email_template: Email Template
+      file_download_offer: File Download Offer
+      instant_messaging_handle_attribute: IM Handle
+      menu_options: Menu Option
+      new_content_subscription_offer: New Content Subscription Offer
+      newsletter_subscription_offer: Newsletter Subscription Offer
+      no_campaign: No Campaign
+      offer: Offer
+      page_view: Page View
+      phone_number_attrubute: Phone
+      record_attribute: Attribute
+      sales_campaign: Sales Campaign
+      tracking_cookie: Tracking Cookie
+      video_offer: Video Offer
+      website_attribute: Website
+    attributes:
+      campaign:
+        name: Name
+        code_hint: Append to URL
+        code_hint_help: "Be careful when creating tracking codes.  They are NOT EDITABLE after you save them.\n\nTo track the success of this campaign, you can append ?%{code}={Your Code} to the end of any and all URLs on your website.\n\nIt might look something like this: http://www.example.com/about-us?%{code}=alpha, where \"alpha\" represents the code you created.\n\nYou can provide this tracking URL to a salesperson or an affiliate or it can be placed at the end of a link in any of your advertisements."
+        affiliate_fee: Affiliate Fee
+        affiliate_fee_help: This is the fee payable for each lead this affiliate sends you where it converts to a sale.
+        sales_fee: Sales Fee
+        sales_fee_help: This is the fee payable for each lead this salesperson sends you where it converts to a sale.
+        type: Campaign Type
+        group: Campaign Group
+        user_page_id: Landing Page
+      contact:
+        avatar: Photo
+        users: Email Addresses
+        address_attributes: Addresses
+        instant_messaging_handle_attributes: IM Handles
+        phone_number_attributes: Phone Numbers
+        website_attributes: Websites
+        info: Background Information
+        not_ok_to_email: "This contact will not receive bulk email."
+        tag_instructions: "Tags are words or phrases that describe or categorize this contact.\n\nWhen searching a particular tag, the system will show all contacts with that tag."
+        title: Title
+        no_deals: 'There are no deals associated with this contact.'
+        no_leads: 'There are no leads associated with this contact.'
+      company:
+        info: Background Information
+      email:
+        body_help:
+          <p>System emails have variable data which you can interpolate into the fields</p>
+          <h3>Offer Conversion Email:</h3>
+          <p>
+            &#123;&#123; offer.name &#125;&#125;<br/>
+            &#123;&#123; lead.lead_email &#125;&#125;<br/>
+            &#123;&#123; lead.lead_name &#125;&#125;<br/>
+            &#123;&#123; lead.info &#125;&#125;<br/>
+            &#123;&#123; lead.created_at &#125;&#125;<br/>
+          </p>
+        
+      email_template:
+        text_body_help: |
+          <h3>Variables:</h3>
+          <p>You can insert the following to render variable data in the field</p>
+          <p>
+            &#123;&#123;contact.first_name&#125;&#125;<br/>
+            &#123;&#123;recipient.email&#125;&#125;<br/>
+          </p>
+      dated_cost:
+        affiliate: Affiliate/Salesperson
+      deal:
+        info: Details
+        lead_email: Email
+        lead_name: First Name
+        campaign_code: Code
+        offer_name: Offer
+        created_at: Date
+        owner: Responsible
+        won_deal_count: Won count 
+        offer: Offer
+        followed_up: Done
+      offer:
+        mailing_list_ids: Subscriptions
+        template: Teaser Text
+        template_help: |
+          <h3>Variables:</h3>
+          <p>You can insert the following to render variable data in the field</p>
+          <p>
+            &#123;&#123;campaign.name&#125;&#125;<br/>
+            &#123;&#123;campaign.code&#125;&#125;<br/>
+          </p>
+        alert_email_instructions: (Enter an email if you want to be notified of conversions)
+        submit_button_text: Submit Button Text
+        success_alert_text: Success Alert Text
+        download_link_text: Download Link Text
+        conversion_alert_email: Send Alert Email To
+        success_page_text: Success Page Text
+        custom_form_html: Custom Form Html
+      page_view:
+        month: Month Occurred
+        new_visit: Event
+        request_path: Page Viewed

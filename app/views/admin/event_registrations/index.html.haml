@@ -1,0 +1,14 @@
+- if params[:transaction]
+  - content_for :toolbar_middle do
+    = toolbar_filters do
+      = link_to "Clear Transaction Filter", admin_event_event_registrations_path(parent)
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to 'View Events', admin_events_path
+    = link_to 'Mark All As Attended', mark_attended_admin_event_event_registrations_path(parent), :method => :put, :remote => true
+  = toolbar_forms do
+    #email_delivery_form
+      = render 'email_delivery_form'
+
+= render 'shared/admin/index', :collection => collection

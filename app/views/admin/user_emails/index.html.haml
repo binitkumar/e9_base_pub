@@ -1,0 +1,20 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag admin_user_emails_path, :method => :get, :class => 'scope-selects' do
+      .field
+        = label_tag :inactive, t(:filter_by, :attribute => resource_class.human_attribute_name(:active_label))
+        = email_active_select
+      .field
+        = label_tag 'email-type', t(:filter_by, :attribute => resource_class.human_attribute_name(:type))
+        %select{:name => :type, :id => 'email-type'}
+          %option{:value => ''}= 'All Types'
+          - resource_class.sub_types.each do |sub_type|
+            %option{:value => sub_type}= resource_class.human_attribute_name(sub_type)
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    - resource_class.sub_types.each do |sub_type|
+      - model_name = resource_class.human_attribute_name(sub_type)
+      = link_to_new_resource(resource_class, :model => model_name, :user_email => {:sub_type => sub_type})
+
+= render 'shared/admin/index', :collection => collection

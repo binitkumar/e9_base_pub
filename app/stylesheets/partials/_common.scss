@@ -1,0 +1,52 @@
+@import 'compass/utilities/general/clearfix';
+@import 'compass/css3/inline-block';
+@import 'includes/typography';
+
+.no-display, .hidden {
+  display: none;
+}
+
+/** hide focus outlines for graphical links */
+*:focus { outline: none; }
+
+/* float action sub divs inside of headers */
+h1, h2, h3, h4 {
+  .action-links, .action-buttons, .action-icons {
+    float: right;
+  }
+}
+
+.image, .avatar, .thumb
+{ 
+  img { display: block; } 
+}
+
+/** image borders */
+img, a img, a:hover img { 
+  border-width: $theme-border-width;
+}
+
+.byline, 
+.dateline, 
+.created-byline, 
+.last-reply-byline,
+.prefix
+{ 
+  @include small;
+  span { font-weight: bold; }
+}
+
+.prefix { 
+  font-style: italic;
+  .author-name { 
+    font-weight: bold; 
+    font-style: normal; 
+  }
+}
+
+span.click {
+  @include inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0 5px;
+}

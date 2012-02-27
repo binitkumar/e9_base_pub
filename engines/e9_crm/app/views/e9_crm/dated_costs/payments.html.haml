@@ -1,0 +1,31 @@
+= title (@payments_title || e9_t(:payments_title))
+
+= render 'shared/admin/toolbar'
+
+%div#records_table
+  %table.records#balance-table
+    %thead
+      %tr
+        %th.field= resource_humanize(:affiliate)
+        %th.field= resource_humanize(:balance)
+        %th= e9_t(:actions)
+    %tfoot
+      %tr
+        %td Total
+        %td.cost#ctotal &nbsp;
+        %td &nbsp;
+    %tbody
+      - if @contacts.empty?
+        %tr
+          %td{:colspan => 4}= e9_t(:no_records_text)
+      - else
+        - @contacts.each do |contact, costs|
+          - total = costs.inject(Money.new(0)) {|mem, cost| mem + cost.cost }
+          %tr{:id => "ids_#{contact.id}", :class => cycle('odd', 'even')}
+            %td.field
+              = contact.name
+            %td.field.num
+              $<span class="cost">#{"%.2f" % total}</span>
+            %td.actions
+              = link_to('Make Payment', new_contact_dated_cost_path(contact), :rel => :popup)
+              = link_to('View Statement', contact_dated_costs_path(contact))

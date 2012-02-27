@@ -1,0 +1,13 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag admin_menu_submenus_path(parent.root), :method => :get, :id => 'submenu-view' do
+      = label_tag :menu_id, e9_t(:view)
+      = select_tag :menu_id, options_for_select(parent_menu_select_options(nil, :hide_leaves => true), params[:menu_id])
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to e9_t(:ascend_menu_hierarchy_link), admin_menu_submenus_path(parent.parent) unless parent.root?
+    = new_admin_resource_link(:soft_link, :class => "add-submenu")
+    = new_admin_resource_link(:hard_link, :class => "add-submenu")
+
+= render 'shared/admin/index', :collection => collection

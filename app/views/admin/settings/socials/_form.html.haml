@@ -1,0 +1,119 @@
+= form_for(resource, :url => admin_settings_social_path) do |f|
+  = resource_error_messages!
+
+  %fieldset#facebook_settings
+    %legend= e9_t(:facebook_settings)
+    - if e9_user?
+      .field
+        = f.label :facebook_app_id
+        = f.text_field :facebook_app_id
+      .field
+        = f.label :facebook_app_secret
+        = f.text_field :facebook_app_secret
+      .field
+        = f.label :facebook_company_page_id
+        = f.text_field :facebook_company_page_id
+      .field
+        = f.label :facebook_access_token
+        = f.object.facebook_access_token
+
+    = facebook_access_token_refresh_link
+
+    .field
+      = f.label :facebook_company_page_url
+      = f.text_field :facebook_company_page_url
+
+    %fieldset.checkbox
+      %legend= e9_t(:facebook_content_settings)
+      .field.checkbox
+        = f.label :facebook_pages_by_default
+        = f.check_box :facebook_pages_by_default
+      .field.checkbox
+        = f.label :facebook_blog_posts_by_default
+        = f.check_box :facebook_blog_posts_by_default
+      .field.checkbox
+        = f.label :facebook_events_by_default
+        = f.check_box :facebook_events_by_default
+      .field.checkbox
+        = f.label :facebook_slides_by_default
+        = f.check_box :facebook_slides_by_default
+      .field.checkbox
+        = f.label :facebook_slideshows_by_default
+        = f.check_box :facebook_slideshows_by_default
+      .field.checkbox
+        = f.label :facebook_forums_by_default
+        = f.check_box :facebook_forums_by_default
+
+    .field
+      = f.label :facebook_page_template
+      = f.text_area :facebook_page_template
+    .field
+      = f.label :facebook_forum_template
+      = f.text_area :facebook_forum_template
+
+
+  %fieldset#twitter_settings
+    %legend= e9_t(:twitter_settings)
+    - if e9_user?
+      .field
+        = f.label :twitter_app_id
+        = f.text_field :twitter_app_id
+      .field
+        = f.label :twitter_app_secret
+        = f.text_field :twitter_app_secret
+      .field
+        = f.label :twitter_access_token
+        = f.text_field :twitter_access_token
+      .field
+        = f.label :twitter_secret_token
+        = f.text_field :twitter_secret_token
+
+    .field
+      = f.label :twitter_company_page_url
+      = f.text_field :twitter_company_page_url
+
+    %fieldset.checkbox
+      %legend= e9_t(:twitter_content_settings)
+      .field.checkbox
+        = f.label :twitter_pages_by_default
+        = f.check_box :twitter_pages_by_default
+      .field.checkbox
+        = f.label :twitter_blog_posts_by_default
+        = f.check_box :twitter_blog_posts_by_default
+      .field.checkbox
+        = f.label :twitter_events_by_default
+        = f.check_box :twitter_events_by_default
+      .field.checkbox
+        = f.label :twitter_slides_by_default
+        = f.check_box :twitter_slides_by_default
+      .field.checkbox
+        = f.label :twitter_slideshows_by_default
+        = f.check_box :twitter_slideshows_by_default
+      .field.checkbox
+        = f.label :twitter_forums_by_default
+        = f.check_box :twitter_forums_by_default
+
+    .field
+      = f.label :twitter_page_template
+      = f.text_area :twitter_page_template
+    .field
+      = f.label :twitter_forum_template
+      = f.text_area :twitter_forum_template
+
+  %fieldset#linked-in-settings
+    %legend= e9_t(:linked_in_settings)
+    .field
+      = f.label :linked_in_company_page_url
+      = f.text_field :linked_in_company_page_url
+
+  - if e9_user?
+    %fieldset#bitly_settings
+      .field
+        = f.label :bitly_username
+        = f.text_field :bitly_username
+      .field
+        = f.label :bitly_api_key
+        = f.text_field :bitly_api_key
+
+  .actions
+    = f.submit e9_t(:save_link)

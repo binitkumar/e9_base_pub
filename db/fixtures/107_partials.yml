@@ -1,0 +1,18 @@
+<% column_regions = 'right_column' %>
+
+_defaults: &defaults
+  _finder: name
+
+forum_menu:
+  <<: *defaults
+  name: "Forum Menu"
+  file: "partials/forum_menu"
+  role: 'e9_user'
+  region_types: <%= column_regions %>
+
+blog_menu:
+  <<: *defaults
+  name: "Blog Menu"
+  file: "partials/blog_menu"
+  role: 'e9_user'
+  region_types: <%= column_regions %>

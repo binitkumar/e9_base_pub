@@ -1,0 +1,40 @@
+- event = f.object.event
+.nested-association
+  -# TODO method of disallowing deletion of the first child.  This seems fragile? 
+  - unless local_assigns[:persist_first] && f.object_name =~ /\[0\]/
+    = link_to_destroy_record_attribute
+
+  - if f.object.persisted?
+    = f.hidden_field :id
+    = f.hidden_field :_destroy, :value => 0
+
+  = f.hidden_field :event_id
+
+  .field
+    = f.label :email, nil, :class => :req
+    = f.text_field :email, :class => 'email required uniq', 'data-selector' => 'input.email', 'data-eval' => 'window.event_emails'
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name, :class => 'required'
+
+  - if form_html = event.form_html
+    = form_html.gsub(/record\[/, "#{f.object_name}[").html_safe
+
+  - if event.costs.any?
+    %fieldset.radio
+      %legend= f.label :paid
+      - d = DateTime.now.to_i
+      - event.costs.each.with_index do |cost, i|
+        - field_id = "event_registration_paid_#{i}#{d}"
+        .field.radio
+          = f.radio_button :paid, cost.value, :id => field_id, :checked => i == 0, :class => ['cost', E9.true_value?(cost.promo_code_required).presence && 'promo-code-required'].compact.join(' ')
+          %label{:for => field_id}= cost
+
+  - if event.event_show_promo_code?
+    .field
+      = f.label :promo_code
+      = f.text_field :promo_code, :class => 'promo-code'
+
+  .field.checkbox
+    = f.label :newsletter_optin, default_mailing_list.try(:description)
+    = f.check_box :newsletter_optin

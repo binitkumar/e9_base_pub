@@ -1,0 +1,239 @@
+@import 'compass/utilities/general/min';
+@import 'compass/utilities/general/clearfix';
+@import 'includes/typography';
+@import 'includes/colors';
+@import 'includes/theming.scss';
+
+$layout-preview-width:  200px !default;
+$layout-preview-height: 162px !default;
+$colorbox-border-style: $theme-border-style !default;
+$colorbox-background: $theme-background-color !default;
+
+@mixin colorbox-container {
+  @include clearfix;
+  padding: 10px 15px;
+  > * { margin-bottom: 0.5em; } 
+}
+
+/****************************************************************************
+ * popup-display is for hiding elements on the page that should be shown in 
+ * an overlay
+ */
+
+.tooltip, .popup-display { display: none; }
+#cboxLoadedContent { .tooltip, .popup-display { display: block; } }
+
+/****************************************************************************
+ * individual popup tweaks
+ */
+
+// change layout
+#layouts-container {
+  @include colorbox-container;
+  @include clearfix;
+  @include min-height(207px);
+  max-width: 640px;
+  .layout {
+    float: left;
+    padding-right: 1em;
+    img {
+      height: $layout-preview-height;
+      width: $layout-preview-width;
+    }
+  } 
+}
+
+// friend email
+form#new_friend_email {
+  #subject, #sender_email {
+    display: block;
+    width: 392px;
+    padding: 3px;
+    margin: 4px 0;
+    border: 1px solid #666;
+  }
+  .input, input[type=text], textarea {
+    width: 400px;
+  }
+  textarea { 
+    height: 70px; 
+  } 
+}
+
+form#social-networking-form {
+  .thumb {
+    @include column(4); 
+  }
+  .info {
+    .header {
+      @extend .title;
+      font-weight: bold; 
+    }
+    @include column(8); 
+  } 
+}
+
+/****************************************************************************/
+ /* base */
+
+#colorbox { 
+  textarea {
+    width: auto;
+  }
+}
+
+.admin.controller-e9-polls-polls #cboxLoadedContent {
+	
+	.poll-header{
+		display:none;
+	}
+	
+	.poll-answer{
+		width:100%;
+		margin:0;
+		font-size:$small;
+	}
+}
+
+#cboxLoadedContent {
+  // to offset jquery-ui?
+  //padding: 0 0 10px;
+
+  border: $colorbox_border_style;
+  h1 { 
+    padding: 10px 40px 5px 8px;
+    margin: 0;
+    @include large;
+		height: auto;
+		text-indent: 0;
+  }
+  form {
+    @include colorbox-container;
+    /*max-width: 675px;*/
+  } 
+}
+
+/*  ColorBox Core Style*/
+/*  The following rules are the styles that are consistant between themes.*/
+/*  Avoid changing this area to maintain compatability with future versions of ColorBox.*/
+
+#colorbox, #cboxOverlay, #cboxWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden; 
+}
+
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+#cboxMiddleLeft, #cboxBottomLeft {
+  clear: left; }
+
+#cboxContent {
+  position: relative; }
+
+#cboxLoadedContent {
+  overflow: hidden !important;
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0; } }
+
+#cboxTitle {
+  margin: 0; }
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+  cursor: pointer; }
+
+/*  ColorBox example user style
+ *  The following rules are ordered and tabbed in a way that represents the
+ *  order/nesting of the generated HTML, so that the structure easier to understand. */
+
+#cboxOverlay, #cboxLoadedContent, #cboxLoadingOverlay {
+  background: $colorbox_background;
+}
+
+#cboxLoadedContent {
+  border: 2px solid #666;
+}
+
+#cboxTitle {
+  display: none;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  color: #ccc;
+}
+
+#cboxCurrent {
+  display: none;
+  //position: absolute
+  //top: -20px
+  //right: 0px
+  //color: #ccc
+}
+
+#cboxSlideshow {
+  display: none;
+  //position: absolute
+  //top: -20px
+  //right: 90px
+  //color: #fff
+}
+
+#cboxNext {
+  display: none;
+  //position: absolute
+  //top: 50%
+  //right: 5px
+  //margin-top: -32px
+  //background: url(/images/colorbox/controls.png) top right no-repeat
+  //width: 28px
+  //height: 65px
+  //text-indent: -9999px
+  //&.hover
+  // //background-position: bottom right
+}
+
+
+#cboxLoadingGraphic {
+  background: url(/images/spinner.gif) center center no-repeat; }
+
+// effectively 30px
+#cboxClose {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: block;
+  background: url(/images/buttons/layer_close.png) bottom left no-repeat;
+  width: 20px;
+  height: 20px;
+  text-indent: -999em;
+  &.hover {
+    background-position: top left; } }
+
+#cboxPrevious {
+  display: none;
+  //position: absolute
+  //top: 50%
+  //left: 5px
+  //margin-top: -32px
+  //background: url(/images/colorbox/controls.png) top left no-repeat
+  //width: 28px
+  //height: 65px
+  //text-indent: -9999px
+  //&.hover
+  // //background-position: bottom left
+}
+

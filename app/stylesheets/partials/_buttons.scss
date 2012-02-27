@@ -1,0 +1,12 @@
+@import "includes/buttons";
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"],
+a.button,
+span.button,
+.action-buttons a
+{
+  @include button;
+}

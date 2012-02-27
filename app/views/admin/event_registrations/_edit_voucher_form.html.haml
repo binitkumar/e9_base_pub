@@ -1,0 +1,8 @@
+= form_for resource, :url => admin_event_event_registration_path(parent, resource), :remote => request.xhr? do |f|
+  = f.hidden_field :attended, :value => false
+  .errors= resource_error_messages!
+  .field
+    = f.label :promo_code
+    = f.text_field :promo_code
+  .actions
+    = f.submit

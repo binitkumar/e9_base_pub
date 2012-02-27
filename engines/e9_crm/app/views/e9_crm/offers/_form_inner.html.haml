@@ -1,0 +1,42 @@
+- content_for :bottom_javascripts do
+  = render 'shared/admin/tiny_mce'
+
+.field
+  = f.label :name, nil, :class => :req
+  = f.text_field :name
+
+.field
+  = f.label :submit_button_text
+  = f.text_field :submit_button_text
+
+.field
+  = f.label :conversion_alert_email
+  = f.text_field :conversion_alert_email
+
+%fieldset
+  %legend= f.label(:mailing_list_ids)
+  - offer_mailing_lists.each do |ml|
+    .field.checkbox
+      = check_box_tag "offer[mailing_list_ids][]", ml.id, resource.has_mailing_list?(ml), :id => "offer_mailing_list_ids_#{ml.id}"
+      = label_tag "offer_mailing_list_ids_#{ml.id}", ml.name
+
+.field
+  = help_label(f, :template, :markdown => true)
+  = f.text_area :template
+
+.field.tinymce
+  = f.label :success_page_text
+  = f.text_area :success_page_text
+
+.field
+  = f.label :custom_form_html
+  = f.text_area :custom_form_html
+
+- if request.xhr?
+  - resource.region_type_ids.each_with_index do |id, i|
+    = hidden_field_tag 'offer[region_type_ids][]', id, :id => "offer_region_type_ids_#{i}"
+  - if resource.new_record?
+    - resource.node_ids.each_with_index do |id, i|
+      = hidden_field_tag 'offer[node_ids][]', id, :id => "offer_node_ids_#{i}"
+- else
+  = render 'shared/admin/region_type_select', :f => f

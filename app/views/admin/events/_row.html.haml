@@ -1,0 +1,17 @@
+%td.date
+  = l(record.event_time)
+%td.txt
+  = record.title
+%td.txt
+  = published_status_text(record)
+%td.center
+  - rc = record.respond_to?(:registration_count) && record.registration_count || record.event_registrations.count
+  = link_to rc, admin_event_event_registrations_path(record)
+%td.actions
+  = content_publish_link(record)
+  = link_to_new_resource('Copy', record, :copy_id => record.permalink)
+  = edit_admin_resource_link(record)
+  = change_page_layout_link(record)
+  = preview_page_link(record) if !record.permalink.blank?
+  = social_feed_link(record)
+  = destroy_admin_resource_link(record)

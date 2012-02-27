@@ -1,0 +1,19 @@
+-# trickery here because both topic and comment use this form for legacy reasons
+- object  = resource
+- element = object.class.model_name.element.to_sym
+
+.field
+  = label element, :body, nil, :class => 'req'
+  = text_area element, :body, :value => object.body, :maxlength => 1000
+  .info= e9_t(:comment_warning, :scope => :comments).html_safe
+
+.field.comment-email
+  = label :comment, :email
+  = text_field_tag "#{element}[email]", '', :id => "#{element}_email"
+
+- unless local_assigns[:skip_captcha]
+  .field.recaptcha
+    = raw recaptcha_tag(:comments, :ajax)
+
+  - content_for :javascripts do
+    = recaptcha_script(:comments)

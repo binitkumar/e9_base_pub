@@ -1,0 +1,105 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]), :remote => request.xhr? do |f|
+  .errors= resource_error_messages!
+
+  = f.fields_for resource.options do |ff|
+    .col
+      .field
+        = f.label :name, nil, :class => :req
+        = f.text_field :name
+
+      %fieldset.feed-types.checkbox
+        %legend= 'Feed Type Options'
+
+        .field
+          = slideshow_widget_type_select
+
+        #ft-slideshow.feed-type
+          = label_tag Slideshow.model_name.human.pluralize
+          = widget_slideshow_select
+          %ul.select
+            - resource.slideshows.each do |o|
+              %li.ui-state-default
+                %span= o.title
+                %input{:type => :hidden, :name => "#{resource_instance_name}[options][slideshow_id][]", :value => o.id}
+                  %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+      %div
+        = render 'shared/form_partials/widget_tag_options'
+
+        %fieldset
+          %legend Sort/Limit Options
+          .field.col9.colborder
+            = ff.label :sort
+            = ff.select :sort, widget_sort_select_options
+          .field.col2
+            = ff.label :reverse
+            = ff.check_box :reverse
+          .field.col2
+            = ff.label :limit
+            = ff.text_field :limit
+
+      - if request.xhr?
+        - resource.region_type_ids.each_with_index do |id, i|
+          = hidden_field_tag "#{resource_instance_name}[region_type_ids][]", id, :id => "#{resource_instance_name}_region_type_ids_#{i}"
+        - if resource.new_record?
+          - resource.node_ids.each_with_index do |id, i|
+            = hidden_field_tag "#{resource_instance_name}[node_ids][]", id, :id => "#{resource_instance_name}_node_ids_#{i}"
+      - else
+        = render 'shared/admin/region_type_select', :f => f
+
+    .col
+      %fieldset
+        %legend Display Options
+        .row
+          .field.col7
+            = ff.label e9_t(:autoplay)
+            = ff.number_field :autoplay
+        .field.checkbox
+          = ff.label e9_t(:instructions_clicknext)
+          = ff.check_box :clicknext
+        .field.checkbox
+          = ff.label e9_t(:instructions_pause_on_interaction)
+          = ff.check_box :pause_on_interaction
+        .field.checkbox
+          = ff.label e9_t(:instructions_popup_links)
+          = ff.check_box :popup_links
+        .field.checkbox
+          = ff.label e9_t(:instructions_show_counter)
+          = ff.check_box :show_counter
+        .field.checkbox
+          = ff.label e9_t(:instructions_show_info)
+          = ff.check_box :show_info
+        .row
+          .field.col4
+            = ff.label e9_t(:transition)
+            = ff.select :transition, slideshow_widget_transition_select_options
+          .field.col4
+            = ff.label e9_t(:transition_initial)
+            = ff.select :transition_initial, slideshow_widget_transition_select_options 
+          .field.col6
+            = ff.label e9_t(:transition_speed)
+            = ff.text_field :transition_speed
+        .row
+          .field.col7
+            = ff.label e9_t(:instructions_width)
+            = ff.number_field :width
+          .field.col7
+            = ff.label e9_t(:instructions_height)
+            = ff.number_field :height
+      %fieldset
+        %legend Carousel Options
+        .field.checkbox
+          = ff.label e9_t(:instructions_carousel)
+          = ff.check_box :carousel
+        .field.checkbox
+          = ff.label e9_t(:instructions_carousel_follow)
+          = ff.check_box :carousel_follow
+        .field.col7
+          = ff.label e9_t(:instructions_carousel_speed)
+          = ff.number_field :carousel_speed
+        .field.col7
+          = ff.label e9_t(:instructions_carousel_steps)
+          = ff.number_field :carousel_steps
+
+  .actions.clear
+    = f.submit

@@ -1,0 +1,19 @@
+= form_tag update_order_admin_slideshow_slides_path(parent) do
+  = hidden_field_tag :slideshow_id, parent.id
+  %table.records.sortable
+    %thead
+      %tr
+        %th= resource_humanize(:position)
+        %th= resource_humanize(:thumb)
+        %th= resource_humanize(:title)
+        %th= resource_humanize(:published)
+        %th= resource_humanize(:role)
+        %th= e9_t(:actions)
+    %tbody
+      - if collection.empty?
+        %tr
+          %td{:colspan => 6}= e9_t(:no_records_in_slideshow_text)
+      - else
+        - collection.each do |record|
+          %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+            = render 'in_slideshow_row', :record => record

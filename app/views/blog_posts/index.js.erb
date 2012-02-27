@@ -1,0 +1,2 @@
+$("#blog<%= @blog.try(:id) %>_menu_li ul").replaceWith("<%= escape_javascript(blog_subnav_blog_posts(E9::Config[:blog_submenu], @blog, @blog_posts, params.slice(:page, :per_page, :month, :year))) %>");
+$("#blog<%= @blog.try(:id) %>_menu_li a[href="+window.location.pathname+"]").addClass("current");

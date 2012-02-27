@@ -1,0 +1,8 @@
+- if parent?
+  .slide-pagination
+    .slide-pagination-prev
+      = slide_previous_link(resource, parent, collection)
+    .slide-pagination-info
+      = slide_pagination_info(resource, collection)
+    .slide-pagination-next
+      = slide_next_link(resource, parent, collection)

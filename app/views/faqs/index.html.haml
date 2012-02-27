@@ -1,0 +1,6 @@
+= title(@current_page.title)
+
+- if @faqs.empty?
+  = e9_t(:no_records_text)
+- else 
+  = render @faqs

@@ -1,0 +1,7 @@
+- if current_user.role >= f.object.role
+  %fieldset.radio
+    %legend= f.label(:role)
+    - E9::Roles.user_assignable.each do |role|; next unless local_assigns[:ignore_privileges] || current_user.role >= role
+      .field.radio
+        = f.label :"role_#{role}"
+        = f.radio_button :role, role

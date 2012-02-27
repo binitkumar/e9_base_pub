@@ -1,0 +1,4 @@
+var $feed = $("#twitter-statuses .feed");
+$(".spinner", $feed).remove();
+$("<div><%= escape_javascript(render(collection)) %></div>").appendTo($feed);
+$("#twitter-statuses .pagination").html("<%= escape_javascript(twitter_pagination_link(collection)) %>");

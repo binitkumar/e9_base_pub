@@ -1,0 +1,21 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]) do |f|
+  = resource_error_messages!
+  = f.hidden_field :layout_id
+
+  .field
+    = f.label :title, nil, :class => :req
+    = f.text_field :title
+  .field
+    = f.label :meta_description
+    = f.text_area :meta_description
+  .field
+    = f.label :meta_keywords, (resource_humanize(:meta_keywords) << %Q| <span class="help" rel="tooltip" title="#{e9_t(:meta_keywords_instructions)}">[?]</span>|).html_safe
+    = f.text_area :meta_keywords
+
+  = image_mount_field(resource.thumb, :f => f)
+
+  = render 'admin/views/region_manager', :f => f
+  = render 'shared/form_partials/roles_for_content', :f => f, :css_class => :req, :roles => E9::Roles.content_assignable.reject {|n| n == 'guest' }
+
+  .actions
+    = f.submit

@@ -1,0 +1,113 @@
+@import 'includes/blueprint';
+@import 'includes/theming';
+body.controller-users {
+  .user {
+    @include clearfix;
+  }
+  .users .user, .user-section {
+    margin-bottom: $global-spacing-margin;
+    padding-bottom: $global-spacing-margin;
+    border-bottom-width: $theme-border-width;
+    border-bottom-style:solid;
+    border-bottom-color:$theme-border-color;
+  }
+  .avatar {
+    @include column(3);
+    /* ugh */
+    width: 95px;
+  }
+  .user-body {
+    display: inline;
+    float: left;
+		width:580px;
+    .title{
+      margin-top:0;
+      line-height:1em;
+      margin-bottom:.4em;
+    }
+  }
+
+  .user-link {
+    margin-bottom: 0;
+    line-height:1.0em;
+		a { 
+      @include medium;
+			font-weight:bold;
+    }
+  }
+  .user-email {
+    a{
+      color: $theme-alt-text-color;
+      font-weight:bold;
+      text-decoration:underline;
+      font-size:14px;
+      &:hover{
+        color:$theme-text-color;
+      }
+    }
+  }
+
+  .matches {
+    margin-top: $global-spacing-margin;
+    .match-type {
+      font-weight: bold;
+    }
+  }
+
+  .map, .attr-category {
+    margin-bottom: $global-spacing-margin;
+  }
+
+  .user-company {
+    font-weight: bold;
+    font-size:16px;
+  }
+  .user-title{
+    font-style:italic;
+  }
+  .user-dob{
+    font-size:14px;
+  }
+
+  .relative-info {
+    font-style: italic;
+  }
+  .user-section{
+    float:left;
+    .attr-category{
+      float:left;
+      width:100%;
+      .attr-category-name{
+        color:$theme-alt-text-color;
+        font-weight:bold;
+        border-bottom: 1px solid;
+        margin-right: 10px;
+        margin-bottom:5px;
+      }
+    }
+    .attr{
+      float:left;
+      font-size:14px;
+      clear:both;
+      a{
+        font-size:14px;
+        text-decoration:underline;
+        color:#000;
+        font-weight:bold;
+        &:hover{
+          color:$theme-text-color;
+        }
+      }
+    }
+  }
+}
+.header{
+  a{
+    font-size:16px;
+    color:$theme-link-color;
+    text-decoration:underline;
+    &:hover{
+      text-decoration:underline;
+    }
+  }
+}

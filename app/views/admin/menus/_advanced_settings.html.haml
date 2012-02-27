@@ -1,0 +1,20 @@
+%fieldset.grouping
+  %legend= e9_t(:advanced_settings)
+  .fields
+    %fieldset.checkbox
+      %legend= label_tag e9_t(:settings_form_legend, :scope => 'admin.menus')
+      .field.checkbox
+        = f.label :new_window
+        = f.check_box :new_window
+      .field.checkbox
+        = f.label :show_children
+        = f.check_box :show_children
+
+    - content_for :role_insertion do
+      .field.checkbox
+        = f.label :logged_out_only
+        = f.check_box :logged_out_only
+    = render 'shared/form_partials/roles_for_content', :f => f
+
+    -#- if e9_user?
+      -#= render 'shared/form_partials/carrierwave_upload_field', :field => :icon, :f => f

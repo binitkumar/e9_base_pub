@@ -1,0 +1,12 @@
+- content_for :main_nav_content do
+  #main-nav
+    = render_region 'main-nav'
+
+- content_for :application_content do
+  #body
+    #content
+      .content-inner
+        = content_for?(:minimal_content) ? yield(:minimal_content) : yield
+
+- add_body_class("basic")
+= render :file => 'layouts/application'

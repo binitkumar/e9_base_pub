@@ -1,0 +1,174 @@
+@import 'compass/utilities/general/clearfix';
+@import 'includes/typography';
+@import 'includes/colors';
+
+/**
+ * Most sidebar renderables have automatic bottom borders,
+ * with padding to match the margin;
+ */
+$renderable-bottom-margin: .4em !default;
+
+#left, #right {
+  .forum-menu{
+    margin-bottom:10px;
+  }
+
+  blockquote {
+    margin:0;
+  }
+
+  .quote-author {
+    font-size:small;
+    line-height: 1.2em;
+    margin: 0.5em 0 0 1em;
+  }
+
+  .actions input, .actions .button {
+    font-size: 0.8em;
+  }
+
+  .field {
+    margin:0 0 $renderable-bottom-margin;
+    float:left;
+  }
+
+  .field.checkbox {
+    margin:0;
+    padding-top:10px;
+  }
+
+  /* ensure clearfix for quickedit */
+  .renderable, .region ,.renderable-body {
+    @include pie-clearfix;
+
+    &, > * {
+      @include pie-clearfix;
+    }
+  }
+
+  .renderable-body > * {
+    &:first-child, &.image { margin-top: 0; }
+    margin-top: 0.5em;
+  }
+  .renderable-body{
+    .action-links{
+      float:right;
+      margin-right:5px;
+      a{
+        clear:both;
+        float: right;
+        font-weight:bold;
+        text-decoration:underline;
+        margin-top:2px;
+        font-size: 12px;
+        padding-right: 10px;
+        text-align: right;
+        width: 100%;
+        color:$theme-alt-text-color;
+      }
+    }
+  }
+
+
+  /* -------end header rule is being extended in several places ------- */
+
+  h4 { 
+    margin:0;
+    a, &.title {
+      margin: 0;
+
+    }
+  }
+
+  p {
+    margin: 0;
+    @include small;
+    display:run-in;
+    clear:none;
+    padding:0;
+  }
+
+  .info {
+    @include xx-small;
+    margin-bottom: 0.5em;
+  }
+
+  .info p {
+    @include xx-small;
+    margin-bottom: .33em;
+    //display:inline-block;
+
+    //&:last-child {
+      //	margin-bottom: 1.5em;
+    //}
+
+    &:empty {
+      margin: 0;
+    }
+  }
+
+  .renderable {
+    //margin-top:1.5em;
+    border-bottom: theme-border-style();
+
+    .blog-menu{
+      margin-bottom:1em;
+    }
+
+    &:first-child {
+      margin-top:0 !important;
+    }
+
+    &.feed_widget, &.top_widget, &.slideshow_widget, &.poll,  &.offer, &.title-description-module {
+      padding-bottom: 10px;
+      margin-bottom: $renderable-bottom-margin;
+      
+    }
+
+    .offer-body{
+      padding-bottom:$renderable-bottom-margin;
+    }
+
+    &.feed_widget{/*overides*/
+     // padding-bottom:0;
+    }
+
+    .module-container{
+      margin-bottom:.7em;
+    }
+
+  } 
+}
+#right{
+  h4{
+    width:160px;
+    float:left;
+  }
+}
+#footer {
+  font-size:small;
+
+  .renderable {
+    width:250px;
+    display:block;	
+  }
+
+
+  .renderable .title-author-module{
+    a {
+      //display:inline;
+    }
+
+    .image {
+      width:$avatar_width;
+      height:$avatar_height;
+    }
+
+    h4{
+      float:left;
+    }
+  }
+}
+.renderable{
+  @include pie-clearfix;
+}

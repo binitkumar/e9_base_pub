@@ -1,0 +1,5 @@
+<% new_title = @index_title || e9_t(:index_title) %>
+document.title = "<%= escape_javascript(meta_title(new_title)) %>";
+$("h1.title").html("<%= escape_javascript(new_title) %>");
+$('#email_delivery_form').html("<%= escape_javascript(render 'email_delivery_form') %>");
+$('#records_table').html("<%= escape_javascript(render('table', :resources => collection)) %>");

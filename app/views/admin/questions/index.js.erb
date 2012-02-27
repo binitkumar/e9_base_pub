@@ -1,0 +1,25 @@
+$("#records_table").html("<%= escape_javascript(render('table', :collection => collection)) %>");  
+
+$('table.sortable').sortable({
+  axis: 'y', 
+  dropOnEmpty: false, 
+  handle: '.handle',
+  cursor: 'pointer',
+  items: 'tr',
+  opacity: 0.5,
+  forcePlaceholderSize: true,
+  containment: "parent",
+  tolerance: 'pointer',
+  scroll: true,
+  update: function(e, ui) {
+    $.ajax({
+      type: 'post',
+      url: $(this).closest('form').attr('action'),
+      data: $(this).sortable('serialize'),
+      dataType: 'script', 
+      complete: function(request) {
+        $('table.sortable').find('tr.active').effect('highlight');
+      }
+    })
+  }
+});

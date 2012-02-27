@@ -1,0 +1,18 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]), :remote => request.xhr? do |f|
+  .errors= resource_error_messages!
+
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+
+  - if f.object.respond_to?(:css_class)
+    .field
+      = f.label :css_class
+      = f.text_field :css_class
+
+  .field
+    = f.label :body, nil, :class => :req
+    = f.text_area :body
+
+  .actions
+    = f.submit

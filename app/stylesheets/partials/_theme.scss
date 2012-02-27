@@ -1,0 +1,5 @@
+@import 'includes/theming';
+
+body {
+	@include apply-theming;
+}

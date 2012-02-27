@@ -1,0 +1,18 @@
+%tr{:id => "ids_#{record.id}"}
+  %td.field.date
+    = localize (record.deal_created_at || record.date).to_date
+  %td.field.date
+    = record.deal_closed_at && l(record.deal_closed_at.to_date)
+  %td.field
+    = record.deal_status
+  %td.field.date
+    = record.label
+  %td.field.num
+    $<span class="cost">#{"%.2f" % record.cost}</span>
+
+  - unless params[:print]
+    %td.actions
+      - if record.deal.blank? || record.deal.status == 'won'
+        = link_to_edit_resource(record, :rel => :popup) 
+      - unless record.deal.present?
+        = link_to_destroy_resource(record, :remote => true)

@@ -1,0 +1,15 @@
+_defaults: &defaults
+  _finder: name
+
+poll_1:
+  <<: *defaults
+  name: Shakespeare Poll
+  region_types: right_column
+  template: When he himself might his quietus make with a bare bodkin?
+  poll_answers_attributes:
+    - value: Hamlet
+    - value: Troilus is a really really quite very long poll answer
+    - value: Puck
+    - value: Mercutio
+  options:
+    header_text: We have to know...

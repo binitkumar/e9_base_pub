@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  $(function() {
+    $("#<%= field_id %>").image_upload({
+      fileExt: "<%= resource.image_file_ext %>",
+      fileDesc: "<%= resource.image_file_desc %>",
+      queueID: "<%= field_id %>-queue",
+      inputID: "<%= field_id %>-file",
+      reload: <%= resource.persisted? && resource.versions.any? %>,
+      scriptData: {
+        format: "json",
+        _method: "post",
+        <%= session_key %>: encodeURIComponent("<%= u session_id  %>"),
+        <%= request_forgery_protection_token  %>: encodeURIComponent('<%= u form_authenticity_token if protect_against_forgery?  %>')
+      }
+    })
+  });
+</script>

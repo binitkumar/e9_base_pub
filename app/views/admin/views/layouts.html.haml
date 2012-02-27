@@ -1,0 +1,11 @@
+= title e9_t(:change_layout_title, :scope => :"admin.views", :page_title => truncate(resource.title, :length => 25))
+
+#layouts-container
+  - @layouts.each do |layout|
+    .layout{:id => "ids_#{layout.id}"}
+      .layout-name
+        = truncate(layout.name, :length => 18)
+      .actions
+        = change_to_layout_link layout, resource
+      .layout-preview
+        = change_to_layout_link layout, resource, :contents => layout_preview_tag(layout)

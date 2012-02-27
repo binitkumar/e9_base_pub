@@ -1,0 +1,22 @@
+.instructions
+  = e9_t(:social_networking_instructions, :scope => 'admin.social_networking')
+
+- if resource._post_to_facebook? && facebook_configured?
+  %fieldset
+    %legend= e9_t(:header, :scope => :facebook_posts)
+
+    .field.checkbox
+      = label :facebook_post, :post, 'Post to Facebook?'
+      = check_box :facebook_post, :post, :checked => true
+
+    = render 'facebook_posts/form_inner', :content => resource
+
+- if resource._post_to_twitter? && twitter_configured?
+  %fieldset
+    %legend= e9_t(:header, :scope => :twitter_statuses)
+
+    .field.checkbox
+      = label :twitter_status, :post, 'Post to Twitter?'
+      = check_box :twitter_status, :post, :checked => true
+
+    = render 'twitter_statuses/form_inner', :content => resource

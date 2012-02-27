@@ -1,0 +1,7 @@
+<% collection.each_with_index do |share_site, index| %>
+  <% if share_site_row_class(share_site) == 'active' %>
+    $('tr#ids_<%= share_site.id %>').addClass('active').removeClass('inactive');
+  <% else %>
+    $('tr#ids_<%= share_site.id %>').addClass('inactive').removeClass('active');
+  <% end %>
+<% end %>

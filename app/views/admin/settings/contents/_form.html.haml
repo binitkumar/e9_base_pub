@@ -1,0 +1,104 @@
+= form_for(resource, :url => admin_settings_content_path, :html => { :multipart => true }) do |f|
+  = resource_error_messages!
+
+  %fieldset#pages_settings
+    %legend= e9_t(:pages_settings)
+    %fieldset.checkbox
+      %legend= f.label :default_page_settings
+      .field.checkbox
+        = f.label :page_show_social_bookmarks, ContentView.human_attribute_name(:display_social_bookmarks)
+        = f.check_box :page_show_social_bookmarks
+      .field.checkbox
+        = f.label :page_display_actions, ContentView.human_attribute_name(:display_actions)
+        = f.check_box :page_display_actions
+      .field.checkbox
+        = f.label :page_show_date, ContentView.human_attribute_name(:display_date)
+        = f.check_box :page_show_date
+      .field.checkbox
+        = f.label :page_show_author_info, ContentView.human_attribute_name(:display_author_info)
+        = f.check_box :page_show_author_info
+      .field.checkbox
+        = f.label :page_show_labels, ContentView.human_attribute_name(:display_labels)
+        = f.check_box :page_show_labels
+      .field.checkbox
+        = f.label :page_allow_comments, ContentView.human_attribute_name(:allow_comments)
+        = f.check_box :page_allow_comments
+
+  %fieldset#blog_settings
+    %legend= e9_t(:blog_settings)
+    .field
+      = f.label :blog_pagination_records, nil, :class => :req
+      = f.text_field :blog_pagination_records
+    %fieldset.checkbox
+      %legend= f.label :default_blog_settings
+      .field.checkbox
+        = f.label :blog_show_social_bookmarks, ContentView.human_attribute_name(:display_social_bookmarks)
+        = f.check_box :blog_show_social_bookmarks
+      .field.checkbox
+        = f.label :blog_display_actions, ContentView.human_attribute_name(:display_actions)
+        = f.check_box :blog_display_actions
+      .field.checkbox
+        = f.label :blog_show_date, ContentView.human_attribute_name(:display_date)
+        = f.check_box :blog_show_date
+      .field.checkbox
+        = f.label :blog_show_author_info, ContentView.human_attribute_name(:display_author_info)
+        = f.check_box :blog_show_author_info
+      .field.checkbox
+        = f.label :blog_show_labels, ContentView.human_attribute_name(:display_labels)
+        = f.check_box :blog_show_labels
+      .field.checkbox
+        = f.label :blog_allow_comments, ContentView.human_attribute_name(:allow_comments)
+        = f.check_box :blog_allow_comments
+
+  %fieldset.checkbox
+    %legend= e9_t(:event_settings)
+    .field.checkbox
+      = f.label :event_show_social_bookmarks, ContentView.human_attribute_name(:display_social_bookmarks)
+      = f.check_box :event_show_social_bookmarks
+    .field.checkbox
+      = f.label :event_display_actions, ContentView.human_attribute_name(:display_actions)
+      = f.check_box :event_display_actions
+    .field.checkbox
+      = f.label :event_show_labels, ContentView.human_attribute_name(:display_labels)
+      = f.check_box :event_show_labels
+
+  %fieldset#forum_settings
+    %legend= e9_t(:forum_settings)
+    .field
+      = f.label :forum_pagination_records, nil, :class => :req
+      = f.text_field :forum_pagination_records
+
+  %fieldset#slide_settings
+    %legend= e9_t(:slide_settings)
+    %fieldset.checkbox
+      %legend= f.label :default_slide_settings
+      .field.checkbox
+        = f.label :slide_show_social_bookmarks, ContentView.human_attribute_name(:display_social_bookmarks)
+        = f.check_box :slide_show_social_bookmarks
+      .field.checkbox
+        = f.label :slide_display_actions, ContentView.human_attribute_name(:display_actions)
+        = f.check_box :slide_display_actions
+      .field.checkbox
+        = f.label :slide_display_more_info, ContentView.human_attribute_name(:display_more_info)
+        = f.check_box :slide_display_more_info
+      .field.checkbox
+        = f.label :slide_show_date, ContentView.human_attribute_name(:display_date)
+        = f.check_box :slide_show_date
+      .field.checkbox
+        = f.label :slide_show_author_info, ContentView.human_attribute_name(:display_author_info)
+        = f.check_box :slide_show_author_info
+      .field.checkbox
+        = f.label :slide_show_labels, ContentView.human_attribute_name(:display_labels)
+        = f.check_box :slide_show_labels
+      .field.checkbox
+        = f.label :slide_allow_comments, ContentView.human_attribute_name(:allow_comments)
+        = f.check_box :slide_allow_comments
+
+  %fieldset#feed_settings
+    %legend= e9_t(:feed_settings)
+    .field
+      = f.label :feed_records, nil, :class => :req
+      = f.text_field :feed_records
+
+  .actions
+    = f.submit e9_t(:save_link)

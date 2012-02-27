@@ -1,0 +1,16 @@
+= title(current_page.title) if current_page.display_title?
+
+.profile-favorites.list-container
+  .header
+    .text
+      = e9_t(:favorites_header)
+    .actions
+      = link_to e9_t(:unsave_favorites_link), unsave_all_profile_path, :confirm => e9_t(:confirmation_question), :remote => true, :method => :delete
+
+  = render 'favorites/favorites'
+
+.profile-comments.list-container
+  .header
+    = e9_t(:commented_items_header)
+
+  = render 'profiles/comments'

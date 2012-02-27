@@ -1,0 +1,23 @@
+= form_for(resource) do |f|
+  = resource_error_messages!
+  .field
+    = f.label :forum_id, nil, :class => :req
+    = f.select :forum_id, forum_select_array
+  .field
+    = f.label :title, nil, :class => :req
+    = f.text_field :title
+  = render 'e9_tags/form', :f => f, :context => :tags
+  = render 'comments/form_inner', :resource => f.object, :skip_captcha => true
+
+  - if admin?
+    .field
+      = f.label :meta_title
+      = f.text_field :meta_title
+    .field
+      = f.label :meta_description
+      = f.text_area :meta_description
+    .field
+      = f.label :meta_keywords, (resource_humanize(:meta_keywords) << %Q| <span class="help" rel="tooltip" title="#{e9_t(:meta_keywords_instructions)}">[?]</span>|).html_safe
+      = f.text_area :meta_keywords
+  .actions
+    = f.submit e9_t(:save_link)

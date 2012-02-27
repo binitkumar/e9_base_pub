@@ -1,0 +1,7 @@
+<% if resource.errors.any? %>
+  $('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+  $.fn.colorbox.resize();
+<% else %>
+  $('#<%= resource.to_anchor %>').html("<%= escape_javascript(render(:partial => resource.class.model_name.partial_path, :object => resource)) %>").quick_edit(true);
+  try { $.colorbox.close() } catch(e) {}
+<% end %>

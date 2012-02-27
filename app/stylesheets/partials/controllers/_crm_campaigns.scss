@@ -1,0 +1,9 @@
+@import 'includes/typography';
+
+body.controller-e9-crm-campaigns {
+  &.template-reports {
+    .ordered-column {
+      @include x-small;
+    }
+  }
+}

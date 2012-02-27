@@ -1,0 +1,17 @@
+%fieldset
+  %legend Tag Options
+
+  #feed-tags.field.tag-fields
+    .field.tag-field.col6
+      = label_tag "#{resource_instance_name}_options_context", e9_t(:tag_context_name).singularize
+      = select_tag "#{resource_instance_name}[options][context]", widget_context_options, :id => "widget-tag-context-select"
+    .field.tag-field.col7
+      = label_tag "#{resource_instance_name}_options_tags", e9_t(:tags_name).singularize
+      = select_tag "#{resource_instance_name}_options_tags", widget_tag_select_options, :class => 'list', :"data-type" => 'tags', :"data-field" => "[options][tags]", :"data-iname" => resource_instance_name
+      %ul.select
+        - if resource.options.tags.present?
+          - resource.options.tags.each do |tag|
+            %li.ui-state-default
+              %span.content= tag
+              %input{:type => :hidden, :name => "#{resource_instance_name}[options][tags][]", :value => tag}
+                %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove

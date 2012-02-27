@@ -1,0 +1,46 @@
+@import 'compass/css3/inline-block';
+@import 'includes/typography';
+@import 'includes/theming';
+@import 'includes/lists';
+@import 'includes/colors';
+@import 'includes/theming';
+
+/* note this mixin exists to make it easier to have different sized left blocks, like on jbreshin */
+@mixin left-blockish($padding, $width: $avatar-width, $height: $avatar-height) {
+  $outer-width: $width;
+  width: $outer-width;
+  float: left; 
+  margin: 0 12px 8px 0;
+  text-align: center; 
+  
+
+.action-links { 
+    @include small;
+    text-align: left;
+    ul {
+      @include blank-list;
+      li { display: block; }
+    }
+    a { 
+      @include inline-block;
+      @include theme-border;
+      border-top: none;
+      font-weight: bold; 
+      padding: 0.5em $padding;
+      width: $width - $padding * 2;
+      text-decoration: underline;
+      color:$theme-alt-text-color;
+    }
+  }
+  .thumb, .avatar {
+    img { 
+      @include theme-border;
+      width: $width;
+      height: $height;
+    }
+  }
+}
+
+.left-block {
+  @include left-blockish(8px);
+} 

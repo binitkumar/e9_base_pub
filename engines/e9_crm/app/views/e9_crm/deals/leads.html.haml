@@ -1,0 +1,6 @@
+= title (@index_title || e9_t(:index_title))
+
+= render 'leads_header'
+
+%div#records_table
+  = render 'leads_table', :resources => collection

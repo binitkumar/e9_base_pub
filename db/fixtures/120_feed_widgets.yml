@@ -1,0 +1,62 @@
+_defaults: &defaults
+  _finder: name
+
+all_data:
+  <<: *defaults
+  name: Page & Blog Feed With All Data
+  widget_template: full
+  region_types: right_column
+  options:
+    header_text: Page & Blog Feed With All Data with long header asdfasdf
+    limit: 2
+    content_type: ['user_page', 'blog_post']
+
+slides_image_only:
+  <<: *defaults
+  name: Slides - Images Only Feed
+  widget_template: images
+  region_types: right_column
+  options:
+    limit: 4
+    header_text: Slides - Images Only Feed
+    content_type: ['slide']
+
+faq_image_and_title:
+  <<: *defaults
+  name: FAQ Feed With Image & Title
+  widget_template: titles_and_images
+  region_types: right_column
+  options:
+    limit: 2
+    header_text: FAQ Feed With Image & Title
+    content_type: ['question']
+
+forum_feed:
+  <<: *defaults
+  name: Forum Feed - Image, Title & Summary
+  widget_template: image_title_and_summary
+  region_types: right_column
+  options:
+    limit: 2
+    header_text: Forum Feed - Image, Title & Summary
+    content_type: ['topic']
+
+blog_feed:
+  <<: *defaults
+  name: Blog Feed - Title & Author
+  widget_template: titles_and_authors
+  region_types: right_column
+  options:
+    header_text: Blog Feed - Title & Author
+    limit: 2
+    content_type: ['blog_post']
+
+event:
+  <<: *defaults
+  name: Event Feed
+  widget_template: event
+  region_types: right_column
+  options:
+    event_feed: true
+    header_text: Check out these upcoming events...
+    limit: 5

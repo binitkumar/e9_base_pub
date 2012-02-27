@@ -1,0 +1,11 @@
+<% if resource.errors.any? %>
+  $('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+  $.fn.colorbox.resize();
+<% elsif SlideshowWidget === resource.reload.renderable %>
+  window.location.reload();
+<% else %>
+  $('.renderable[data-node=<%= resource.id %>]')
+    .replaceWith("<%= escape_javascript render_renderable(resource.renderable, ''.html_safe, :node => resource) %>");
+  $('#<%= resource.renderable.to_anchor %>').quick_edit(true);
+  try { $.colorbox.close() } catch(e) {}
+<% end %>

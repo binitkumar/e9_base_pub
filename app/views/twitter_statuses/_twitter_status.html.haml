@@ -1,0 +1,17 @@
+.feed-item.tw-status{:id => "twitter_status_#{twitter_status.id}"}
+  .feed-avatar
+    - if twitter_status.user.present?
+      = image_tag(twitter_status.user['profile_image_url'], :alt => twitter_status.user['screen_name'])
+  .inner
+    .feed-from
+      - if twitter_status.user.present?
+        .feed-screen-name
+          #{twitter_status.user['screen_name']}
+        .feed-name
+          #{twitter_status.user['name']}
+
+    .feed-status= twitter_parse(twitter_status.text)
+    .feed-time= localize(twitter_status.created_at, :format => :dateline)
+
+  .action-icons
+    = link_to e9_t(:delete_link), twitter_status, :class => 'delete', :method => :delete, :confirm => e9_t(:confirmation_question), :remote => true

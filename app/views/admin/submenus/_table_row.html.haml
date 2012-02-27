@@ -1,0 +1,15 @@
+%tr{:id => ("ids_#{menu.id}" unless local_assigns[:index]) }
+  %td.c0.position
+    - if local_assigns[:index]
+      .handle +
+  %td.c1.id.txt= menu.id
+  %td.c2.txt= menu_name_with_depth(menu, depth) 
+  %td.c3.txt= menu_role_text(menu)
+  %td.c4.txt= menu_window_text(menu)
+  %td.c5.actions
+    = edit_admin_resource_link(menu)
+    = destroy_admin_resource_link(menu)
+
+- if local_assigns[:children] && !children.blank?
+  - children.each do |child, children|
+    = render 'table_row', :menu => child, :children => children, :depth => depth + 1

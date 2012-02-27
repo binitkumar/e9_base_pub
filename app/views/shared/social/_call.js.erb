@@ -1,0 +1,19 @@
+<% redirect = local_assigns[:redirect] %>
+<% if any_social_feeds_configured? %>
+  $.socialFormify({ 
+    url: "<%= polymorphic_url([:social_form_admin, resource]) %>",
+    submitComplete: function(e, xhr) { 
+      $.colorbox.close();
+      <% if redirect %>
+      window.location = "<%= redirect %>";
+      <% end %>
+    },
+    loadError: function() {
+      <% if redirect %>
+      window.location = "<%= redirect %>";
+      <% end %>
+    }
+  });
+<% elsif redirect %>
+  window.location = "<%= redirect %>";
+<% end %>

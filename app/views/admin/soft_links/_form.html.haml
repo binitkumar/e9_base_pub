@@ -1,0 +1,19 @@
+= form_for(resource, :url => polymorphic_path([:admin, resource]), :html => {:multipart => true}) do |f|
+  = resource_error_messages!
+  .field
+    = f.label :parent_id, nil, :class => :req
+    = f.select :parent_id, parent_menu_select_options(resource)
+  .field
+    = f.label :link_id, nil, :class => :req
+    = f.select :link_id, link_select_options(resource)
+  .field.checkbox
+    = f.label :delegate_title_to_link
+    = f.check_box :delegate_title_to_link
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  = render 'admin/menus/advanced_settings', :f => f
+
+  .actions
+    = f.submit e9_t(:save_link)

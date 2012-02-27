@@ -1,0 +1,26 @@
+= form_for(resource, :remote => true) do |f|
+  .errors= resource_error_messages!
+  = f.hidden_field :user_id
+  = f.hidden_field :link_id
+  .field
+    = label_tag :subject
+    %span#subject
+      = render_liquid(friend_email.subject, :page => resource.linkable)
+  .field
+    = f.label :recipient_email, nil, :class => :req
+    = f.text_field :recipient_email
+  .field
+    = f.label :sender_email, nil, :class => :req
+    - if current_user
+      %span#sender_email
+        = current_user.email
+    - else
+      = f.text_field :sender_email
+  .field
+    = f.label :message, nil, :class => :req
+    = f.text_area :message
+  .field.comment-email
+    = label :friend_email, :email
+    = text_field_tag "friend_email[email]", '', :id => "friend_email"
+  .actions
+    = f.submit 'Send'

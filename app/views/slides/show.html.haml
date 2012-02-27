@@ -1,0 +1,15 @@
+- if resource.published? || admin?
+  - content_for :slide_bottom do
+    #slide-comments
+
+  - content_for :javascripts do
+    = include_javascripts :slides
+
+  - content_for :bottom_javascripts do
+    = recaptcha_script(:comments)
+    :javascript
+      $(function() { $.slide_load("#{resource.to_param}") });
+
+- else
+  - content_for :slide_content do
+    %h2.error= e9_t(:unpublished_page_error)

@@ -1,0 +1,127 @@
+<% column_regions = "right_column" %>
+
+_defaults: &defaults
+  _finder: name
+
+main_menu:
+  <<: *defaults
+  name: "Main Menu"
+  template: "<ul class=\"menu\">{% menu identifier[main_menu] %}</ul>"
+  region_types: main_nav
+
+top_nav:
+  <<: *defaults
+  name: "Top Nav Content"
+  region_types: top_nav
+  template: |
+    <ul class="right">
+      <li class="welcome">
+        {% if current_user %}
+          {% welcome_firstname %}
+        {% else %}
+          Welcome!
+        {% endif %}
+      </li>
+      {% menu identifier[top_nav_menu] %}
+      <li class="search"> 
+        <form method="GET" action="/search" style="display:none">
+          <fieldset>
+            <input type="text" name="query" id="search_query" >
+          </fieldset>
+        </form>
+        <a href="#">Search</a>
+      </li>
+    </ul>
+
+footer_menu:
+  <<: *defaults
+  name: "Footer Menu"
+  region_types: footer
+  set_revert_template: true
+  template: |
+    <div class="footer-module">
+      <ul class="footer-menu menu">
+        {% menu identifier[footer_menu] %}
+      </ul>
+    </div>
+
+social_module:
+  <<: *defaults
+  name: "Social Module"
+  region_types: footer
+  set_revert_template: true
+  template: |
+    <div class="footer-module">
+      <h4>Stay in Touch!</h4>
+      <ul class="social-module">
+        <li><a class="social-link facebook" href="{{ config.facebook_company_page_url }}" rel="external">Favorite us on Facebook</a></li>
+        <li><a class="social-link twitter" href="{{ config.twitter_company_page_url }}" rel="external">Follow us on Twitter</a></li>
+        <li><a class="social-link linked-in" href="{{ config.linked_in_company_page_url }}" rel="external">Connect on LinkedIn</a></li>
+        <li><a class="social-link yelp" href="{{ config.linked_in_company_page_url }}" rel="external">Read our reviews on Yelp!</a></li>
+      </ul>
+    </div>
+
+bottom_footer:
+  <<: *defaults
+  name: "Bottom Footer"
+  region_types: bottom_footer
+  set_revert_template: true
+  role: 'e9_user'
+  template: |
+    <span class="copyright">{% helper footer_copyright_content %}</span>
+    <span> | </span>
+    <span class="marketsmiths">
+      <a href="http://www.marketsmiths.com" rel="external">Website copy</a> 
+      by 
+      <a href="http://www.marketsmiths.com" rel="external">MarketSmiths</a>
+    </span>
+    <span class="e9digital">
+      {% helper link_to_google_bomb %}
+    </span>
+
+previous_next_links:
+  <<: *defaults
+  name: "Previous/Next Links"
+  region_types: <%= column_regions %>
+  set_revert_template: true
+  formatter: 1
+  template: |
+    {% if page.previous_record or page.next_record %}
+      <div class="record-seq">
+        <div class="record-seq-prev">
+        {% if page.previous_record %}   
+          <div class="record-seq-link">{% link_to previous_record text[&lt; Previous] %}</div>
+          <div class="record-seq-image">{% link_to previous_record thumb[true] %}</div>
+          <div class="record-seq-title">{% link_to previous_record %}</div>
+          <div class="record-seq-dateline">{{ page.previous_record.created_at }}</div>
+          <div class="record-seq-author">by {{ page.previous_record.author.name }}</div>
+          <div class="record-seq-summary">{{ page.previous_record.summary | truncate: 50 }}</div>
+        {% else %} 
+          <div class="record-seq-link"><span class="ico">&lt; Previous</span></div>
+          <div class="record-seq-image"><img src="/images/defaults/blog_nav_thumb.png" /></div>
+          <div class="record-seq-title">{{ page.parent.title }}</div>
+        {% endif %}
+        </div>
+        <div class="record-seq-next">
+        {% if page.next_record %} 
+          <div class="record-seq-link">{% link_to next_record text[Next &gt;] %}</div>
+          <div class="record-seq-image">{% link_to next_record thumb[true] %}</div>
+          <div class="record-seq-title">{% link_to next_record %}</div>
+          <div class="record-seq-dateline">{{ page.next_record.created_at }}</div>
+          <div class="record-seq-author">by {{ page.next_record.author.name }}</div>
+          <div class="record-seq-summary">{{ page.next_record.summary | truncate: 50 }}</div>
+        {% else %} 
+          <div class="record-seq-link"><span class="ico">Next &gt;</span></div>
+          <div class="record-seq-image"><img src="/images/defaults/blog_nav_thumb.png" /></div>
+          <div class="record-seq-title">{{ page.parent.title }}</div>
+        {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+admin_menu:
+  <<: *defaults
+  name: "Admin Menu"
+  role: 'user'
+  region_types: main_nav
+  template: "<ul class=\"menu\">{% menu identifier[admin_menu] %}</ul>"

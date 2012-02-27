@@ -1,0 +1,45 @@
+@import 'compass/typography/lists/horizontal-list';
+
+$tooltip-label-color       :             $theme-text-color !default;
+$tooltip-permalink-width   :                         300px !default;
+$tooltip-permalink-padding :                           3px !default;
+
+span, a {
+  &[rel=tooltip] {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.ui-tooltip ul {
+  @include horizontal-list(0px); 
+}
+
+.qtip {
+  width: auto !important;
+
+  fieldset { 
+    border: 0; 
+    padding: 0; 
+    margin: 0;
+  }
+
+  .section { 
+    margin-bottom: 0.5em; 
+  }
+
+  .label { 
+    @include small;
+    color: $tooltip-label-color; 
+  }
+  .qtip-content { 
+    border: theme-border-style;
+    padding-top: 3em; 
+  }
+  .permalink {
+    input[readonly] {
+      width: $tooltip-permalink-width;
+      padding: $tooltip-permalink-padding;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+#profile-tabs
+  %ul
+    %li= link_to e9_t(:general_form_fields_header), "#tabs-1"
+    %li= link_to e9_t(:avatar_form_fields_header), "#tabs-2"
+    %li= link_to e9_t(:password_form_fields_header), "#tabs-3"
+
+  %fieldset#tabs-1
+    = render 'general_form_fields', :resource => resource
+
+  %fieldset#tabs-2
+    = render 'avatar_form_fields', :resource => resource
+
+  %fieldset#tabs-3
+    = render 'password_form_fields', :resource => resource
+
+- content_for :bottom_javascripts do
+  = javascript_include_tag user_templates_path
+
+  :javascript
+    $(function() { $("#profile-tabs").tabs() });

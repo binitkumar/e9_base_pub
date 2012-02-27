@@ -1,0 +1,7 @@
+<% if @twitter_status.errors.empty? %>
+  $.fn.colorbox.close();
+  $("<div><%= escape_javascript render(@twitter_status) %></div>").hide().prependTo($("#twitter-statuses .feed")).fadeIn();
+<% else %>
+  $('form#new_twitter_status').replaceWith("<%= escape_javascript(render('form')) %>");
+  $.fn.colorbox.resize();
+<% end %>

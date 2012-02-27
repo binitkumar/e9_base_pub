@@ -1,0 +1,19 @@
+-# NOTE this doesn't render the _record_attribute partial like most
+.record-attribute.nested-association
+  - if f.object.persisted?
+    = f.hidden_field :id
+    = f.hidden_field :_destroy, :value => 0
+
+  = f.fields_for f.object.options do |ff|
+    .field
+      = ff.text_field :label, :placeholder => f.object.class.human_attribute_name(:label)
+
+  .field
+    = f.text_field :value, :value => f.object.value.format
+
+  = f.fields_for f.object.options do |ff|
+    .field
+      = ff.label :promo_code_required
+      = ff.check_box :promo_code_required
+
+  = link_to_destroy_record_attribute

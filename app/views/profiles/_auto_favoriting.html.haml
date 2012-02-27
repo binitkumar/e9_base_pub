@@ -1,0 +1,8 @@
+%fieldset
+  %legend= f.label(:auto_favorite) 
+  .field.radio
+    = f.radio_button :auto_favorite, false
+    = f.label :auto_favorite_false
+  .field.radio
+    = f.radio_button :auto_favorite, true
+    = f.label :auto_favorite_true

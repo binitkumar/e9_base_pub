@@ -1,0 +1,5 @@
+= title e9_t(:social_networking_form_legend, :scope => 'admin.social_networking')
+= form_for resource, :url => polymorphic_path([:social_update_admin, resource]), :html => { :id => 'social-networking-form' }  do |f| 
+  = render "shared/social/form_inner", :f => f
+  .actions
+    = f.submit e9_t(:social_publish)

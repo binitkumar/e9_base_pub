@@ -1,0 +1,6 @@
+var $offer = $('#offer_<%= @offer.id %>_body');
+<% if resource.errors.any? %>
+$('form .errors', $offer).html("<%= escape_javascript(resource_error_messages!) %>");
+<% else %>
+setTimeout(function(){ location.href="<%= public_offer_path(@offer) %>"; },0)
+<% end %>

@@ -1,0 +1,7 @@
+= form_for EmailDelivery.new(:contact_ids => @contact_ids), :url => form_admin_email_deliveries_url, :html => { 'data-empty' => e9_t(:no_contacts_notification)} do |f|
+  = f.hidden_field :contact_ids, :id => "contact_ids"
+
+  .field
+    = label_tag('email_id_1', 'Send Email')
+    = mailer_select_tag(UserEmail.crm_template)
+    = submit_tag 'Go', :name => nil

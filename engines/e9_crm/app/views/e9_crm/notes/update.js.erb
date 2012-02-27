@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  $('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+  try { $.fn.colorbox.resize(); } catch(e) {}
+<% elsif params[:commit_and_edit] %>
+setTimeout(function(){ location.href="<%= response.headers['Location'] %>"; },0)
+<% else %>
+  try { $.fn.colorbox.close(); } catch(e) {}
+
+  var data = JSON.parse("<%= escape_javascript(raw resource.decorate.to_json) %>");
+
+  $.e9.notes.replace(data);
+<% end %>

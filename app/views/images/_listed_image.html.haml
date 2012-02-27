@@ -1,0 +1,14 @@
+.image.constrained
+  = link_to image_tag(listed_image.url), image_path(listed_image), :class => 'do-select'
+  .tooltip
+    .image-name
+      = listed_image.attachment_name
+    .image-dimensions
+      = listed_image.dimensions
+    .image-created
+      = l(listed_image.created_at)
+    .image-tags
+      - tags = listed_image.tag_list_on('images__h__').sort {|a, b| a.upcase <=> b.upcase }
+      %ul
+        - tags.each do |tag|
+          %li.tag= tag

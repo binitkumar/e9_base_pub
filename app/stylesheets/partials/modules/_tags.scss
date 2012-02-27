@@ -1,0 +1,106 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/inline-block";
+@import "compass/utilities/general/clearfix";
+@import "includes/typography";
+
+$admin-tag-border: 1px solid $theme-border-color !default;
+$admin-tag-border-radius: 12px !default;
+$admin-tag-padding: 5px !default;
+$admin-tag-field-width: 200px !default;
+
+.tag-context-list {
+  @include clearfix;
+  font-size: $x-small;
+
+  .heading {
+    float: left;
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  .tag-list { 
+    display: inline;
+  }
+  a{
+    text-decoration:underline;
+  }
+}
+
+fieldset.tags {
+  input[type=text] { 
+    width: $admin-tag-field-width; 
+  }
+  #tag-fields {
+    $label-height: 2em;
+    margin-bottom: $global-spacing-margin;
+    label {
+      padding: 0;
+      margin: 0;
+      height: $label-height;
+      display: block;
+    }
+    .field, .actions { 
+      float: left; 
+      padding: 0;
+      margin: 0 0.5em 0 0; 
+    }
+    .actions { 
+      padding: $label-height 0 0;
+      clear: none;
+    }
+  }
+  #tag-contexts {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .context-list { 
+    margin: 0 0 $global-spacing-margin;
+    > span { 
+      font-weight: bold; 
+      display: block; 
+      margin: 0.333em 0; 
+    } 
+  }
+  a { 
+    text-decoration: none; 
+    display: block; 
+    float: left; 
+    margin-right: 3px; 
+  }
+  ul { 
+    li {
+      @include inline-block;
+      @include border-radius($admin-tag-border-radius);
+      @include clearfix;
+      padding: $admin-tag-padding;
+      border: $admin-tag-border;
+      margin: 3px;
+			font-size: .8em;
+      span { 
+        float: left; 
+        span { 
+          margin: 0 0.5em; white-space: nowrap; 
+        } 
+      } 
+    }
+  } 
+  #tag-fields, #tag-contexts .context-list { @include clearfix; }
+  #tag-contexts { clear: both; } 
+}
+
+#contact_tag_select { 
+  li {
+    @include inline-block;
+    @include border-radius($admin-tag-border-radius);
+    @include clearfix;
+    //padding: $admin-tag-padding;
+    border: $admin-tag-border;
+    span { 
+      float: left; 
+      span { 
+        margin: 0 0.5em; white-space: nowrap; 
+      } 
+ 		}
+	}
+} 

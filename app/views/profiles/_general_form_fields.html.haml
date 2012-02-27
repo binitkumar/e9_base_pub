@@ -1,0 +1,9 @@
+.errors= resource_error_messages!
+
+= form_for(resource, :url => profile_path, :remote => true, :html => { :id => :profile_general_form }) do |f|
+  = hidden_field_tag(:update_mailing_lists, false)
+
+  = render 'form_inner', :f => f
+
+  .actions
+    = f.submit e9_t(:save_link)

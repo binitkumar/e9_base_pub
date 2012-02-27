@@ -1,0 +1,4 @@
+= form_for(resource, :remote => request.xhr?) do |f|
+  = render 'e9_tags/form', :f => f, :context => [:images, true]
+  .actions
+    = f.submit

@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  $('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+  try { $.fn.colorbox.resize(); } catch(e) {}
+<% else %>
+  <% if resource.event != parent %>
+    $('tr#ids_<%= resource.id %>').fadeOut(function() { $(this).remove() });
+  <% else %>
+    $('tr#ids_<%= resource.id %>').html("<%= escape_javascript(render 'row') %>");
+  <% end %>
+  $('#email_delivery_form').html("<%= escape_javascript(render 'email_delivery_form') %>");
+  try { $.colorbox.close(); } catch(e) {}
+<% end %>

@@ -1,0 +1,43 @@
+.feed-item.fb-post{:id => "facebook_post_#{facebook_post.identifier}"}
+  - if from = facebook_post.from
+    - if from.picture.present?
+      .feed-avatar
+        = image_tag(from.picture, :alt => from.name)
+
+  .inner
+    %table.plain
+      %tr
+        %td{:colspan => 2}
+          .feed-status
+            - if from.present?
+              .feed-from
+                #{from.name}:
+
+            .feed-status-text
+              = facebook_post.message
+      %tr
+        %td.feed-picture
+          - if facebook_post.picture.present?
+            = link_to_if facebook_post.link.present?, image_tag(facebook_post.picture, :alt => facebook_post.caption, :width => 55), facebook_post.link
+
+        %td
+          .feed-body
+            - if facebook_post.name.present?
+              .feed-name
+                = link_to_if facebook_post.link.present?, facebook_post.name, facebook_post.link
+
+            - if facebook_post.caption.present?
+              .feed-caption
+                = facebook_post.caption
+
+            - if facebook_post.description.present?
+              .feed-description
+                = facebook_post.description
+
+            .feed-time
+              - if facebook_post.icon.present?
+                %span.feed-icon= image_tag(facebook_post.icon, :alt => nil)
+              = localize(facebook_post.created_time, :format => :dateline) if facebook_post.created_time.present?
+
+  .action-icons
+    = facebook_posts_delete_link(facebook_post)

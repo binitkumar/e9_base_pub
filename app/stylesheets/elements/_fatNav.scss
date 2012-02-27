@@ -1,0 +1,41 @@
+@import "compass/utilities/general/clearfix";
+$main-nav-bg-color: $theme-background-color;
+$nav-border: 2px;
+@mixin fat_nav{
+  width:100%;
+  a{
+    width:108px;
+    padding-left:25px;
+    display:block;
+    white-space:nowrap;
+    text-align:left;
+    padding-top:16px;
+    padding-bottom:10px;
+    overflow:hidden;
+
+    }
+  li{
+    float:left;
+    display:list-item;
+
+    ul{
+      width:108px;
+      margin-top:1em;
+      li{
+        float:none;
+        a{
+          color: #FFFFFF;
+          font-size: 12px;
+          padding-left: 25px;
+          padding-top: 0;
+          text-align: left;
+          white-space: pre-wrap;
+         
+        }
+      }
+    }
+  }
+  .submenu{
+    display:none;
+  }
+}

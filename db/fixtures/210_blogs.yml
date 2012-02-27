@@ -1,0 +1,8 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+  layout: blog
+
+blog:
+  <<: *defaults
+  title: My Blog

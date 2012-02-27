@@ -1,0 +1,36 @@
+%fieldset.advanced-settings
+  %legend= e9_t(:advanced_settings)
+  .fields{:style => 'display: none'}
+    = yield
+    .field
+      = f.label :meta_title
+      = f.text_field :meta_title
+    .field
+      = f.label :meta_description
+      = f.text_area :meta_description
+    .field
+      = f.label :meta_keywords, (resource_humanize(:meta_keywords) << %Q| <span class="help" rel="tooltip" title="#{e9_t(:meta_keywords_instructions)}">[?]</span>|).html_safe
+      = f.text_area :meta_keywords
+    .field
+      = f.label :link_text, (resource_humanize(:link_text) << %Q| <span class="help" rel="tooltip" title="#{e9_t(:link_text_help)}">[?]</span>|).html_safe
+      = f.text_field :link_text
+    .field
+      = f.label :custom_css_classes
+      = f.text_field :custom_css_classes
+    .field.time-picker
+      = f.label :published_at, nil, :class => :req
+      = f.text_field :published_at, :class => 'time-picker', :value => l(resource.published_at).upcase 
+    .field
+      = f.label :user_id, nil, :class => :req
+      = f.select :user_id, author_select_options, {}, :id => 'author-select'
+
+    = render 'admin/views/settings', :f => f
+
+    - unless f.object.is_a?(BlogPost)
+      = render 'shared/form_partials/roles_for_content', :f => f
+    - else
+      -# little javascript to make the avatar swap when the author changes
+      :javascript
+        $(function() { $("#author-select").authorImageSwappify({ map : #{author_avatar_url_map.to_json} }); });
+
+    = render 'admin/views/region_manager', :f => f

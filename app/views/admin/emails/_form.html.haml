@@ -1,0 +1,4 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]) do |f|
+  .errors= resource_error_messages!
+
+  = render 'form_inner', :f => f

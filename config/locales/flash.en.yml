@@ -1,0 +1,123 @@
+# TODO clean up conflicts between flash and AR i18n stores (most flash errors can be handled by AR now, keeping error messages in one place)
+en:
+  flash:
+    # defaults
+    actions:
+      create: 
+        notice: "%{resource_name} created."
+        alert: "%{resource_name} creation failed."
+      update: 
+        notice: "%{resource_name} updated."
+        alert: "%{resource_name} update failed."
+      destroy: 
+        notice: "%{resource_name} deleted."
+        alert: "%{resource_name} delete failed."
+      update_order:
+        notice: "Order updated."
+        alert: "Order update failed."
+      social_update:
+        notice: "Social feed updated."
+        alert: "Social feed update failed."
+      publish:
+        notice: "Content published."
+        alert: "Could not publish content."
+      unpublish:
+        notice: "Content unpublished."
+        alert: "Could not unpublish content."
+
+    # controller specific
+    profiles:
+      update:
+        notice: Profile updated.
+    event_transactions:
+      create:
+        notice: Event Registration Successful!
+        error: There was a problem with your registration.
+
+    email_deliveries:
+      create:
+        notice: Email has been sent to selected contacts.
+        alert: There was a problem sending your email.
+    event_transactions:
+      create:
+        notice: You have successfully registered for the event!
+        alert: There was a problem submitting the form.
+    favorites:
+      create:
+        notice: Page saved to your favorites.
+      destroy:
+        notice: Page removed from your favorites.
+    friend_emails:
+      create:
+        notice: Email was successfully sent.
+        alert: Email was not sent successfully.
+    flags:
+      create:
+        notice: Abuse Reported.
+      destroy:
+        notice: Flag cleared.
+    subscriptions:
+      update:
+        notice: "Your subscriptions have been updated."
+
+    comments:
+      create:
+        notice: "%{resource_name} posted."
+    admin:
+      help_editor:
+        update:
+          notice: Admin Help updated.
+          alert: Admin Help update failed.
+      users:
+        update:
+          notice: "%{resource_name} successfully updated."
+      snippets:
+        revert:
+          notice: Snippet reverted.
+          alert: Snippet could not be reverted because the revert template is not defined.
+      site_configurations:
+        update:
+          notice: Site info updated.
+          alert: Errors prevented the site info from being saved.
+      slides:
+        change_layout:
+          notice: The layout has been changed and the slide has been unpublished.  You man need to re-upload images to fit the new layout.
+          alert: Layout update failed.
+        remove:
+          notice: Slide removed from slideshow.
+        add:
+          notice: Slide added to slideshow.
+      user_pages:
+        change_layout:
+          notice: Layout updated.  You can update the snippets by editing the page.
+          alert: Layout update failed.
+      user_emails:
+        send_email:
+          notice: "Email successfully sent to %{target}"
+      system_emails:
+        send_email:
+          notice: "Test email sent to %{target}"
+      menus:
+        update_order:
+          notice: Order updated.
+          alert: Order update failed.
+      soft_links:
+        update:
+          notice: Menu element updated.
+          alert: Menu element update failed.
+        create:
+          notice: Element added to menu.
+          alert: Menu element creation failed.
+        destroy: 
+          notice: Menu element removed.
+          alert: "This element has items below it on the menu. You must remove all of it's sub pages before you can remove it."
+      hard_links:
+        update:
+          notice: Menu element updated.
+          alert: Menu element update failed.
+        create:
+          notice: Element added to menu.
+          alert: Menu element creation failed.
+        destroy: 
+          notice: Menu element removed.
+          alert: "This element has items below it on the menu. You must remove all of it's sub pages before you can remove it."

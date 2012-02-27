@@ -1,0 +1,82 @@
+@import 'compass/css3/inline-block';
+@import "includes/common";
+
+.sprite { @include sprite-like; }
+
+@import "sprites/common/*.png"; /**/
+
+.common-sprite { width: 23px; height: 23px; }
+
+.icon-delete { @extend .sprite; @extend .common-sprite; @include common-sprite(close); }
+.icon-print { @extend .sprite; @extend .common-sprite; @include common-sprite(print); }
+.icon-edit { @extend .sprite; @extend .common-sprite; @include common-sprite(edit); }
+.icon-friend-email { @extend .sprite; @extend .common-sprite; @include common-sprite(email); }
+.icon-permalink { @extend .sprite; @extend .common-sprite; @include common-sprite(link); }
+.icon-favorite { @extend .sprite; @extend .common-sprite; @include common-sprite(favorite); }
+.icon-unfavorite { @extend .sprite; @extend .common-sprite; @include common-sprite(unfavorite); }
+a.help { @extend .sprite; @extend .common-sprite; @include common-sprite(info); }
+
+.share-site a {
+  @extend .sprite;
+  @extend .common-sprite;
+
+  &.i1  { @include common-sprite(yahoo_buzz); }
+  &.i5  { @include common-sprite(delicious); }
+  &.i6  { @include common-sprite(digg); }
+  &.i10  { @include common-sprite(facebook); }
+  &.i11 { @include common-sprite(google); }
+  &.i12 { @include common-sprite(google_buzz); }
+  &.i14 { @include common-sprite(kaboodle); }
+  &.i17 { @include common-sprite(linked_in); }
+  &.i18 { @include common-sprite(mixx); }
+  &.i21 { @include common-sprite(propellor); }
+  &.i22 { @include common-sprite(reddit); }
+  &.i29 { @include common-sprite(stumble_upon); }
+  &.i30 { @include common-sprite(technorati); }
+  &.i31 { @include common-sprite(twitter); }
+}
+
+@import "sprites/slide/*.png"; /**/
+
+.slide-sprite { width: 20px; height: 15px; }
+
+body.slide .action-links {
+  a.more-info-link, a.dashboard-link, a.comments-link, a.share-bar-link {
+    @include sprite-like;
+    @extend .sprite;
+    @extend .slide-sprite;
+    margin-left: 0.2em;
+    &.more-info-link { @include slide-sprite(info); }
+    &.dashboard-link { @include slide-sprite(action); }
+    &.share-bar-link { @include slide-sprite(share); }
+    &.comments-link { @include slide-sprite(comment); }
+  }
+}
+
+
+@import "sprites/social/*.png"; /**/
+
+.social-sprite { width: 35px; height: 35px; }
+
+a.social-link {
+  .img { @extend social-sprite; }
+  &.facebook .img { @include social-sprite(facebook); }
+  &.twitter .img { @include social-sprite(twitter); }
+  &.linked-in .img { @include social-sprite(linked_in); }
+  &.hello .img { @include social-sprite(hello); }
+}
+
+ul.social-module li:hover a.social-link {
+  &.facebook .img { @extend .facebook-hover; }
+  &.twitter .img { @extend .twitter-hover; }
+  &.linked-in .img { @extend .linked_in-hover; }
+  &.hello .img { @extend .hello-hover; }
+}
+/**
+ * oddball
+ */
+
+a.feed {
+  @include sprite-background('/images/buttons/rss.png', 15px);
+  margin-right: 5px;
+}

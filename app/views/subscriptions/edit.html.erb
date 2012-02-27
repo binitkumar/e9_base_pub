@@ -1,0 +1,6 @@
+<% if @subscription && !@subscription.new_record? %>
+  <%= form_for(@subscription, :url => subscription_path(@subscription), :html => { :method => :delete }) do |f| %>
+    <p>Click the button to unsubscribe from <%= @subscription.mailing_list.name %></p>
+    <p><%= f.submit "Unsubscribe from #{@subscription.mailing_list.name}" %></p>
+  <% end %>
+<% end %>

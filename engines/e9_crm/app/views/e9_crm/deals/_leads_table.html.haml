@@ -1,0 +1,22 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:followed_up)
+      %th= orderable_column_link(:created_at)
+      %th= orderable_column_link(:offer_name)
+      %th= orderable_column_link('campaign_name', :campaign)
+      %th= orderable_column_link(:lead_name)
+      %th= orderable_column_link(:lead_email)
+      %th= orderable_column_link(:info)
+      %th= t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 8}= e9_t(:no_records_text, :scope => 'e9_crm.leads')
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          = render 'lead_row', :resource => record
+
+- if controller.send(:should_paginate_index)
+  = will_paginate collection

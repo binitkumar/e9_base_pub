@@ -1,0 +1,120 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+  layout: page
+  published: true
+  previously_published: true
+  published_at: <%= DateTime.now %>
+
+wysiwyg:
+  <<: *defaults
+  title: WYSIWYG Style Test With A Very Very Very Very Very Very Very Very Very Very Long Title
+  tag_lists:
+    tags:
+      - Lorem
+      - Ipsum
+      - Suscipit
+      - Commoveo capto
+      - Ingenium
+      - Qui vel
+  body: |
+    <p>Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus. Lorem ipsum dolor sit amet, fatua, sudo bene camur vulputate amet et duis pneum suscipit opto hendrerit, eum molior inhibeo. Elit, quis ut abdo tristique aptent decet, augue, dolor secundum. Brevitas qui premo fatua quod quae hendrerit distineo esca os suscipit in.</p>
+    <p>Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus. Lorem ipsum dolor sit amet, fatua, sudo bene camur vulputate amet et duis pneum suscipit opto hendrerit, eum molior inhibeo.&nbsp;Elit, quis ut abdo tristique aptent decet, augue, dolor secundum. Brevitas qui premo fatua quod quae hendrerit distineo esca os suscipit in.&nbsp;</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.&nbsp;</p>
+    <h2>This is an H2 Sub Header</h2>
+    <p>The following should be a very nice numbered list:</p>
+    <ol>
+    <li><strong>This sentence should be bold.</strong>&nbsp;</li>
+    <li><em>This sentence should be in italics.</em></li>
+    <li><span style="text-decoration: underline;">This sentence should be underlined.</span></li>
+    <li><span style="text-decoration: line-through;">This sentence should be strikethrough.</span></li>
+    <li>The trailing number is subscript<sub>88</sub>.</li>
+    <li>This trailing number is superscript<sup>88</sup>.<span style="text-decoration: line-through;"><br /></span></li>
+    <li><a title="This is a link to e9digital" href="http://www.e9digital.com">This is a link to edidigital.</a></li>
+    </ol>
+    <p><a href="http://www.e9digital.com/uploads/largetest.PNG"> <img style="float: left; margin: 5px;" title="This is a test of Thumb to Large Image Layer" src="http://www.e9digital.com/uploads/thumbtest.PNG" alt="This is a test of Thumb to Large Image Layer" width="192" height="241" /></a>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeo. Demoveo, voco illum tristique tamen dolor in duis dignissim refero. Nullam in nulla.  Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeo. Demoveo, voco illum tristique tamen dolor in duis dignissim refero. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeo. Semoveo, voco illum tristique tamen dolor in duis dignissim refero. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <h3>This is an H3 Sub Header</h3>
+    <p>The following should be a very nice bulleted list:</p>
+    <ul>
+    <li>Ingenium blandit pneum praemitto, tum molior comis importunus</li>
+    <li>Ut fatua abbas. Vulputate hendrerit, saluto, demoveo, voco illum tristique tamen dolor in duis dignissim refero.</li>
+    <li>blandit pneum praemitto, tum molior comis importunus</li>
+    </ul>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeo. Demoveo, voco illum tristique tamen dolor in duis dignissim refero. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <blockquote>
+    <p>Do you know what a block quote should look like? It should look like this paragraph.&nbsp;Do you know what a block quote should look like? It should look like this paragraph.&nbsp;Do you know what a block quote should look like? It should look like this paragraph.&nbsp;Do you know what a block quote should look like? It should look like this paragraph.&nbsp;</p>
+    </blockquote>
+    <h4>This is an H4 Sub Header</h4>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himena. Demoveo, voco illum tristique tamen dolor in duis dignissim refero. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <table border="0" align="center">
+    <caption>This is the caption for the following table</caption> 
+    <tbody>
+    <tr>
+    <td>This table/cells have no border<br /></td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    </tr>
+    <tr>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    </tr>
+    <tr>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    </tr>
+    <tr>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border</td>
+    <td>This table/cells have no border<br /></td>
+    </tr>
+    </tbody>
+    </table>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenae. Demoveo, voco illum tristique tamen dolor in duis dignissim refero. Nullam in nulla. Mauris elementum.</p>
+    <table style="border: 1px solid #000000;" border="1">
+    <tbody>
+    <tr>
+    <td style="border: 1px solid #000000;">This table has a border and so do each of the cells</td>
+    <td style="border: 1px solid #000000;">This table has a border and so do each of the cells</td>
+    </tr>
+    <tr>
+    <td style="border: 1px solid #000000;">This table has a border and so do each of the cells</td>
+    <td style="border: 1px solid #000000;">This table has a border and so do each of the cells</td>
+    </tr>
+    </tbody>
+    </table>
+    <h5>This is an H5 Sub Header</h5>
+    <p>Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <p><a href="http://www.e9digital.com/uploads/largetest.PNG"> <img style="float: left; margin: 5px;" title="This is a test of Thumb to Large Image Layer" src="http://www.e9digital.com/uploads/thumbtest.PNG" alt="This is a test of Thumb to Large Image Layer" width="192" height="241" /></a>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenae. Demoveo, voco illum tristique tamen dolor in duis.</p>
+    <p>The following is bulleted list next to an image.</p>
+    <ul>
+    <li>The bullets to the left of this should not overlay image</li>
+    <li>Ut fatua abbas. Vulputate hendrerit, saluto, demoveo, voco illum tristique tamen dolor in duis dignissim refero.</li>
+    </ul>
+    <p>The following should be a very nice numbered list:</p>
+    <ol>
+    <li>The numbers&nbsp;to the left of this should not overlay image</li>
+    <li>Ut fatua abbas. Vulputate hendrerit, saluto, demoveo, voco illum tristique tamen dolor in duis dignissim refero.</li>
+    <li>blandit pneum praemitto, tum molior comis importunus</li>
+    </ol>
+
+normal_page_title:
+  <<: *defaults
+  title: Normal Page Title
+  tag_lists:
+    tags:
+      - Lorem
+      - Ipsum
+      - Suscipit
+  body: |
+    <p>Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes. Ludus valde cui duis luptatum humo hos duis ut capio bene. Cogo wisi vulpes te caecus, opes, duis transverbero veniam usitas. Damnum appellatio tamen, epulae facilisi plaga vulputate abdo eum ullamcorper suscipere comis. Appellatio jugis praemitto abluo pecus meus erat praesent sit eligo vel oppeto.</p>
+    <p>Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.</p>
+    <p>Praesent olim ea esse enim scisco capto, veniam nonummy nobis, ullamcorper, ibidem consequat. Capto vel autem commodo pagus virtus mos, accumsan valetudo quia dolore roto. Vero facilisis sagaciter blandit torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. Immitto eu, oppeto sino in eu feugait.</p>

@@ -1,0 +1,24 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag(resource_class, :method => :get, :class => 'scope-selects') do
+      .field
+        = label_tag 'deal-status', t(:filter_by, :attribute => resource_class.human_attribute_name(:status))
+        %select{:name => 'status', :id => 'deal-status'}
+          = deal_status_select_options
+      .field
+        = label_tag 'deal-category', t(:filter_by, :attribute => resource_class.human_attribute_name(:category))
+        %select{:name => 'category', :id => 'deal-category'} 
+          = deal_category_select_options 
+      .field
+        = label_tag 'deal-owner', t(:filter_by, :attribute => resource_class.human_attribute_name(:owner))
+        %select{:name => 'owner', :id => 'deal-owner'}
+          = deal_owner_select_options 
+      .field
+        = label_tag 'deal-closed', t(:filter_by, :attribute => resource_class.human_attribute_name(:closed))
+        %select{:name => 'closed', :id => 'deal-closed'}
+          = deal_date_select_options(:type => :in_month, :prefix => 'Closed in', :date_format => '%B %Y')
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to_new_resource(Deal)
+    = link_to I18n.t('activerecord.links.index', :models => 'Leads'), leads_path

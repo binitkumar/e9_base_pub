@@ -1,0 +1,18 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(resource_class, :published_at)
+      %th= resource_humanize(:thumb)
+      %th= ordered_on_link(resource_class, :title)
+      %th= ordered_on_link(resource_class, :published)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 5}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          = render 'row', :record => record
+
+= will_paginate(collection)

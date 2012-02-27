@@ -1,0 +1,71 @@
+_defaults: &defaults
+  _finder: name
+
+offer_1:
+  <<: *defaults
+  name: This is the default test offer!
+  region_types: right_column
+  template: |
+    Vero facilisis sagaciter blandit torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Your free consultation code is **{{ campaign.code }}** and the campaign name is **{{ campaign.name }}.**
+  options:
+    submit_button_text: Submit!
+    mailing_list_ids: [1]
+    success_page_text: |
+      <p>Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, huic melior. Antehabeo valetudo antehabeo praesent scisco quidne capto in in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. Nisl esca illum tation vel hendrerit paratus capto vulputate verto.</p>
+      <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla.  Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, <em>consequat id, rutrum auctor, ullamcorper sed </em> orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+      <p>Elit sed, meus ludus foras, defui exerci quia dolor. Et feugiat blandit saluto wisi ad mara esse verto lobortis ratis melior pneum wisi sudo.</p>
+    custom_form_html: |
+      <div class="field">
+      <label for="company_name" class="req">What's your company's name?</label>
+      <input id="company_name" type="text" name="deal[options][company_name]" class="required" />
+      </div>
+      <div class="field">
+      <label for="another_email" class="req">Do you have another email address?</label>
+      <input id="another_email" type="text" name="deal[options][another_email]" class="required email" />
+      </div>
+      <div class="field">
+      <label for="budget">What is your budget?</label>
+      <select id="budget" name="deal[options][budget]" >
+      <option value="$5000">$5000</option>
+      <option value="$10,000">$10,000</option>
+      <option value="$20,000">$20,000</option>
+      </select>
+      </div>
+      <!-- START CHECKBOX -->
+      <div class="field">
+      <label for="services" class="req" >What services are you interested in?</label>
+      <div>
+      <input type="checkbox" name="deal[options][services][]" value="Logo Design" id="deal_title_logo_design" />
+      <label for="deal_title_logo_design">Logo Design</label>
+      </div>
+      <div>
+      <input type="checkbox" name="deal[options][services][]" value="Web Design" id="deal_title_web_design" />
+      <label for="deal_title_web_design">Web Design</label>
+      </div>
+      <div>
+      <input type="checkbox" name="deal[options][services][]" value="Internet Marketing" id="deal_title_internet_marketing" />
+      <label for="deal_title_internet_marketing">Internet Marketing</label>
+      </div>
+      </div>
+      <!-- END CHECKBOX -->
+      <!-- START RADIO BUTTON -->
+      <div class="field">
+      <label for="contact_method">How should we contact you?</label>
+      <div>
+      <input type="radio" name="deal[options][contact_method]" value="Email" id="deal_title_email" />
+      <label for="deal_title_email">Email</label>
+      </div>
+      <div>
+      <input type="radio" name="deal[options][contact_method]" value="Telephone" id="deal_title_telephone" />
+      <label for="deal_title_telephone">Telephone</label>
+      </div>
+      <div>
+      <input type="radio" name="deal[options][contact_method]" value="Pony Express" id="deal_title_pony_express" />
+      <label for="deal_pony_express">Pony Express</label>
+      </div>
+      </div>
+      <!-- END RADIO BUTTON -->
+      <div class="field">
+      <label for="notes">Do you have anything else you want us to know?</label>
+      <textarea id="notes" name="deal[options][notes]"></textarea>
+      </div>

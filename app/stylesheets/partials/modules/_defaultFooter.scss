@@ -1,0 +1,16 @@
+@import "includes/knockout";
+#bottom-footer{
+  border-top:1px solid #fff;
+  width:100%;
+  padding-top:1em;
+  padding-bottom:1em;
+  .e9digital{
+	  float:right;
+	  a{
+	  	@include hoverKnockout("site/e9_logo.png");
+	  }
+  }
+  .marketsmiths a{
+  	color:$theme-alt-text-color;
+  }
+}

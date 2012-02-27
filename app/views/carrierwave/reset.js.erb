@@ -1,0 +1,12 @@
+<% resource_class.uploaders.each do |column, klass|; mount = resource.send(column) %>
+  $("#<%= mount_reset_button_id(resource, :column => column) %>").hide();
+  $("#<%= mount_image_id(resource, :column => column) %>").attr("src", function() { 
+    return "<%= mount.url %>?" + (new Date()).getTime(); 
+  });
+  <% resource_class.uploaders[column].versions.each do |version_name, klass|; version = mount.send(version_name) %>
+    $("#<%= mount_actions_id(resource, :column => column, :version => version_name) %>").hide();
+    $("#<%= mount_image_id(resource, :column => column, :version => version_name) %>").attr("src", function() { 
+      return "<%= version.url %>?" + (new Date()).getTime(); 
+    });
+  <% end %>
+<% end %>

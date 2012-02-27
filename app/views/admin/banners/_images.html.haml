@@ -1,0 +1,6 @@
+= form_tag update_order_banner_image_mounts_path(resource) do
+  .banner-images
+    - resource.images.ordered.attached.each do |image|
+      .image{:id => "ids_#{image.id}"}
+        = image_mount_tag(image)
+        = link_to e9_t(:remove_link), banner_image_mount_path(resource, image), :method => :delete, :remote => true, :confirm => e9_t(:confirmation_question), :class => 'icon-delete'

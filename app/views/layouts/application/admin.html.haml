@@ -1,0 +1,19 @@
+- content_for :main_nav_content do
+  #admin-nav
+    = render_region 'admin-nav'
+
+- content_for :application_content do
+  #body
+    #content
+      .content-inner
+        = flash_messages
+        = breadcrumbs_helper
+        = content_for?(:admin_content) ? yield(:admin_content) : yield
+
+- content_for :javascripts do
+  = include_javascripts :images
+  = include_javascripts :admin
+
+- add_body_class('admin')
+- @hide_google_analytics = true
+= render :file => 'layouts/application'

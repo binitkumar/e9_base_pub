@@ -1,0 +1,10 @@
+.event.listing{:id => listed_event.to_anchor }
+  .left-block
+    = content_avatar(listed_event)
+  .block
+    = content_header_link(listed_event)
+    .event-time
+      = l(listed_event.event_time, :format => :event)
+    = content_labels(listed_event)
+
+  = listed_record_body(listed_event)

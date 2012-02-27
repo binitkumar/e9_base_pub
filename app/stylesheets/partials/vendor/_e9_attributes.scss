@@ -1,0 +1,218 @@
+@import 'compass/css3/inline-block';
+
+form.edit_user, form.new_user {
+  input[type=text], textarea {
+    width: 315px;
+    &.short {
+      width: 100px;
+    }
+  }
+  textarea {
+    height: 100px;
+
+  }
+
+  input[type="text"]{
+    //height: 2.25em;
+  }
+
+  input, select, textarea {
+    margin-top: 0;
+  }
+
+  .info-bio textarea {
+    width: 100%;
+    height: 150px;
+  }
+  
+  select {
+	font-size:12px;
+	  //height:1.75em;
+    width: 125px;
+  }
+}
+.record-attribute{
+  position:relative;
+}
+/* -------- Events stuff -----------*/
+
+#event_transaction_form{
+  fieldset.radio{
+    label{
+      padding-right:8px;
+    }
+  }
+}
+
+.event #content-main .nested-association {
+  position: relative;
+  background-color: #FDFAFA;
+  //width: 31%;
+  //float: left;
+  display: block;
+  margin: 0.5em;
+  padding:10px;
+  border: 1px #bbb solid; 
+}
+
+.payment-information {
+  //width:480px;
+
+  .field {
+    padding: 0 0.75em;
+
+    &.date, &.cvv {
+      display: inline-block !important;
+      margin: 0;
+      label {
+        display: block;
+      }
+    }
+
+    &.date {
+      padding-right: 0;
+      margin-right: 5px;
+
+      select {
+        width: 94px;
+        display: inline;
+      }
+    }
+
+    &.cvv {
+      padding-left: 0;
+      &, input[type=text] {
+        width: 148px;
+      }
+    }
+  }
+}
+
+#event_transaction_form .field.radio label, .field.checkbox label{
+  //display: block;
+  vertical-align: middle;
+  width: auto;
+  margin-right:10px;
+}
+
+.filter-links{
+  display:none;
+  visibility:hidden;
+  margin: 10px 0px 20px 0px;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  .filter-link{
+    display:inline-block;
+    margin: 0 .75em;
+  }
+}
+
+//**---- Consolidation of nested asociation rules----**/
+.nested-associations {
+    
+	.field, .destroy-nested-association {
+    @include inline-block;
+    vertical-align: middle;
+    //vertical-align: top;
+   }
+
+	.destroy-nested-association {
+	  position: absolute !important;
+    position: absolute !important;
+    text-indent: -999em;
+    top: 17px;
+	}
+   
+  .add-nested-association {
+    margin-top: 10px;
+    margin-left:12px;
+  }
+
+	.nested-association {
+			
+			.field {
+			@extend .contacts-details-edit-item;
+			margin:12px 4px .5em 12px;
+
+					&.contact-email {
+            font-size:$small;
+            width:280px;
+					}
+
+					.field {
+            margin:0px 4px 0 0px;
+					}
+	     }
+	  }
+}
+
+/**----- ok to email block---**/
+body.admin .email-wrapper .nested-associations div.field.checkbox{
+	display:block;
+}
+
+
+.add-nested-association, .destroy-nested-association {
+  cursor: pointer;
+}
+
+
+html .record-attribute .ui-button{
+	position:absolute !important;
+	right:6px;
+	top:6px;
+}
+
+
+//**----admin pages-----
+.admin .record-attribute{
+	position:relative;
+	background-color:#FDFAFA;
+	width:29%;
+  float:left;
+	display:inline;
+	margin:0 $global-spacing-margin $global-spacing-margin 0;
+	border:1px #bbb solid;
+	min-height:107px;
+	
+	select{
+		@extend .contacts-details-edit-item;
+		width:200px; //$sidebar-global-select-width;
+		margin-bottom:12px;
+	}
+	
+	div.field input[type="text"]{
+		@extend .contacts-details-edit-item;
+		width:200px;
+	}
+	
+	textarea {
+	width:200px;	
+	}
+	
+	.email-bad {
+		position:absolute;
+		left:75px;
+		top:15px;
+		width:100px;
+		font-size:$small;
+		font-weight:bold;
+	}
+	
+	.contact-email{
+		float:left;
+  }
+	
+	.controls{
+		width:100%;
+		display:block;
+		margin:0 8px 0 8px;
+		
+	.destroy-nested-association{
+		position:absolute !important;
+		right:6px;
+		top:6px;
+		}
+	}
+}

@@ -1,0 +1,1 @@
+PollAnswer.delete_all

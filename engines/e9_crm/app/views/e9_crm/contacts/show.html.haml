@@ -1,0 +1,42 @@
+.contact-body
+  = title resource.name
+  .toolbar
+    .toolbar-inner
+      .toolbar-left
+        .contact-photo
+          %img{:src => resource.avatar_url, :alt => "Avatar for #{resource.name}"}
+        .contact-info
+          = render 'who', :record => resource, :hide_name => true
+        
+          - if (tags = resource.tags(:show_all => true)).present?
+            .contact-tags
+              %label #{Tag.model_name.human.pluralize}:
+              = contact_tag_list(tags.sort {|a, b| a.upcase <=> b.upcase })
+      
+          - if resource.info.present?
+            %fieldset
+              %legend #{Contact.human_attribute_name(:info)}:
+              %p= k(resource.info)
+  
+          %fieldset
+            %legend Manage:
+            .contact-links.actions
+              = link_to_edit_resource(resource)
+              = link_to "View Activity", page_views_url(:contact => resource.id)
+              = google_search_link(resource.name)
+              = google_news_link(resource.name)
+              = link_to_new_resource(Task, :contact_id => resource.id, :rel => :popup)
+              = link_to_new_resource(Note, :contact_id => resource.id, :rel => :popup)
+
+      .toolbar-middle
+
+      .toolbar-right
+        
+
+  .admin-content-main
+    #contact-notes
+      = render 'e9_crm/notes/notes', :resource => resource
+
+  .admin-sidebar-right
+    .contact-sidebar
+      = render 'sidebar'

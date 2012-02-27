@@ -1,0 +1,3 @@
+- if (placements = current_page.placements & placeholder.placements).present?
+  - placements.each do |placement|
+    = k render_liquid(placement.template)

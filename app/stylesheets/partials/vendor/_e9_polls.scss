@@ -1,0 +1,201 @@
+$poll-answer-bar-color-1: red !default;
+$poll-answer-bar-color-2: blue !default;
+$poll-answer-bar-color-3: green !default;
+
+@import "compass/css3/gradient";
+@import "compass/css3/inline-block";
+@import "includes/theming";
+.e9-poll {
+  .poll-question {
+      padding: 0 0 .75em; 
+  }
+  form.edit_poll .actions {
+    margin: 10px 5px 0 0;
+    float: left;
+  }
+  .view-poll-results {
+    @include inline-block;
+    font-size: 12px;
+    margin-top: 10px;
+    line-height: 33px;
+    height: 33px;
+  }
+  .poll-answers {
+    padding-top: 0;
+    .actions {
+      margin: 0;
+    }
+  }
+  label {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+form {
+  .poll-answers {
+    $width: 500px;
+    padding: 1.2em 1.2em 0;
+    margin-bottom: 1em; 
+    input{
+      float:left;
+    }
+    .field, textarea {
+      width: $width;
+      height: 60px;
+    }
+    
+    .actions {
+      margin: 1em 0;
+    }
+
+    .destroy-nested-association {
+      vertical-align: top !important;
+    }
+  }
+}
+
+.poll-header {
+  @extend .h3;
+}
+
+.poll-question {
+  @extend .h5;
+}
+
+.poll-answer-bar {
+  height: 15px;
+  display: block; }
+
+.poll-answer-bar-outer {
+  display: block;
+  border:theme-border-style();
+}
+
+.poll-answer {
+	//margin: 0 0 0 0.5em;
+  &:first-child { margin-top: 0; }
+  margin-top: 1em;
+  clear: both;
+  textarea {
+    height: 3em;
+    margin-bottom: 0; }
+  .field {
+    margin-bottom: 0; } }
+
+/* edit for renderable poll */
+
+#right .poll-answer {
+  clear: both;
+	
+	label{
+		line-height:1em;
+    position:relative;
+    top:-5px;
+    width:90%;
+	}
+		
+  textarea {
+    height: 3em;
+    margin-bottom: 0;
+   }
+
+  .field {
+    margin-bottom: 0;
+   } 
+  input{
+    padding: 0;
+    margin:0;
+    vertical-align: top;
+    *overflow: hidden;
+    display:inline-block;
+  }
+}
+
+/* end edit for renderable poll */
+
+
+
+form.edit_poll .actions { margin: 1em 0; }
+
+/*  Poll answers or poll percentage.  */
+
+.poll-answer-votes {
+  display: none; }
+
+.poll-answer-percentage {}
+
+
+body.admin .poll-answers .fields .actions{
+	display:inline-block;
+}
+
+.admin {
+	div.poll-answers {
+		width:80%;
+		margin:.25em auto 1em auto;
+		padding: 20px 0 .1em 0;
+	}
+	
+	/*- - - - - - - edits to treat like other nested association additon UI- - - - - - - */
+	
+	.poll-answer {
+	position:relative;
+	display:inline-block;
+	width:50%;
+	padding:5px;
+	border: 1px #BBB solid;
+	background-color:#FDFAFA;
+	margin-right:10px;
+	margin-bottom:10px;
+	
+		.destroy-nested-association{
+			position:absolute;
+			right:12px;
+			top:12px;
+		}
+  }
+}
+
+html body.admin #content form .poll-answers .poll-answer{
+	
+	textarea {
+	width:99% !important;
+	margin:0;
+	}	
+  
+   div.field {
+	 width:85% !important;
+	 padding:5px;
+   }
+}
+
+/*- - - - - - - end edits to treat like other nested association additon UI- - - - - - - */
+
+
+/*
+ * Individual bar styles 
+ * (the default is 3 rotating classes, but this can be changed in config).
+ */
+
+.pab-1 {
+
+  $color: $poll-answer-bar-color-1;
+  background:$color;
+  @include background-image(linear-gradient($color , $color ));
+  
+}
+
+.pab-2 {
+  $color: $poll-answer-bar-color-2;
+  background:$color;
+  @include background-image(linear-gradient($color , $color ));
+  
+}
+
+.pab-3 {
+  $color: $poll-answer-bar-color-3;
+  background:$color;
+  @include background-image(linear-gradient($color, $color));
+  
+}

@@ -1,0 +1,21 @@
+.contact.leads
+  %h2
+    %span.contact-subheader Leads 
+    %span.contact-actions
+      = link_to_new_resource('Create Lead', Deal, :deal => {:status => Deal::Status::Lead, :contact_ids => [resource.id] }, :rel => 'popup')
+  %table
+    %thead
+      %tr
+        %th= Deal.human_attribute_name(:created_at)
+        %th= Deal.human_attribute_name(:offer_name)
+    %tbody
+      - if (leads = resource.associated_deals.leads).blank?
+        %tr
+          %td{:colspan => 2}= resource_humanize(:no_leads)
+      - else
+        - leads.each do |lead|
+          %tr
+            %td.contact-lead-created-at
+              = l(lead.created_at.to_date)
+            %td.contact-lead-name
+              = link_to(lead.offer_name.presence || t(:no_offer_value), edit_deal_path(lead))

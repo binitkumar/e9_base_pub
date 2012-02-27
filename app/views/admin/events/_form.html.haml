@@ -1,0 +1,57 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]) do |f|
+  .errors= resource_error_messages!
+  .fields
+    = f.hidden_field :layout_id
+    .field
+      = f.label :title, nil, :class => :req
+      = f.text_field :title
+    = render 'e9_tags/form', :f => f
+    = render 'admin/views/body', :f => f
+
+    %fieldset
+      %legend Event Settings
+      .field
+        = f.label :event_type, nil, :for => 'event_parent_id', :class => 'req'
+        = f.collection_select :parent_id, EventType.order('name ASC').all, :id, :name
+      .field
+        = f.label :event_time, nil, :class => 'req'
+        = f.text_field :event_time, :value => l(f.object.event_time), :class => 'time-picker'
+      .field
+        = f.label :event_last_register_date, nil, :class => 'req'
+        = f.text_field :event_last_register_date, :value => l(f.object.event_last_register_date), :class => 'date-picker'
+      %fieldset.event-charge-model
+        %legend= f.object.class.human_attribute_name(:event_is_free)
+        .field
+          = f.radio_button :event_is_free, true
+          = f.label :event_is_free_true
+        .field
+          = f.radio_button :event_is_free, false
+          = f.label :event_is_free_false
+          %fieldset.nested-associations
+            = render_record_attribute_association(:cost_attributes, f)
+            = link_to_add_record_attribute(:cost_attributes)
+      .field
+        = f.label :event_capacity, nil, :class => 'req'
+        = f.text_field :event_capacity
+      .field
+        = f.label :event_max_guests, nil, :class => 'req'
+        = f.text_field :event_max_guests
+      .field
+        = f.label :event_show_promo_code
+        = f.check_box :event_show_promo_code
+      .field
+        = f.label :form_html
+        = f.text_area :form_html
+      .field.tinymce
+        = f.label :event_registration_message
+        = f.text_area :event_registration_message
+
+    = render 'shared/form_partials/related_data', :f => f
+    = image_mount_field(resource.thumb, :f => f)
+    = render 'admin/views/advanced_settings', :f => f
+
+  .actions
+    = f.submit
+
+- content_for :bottom_javascripts do
+  = javascript_include_tag templates_events_path

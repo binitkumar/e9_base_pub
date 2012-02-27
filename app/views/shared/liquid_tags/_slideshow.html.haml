@@ -1,0 +1,10 @@
+%div{:id => "slideshow-#{resource.object_id}", :class => 'slideshow-widget'}
+
+- content_for :javascripts do
+  = slideshow_javascript_includes
+
+- content_for :bottom_javascripts do
+  :javascript
+    $(function(){ 
+      $("#slideshow-#{resource.object_id}").slideshow("#{ resource.new_record? ? slides_path(search_options) : slideshow_path(resource) }", #{ js_options.to_json });
+    });

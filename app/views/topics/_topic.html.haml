@@ -1,0 +1,14 @@
+- meta_tags(resource)
+
+.left-block
+  = content_avatar(resource)
+  = content_action_links(resource)
+.block
+  .date-and-byline
+    = content_dateline(resource)
+    = content_byline(resource)
+  = content_labels(resource)
+.content-body
+  = comment_body_escape(resource.body) 
+
+= content_comments(resource)

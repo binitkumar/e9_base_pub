@@ -1,0 +1,19 @@
+- meta_tags @forum unless @forum.blank?
+
+.title
+  - if current_page.role > E9::Roles.public
+    = title(current_page.title)
+  - else
+    = title_with_feed(current_page.title)
+
+  .actions
+    = link_to "Create Topic", @forum.try(:persisted?) ? new_forum_topic_path(@forum) : new_topic_path
+
+#topics
+  - unless collection.empty?
+    .topics.list
+      = render :partial => 'forum_topic', :collection => collection
+  - else
+    = e9_t(:no_records_text)
+
+= will_paginate collection

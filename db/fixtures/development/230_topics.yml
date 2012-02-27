@@ -1,0 +1,149 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+
+topic_alpha_one:
+  <<: *defaults
+  forum: alpha
+  title: Who's Afraid of Virginia Woolf?
+  tag_lists:
+    tags: 
+      - Nostrud
+      - Ipsum
+      - Appellatio
+  body: |
+    Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo nimis. 
+    Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene velit 
+    valetudo. Eum nulla tincidunt delenit nostrud abigo, iusto illum esse molior 
+    facilisis wisi abdo turpis, ille. Metuo exerci feugait secundum consequat 
+    capto. Ingenium blandit pneum praemitto, tum molior comis importunus, ut 
+    fatua abbas. Te verto, incassum sino vindico ad commoveo nimis hendrerit 
+    mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus 
+    ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat 
+    quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes. Ludus 
+    valde cui duis luptatum humo hos duis ut capio bene. Cogo wisi vulpes te caecus,
+    opes, duis transverbero veniam usitas.
+topic_alpha_two:
+  <<: *defaults
+  forum: alpha
+  title: It Was the Best of Times...
+  tag_lists:
+    tags:
+      - Nostrud
+      - Ipsum
+      - Appellatio
+  body: |
+    Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, huic 
+    melior. Antehabeo valetudo antehabeo praesent scisco quidne capto in in 
+    similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. 
+    Nisl esca illum tation vel hendrerit paratus capto vulputate verto.
+
+topic_alpha_three:
+  <<: *defaults
+  forum: alpha
+  title: I am Seated in an Office, Surrounded by Heads and Bodies
+  tag_lists:
+    tags:
+      - nostrud
+      - commoveo capto
+      - praemitto
+      - Resapto
+      - Ingenium
+  body: |
+    Lorem ipsum dolor sit amet, fatua, sudo bene camur vulputate amet et duis 
+    pneum suscipit opto hendrerit, eum molior inhibeo. Et quis ex lobortis elit,
+    quis ut abdo tristique aptent decet, augue, dolor secundum. Brevitas qui 
+    premo fatua quod quae hendrerit distineo esca os suscipit in. Demoveo 
+    sagaciter suscipit nibh modo dolus ratis suscipere praesent. Valetudo 
+    vulputate minim illum reprobo paulatim validus nonummy ut metuo vel lucidus, 
+    adsum. Et delenit molior quod euismod ne nimis accumsan, suscipit gravis 
+    ludus vereor opes qui reprobo. Usitas vindico os neque ulciscor ad acsi 
+    tincidunt, saepius nisl, fatua persto saluto nutus.  Feugait et gemino cui 
+    quia hos.Qui vel, consequat pagus iriure abigo te odio os odio suscipere 
+    ideo nimis.
+
+topic_beta_one:
+  <<: *defaults
+  forum: beta
+  title: The Tin Drum
+  tag_lists:
+    tags:
+      - jumentum hendrerit
+      - commoveo capto
+      - Quidne
+      - Qui vel
+      - blandit ad
+      - paulatim  
+  body: |
+    Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo nimis. 
+    Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene velit 
+    valetudo. Eum nulla tincidunt delenit nostrud abigo, iusto illum esse 
+    molior facilisis wisi abdo turpis, ille. Metuo exerci feugait secundum 
+    consequat capto. Ingenium blandit pneum praemitto, tum molior comis 
+    importunus, ut fatua abbas. Te verto, incassum sino vindico ad commoveo 
+    nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim 
+    paulatim in pagus ut lobortis blandit.
+topic_beta_two:
+  <<: *defaults
+  forum: beta
+  title: Hard-Boiled Wonderland and the End of the World
+  tag_lists:
+    tags:
+      - Appellatio
+      - Lorem
+      - Ingenium
+      - jumentum hendrerit
+      - commoveo capto
+      - Quidne
+      - Qui vel
+      - blandit ad
+      - paulatim 
+  body: |
+    Valetudo, facilisi letalis at facilisis reprobo comis praesent, augue in 
+    nimis eum. Elit sed, meus ludus foras, defui exerci quia dolor. Et feugiat 
+    blandit saluto wisi ad mara esse verto lobortis ratis melior pneum wisi 
+    sudo. Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, 
+    huic melior. Antehabeo valetudo antehabeo praesent scisco quidne capto in 
+    in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. 
+    Nisl esca illum tation vel hendrerit paratus capto vulputate verto.
+topic_gamma_one:
+  <<: *defaults
+  forum: gamma
+  title: It was a Bright Cold Day in April, and the Clocks were Striking Thirteen
+  tag_lists:
+    tags:
+      - nostrud
+      - commoveo capto
+      - praemitto
+      - Resapto
+      - Ingenium
+  body: |
+    Praesent olim ea esse enim scisco capto, veniam nonummy nobis, ullamcorper,
+    ibidem consequat. Capto vel autem commodo pagus virtus mos, accumsan 
+    valetudo quia dolore roto. Vero facilisis sagaciter blandit torqueo 
+    commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat 
+    consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros 
+    tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat.
+    Immitto eu, oppeto sino in eu feugait.
+topic_gamma_two:
+  <<: *defaults
+  forum: gamma
+  title: A Portrait of the Artist as a Young Man
+  tag_lists:
+    tags:
+      - Appellatio
+      - Lorem
+      - Qui vel
+      - blandit
+      - Ingenium
+  body: |
+    Melior euismod haero pagus, wisi usitas venio gravis jumentum, tincidunt 
+    dolus capio patria neo. Adipiscing comis et augue ad velit mauris minim 
+    macto aptent, eligo exerci indoles exerci feugiat. Exerci adipiscing cogo 
+    fere tego ad nisl consequat valetudo, aliquam accumsan refero ratis. Nimis 
+    tristique delenit quidem, eros feugait appellatio vero. Olim, oppeto 
+    commodo enim scisco, enim venio at aliquip. Abigo vereor interdico vel 
+    premo, turpis immitto plaga luptatum, wisi bene. Valetudo, facilisi 
+    letalis at facilisis reprobo comis praesent, augue in nimis eum. Elit sed, 
+    meus ludus foras, defui exerci quia dolor. Et feugiat blandit saluto wisi 
+    ad mara esse verto lobortis ratis melior pneum wisi sudo.

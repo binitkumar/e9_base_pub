@@ -1,0 +1,19 @@
+- content_for :main_nav_content do
+  #banner
+    = render_region 'main-banner'
+  #main-nav
+    = render_region 'main-nav'
+
+- content_for :application_content do
+  #body
+    #left
+      = render_region 'left'
+    #content
+      .content-inner
+        = flash_messages
+        = breadcrumbs_helper
+        = content_for?(:default_content) ? yield(:default_content) : yield
+        = yield :content_comments
+
+- add_body_class("sidebar-left")
+= render :file => 'layouts/application'

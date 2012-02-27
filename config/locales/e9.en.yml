@@ -1,0 +1,474 @@
+#
+# e9 translations, typically resolved through the e9_t method of the
+# application controller.
+#
+# By default, inherited_resource driven controllers will expose several variables
+# for interpolation: models, model, element, collection
+#
+
+en:
+  e9:
+    select_image: Select an image
+    crop_image: Crop this image
+    browse_image: Upload an image
+    reset_image: Reset this image
+    read_more_link: "Read More"
+    toolbar_help: ''
+    actions: Actions
+    add: "Add"
+    add_link: "Add %{model}"
+    all: All
+    anonymous_username: Anonymous
+    back_link: Back
+    cancel_link: Cancel
+    confirmation_question: Are you sure you want to proceed?
+    delete_comment_link: Censor
+    delete_link: Delete
+    dependency_delete_warning: "This %{element} is being used.  You can not delete it until you remove it from where it is used."
+    e9_link: Website Powered by e9digital
+    edit_link: Edit
+    edit_title: "Edit %{model}"
+    facebook_link_title: Visit us on Facebook
+    help_link: Help
+    home_title: Home
+    index_title: "%{models}"
+    link_html: Link HTML
+    link_text_help: "This text is used to generate the HTML link markup which can be copied and used to link to this content.  If blank it will default to the content's title."
+    linked_in_link_title: Visit us on LinkedIn
+    log_in_to_comment_message: You must be logged in to comment.
+    manage: Manage
+    meta_keywords_instructions: "Please enter keywords or key-phrases separated with commas."
+    more_info: More Info
+    new_title: "Add %{model}"
+    no_notes_text: "There are no notes or tasks."
+    no_records_text: "No %{models} exist yet."
+    not_found_title: Page Not Found
+    permalink: Permalink
+    position: Order
+    print_friendly_page_link_text: Print this page
+    publish: Publish
+    quick_edit_link: Quick Edit
+    related_data: Layout Specific Content
+    remove_link: Remove
+    reset_link: Reset
+    save_link: Save
+    search: Search
+    share: Share
+    show_title: "Show %{model}"
+    signed_in_as: "Signed in as %{email}" # available: username, first_name, email
+    submit_link: Submit
+    twitter_link_title: Follow us on Twitter
+    unpublish: Unpublish
+    unpublished_page_error: This page is temporarily offline.
+    update_order: Update Order
+    vb_all_users: All Users
+    vb_logged_in_admin_users: Logged-IN Admin Users
+    vb_logged_in_employees: Logged-IN Employees
+    vb_logged_in_users: Logged-IN Users
+    view: View
+    view_link: "View %{model}"
+    view_link: View
+
+    created_byline: "<span>Created by:</span> %{username} at %{at}"
+    last_reply_byline: "<span>Last Reply By:</span> %{username} at %{at}"
+    byline: "by <span>%{name}</span>" # available [username, name, email], defaults to no_author_name
+
+    upload_banner: Browse to Upload Image
+    previous_page_link: "&lt; <span>Previous</span>"
+    next_page_link: "<span>Next</span> &gt;"
+    slide_pagination: "%{position}/%{count}"
+    slide_link_title: "View %{title}"
+
+    share_site_title: "Click to share this page on %{share_site_name}"
+    share_site_link: "Share on %{share_site_name}"
+    show_more_link: "Show %{count} More"
+    search_error: There was an error processing your search request.
+
+    social_publish: Broadcast
+
+    dashboard_icons_legend: Actions
+    share_bar_icons_legend: Share
+    dashboard_delete_element_link: "Delete this %{element}" # available: element
+    dashboard_edit_element_link: "Edit this %{element}" # available: element
+
+    subscribe_link_text: Subscribe to this feed
+
+    blog_index_archive_menu_title: Full Archive
+    blog_archive_menu_title: "Archive of %{title}"
+
+    default_avatar_link_alt: "User Avatar"
+    avatar_link_alt: "Avatar for %{username}"
+
+    # form text
+    no_choice_select_option: "Select %{element}..."
+    no_region_select_option: None
+    settings_form_legend: Settings
+    blank_select_option: Select...
+    advanced_settings: Advanced Settings
+    link_select_option: "%{model}: %{title}"
+
+    # liquid tags
+    content_updates_tag_title: Recent Content Updates
+    content_feed_tag_title: Content Feed
+    feed_published_dateline: "%{date}" 
+    feed_updated_dateline: "Updated at %{date}" 
+
+    # titles and menu headers
+    admin_link: Admin
+    edit_admin_help_link: Edit Admin Custom Help
+    preview_link: Preview
+    change_layout_link: Change Layout
+    view_layout_link: View
+    public_link: Public Site
+    employees_link: Employees
+    sign_out: Sign Out
+    sign_in: Sign In
+    sign_up: Sign Up
+    user_info_dialog_title: User Info
+    completed_notes_header: 'Completed Tasks & Notes'
+    active_notes_header: 'Active Tasks'
+
+    tags_name: Tag
+    add_tag_link: Add
+    tag_context_name: Context
+    tag_context_visible: "Tags created with this context will be searchable and visible on their tagged content."
+    tag_context_hidden: "Tags created with this context will be unsearchable and will not be visible on their tagged content."
+    tag_instructions: "<p>Tags are words or phrases that describe or classify the content on this page.</p><p>Context allows you to contextualize each tag you enter. For a tag of \"coca cola\" you might give it a context of \"brand\", or you could give it a context of \"soda\".</p><p>Enter a tag, click Add. Repeat to add more.</p>"
+    delete_tag_link_instructions: Click to remove this tag
+
+    record_counts_heading: "Total %{models} Counts"
+    record_counts_listing: "%{count} - %{title}"
+    record_search_heading: "Search %{models}"
+    record_scope_select_heading: "View %{models} by Type"
+
+    toolbar_links_header: ""
+    toolbar_search_header: Search
+    toolbar_scope_header: View
+
+    # scope breadcrumbs
+    admin_content_breadcrumb: Content
+    admin_breadcrumb: Admin
+    admin_email_breadcrumb: Email
+    admin_settings_breadcrumb: Settings
+    admin_users_breadcrumb: Users
+
+    events:
+      no_records_text: There are no events of this type available.
+      read_more_link: Read More or Register
+      show_title: View Event
+    event_transactions:
+      event_registration_legend: Register For Event
+      payment_information_legend: Pay For Event
+      show_title: Thank you for registering!
+      show_breadcrumb: Registration Successful
+    facebook_posts:
+      header: Facebook
+      new_title: Post to Facebook
+    twitter_statuses:
+      header: Twitter
+      new_title: Post to Twitter
+    subscriptions:
+      show_title: Manage Your Subscriptions
+      instructions1: "%{first_name}, if a box is checked, you are currently subscribed to that list." # username, first_name
+      instructions2: If you want to subscribe to another list, check its box and save.
+      instructions3: If you no longer wish to receive email from a list, uncheck its box and save.
+      submit_text: Update
+    passwords:
+      new_title: Forgot Your Password?
+      edit_title: Reset Password
+      edit_password_link: Change It!
+    friend_emails:
+      subject_text: "I just saw this on %{site_name} - %{title}"
+      new_title: "Share this page with a friend"
+      link_title: "Share this page with a friend"
+    pages:
+      no_author_name: anonymous
+      share_link: Share
+      comments_link: "Comments (%{comments_count})"
+    sessions:
+      new_title: Sign In
+      sign_up_header: Sign Up
+    registrations:
+      new_title: Sign Up
+      sign_in_header: "Welcome, please sign in"
+    profiles:
+      avatar_help: |
+        <p>Please note, your photo cannot be larger than 5MB.</p>
+        <p>If you need to reduce the file size, try a service like <a href="http://www.picnik.com" rel="external">www.picnik.com</a>.</p>
+      show_title: My Home
+      edit_title: Edit My Profile
+      change_password_title: Change My Password
+      change_password_link: Change My Password
+      commented_items_header: "Topics/Pages Where I've Commented"
+      favorites_header: Favorites
+      unsave_favorites_link: Unsave All Favorites
+      general_form_fields_header: General Settings
+      avatar_form_fields_header: My Avatar
+      password_form_fields_header: Change My Password
+      crop_instructions: "You can move the cropping area around the image and resize it for desired results."
+      current_image_header: Current Image
+      preview_image_header: Preview New Image
+    favorites:
+      no_favorites_text: "You haven't saved any favorites."
+      remove_favorite_link: Unsave
+      remove_favorite_link_title: Unsave this page from your favorites
+      add_favorite_link_title: Save this page to your favorites
+    comments:
+      index_title: Comments
+      link_text: "Comments (%{count})"
+      link_text_no_count: "Comments"
+      deleted_text: "Comment deleted by %{deleter}."
+      comment_prefix: "On %{at}, <span class=\"author-name\">%{author}</span> writes:"
+      comment_warning: "For clickable links, add <b>http://</b> or <b>www</b> to the URL. &nbsp;Bold, Italic, Subscript & Superscript HTML tags are supported."
+      no_comments_text: "You haven't commented on anything."
+      no_records_text: There are no comments posted.
+      log_in_to_comment_text: You must be logged in to comment
+      listing_header: "%{author} commented on this %{commentable_model}" # variables: author, commentable_model
+    search:
+      index_title: Search Results
+      search_submit: Search
+      search_results_title: "Search Results for \"%{query}\""
+      result_type_subhead: "%{model} Results (%{count} Total)"
+      no_results_text: "No results were found."
+      view_as_slideshow: View As Slideshow
+    blog_posts:
+      read_more_link: "[read more]"
+      sign_in_to_read_more_link: "[sign in to read more]"
+      no_records_text: There are no posts in this blog.
+    faqs:
+      show_title: Manage FAQs
+      no_records_text: There are no FAQs posted.
+    blogs:
+      no_records_text: There are no blogs yet.
+    forums:
+      show_title: "%{title}"
+      no_records_text: "No topics posted in this forum."
+    flags:
+      remove_flag: Remove Flag
+      add_flag: Report Abuse
+      abuse_reported: Abuse Reported
+    images:
+      index_title: Images
+      select_title: Select an Image
+      show_title: Use this image?
+      select_button: Select this image?
+      back_button: Back
+      edit_title: Add/Edit Image Tags
+    slides:
+      search_index_title: "Slides Matching: %{search}"
+      custom_index_title: "All Slides"
+    topics:
+      show_title: "%{title}"
+      new_title: Create Topic
+      edit_title: Edit Topic
+      tag_instructions: "<p>Tags are words or phrases that describe or classify the content on this page.</p><p>Enter a tag, click Add. Repeat to add more.</p>"
+    users:
+      show_title: "%{name}"
+      index_title: "Employee Directory"
+      index_title_with_search: "Profiles matching \"%{search}\""
+    admin:
+      feed_widgets:
+        specific_content: Specific Content
+        mixed_content: Filter by Type
+      help:
+        standard_help_header: Standard Help
+        custom_help_header: Custom Help
+      help_editor:
+        title: Custom Admin Help Editor
+        body_alias: Help Content
+      comments:
+        delete_user_link: "Delete User & All Comments"
+        index_title: "Comments"
+        flagged_index_title: "Flagged Comments"
+        delete_all_comments_link: Delete All Comments by This User
+        listing_header: "%{author} commented on this %{commentable_model}" # variables: author, commentable_model
+        comment_okay: Okay
+        comment_flagged: Flagged
+        comment_deleted: Censored
+        comment: Comment
+        status: Status
+      banners:
+        manage_title: "Manage Banner: %{name}"
+        manage: Manage Banner
+      blogs:
+        add: Add Blog with Layout
+        index_title: Manage Blogs
+        slug_instructions: A slug is how your blog title will appear in the URL.  It is restricted to lower-case letters, numbers, and dashes.
+        master_slug_message: "This is the site's central blog and is available at the path /blog.  Its slug cannot be changed."
+      blog_posts:
+        add: Add to Blog
+        blog_select_text: Select a Blog
+        all_blog_posts_scope: All Blog Posts
+        manage_blogs_link: Manage Blogs
+        add_link: Go
+      email_deliveries:
+        show_title: View Delivered Email
+        new_title: Send Email
+        no_records_text: No delivered emails were found.
+        no_recipients: There were no recipieents.
+      event_registrations:
+        transfer_title: Transfer to Another Event
+        edit_voucher_title: Edit Voucher Number
+        no_contacts_notification: "Either you have selected no contacts, or all of those selected are opted out of bulk email.  Please correct this and try again."
+        send_email_template: Send
+      faqs:
+        show_title: "Manage FAQs for %{model}"
+        questions_link: Manage FAQs
+        no_records_text: No FAQs exist yet.
+      forums:
+        add: Add Forum with Layout
+        no_records_text: No Forums exist yet.
+      layouts:
+        copy_link_text: Copy
+        selected_layout_label: Selected Layout
+        parent_layout_label: Adding Copy of Layout
+        view_link: "[view]"
+        application_fieldset_legend: Defaults
+        user_page_fieldset_legend: Pages
+        blog_post_fieldset_legend: Blog Posts
+        home_page_fieldset_legend: Home Page
+        topic_fieldset_legend: Forums
+        admin_page_fieldset_legend: Admin Pages
+        user_page_two_col_fieldset_legend: Pages
+        slide_1_fieldset_legend: Slides
+        slide_fieldset_legend: Slides
+      menus:
+        show_title: "Manage %{name}"
+        empty_linkables_warning: All pages are already linked in the menu!
+        dependency_delete_warning: This element has items below it on the menu. You must remove all of its sub pages before you can remove it.
+        no_records_text: This menu has no submenus to manage. Use the links above to add one.
+      nodes:
+        update_title: Change Renderable
+        renderable_field_label: Renderable
+        submit: Change
+        snippets:
+          update_title: Change Renderable
+          renderable_field_label: Renderable
+        banners:
+          update_title: Change Banner
+          renderable_field_label: Banner
+      questions:
+        no_records_text: No Questions exist yet.
+      social_networking:
+        social_networking_form_legend: Post To Social Networks
+        social_networking_instructions: Please note that social feeds will only be updated on content for All Users or Logged-in Users.
+      submenus:
+        index_title: "Manage Submenu of %{parent}" 
+        descend_menu_hierarchy_link: Manage Submenu
+        ascend_menu_hierarchy_link: Up One Level
+        new_window: New
+        same_window: Same
+        delete_link: Remove
+        view_submit: View
+      hard_links:
+        new_title: "Add Menu Element: Link to %{parent}"
+      soft_links:
+        new_title: "Add Menu Element: Page to %{parent}"
+      user_pages:
+        add: Add Page with Layout
+      regions:
+        region_settings_form_legend: Regions
+      searches:
+        index_title: Search Log
+        no_records_text: No searches have been made yet.
+      share_sites:
+        no_records_text: No sharing sites have been added.
+        share_sites_limit_warning: "Only the first %{limit} sharing sites will be displayed."
+      snippets:
+        blank_select_option: "Select a Layout Region..."
+        index_title: Snippets
+        edit_title: Edit Snippet
+        new_title: Add Snippet
+        no_records_text: No snippets exist yet.
+        name_header: Name
+        actions_header: Actions
+        revert_link: Revert
+      social_feeds:
+        index_title: Social Feeds
+        save_link: Update
+      system_emails:
+        no_records_text: No system emails exist.
+        send_test_email_link: Send Test
+      settings:
+        index_title: Settings
+        contents:
+          index_title: Content Settings
+          faq_settings: FAQ Settings
+          forum_settings: Forum Settings
+          event_settings: Event Settings
+          feed_settings: Default Feed Settings
+          blog_settings: Blog Settings
+          pages_settings: Pages Settings
+          slide_settings: Slide Settings
+        generals:
+          index_title: General Settings
+          company_information: Company Information
+          miscellaneous_settings: Miscellaneous Settings
+          records_to_display_settings: Records to Display Settings
+          merchant_settings_legend: Merchant Settings
+        email:
+          index_title: Email Settings
+        socials:
+          index_title: Social Networking Settings
+          facebook_settings: Facebook Settings
+          linked_in_settings: LinkedIn Settings
+          twitter_settings: Twitter Settings
+          facebook_content_settings: Facebook Content Settings
+          twitter_content_settings: Twitter Content Settings
+          facebook_access_token_refresh_link: Authorize website with Facebook
+          facebook_access_token_instructions: You can not authorize the website with Facebook at this time. Contact E9 Digital to have them enable the account.
+        images:
+          index_title: Images Settings
+      slides:
+        add_with_layout: Add Slide with Layout
+        add_to_slideshow: Add an Existing Slide
+        manage_slideshow_title: "Manage Slideshow: %{slideshow}"
+        scope_submit: View Slides
+        no_records_text: There are currently no slides with this layout.
+        no_records_in_slideshow_text: This slideshow has no slides.  Add them using the select field above.
+        all_layouts: All Layouts
+      slideshow_widgets:
+        autoplay: Slide Duration (milliseconds)
+        carousel_speed: Carousel Speed
+        carousel_steps: Carousel Steps
+        transition: Default Transition
+        transition_initial: First Transition
+        transition_speed: Transition Speed (milliseconds)
+        instructions_autoplay: Slide Duration (milliseconds)
+        instructions_clicknext: Clicking the main image advances the slideshow
+        instructions_pause_on_interaction: Stop playback when thumbnails or other slideshow buttons are pressed
+        instructions_popup_links: Image should open in a new window
+        instructions_show_counter: Display the slide counter (e.g. "4 of 19")
+        instructions_show_info: Display the "info" button for the image caption layer
+        instructions_transition_speed: Transition duration in milliseconds
+        instructions_width: Width (pixels)
+        instructions_height: Height (pixels)
+        instructions_carousel: Display The Carousel
+        instructions_carousel_follow: Advance the carousel when the main image advances
+        instructions_carousel_speed: Transition duration in milliseconds
+        instructions_carousel_steps: Steps to advance with each click
+      slideshows:
+        slides_link: Manage Slides
+      user_emails:
+        add_link: "Create %{model}"
+        send_test_email_link: Send Test
+        no_records_text: No templates found.
+        delivery_date: Sent Date
+        sent_count: Sent
+        send_email_link: Send Email to List
+      users:
+        view_all_comments_link: View All Comments
+        query_text: Search
+        query_submit: Go
+        view_submit: Filter
+        no_comments_text: "You have not made any comments"
+        comments:
+          index_title: "%{username}'s Comments"
+          flagged_index_title: "%{username}'s Flagged Comments"
+      views:
+        status_published: Published
+        status_unpublished: Draft
+        layout_select_text: Select a Layout
+        change_layout_title: "Change Layout for %{page_title}" # page_title
+        select_layout_link: Change to this Layout
+        current_layout_label: Current Layout

@@ -1,0 +1,20 @@
+body.controller-admin-comments {
+	//.actions {
+	//	> a {
+		//	font-weight: bold;
+			//font-size: 14px;
+		//}
+	//}
+	#comments{
+		//margin-top: 1em;
+		.title{
+			margin: .7em 0;
+			font-weight: bold;
+			a{
+				text-decoration: none;
+			}
+		}
+	}
+  .comment { @include clearfix; }
+  .avatar { display: none; }
+}

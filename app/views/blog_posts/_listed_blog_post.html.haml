@@ -1,0 +1,12 @@
+.blog-post.listing{:id => listed_blog_post.to_anchor }
+  .left-block
+    = content_avatar(listed_blog_post)
+    = content_action_links(listed_blog_post, :hide_print => true)
+  .block
+    = content_header_link(listed_blog_post)
+    .date-and-byline
+      = content_dateline(listed_blog_post)
+      = content_byline(listed_blog_post)
+    = content_labels(listed_blog_post)
+
+  = listed_blog_post_body(listed_blog_post)

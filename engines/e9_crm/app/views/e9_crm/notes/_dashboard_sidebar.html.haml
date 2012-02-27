@@ -1,0 +1,53 @@
+.admin-sidebar-right
+  .module
+    %h2= e9_t(:flagged_comments_header)
+    .body
+      = flagged_comments_notification
+
+  .module
+    %h2= e9_t(:new_leads_header)
+    .body
+      = new_leads_notification
+
+  .module
+    %h2
+      = e9_t(:searches_header)
+      %span.action-links
+        = link_to('View All', admin_searches_path)
+    .body
+      %table
+        %thead
+          %th Date
+          %th Query
+          %th Results
+        %tbody
+          - results = Search.limit(5).order('created_at DESC')
+          - if results.any?
+            - results.each do |search|
+              %tr
+                %td.date= l(search.created_at.to_date)
+                %td= search.query
+                %td.num= search.results_count
+          - else
+            %tr
+              %td{:colspan => 3}= e9_t(:searches_empty)
+
+  - if facebook_configured?
+    .module
+      %h2
+        = e9_t(:facebook_header)
+        %span.action-links
+          = link_to_popup e9_t(:new_title, :scope => :facebook_posts), new_facebook_post_path
+      .body
+        .social-feed
+          = render 'facebook_posts/feed', :per_page => 3
+
+  - if twitter_configured?
+    .module
+      %h2
+        = e9_t(:twitter_header)
+        %span.action-links
+          = link_to_popup e9_t(:new_title, :scope => :twitter_statuses), new_twitter_status_path
+      .body
+        .social-feed
+          = render 'twitter_statuses/feed', :per_page => 3

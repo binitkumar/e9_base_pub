@@ -1,0 +1,17 @@
+- opts = init_feed_options(local_assigns)
+- if opts[:show_rss_link]
+  - content_for :head do
+    = auto_discovery_link_tag(:rss, opts[:feed_path])
+
+%div{:class => opts[:feed_class]}
+  .feed-inner
+    - if opts[:header_text].present?
+      = content_tag(:div, :class => opts[:header_class]) do
+        - if opts[:show_rss_link]
+          = link_to_feed sanitize(opts[:rss_link_text]), opts[:feed_path], :class => 'small-icon-feed'
+        = sanitize opts[:header_text]
+
+    = content_tag(opts[:feed_format]) do
+      - listing_options = init_listing_options(local_assigns)
+      - collection.each do |record|
+        = render "content_views/feed_listing", :tag => opts[:list_format], :listing => record, :opts => listing_options, :last => record == collection.last

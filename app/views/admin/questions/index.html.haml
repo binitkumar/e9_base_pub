@@ -1,0 +1,13 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    .field
+      = label_tag :faq_id, e9_t(:view)
+      = faq_category_select(@faq)
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = new_admin_resource_link(resource_class, :scopes => @faq, :id => "add_faq_link")
+    = admin_resource_index_link(Faq)
+
+= title e9_t(:show_title, :scope => :"admin.faqs", :model => @faq.title)
+= render 'shared/admin/index', :collection => collection, :skip_title => true

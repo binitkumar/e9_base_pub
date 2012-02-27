@@ -1,0 +1,11 @@
+_defaults: &defaults
+  _finder: email
+  password: a11111
+  password_confirmation: a11111
+
+admin:
+  <<: *defaults
+  email: admin@e9digital.com
+  first_name: Administrator
+  username: admin
+  role: e9_user

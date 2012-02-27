@@ -1,0 +1,79 @@
+en:
+  required_star_help: * = Required Field
+  bio_information: Bio Information
+  contact_information: Contact Information
+  copy: Copy
+  current_upload: Current File
+  family_information: Family Information
+  go: Go
+  inline_help_link: "[?]"
+  no_bio_text: No bio available.
+  no_users_found: Your query produced no results.
+  remove_upload: Remove on Save?
+  reset_upload: Clear
+  school_information: School Information
+  search: Search
+  show_more: Show More
+  copy_of: "Copy of %{name}"
+  no_email_templates: "You have no appropriate email templates defined.  <a href=\"/admin/email/templates\">View your templates?</a>"
+
+  toolbar_help: Help
+  toolbar_actions: Actions
+  toolbar_filters: Search Filters
+
+  placeholders:
+    user_search: ''
+
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%m/%d/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+      iso8601: "%Y-%m-%d"
+      
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+      
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datime_select.
+    order:
+      - :month
+      - :day
+      - :year
+
+  time:
+    formats:
+      default: "%m/%d/%Y %l:%M %P"
+      short: "%d %b %H:%M"
+      euro: "%d %m %Y %l:%M%p"
+      long: "%A, %B %d, %Y %l:%M %p"
+      dateline: "%A, %B %d, %Y %l:%M %p"
+      iso8601: "%Y-%m-%dT%H:%M"
+      event: "Date: %A %m/%d/%Y at %l:%M %P"
+    am: "am"
+    pm: "pm"
+      
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Please select"
+
+    # Default translation keys for submit FormHelper
+    submit:
+      create: 'Create'
+      update: 'Update'
+      submit: 'Save'
+
+      email_delivery:
+        create: 'Send Email'

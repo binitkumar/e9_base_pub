@@ -1,0 +1,21 @@
+= title_with_feed(@search.title)
+
+- if @search.empty?
+  .list-container
+    .list 
+      .listing 
+        = e9_t(:no_results_text, :query => @search.query)
+
+- else
+  - @results.each do |klass, results|; next if results.empty?
+    - model_name = klass.model_name
+    .search-results.list-container{:id => "#{model_name.element}_results"}
+      .header
+        = link_to_feed(nil, :search_type => model_name.element)
+        .heading= e9_t(:result_type_subhead, :model => model_name.human, :count => results.total_entries)
+        .actions= link_to(e9_t(:view_as_slideshow), slides_path(:search => @search.query)) if Slide == klass
+      .list
+        %div
+          = render(:partial => "#{model_name.collection}/listing", :collection => results, :locals => { :query => @search.query })
+      .show-more 
+        = show_more_link(klass, results, @search)

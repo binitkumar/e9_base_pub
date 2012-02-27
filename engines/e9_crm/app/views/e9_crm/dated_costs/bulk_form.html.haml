@@ -1,0 +1,25 @@
+= title @advertising_costs_title
+
+= form_tag bulk_create_dated_costs_path do
+  .field.date-picker
+    = label_tag 'dated_cost_date', resource_humanize(:date)
+    %input{:id => 'dated_cost_date', :type => 'text', :class => 'date-picker', :name => 'date', :value => l(params[:date] || Date.today)}
+
+  %table#dated-costs-bulk
+    %thead
+      %th= AdvertisingCampaign.model_name.human
+      %th= resource_humanize(:cost)
+    %tfoot
+      %tr
+        %td Total
+        %td.cost#ctotal &nbsp;
+    %tbody
+      - @advertising_campaigns.each do |ac|
+        %tr
+          %td= ac.to_s
+          %td.cost
+            %input{:type => 'hidden', :name => 'id[]', :value => ac.id}
+            %input{:type => 'text', :name => 'cost[]'}
+
+  .actions
+    = submit_tag

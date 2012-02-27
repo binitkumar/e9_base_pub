@@ -1,0 +1,264 @@
+_defaults: &defaults
+  _finder: identifier
+
+reset_password:
+  <<: *defaults
+  name: Reset Password Email
+  identifier: <%= SystemEmail::Identifiers::RESET_PASSWORD %>
+  subject: '{{ config.site_name }} send Password Reset Instructions'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>You can reset your password by clicking the link or pasting it into your browser:<br /> #reset_password_url#</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+  text_body: |
+    Dear #first_name#,
+
+    You can reset your password by clicking the link or pasting it into your browser:
+    #reset_password_url#
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+new_content_alerts:
+  <<: *defaults
+  mailing_list: new_content_alerts
+  name: New Content Alert Email
+  identifier: <%= SystemEmail::Identifiers::NEW_CONTENT_ALERT %>
+  subject: '{{ config.site_name }} has new content: {{ page.title }}'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>{{ page.title }} was added to {{ config.site_name }}</p>
+    <p>You can visit this page by clicking the link or pasting it into your browser:<br />{{ page.url }}</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+    <p>To unsubscribe from these alerts, click the link or paste it into your browser:<br />#unsubscribe_url#</p>
+  text_body: |
+    Dear #first_name#,
+
+    {{ page.title }} was added to {{ config.site_name }}
+
+    You can visit this page by clicking the link or pasting it into your browser:
+    {{ page.url }}
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+    To unsubscribe from these alerts, click the link or paste it into your browser:
+    #unsubscribe_url#
+
+friend_email:
+  <<: *defaults
+  name: "Email a Friend Email"
+  identifier: <%= SystemEmail::Identifiers::FRIEND_EMAIL %>
+  subject: "I just saw this on {{ config.site_name }} - {{ page.title }}"
+  html_body: |
+    <p>{{ sender.email }} just sent you a link:</p>
+    <p>{{ email.message }}</p>
+    <p>You can visit "{{ page.title }}" by clicking the link or pasting it into your browser:<br />{{ page.url }}</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+    <p>{{ sender.email }} just sent you a link:</p>
+  text_body: |
+    {{ sender.email }} just sent you a link:
+
+    {{ email.message }}
+
+    You can visit "{{ page.title }}" by clicking the link or pasting it into your browser:
+    {{ page.url }}
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+revocation_confirmation:
+  <<: *defaults
+  name: Revocation Confirmation
+  identifier: <%= SystemEmail::Identifiers::REVOCATION_CONFIRMATION %>
+  subject: '{{ config.site_name }} -- Your account has been revoked'
+  html_body: |
+    <p>Hello,</p>
+    <p>The account registered for #email# has been deactivated per your request.</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+  text_body: |
+    Hello,
+
+    The account registered for #email# has been deactivated per your request.
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+registration_confirmation:
+  <<: *defaults
+  name: Registration Confirmation
+  identifier: <%= SystemEmail::Identifiers::REVOCATION_INSTRUCTIONS %>
+  subject: 'You are now registered at {{ site.name }}'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>You are now registered at {% link_to root_url %}.</p>
+    <p>If you chose to sign up with us, please disregard this email as no further action is required.</p>
+    <p>However, if this was not you, you can revoke this account by clicking the link or pasting it into your browser:<br />#revoke_account_url#</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team</p><br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+  text_body: |
+    Dear #first_name#,
+
+    You are now registered at {% link_to root_url %}.
+
+    If you chose to sign up with us, please disregard this email as no further action is required.
+
+    However, if this was not you, you can revoke this account by clicking the link or pasting it into your browser:
+    #revoke_account_url# 
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+new_registrant:
+  <<: *defaults
+  name: Admin Registrant Notification
+  identifier: <%= SystemEmail::Identifiers::NEW_REGISTRANT %>
+  subject: 'You have a new registrant at {{ config.site_name }}'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>There is a new registrant at {{ config.site_name }}.</p>
+    <p>Visit {% link_to admin_users_url %} to review new registrations.</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+  text_body: |
+    Dear #first_name#,
+
+    There is a new registrant at {{ config.site_name }}.
+
+    Visit {% link_to admin_users_url %} to review new registrations.
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+comment_update:
+  <<: *defaults
+  name: Comment Updates Email
+  mailing_list: comment_updates
+  identifier: <%= SystemEmail::Identifiers::COMMENT_UPDATE %>
+  subject: '{{ sender.username }} commented on {{ config.site_name }} - {{ page.title }}'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>To see "{{ page.title }}" and the comments, click on the link or paste it into your browser:<br />{{ page.url }}</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+    <p>To unsubscribe from these alerts, click the link or paste it into your browser:<br />#unsubscribe_url#</p>
+  text_body: |
+    Dear #first_name#,
+
+    To see "{{ page.title }}" and the comments, click on the link or paste it into your browser:
+    {{ page.url }}
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+    To unsubscribe from these alerts, click the link or paste it into your browser:
+    #unsubscribe_url#
+
+offer_conversion:
+  <<: *defaults
+  name: Offer Conversion Email
+  identifier: <%= Offer::Identifiers::CONVERSION_EMAIL %>
+  subject: 'Lead for {{ offer.name }}'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>Someone responded to an offer on {{ config.site_name }}.</p>
+    <p>{% link_to leads_url text[Review this new lead.] %}</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+  text_body: |
+    Someone responded to an offer on {{ config.site_name }}.
+
+    {% link_to leads_url text[Review this new lead.] %}
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+elevation_notification:
+  <<: *defaults
+  name: Employee Confirmation Email
+  identifier: <%= SystemEmail::Identifiers::ELEVATION_NOTIFICATION %>
+  subject: 'You have been confirmed as employee of {{ config.site_name }}'
+  html_body: |
+    <p>Dear #first_name#,</p>
+    <p>You have just been confirmed as a employee of {{ config.site_name }}.</p>
+    <p>Go to {% link_to edit_profile_url %} to enter your extended profile information.</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br />{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+  text_body: |
+    Dear #first_name#,
+
+    You have just been confirmed as a employee of {{ config.site_name }}.
+
+    Go to {% link_to edit_profile_url %} to enter your extended profile information.
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!
+
+event_confirmation:
+  <<: *defaults
+  name: "Event Confirmation Email"
+  identifier: <%= SystemEmail::Identifiers::EVENT_CONFIRMATION %>
+  subject: "{{ config.site_name }}: {{ event.title }} Confirmation"
+  html_body: |
+    <p>Thank you for registering for {{ event.title }}.</p>
+    <p>It will be held on {{ event.date }} at {{ event.time }}.</p>
+    <p>Many thanks!</p>
+    <p>The {{ config.site_name }} Team<br/>{{ config.can_spam_mailing_address}}</p>
+    <p>PS: If you have any trouble or have questions, you can simply reply to this email and let us know!</p>
+  text_body: |
+    Thank you for registering for {{ event.title }}.
+
+    It will be held on {{ event.date }} at {{ event.time }}.
+
+    Many thanks!
+
+    The {{ config.site_name }} Team
+    {{ config.can_spam_mailing_address}}
+
+    PS: If you have any trouble or have questions, you can simply reply to this email and let us know!

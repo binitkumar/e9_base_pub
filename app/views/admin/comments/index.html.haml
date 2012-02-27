@@ -1,0 +1,11 @@
+= admin_comments_title_helper(collection.total_entries)
+
+- content_for :toolbar_right do
+  - if @user
+    = toolbar_actions do
+      = destroy_admin_resource_link(@user, :id => :delete_user_link, :text => e9_t(:delete_user_link))
+
+= render 'shared/admin/toolbar'
+
+#records_table
+  = render 'table'

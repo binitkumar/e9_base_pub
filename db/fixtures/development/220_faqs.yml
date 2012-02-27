@@ -1,0 +1,14 @@
+_defaults: &defaults
+  _finder: title
+  role: guest
+  author: conrad
+
+faq_1:
+  <<: *defaults
+  title: The Films of Sergio Leone
+faq_2:
+  <<: *defaults
+  title: Questions About Victorian-Era Literature
+faq_3:
+  <<: *defaults
+  title: The Short Stories of John Cheever

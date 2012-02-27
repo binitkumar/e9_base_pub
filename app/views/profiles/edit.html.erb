@@ -1,0 +1,6 @@
+<%= content_for :javascripts do %>
+  <%= include_javascripts :images %>
+<% end %>
+
+<%= title(current_page.title) if current_page.display_title? %>
+<%= render 'form' %>

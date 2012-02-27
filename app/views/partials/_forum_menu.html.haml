@@ -1,0 +1,10 @@
+- unless params[:controller] == 'forums'
+  - @forums ||= Forum.for_roleable(current_user_or_public_role).ordered
+  .partial.forum-menu
+    %ul.menu
+      - unless params[:controller] == 'forums'
+        %li{:class => @forum ? 'active' : nil }
+          = link_to forums_title(@forum), forums_path, :class => 'forums-link'
+          %ul
+            - @forums.each do |f|
+              %li{:class => @forum && f == @forum ? 'active' : nil }= link_to(f.title, forum_path(f))

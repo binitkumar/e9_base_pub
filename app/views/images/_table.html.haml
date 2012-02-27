@@ -1,0 +1,18 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:created_at)
+      %th Image
+      %th= orderable_column_link(:attachment_name)
+      %th Tags
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 5}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          = render 'row', :resource => record
+
+= will_paginate(collection)

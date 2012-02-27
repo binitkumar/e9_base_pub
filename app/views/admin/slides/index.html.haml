@@ -1,0 +1,32 @@
+- new_form = capture do
+  = new_with_layout_form(resource_class, :url => new_polymorphic_path([:admin, parent, resource_class]))
+
+- if parent? # index of slideshow, with reordering, etc
+  - content_for :toolbar_right do
+    = toolbar_actions do
+      = preview_page_link(parent)
+
+      -# republish social feeds link if the slideshow is public facing
+      - if should_show_social_feeds_form_for?(parent)
+        = render 'shared/social/link', :resource => parent
+
+    = toolbar_forms do
+      = form_tag add_admin_slideshow_slides_path(parent), :remote => true, :method => :put do
+        = label_tag :slide_id_select, e9_t(:add_to_slideshow)
+        = add_slide_to_slideshow_select_tag(parent)
+        = submit_tag I18n.t(:go), :name => nil
+      = new_form
+
+
+- else # no parent, simple slide index
+  - content_for :toolbar_middle do
+    = toolbar_filters do
+      = form_tag admin_slides_path, :method => :get, :class => 'scope-selects' do
+        = label_tag :of_layout, t(:filter_by, :attribute => Layout.model_name.human)
+        = slide_layout_scope_select
+
+  - content_for :toolbar_right do
+    = toolbar_forms do
+      = new_form
+
+= render 'shared/admin/index', :collection => collection, :table => ( parent? ? 'in_slideshow_table' : 'table' ), :hide_scope_header => !parent?

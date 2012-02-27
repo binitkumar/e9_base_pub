@@ -1,0 +1,26 @@
+%fieldset.checkbox
+  %legend= label_tag e9_t(:settings_form_legend, :scope => 'admin.pages')
+  - unless f.object.is_a?(Event)
+    .field.checkbox
+      = f.label :allow_comments
+      = f.check_box :allow_comments
+    .field.checkbox
+      = f.label :display_author_info
+      = f.check_box :display_author_info
+    .field.checkbox
+      = f.label :display_date
+      = f.check_box :display_date
+  - if f.object.is_a?(Slide)
+    .field.checkbox
+      = f.label :display_more_info
+      = f.check_box :display_more_info
+  .field.checkbox
+    = f.label :display_labels
+    = f.check_box :display_labels
+  .field.checkbox
+    = f.label :display_social_bookmarks
+    = f.check_box :display_social_bookmarks
+  .field.checkbox
+    = f.label :display_actions
+    = f.check_box :display_actions
+  = yield :extra_settings

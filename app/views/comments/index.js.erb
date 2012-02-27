@@ -1,0 +1,7 @@
+<% if @comments.empty? %>
+  $("<div class=\"listing\"><%= e9_t(:no_comments_text, :scope => :comments) %></div>").hide().appendTo("#comments .list").fadeIn("fast");
+<% else %>
+  $("<div><%= escape_javascript(render_profile_comments(@comments)) %></div>").hide().appendTo("#comments div.list").fadeIn("fast", function() {
+    $("#comments div.show-more").html("<%= escape_javascript(show_more_profile_comments_link(@comments)) %>");
+  });
+<% end %>

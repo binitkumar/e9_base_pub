@@ -1,0 +1,74 @@
+_defaults: &defaults
+  _finder: title
+  author: conrad
+  role: guest
+  layout: event
+  published: true
+  previously_published: true
+  published_at: <%= DateTime.now %>
+  event_capacity: 10
+  event_is_free: false
+  event_show_promo_code: true
+  event_last_register_date: 2020-12-09
+  event_time: 2020-12-10 18:00:00 -5
+  event_max_guests: 1
+  event_type: event_type_1
+  tag_lists:
+    tags:
+      - Nostrud
+      - Ipsum
+      - Appellatio
+  cost_attributes_attributes:
+    - value: 100000
+      options:
+        label: Regular Cost
+    - value: 5000
+      options:
+        label: Discounted Cost
+  body: |
+    <p>Praesent olim ea esse enim scisco capto, veniam nonummy nobis, ullamcorper, ibidem consequat. Capto vel autem commodo pagus virtus mos, accumsan valetudo quia dolore roto. Vero facilisis sagaciter bla. Praesent olim ea esse enim scisco capto, veniam nonummy nobis, ullamcorper, ibidem consequat. Capto vel autem commodo pagus virtus mos, accumsan valetudo quia dolore roto. Vero facilisis sagaciter bla.</p><p><!-- PAGE_BREAK --></p>
+  form_html: |
+    <div class="field">
+      <label for="last_name" class="req">Last name</label>
+      <input id="last_name" type="text" name="record[options][last_name]" class="required" />
+      </div>
+      <div class="field">
+      <label for="phone_number" class="req">What is your phone number?</label>
+      <input id="phone_number" type="text" name="record[options][phone_number]" class="required" />
+      </div>
+      <div class="field">
+      <label for="hear_about_us" class="req">How did you hear about us?</label>
+      <input id="hear_about_us" type="text" name="record[options][hear_about_us]" class="required" />
+    </div>
+  event_registration_message: |
+    <div>
+      <p>Thank you for registering for {{ event.title }}.</p>
+      <p>It will be held on&nbsp;{{ event.date }} at {{ event.time }}.</p>
+      <p>You can print this page or bookmark it for future reference.</p>
+      <p>We're located at:</p>
+      <p>The Arts Building<br />336 West 37th Street, Suite 950<br />New York, NY 10018</p>
+      <p><strong>Here are the details of your registration:</strong></p>
+      <p>Paid: {{ transaction.total_paid }}</p>
+      {% for item in transaction.registrations %}
+      <p>Email: {{ item.email }}<br /> First Name: {{ item.name }}<br />Last Name: {{ item.last_name }}<br />Phone Number: {{ item.phone_number }}<br />{% endfor %}</p>
+    </div>
+
+event_1:
+  <<: *defaults
+  title: This Is Event Title Number One
+
+event_2:
+  <<: *defaults
+  title: This Is Event Title Number Two
+
+event_3:
+  <<: *defaults
+  title: This Is Event Title Number Three
+
+event_4:
+  <<: *defaults
+  title: This Is Event Title Number Four and the title is very very very long, don't you think?
+
+event_5:
+  <<: *defaults
+  title: This Is Event Title Number Five

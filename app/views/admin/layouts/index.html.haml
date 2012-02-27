@@ -1,0 +1,8 @@
+= title (@index_title || e9_t(:index_title))
+
+= render 'shared/admin/toolbar'
+- collection.group_by(&:parent_identifier).each do |iden, sub_collection|
+  %fieldset.layout-group
+    %legend= iden.camelize.constantize.human_name rescue iden.present? ? iden.titleize : 'Ungrouped'
+    .layouts
+      = render :partial => 'layout', :collection => sub_collection.sort_by(&:name)

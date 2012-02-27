@@ -1,0 +1,34 @@
+- opts        = local_assigns[:opts] || {}
+- listing_url = listing.url
+- image_url   = Slide === listing && opts[:link] == :image ? listing.image_url : listing_url
+- klasses = ['listing']
+- klasses << 'last' if local_assigns[:last]
+
+= content_tag(local_assigns[:tag] || :div, :class => klasses) do
+  - if opts[:display_title]
+    %div{:class => opts[:title_class]}
+      = link_to listing_url do
+        - title_text = raw truncate(sanitize(listing.rss_title), :length => opts[:title_length])
+        = local_assigns[:title_proc].respond_to?(:call) ? local_assigns[:title_proc].call(listing, title_text).html_safe : title_text
+
+  - if opts[:display_image]
+    %div{:class => opts[:image_class]}
+      = link_to image_url do
+        = image_mount_tag feed_thumb_image(listing, opts[:image_size])
+
+  - if opts[:display_published_date]
+    %div{:class => opts[:published_date_class]}
+      = e9_t :feed_published_dateline, :date => localize(listing.published_at)
+
+  - if opts[:display_updated_date]
+    %div{:class => opts[:updated_date_class]}
+      = e9_t :feed_updated_dateline, :date => localize(listing.updated_at)
+
+  - if opts[:display_author] && name = listing.author.try(:name)
+    %div{:class => opts[:author_class]}
+      = e9_t(:byline, :name => name).html_safe
+
+  - if opts[:display_summary]
+    %div{:class => opts[:summary_class]}
+      = link_to_if opts[:summary_link], raw(sanitize(listing.description :length => opts[:summary_length])), listing_url
+        

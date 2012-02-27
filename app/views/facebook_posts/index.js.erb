@@ -1,0 +1,4 @@
+var $feed = $("#facebook-posts .feed");
+$(".spinner", $feed).remove();
+$("<div><%= escape_javascript(render(:partial => 'facebook_posts/facebook_post', :collection => collection)) %></div>").appendTo($feed);
+$("#facebook-posts .pagination").html("<%= escape_javascript(facebook_pagination_link(collection.collection.next)) %>");

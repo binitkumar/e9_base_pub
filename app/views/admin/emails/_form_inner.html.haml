@@ -1,0 +1,41 @@
+- if resource.kind_of?(UserEmail)
+  = f.hidden_field :sub_type
+
+- if resource.kind_of?(UserEmail) && resource.sub_type.try(:newsletter?)
+  .field
+    = f.label :mailing_list_id, nil, :class => :req
+    = f.select :mailing_list_id, mailing_list_select_options
+
+- if resource.kind_of?(Email)
+  .field
+    = f.label :active, resource_class.human_attribute_name(:active_label)
+    = f.select :active, [[resource_class.human_attribute_name(:active), true], [resource_class.human_attribute_name(:inactive), false]]
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+
+- elsif resource.kind_of?(EmailDelivery)
+  = f.hidden_field :contact_ids
+  .field
+    = f.label :campaign_code
+    = f.text_field :campaign_code, :class => 'email-campaign-autocomplete'
+
+.field
+  = f.label :from
+  = f.text_field :from
+.field
+  = f.label :subject, nil, :class => :req
+  = f.text_field :subject
+
+- if resource.is_a?(SystemEmail) || !resource.kind_of?(EmailDelivery) && resource.sub_type.try(:newsletter?)
+  .field{:class => request.xhr? ? 'tinymcexhr' : 'tinymce'}
+    = f.label :html_body, nil, :class => (resource.sub_type.newsletter? ? :req : nil)
+    = f.text_area :html_body
+
+- if !resource.kind_of?(EmailDelivery) || resource.sub_type.try(:crm_template?)
+  .field
+    = f.label :text_body, nil, :class => (resource.sub_type.newsletter? ? :req : nil)
+    = f.text_area :text_body
+
+.actions
+  = f.submit

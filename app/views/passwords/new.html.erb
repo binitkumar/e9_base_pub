@@ -1,0 +1,15 @@
+<%= title e9_t(:new_title, :scope => :passwords) %>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name)) do |f| %>
+  <%= resource_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email, nil, :class => 'req' %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit e9_t(:submit_link) %>
+  </div>
+
+<% end %>

@@ -1,0 +1,10 @@
+%td
+  .handle +++
+%td.thumbnail= image_mount_tag(record.image_thumb)
+%td.txt= record.title
+%td.txt= role_text(record)
+%td.txt= published_status_text(record)
+%td.actions
+  = content_publish_link(parent, record)
+  = edit_admin_resource_link(record, :scopes => parent)
+  = remove_slide_from_slideshow_link(parent, record)

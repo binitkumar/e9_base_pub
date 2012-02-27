@@ -1,0 +1,5 @@
+<% if resource.errors.any? %>
+$('#event_transaction_form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+<% else %>
+setTimeout(function(){ location.href = "<%= response.headers['Location'] %>"; } ,0);
+<% end %>

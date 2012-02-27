@@ -1,0 +1,35 @@
+= form_for(resource, :url => admin_settings_email_path) do |f|
+  = resource_error_messages!
+
+  %fieldset#email_settings
+    .field
+      = f.label :system_mailing_address
+      = f.text_field :system_mailing_address
+    .field
+      = f.label :can_spam_mailing_address
+      = f.text_area :can_spam_mailing_address
+    .field{:class => request.xhr? ? 'tinymcexhr' : 'tinymce'}
+      = f.label :default_html_email, nil, :class => :req
+      = f.text_area :default_html_email
+    .field
+      = f.label :default_text_email, nil, :class => :req
+      = f.text_area :default_text_email
+    - if e9_user?
+      .field
+        = f.label :smtp_username
+        = f.text_field :smtp_username
+      .field
+        = f.label :smtp_password
+        = f.text_field :smtp_password
+      .field
+        = f.label :smtp_domain
+        = f.text_field :smtp_domain
+      .field
+        = f.label :smtp_url
+        = f.text_field :smtp_url
+      .field
+        = f.label :email_style_block
+        = f.text_area :email_style_block
+
+  .actions
+    = f.submit "Save"

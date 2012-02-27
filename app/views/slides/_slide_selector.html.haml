@@ -1,0 +1,21 @@
+- page = collection.page(resource)
+- per_page = E9::Config[:slide_pagination_records] || 5
+- blank_slides = (collection.length % per_page).zero? ? 0 : per_page - collection.length % per_page
+
+.slide-pagination
+  .slide-pagination-prev
+    %a{ :href => page && page > 1 ? '#!prev' : nil }
+      = e9_t(:previous_page_link)
+  .slide-pagination-thumbs{:"data-per-page" => per_page, :"data-page" => collection.page(resource), :"data-pages" => collection.page_count }
+    .slide-pagination-inner
+      %ul
+        - collection.each do |slide|
+          %li{:class => slide == resource ? 'current' : nil}
+            = slide_link(slide, parent, :version => :wide_thumb, :id => "slide_thumb_#{slide.id}")
+
+        - blank_slides.times do
+          %li.blank-slide
+
+  .slide-pagination-next
+    %a{ :href => page && page < collection.page_count ? '#!next' : nil }
+      = e9_t(:next_page_link)

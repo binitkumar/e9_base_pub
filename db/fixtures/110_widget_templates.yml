@@ -1,0 +1,107 @@
+_defaults: &defaults
+  _finder: name
+
+full:
+  <<: *defaults
+  name: Image, Title, Summary, Date, Author
+  css_class: full-content-feed-module list-item
+  body: |
+    <div class="module-container">
+      <div class="left image">
+        <a href="{{record.path}}">
+          <img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/>
+        </a>
+      </div>
+      <h4>
+        <a href="{{record.path}}">{{record.title}}</a>
+      </h4>
+      <div class="info">
+        <p>{{record.published_at}}</p>
+        <p>by {{record.author.name}}</p>
+      </div>
+      <p>{{record.description | truncate:100 }} <span class="action-links visible"><a href="{{record.path}}">Read More &gt;</a></span></p>
+    </div>
+
+titles_and_authors:
+  <<: *defaults
+  name: Titles and Authors
+  css_class: titles-authors-module list-item
+  body: |
+    <div class="module-container">
+    <h4 class="title"><a href="{{record.path}}">{{record.title}}</a></h4>
+    <p class="author">{{record.author.name}}</p>
+    </div>
+
+image_title_and_summary:
+  <<: *defaults
+  name: Image, Title and Summary
+  css_class: images-title-description-module list-item
+  body: |
+    <div class="module-container">
+      <div class="left image">
+        <a href="{{record.path}}"><img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/></a>
+      </div>
+      <h4>
+        <a href="{{record.path}}">{{record.title}}</a>
+      </h4>
+      <p>{{record.description | truncate:100 }}</p>
+    </div>
+
+images:
+  <<: *defaults
+  name: Images (only)
+  css_class: images-feed-module list-item
+  body: |
+    <div class="left image">
+      <a href="{{record.path}}"><img src="{{record.thumb_url}}" alt="{{ record.title | escape }}"></a>
+    </div>
+
+titles_and_images:
+  <<: *defaults
+  name: Titles and Images
+  css_class: titles-images-module list-item
+  body: |
+    <div>
+      <div class="left image">
+        <a href="{{record.path}}"><img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/></a>
+      </div>
+      <h4>
+        <a href="{{record.path}}">{{record.title}}</a>
+      </h4>
+    </div>
+
+titles_and_summary:
+  <<: *defaults
+  name: Title and Summary
+  css_class: title-description-module list-item
+  body: |
+    <div>
+      <h4 class="title"><a href="{{ record.url }}">{{ record.title }}</a></h4>
+      <p class="description">{{ record.description |) truncate:'100','...' }} </p>
+    </div>  
+
+title_only:
+  <<: *defaults
+  name: Title (only)
+  css_class: title-feed-module list-item
+  body: '<h4><a href="{{ record.url }}">{{ record.title }}</a></h4>'
+
+event:
+  <<: *defaults
+  name: 'Event - Image, Title, Event Date, Description'
+  css_class: full-content-feed-module list-item
+  body: |
+    <div class="module-container">
+    <div class="left image">
+      <a href="{{record.path}}">
+        <img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/>
+      </a>
+    </div>
+    <h4>
+      <a href="{{record.path}}">{{record.title}}</a>
+    </h4>
+    <div class="info">
+      <p>{{record.time}}</p>
+    </div>
+    <p>{{record.description | truncate:100 }} <span class="action-links visible"><a href="{{record.path}}">Read More &gt;</a></span></p>
+    </div>

@@ -1,0 +1,12 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag admin_users_path, :method => :get, :class => 'scope-selects' do
+      .field
+        = label_tag :of_scope, e9_t(:view)
+        = user_scope_select
+    = form_tag admin_users_path, :id => 'user_search_form', :method => :get do
+      .field
+        = label_tag :search, e9_t(:query_text)
+        = text_field_tag :search, nil, :class => 'keyup-submit', :placeholder => t(:user_search, :scope => 'placeholders')
+
+= render 'shared/admin/index', :collection => collection

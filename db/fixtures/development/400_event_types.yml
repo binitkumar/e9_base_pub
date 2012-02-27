@@ -1,0 +1,27 @@
+_defaults: &defaults
+  _finder: id
+
+event_type_1:
+  <<: *defaults
+  id: 1
+  name: Web Design Classes
+
+event_type_2:
+  <<: *defaults
+  id: 2
+  name: Internet Marketing Seminars
+
+event_type_3:
+  <<: *defaults
+  id: 3
+  name: Alpha Beta
+
+event_type_4:
+  <<: *defaults
+  id: 4
+  name: Sigma Iota
+
+event_type_5:
+  <<: *defaults
+  id: 5
+  name: Gamma Zeta Theta

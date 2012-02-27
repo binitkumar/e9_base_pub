@@ -1,0 +1,22 @@
+@import 'compass/css3/inline-block';
+
+@mixin spaceless {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin sprite-like {
+  @include inline-block;
+  text-indent: -999em;
+}
+
+@mixin sprite-background($image, $width, $height: false, $left: 0, $top: 0) {
+  @include sprite-like;
+  @if (not $height) { $height: $width; }
+  width: $width;
+  height: $height;
+  background: url($image) no-repeat $left $top;
+  &:hover { 
+    background-position: $left ($top + $height * -1);
+  }
+}

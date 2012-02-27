@@ -1,0 +1,2 @@
+class Payment < DatedCost
+end

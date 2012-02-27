@@ -1,0 +1,216 @@
+_defaults: &defaults
+  _finder: identifier
+  author: admin
+  layout: page
+
+system_master:
+  <<: *defaults
+  title: "System Master"
+  identifier: <%= Page::Identifiers::SYSTEM_MASTER %>
+  master: true
+
+admin:
+  <<: *defaults
+  layout: admin
+  title: "Admin Page"
+  identifier: <%= Page::Identifiers::ADMIN %>
+  editable_content: false
+  role: 'administrator'
+
+search_results:
+  <<: *defaults
+  title: "Search Results"
+  identifier: <%= Page::Identifiers::SEARCH %>
+  editable_content: false
+
+page_not_found:
+  <<: *defaults
+  title: "Page Not Found"
+  identifier: <%= Page::Identifiers::NOT_FOUND %>
+
+email_preferences:
+  <<: *defaults
+  title: "Manage Email Preferences"
+  identifier: <%= Page::Identifiers::UNSUBSCRIBE %>
+
+slides:
+  <<: *defaults
+  layout: slide_page
+  title: "Slides"
+  identifier: <%= Page::Identifiers::SLIDES %>
+  editable_content: false
+
+offer:
+  <<: *defaults
+  title: Offer Conversion
+  identifier: <%= Offer::Identifiers::PAGE %>
+
+admin_help:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  layout: admin
+  title: "Admin Help"
+  identifier: <%= Page::Identifiers::ADMIN_HELP %>
+  permalink: 'help'
+  editable_content: true
+
+blog:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  layout: blog
+  title: "Blog"
+  identifier: <%= Page::Identifiers::BLOG_INDEX %>
+  permalink: 'blog'
+  editable_content: false
+
+forum:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  layout: forum
+  title: "Forum"
+  identifier: <%= Page::Identifiers::FORUM_INDEX %>
+  permalink: 'forums'
+  editable_content: false
+
+edit_profile:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Edit My Profile"
+  identifier: <%= Page::Identifiers::EDIT_PROFILE %>
+  permalink: 'profile/edit'
+  editable_content: false
+  role: 'user'
+
+faqs:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "FAQ"
+  identifier: <%= Page::Identifiers::FAQ %>
+  permalink: 'faqs'
+  editable_content: false
+
+profile:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Profile"
+  identifier: <%= Page::Identifiers::PROFILE %>
+  permalink: 'profile'
+  editable_content: false
+  role: 'user'
+
+sign_in:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Sign In"
+  identifier: <%= Page::Identifiers::SIGN_IN %>
+  permalink: 'sign_in'
+  editable_content: false
+
+sign_up:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Sign Up"
+  identifier: <%= Page::Identifiers::SIGN_UP %>
+  permalink: 'sign_up'
+  editable_content: false
+
+slideshows:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  layout: page
+  title: "Slideshows"
+  identifier: <%= Page::Identifiers::SLIDESHOWS %>
+  permalink: 'slideshows'
+  editable_content: true
+
+superuser_faqs:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Super User FAQs"
+  identifier: 'superuser_faqs'
+  permalink: 'superuser/faqs'
+  role: 'superuser'
+  editable_content: false
+
+user_faqs:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "User FAQs"
+  identifier: 'user_faqs'
+  permalink: 'user/faqs'
+  role: 'user'
+  editable_content: false
+
+administrator_faqs:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Administrator FAQs"
+  identifier: 'administrator_faqs'
+  permalink: 'administrator/faqs'
+  role: 'administrator'
+  editable_content: false
+
+employee_faqs:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Employee FAQs"
+  identifier: 'employee_faqs'
+  permalink: 'employee/faqs'
+  role: 'employee'
+  editable_content: false
+
+profiles:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: Profiles
+  role: user
+  editable_content: false
+  permalink: 'profiles'
+  identifier: <%= Page::Identifiers::USERS %>
+
+events:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: Events
+  editable_content: false
+  permalink: 'events'
+  identifier: <%= Page::Identifiers::EVENTS %>
+
+manage_account:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Manage Your Account"
+  identifier: <%= Page::Identifiers::REVOKE %>
+  permalink: 'revoke'
+  editable_content: false
+
+passwords:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  title: "Forgot Your Password?"
+  identifier: <%= Page::Identifiers::PASSWORDS %>
+  permalink: 'passwords'
+  editable_content: false
+
+home:
+  <<: *defaults
+  _klass: LinkableSystemPage
+  layout: home
+  title: "Home"
+  identifier: <%= Page::Identifiers::HOME %>
+  permalink: ''
+  editable_content: true
+  display_title: false
+  body: |
+    <p>Bibendum euismod leo diam interdum ligula eu scelerisque sem purus in 
+    tellus.</p> <p>Lorem ipsum dolor sit amet
+    consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet 
+    facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.</p>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu 
+    ad litora torquent per conubia nostra
+    per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor
+    quam ac rutrum placerat nunc augue ullamcorper est
+    vitae molestie neque nunc a nunc. Integer justo dolor
+    consequat id rutrum auctor ullamcorper sed
+    orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer 
+    venenatis quam.</p>

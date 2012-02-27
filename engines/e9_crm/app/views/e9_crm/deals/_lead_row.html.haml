@@ -1,0 +1,27 @@
+- contact = resource.contact
+%td.lead-followed-up
+  = form_for(resource, :html => { :class => 'toggle_lead_fup' }) do |f|
+    = f.check_box :followed_up
+%td.lead-created-at
+  = I18n.l(resource.created_at)
+%td.lead-offer-name
+  = resource.offer.try(:name) || t(:no_offer_value)
+%td.lead-campaign-code
+  = resource.campaign
+%td.lead-lead-name
+  = resource.lead_name.presence || contact.try(:first_name)
+%td.lead-lead-email
+  - if contact && user = resource.effective_user
+    = link_to(user.email, "mailto:#{user.email}", 'data-contact-id' => contact.id, 'data-user-id' => user.id, :class => 'contact-mailto', 'data-type' => 'lead_nourishing')
+  - else
+    = resource.lead_email
+%td.lead-info
+  - if resource.info.present?
+    %span.click{:rel => 'tooltip'} Details
+    .tooltip
+      = k resource.info
+%td.actions
+  - if resource.contacts.present?
+    = link_to 'View Contact', contact
+  = link_to_edit_resource('Create Deal', resource, :convert => true)
+  = link_to 'Delete Lead', resource, :method => :delete, :remote => true, :confirm => I18n.t("#{resource_class.i18n_scope}.links.confirm_destroy")

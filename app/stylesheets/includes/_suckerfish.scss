@@ -1,0 +1,52 @@
+$suckerfish-menu-width: 120px !default;
+$suckerfish-submenu-width: 180px !default;
+
+@mixin suckerfish(
+  $width     : $suckerfish-menu-width, 
+  $sub-width : $suckerfish-submenu-width
+) {
+  > ul > li {
+    white-space: nowrap !important;
+  }
+
+  ul { 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }
+
+  a {
+    display: block;
+    width: $width;
+  }
+
+  li {
+    float: left;
+    width: $width;
+    left:-1px;
+    &:hover, &.sfhover {
+      ul {
+        left: auto;
+
+        ul {
+          left: -999em;
+        }
+      }
+    }
+    li:hover, li.sfhover {
+      ul {
+        left: auto;
+      }
+    }
+    ul {
+      position: absolute;
+      z-index: 9999;
+      width: $sub-width;
+      left: -999em;
+      ul {
+        margin: -1em 0 0 $sub-width;
+      }
+    }
+  }
+}

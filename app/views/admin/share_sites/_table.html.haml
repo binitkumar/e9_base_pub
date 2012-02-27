@@ -1,0 +1,28 @@
+= form_tag polymorphic_path([:update_order, :admin, resource_class]) do
+  %table.records.sortable
+    %thead
+      %tr
+        %th= resource_humanize(:position) 
+        %th= resource_humanize(:visible)
+        %th= resource_humanize(:enabled) 
+        %th= resource_humanize(:name)
+        %th= e9_t(:actions)
+    %tbody
+      - if collection.empty?
+        %tr
+          %td{:colspan => 5}= e9_t(:no_records_text)
+      - else
+        - collection.each_with_index do |record, index|
+          %tr{:id => "ids_#{record.id}", :class => share_site_row_class(record) }
+            %td
+              .handle
+            %td
+              .activated
+            %td.checkbox= check_box_tag :enabled, record.id, record.enabled?, :id => "enabled_#{record.id}"
+            %td.txt= record.name
+            %td.actions
+              - if e9_user?
+                = edit_admin_resource_link(record)
+                = destroy_admin_resource_link(record)
+  .warning
+    = e9_t(:share_sites_limit_warning, :limit => E9::Config[:maximum_share_site_count])

@@ -1,0 +1,67 @@
+body.admin {
+  #banner { 
+    display: none; 
+  }
+
+  table.records {
+    th {
+      @include small;
+      
+      .ordered-column {
+        white-space: nowrap;
+        // The <a> will include an icon, so just underline the "text" portion
+        a { 
+          text-decoration: none; 
+          span.text { text-decoration: underline; }
+        }
+      }
+    }
+
+    td {
+      &.id {
+        text-align: center;
+      }
+
+      &.actions { 
+        white-space: nowrap;
+
+        a {
+          @include x-small;
+          @include button;
+        }
+      }
+
+      &.link {
+        a, a:link, a:visited {
+          text-decoration: underline;
+        }
+      }
+
+      &.checkbox {
+        text-align: center;
+      }
+
+      &.center {
+        text-align: center;
+      }
+
+      &.actions, &.num {
+        text-align: right;
+      }
+
+      &.cost {
+        text-align: right;
+        width: 150px;
+        input[type=text] {
+          float: right;
+          text-align: right;
+          width: 96%;
+        }
+      }
+    }
+
+    .viewable-status {
+      margin-left: 5px;
+    }
+  }
+}

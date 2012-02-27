@@ -1,0 +1,35 @@
+- @_tag_form_index = @_tag_form_index && @tag_form_index.next || 1
+%fieldset.tags{:id => "tag-form-#{@_tag_form_index}"}
+  -# Would be lovely to use a text/template script tag here but then it won't work in colorbox due to script tags being stripped
+  .hidden.template
+    = tag_template(f).html_safe
+  %legend
+    = label_tag 'add-tag-fld', t(:tags_name, :scope => :e9_tags)
+    -# NOTE this escaping bit doesn't work without a tooltips plugin (browser does not render HTML in default title tooltips)
+    - t = raw t(:tag_instructions, :scope => @tag_instructions_scope || :e9_tags).gsub('"', '&quot;')
+    %span{:title => t, :rel => 'tooltip', :class => 'help'} [?]
+  .tag-fields
+    - if local_assigns[:context]
+      = hidden_field_tag 'tag-context', humanize_context(*local_assigns[:context])
+    - else
+      .field
+        = label_tag 'tag-context', t(:tag_context_name, :scope => :e9_tags).singularize
+        = text_field_tag 'tag-context', nil
+    .field
+      = label_tag 'add-tag-fld', t(:tags_name, :scope => :e9_tags).singularize
+      = text_field_tag 'add-tag-fld', nil
+    .actions
+      %button.add-tag-btn= t(:add_tag_link, :scope => :e9_tags)
+
+  .tag-contexts{:class => local_assigns[:context] ? 'locked-context' : nil }
+    - f.object.tagging_contexts(:show_all => true).each do |context|
+      - h_context = humanize_context(context)
+      %div{:class => "context-list #{context}-context-list"}
+        %span.context-header= h_context unless local_assigns[:context]
+        %ul
+          - f.object.tag_list_on(context).each do |tag_word|
+            = tag_template(f, tag_word, h_context, context)
+
+
+:javascript
+  $(function() { $('#tag-form-#{@_tag_form_index}').e9_tags_fieldset() })

@@ -1,0 +1,14 @@
+@import 'includes/knockout';
+
+$logo-image: 'logo.png' !default;
+$admin-logo-image: 'logo.png' !default;
+
+@mixin site-logo($image: $logo-image)  {
+  a { @include knockout($image); }
+}
+
+@mixin admin-site-logo($image: $admin-logo-image) {
+	width:image-width($image);
+  a { @include knockout($image);
+  		width: image-width($image); }
+}

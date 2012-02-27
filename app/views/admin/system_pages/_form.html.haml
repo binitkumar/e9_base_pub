@@ -1,0 +1,22 @@
+= form_for(resource.becomes(SystemPage), :url => polymorphic_path([:admin, resource.becomes(SystemPage)]), :remote => true) do |f|
+  = resource_error_messages!
+
+  .field
+    = f.label :title, nil, :class => :req
+    = f.text_field :title
+
+  - if resource.editable_content?
+    .field{:class => request.xhr? ? 'tinymcexhr' : 'tinymce'}
+      = f.label :body
+      = f.text_area :body
+  
+  %fieldset.checkbox
+    %legend= label_tag e9_t(:settings_form_legend, :scope => 'admin.pages')
+    .field.checkbox
+      = f.label :display_title
+      = f.check_box :display_title
+
+  = render 'admin/views/region_manager', :f => f
+
+  .actions
+    = f.submit

@@ -1,0 +1,33 @@
+!!! 5
+%html
+  %head
+    = render 'shared/head'
+  %body{:class => body_class}
+    #layout
+      #header
+        #top-nav
+          .container
+            = render_region 'top-nav'
+        .container
+          #logo
+            = link_to(E9::Config[:site_name], "/")
+
+          = yield(:main_nav_content)
+
+      -# Note that sub content must encapsualte #body, #banner, #etc
+      = content_for?(:application_content) ? yield(:application_content) : yield
+
+      #layout-footer
+    #footer
+      .container
+        = render_region 'footer'
+
+    = yield :bottom_javascripts
+
+    - if content_for?(:hidden)
+      .no-display
+        = yield :hidden
+
+    - unless !Rails.env.production? || @hide_google_analytics
+      - if (code = E9::Config['google_analytics_code']).present?
+        = code.html_safe

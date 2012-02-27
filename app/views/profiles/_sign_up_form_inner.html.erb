@@ -1,0 +1,45 @@
+<h4 class="help"><%= link_to "Already Registered? Sign In", new_session_path(resource_name) %></h4>
+
+<div class="help">
+  <%= t(:required_star_help) %>
+</div>
+
+<div class="field email">
+  <%= f.label :email, nil, :class => 'req' %>
+  <%= text_field_tag "#{resource_name}[user_email]", '', :id => "#{resource_name}_email" %>
+</div>
+
+<div class="field">
+  <%= f.label :first_name, nil, :class => 'req' %>
+  <%= f.text_field :first_name, :id => 'sign_up_first_name' %>
+</div>
+
+<div class="field">
+  <%= f.label :username, nil, :class => 'req' %>
+  <%= f.text_field :username, :id => 'sign_up_username' %>
+</div>
+
+<div class="field">
+  <%= f.label :email, nil, :class => 'req' %>
+  <%= f.text_field :email, :id => 'sign_up_email' %>
+</div>
+
+<div class="field">
+  <%= f.label :password, nil, :class => 'req' %>
+  <%= f.password_field :password, :id => 'sign_up_password' %>
+</div>
+
+<div class="field">
+  <%= f.label :password_confirmation, nil, :class => 'req' %>
+  <%= f.password_field :password_confirmation, :id => 'sign_up_password_confirmation' %>
+</div>
+
+<%= render :partial => 'profiles/mailing_lists', :locals => { :user => f.object, :f => f } %>
+
+<div class="field recaptcha">
+  <%= raw recaptcha_tag(:registrations, :challenge) %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Sign up" %>
+</div>

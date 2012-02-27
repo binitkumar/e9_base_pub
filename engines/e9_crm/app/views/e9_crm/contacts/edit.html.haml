@@ -1,0 +1,12 @@
+= title @edit_title || e9_t(:edit_title)
+
+-# override the toolbar help
+- content_for :toolbar_left do
+  &nbsp;
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to 'View Contact', resource
+
+= render 'shared/admin/toolbar'
+= render 'form'

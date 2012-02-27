@@ -1,0 +1,95 @@
+$theme-success-color                      :                           #264409;
+$theme-success-bg-color                   :                           #e6efc2;
+$theme-success-border-color               :                           #c6d880;
+$theme-notice-color                       :                           #514721;
+$theme-notice-bg-color                    :                           #fff6bf;
+$theme-notice-border-color                :                           #ffd324;
+$theme-info-color                         :                           #205791;
+$theme-info-bg-color                      :                           #d5edf8;
+$theme-info-border-color                  :                           #92cae4;
+$theme-error-color                        :                           #8a1f11;
+$theme-error-bg-color                     :                           #fbe3e4;
+$theme-error-border-color                 :                              #f00;
+$theme-highlight-color                    :                            yellow;
+
+$theme-background-color                   :                           #ffffff;
+$theme-foreground-color                   :                           #eeeeee;
+
+$theme-border-color                       :                              #ccc;
+$theme-border-width                       :                               1px;
+$theme-border-style                       :                             solid;
+
+$theme-text-color                         :                           #666666;
+$theme-alt-text-color                     :                           #8a2529;
+$theme-quiet-color                        :   lighten($theme-text-color, 20%);
+$theme-loud-color                         : darken($theme-text-color, 13.33%);
+$theme-header-color                       :  darken($theme-text-color, 6.67%);
+$theme-label-color                        :                 $theme-text-color;
+$theme-error-label-color                  :                 $theme-text-color;
+$theme-legend-color                       :                 $theme-text-color;
+$theme-text-align                         :                              left;
+$theme-serif-font-family                  :                             false;
+$theme-fixed-width-font-family            :                             false;
+$theme-sans-font-family                   :      Helvetica, Arial, sans-serif;
+$theme-font-family                        :           $theme-sans-font-family;
+$theme-font-weight                        :                            normal;
+$theme-font-size                          :                              13px;
+$theme-font-style                         :                            normal;
+$theme-letter-spacing                     :                            normal;
+$theme-line-height                        :                             1.4em;
+
+$theme-button-gradient-top          		: #ccc;
+$theme-button-gradient-bottom       : #000;
+$theme-button-gradient-hover-top    : #efefef;
+$theme-button-gradient-hover-bottom : #666666;
+$theme-button-gradient-active-top   : #fff000;
+$theme-button-gradient-active-bottom: #dd7836;
+$theme-button-padding     :            0.5em 0.75em !default;
+$theme-button-margin      :                 0 0 3px !default;
+$theme-button-color       :   #fff;
+$theme-button-bg-color    : $theme-background-color !default;
+$theme-button-text-color  :		#fff;
+$theme-button-line-height : ;
+
+
+$theme-link-decoration                    :                              none;
+$theme-link-color                         :                           #666666;
+$theme-link-hover-color                   :                           #8a2529;
+$theme-link-hover-decoration              :                              none;
+$theme-link-active-color                  :                             false;
+$theme-link-active-decoration             :                              none;
+$theme-link-visited-color                 :                             false;
+$theme-link-visited-decoration            :                              none;
+
+$theme-table-header-color                 :               $theme-header-color;
+$theme-table-header-background-color      :               $theme-border-color;
+
+$theme-h1-color                           :                           #8a2529;
+$theme-h1-font-size                       :                              18px;
+$theme-h1-font-weight                     :                              bold;
+$theme-h1-line-height                     :                             1.4em;
+$theme-h2-color                           :                           #8a2529;
+$theme-h2-font-size                       :                              16px;
+$theme-h2-font-weight                     :                              bold;
+$theme-h2-line-height                     :                             1.4em;
+$theme-h3-color                           :                           #8a2529;
+$theme-h3-font-size                       :                              14px;
+$theme-h3-font-weight                     :                              bold;
+$theme-h3-line-height                     :                             1.4em;
+$theme-h4-color                           :                           #8a2529;
+$theme-h4-font-size                       :                              12px;
+$theme-h4-font-weight                     :                              bold;
+$theme-h4-line-height                     :                             1.4em;
+$theme-h5-color                           :                           #8a2529;
+$theme-h6-color                           :                              #666;
+
+$theme-fieldset-border-color              :               $theme-border-color;
+$theme-fieldset-background-color          :           $theme-background-color;
+$theme-field-background-color             :                              #fff;
+$theme-field-error-background-color       :                              #ff0;
+$theme-field-focus-background-color       :                              #fff;
+$theme-field-focus-error-background-color :                              #ee0;
+$theme-field-border-color                 :               $theme-border-color;
+$theme-field-error-border-color           :               $theme-border-color;
+$theme-field-focus-border-color           :               $theme-border-color;
+$theme-field-focus-error-border-color     :               $theme-border-color;

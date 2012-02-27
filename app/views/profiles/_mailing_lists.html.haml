@@ -1,0 +1,6 @@
+%fieldset
+  %legend= f.label(:mailing_list_ids, local_assigns[:label_text])
+  - mailing_lists_for_user(user).each do |ml|
+    .field.checkbox
+      = check_box_tag "user[mailing_list_ids][]", ml.id, user_form_checked_box?(user, ml), :id => "user_mailing_list_ids_#{ml.id}"
+      = label_tag "user_mailing_list_ids_#{ml.id}", ml.description

@@ -1,0 +1,14 @@
+= title "This site is optimized for modern, standards compliant browsers."
+%p You're receiving this message because you are using an older browser and the site might not look right for you.
+
+%ul
+  %li= link_to("Click here for the latest Microsoft Internet Explorer", "http://www.microsoft.com/windows/internet-explorer/worldwide-sites.aspx", :target => "_blank")
+  %li= link_to("Click here for the latest Mozilla Firefox", "http://www.mozilla.com", :target => "_blank")
+  %li= link_to("Click here for the latest Google Chrome", "http://www.google.com/chrome", :target => "_blank")
+  %li= link_to("Click here for the latest Safari", "http://www.apple.com/safari/download", :target => "_blank")
+
+%p Not interested in upgrading? <a href="/">Continue to Website</a>
+
+%p Thank you.
+
+%p The #{E9::Config['site_name']} Staff

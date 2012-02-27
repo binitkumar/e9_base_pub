@@ -1,0 +1,6 @@
+= notes_form(local_assigns[:notable], local_assigns) do
+  .notes
+    = spinner
+  - if local_assigns[:paging]
+    %span.show-more.button{:style => 'display: none'}
+      = t(:show_more)

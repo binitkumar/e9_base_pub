@@ -1,0 +1,13 @@
+- url = listing.url
+- add_actions_list_item link_to(e9_t(:edit_link), edit_admin_event_path(listing), :class => 'action-link edit-link') if admin?
+.listing
+  .left-block
+    .thumb
+      = link_to image_mount_tag(listing.thumb), url
+    = actions_list(:wrapper => true)
+  .block
+    .title
+      = link_to feed_title_excerpt_or_snippet(listing.title, local_assigns[:query], local_assigns[:title_length]), url
+    = content_labels_with_context(listing, :highlight => local_assigns[:query])
+    .summary
+      = feed_summary_excerpt_or_snippet(listing.text_version, local_assigns[:query], local_assigns[:summary_length]) 

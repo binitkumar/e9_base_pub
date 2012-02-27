@@ -1,0 +1,95 @@
+_defaults: &defaults
+  _finder: title
+  _validate: false
+  author: conrad
+  slideshow: slideshow_1
+
+# NOTE Permalinks are pre-generated from the titles here so we can get 
+# by without running the save callbacks on Slides, which are not validated
+
+<% title_1 = "Concrete Jungle Where Dreams are Made of... Is a Pretty Long Slide Title" %>
+slide_1:
+  <<: *defaults
+  title: <%= title_1 %>
+  permalink: <%= Slide.permalinkify(title_1) %>
+  tag_lists:
+    tags:
+      - Lorem
+      - suscipit
+      - Qui vel
+      - Ipsum
+      - Appellatio
+      - commoveo capto
+      - exerci
+      - Olim
+      - facilisi
+      - Melior
+  body: |
+    <p>Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, huic melior. Antehabeo valetudo antehabeo praesent scisco quidne capto in in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. Nisl esca illum tation vel hendrerit paratus capto vulputate verto.</p>
+    <p>Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla.  Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, <em>consequat id, rutrum auctor, ullamcorper sed </em> orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.</p>
+    <p>Elit sed, meus ludus foras, defui exerci quia dolor. Et feugiat blandit saluto wisi ad mara esse verto lobortis ratis melior pneum wisi sudo.</p>
+
+<% title_2 = "Big Lights will Inspire You" %>
+slide_2:
+  <<: *defaults
+  title: <%= title_2 %>
+  permalink: <%= Slide.permalinkify(title_2) %>
+  tag_lists:
+    tags:
+      - nostrud
+      - Ipsum
+      - Appellatio
+      - commoveo capto
+  body: |
+    <p>Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. Immitto eu, oppeto sino in eu feugait.</p>
+
+    
+<% title_3 = "Streets will Make You Feel Brand New" %>
+slide_3:
+  <<: *defaults
+  title: <%= title_3 %>
+  permalink: <%= Slide.permalinkify(title_3) %>
+  tag_lists:
+    tags:
+      - Antehabeo
+      - suscipit
+      - incassum
+      - Adipiscing
+      - augue
+      - commoveo capto
+      - exerci
+  body: |
+    <p>Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo nimis. Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene velit valetudo. Eum nulla tincidunt delenit nostrud abigo, iusto illum esse molior facilisis wisi abdo turpis, ille. Metuo exerci feugait secundum consequat capto.</p>
+
+<% title_4 = "The City Never Sleeps" %>
+slide_4:
+  <<: *defaults
+  title: <%= title_4 %>
+  permalink: <%= Slide.permalinkify(title_4) %>
+  tag_lists:
+    tags:
+      - velit
+      - laoreet
+      - Appellatio
+      - tation
+      - commoveo capto
+  body: |
+    <p>Ludus valde cui duis luptatum humo hos duis ut capio bene. Cogo wisi vulpes te caecus, opes, duis transverbero veniam usitas. Damnum appellatio tamen, epulae facilisi plaga vulputate abdo eum ullamcorper suscipere comis. Appellatio jugis praemitto abluo pecus meus erat praesent sit eligo vel oppeto. </p>
+
+<% title_5 = "Street Lights, Big Dreams" %>
+slide_5:
+  <<: *defaults
+  title: <%= title_5 %>
+  permalink: <%= Slide.permalinkify(title_5) %>
+  tag_lists:
+    tags:
+      - Melior
+      - suscipit
+      - Ipsum
+      - Appellatio
+      - commoveo capto
+      - exerci
+      - Olim
+      - facilisi
+  body: |
+    <p>Vero facilisis sagaciter blandit torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. Immitto eu, oppeto sino in eu feugait.</p>

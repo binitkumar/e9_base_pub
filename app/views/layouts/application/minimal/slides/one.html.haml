@@ -1,0 +1,15 @@
+- unless content_for?(:slide_content)
+  - content_for :slide_content do
+    .slide-one
+      #slide-left
+        #slide-image
+          = yield :slide_image
+      #slide-right
+        #related-image-1
+          = render_region 'related-image-1'
+        #slide-body
+          = yield :slide_body
+        #related-image-2
+          = render_region 'related-image-2'
+
+= render :file => 'layouts/application/minimal/slide'

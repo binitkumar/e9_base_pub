@@ -1,0 +1,18 @@
+@import "includes/typography";
+.header{
+	margin-top:0px;
+	@include xx-large;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.question{
+	margin-bottom:1.5em;
+	a{
+		cursor:pointer;
+		display:block;
+		font-weight:bold;
+		text-decoration:none;
+		color:$theme-alt-text-color;
+		@include large;
+	}
+}

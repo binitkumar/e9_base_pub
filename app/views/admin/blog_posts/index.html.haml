@@ -1,0 +1,14 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag admin_blog_posts_path, :method => :get, :class => 'scope-selects' do
+      = label_tag 'scope', t(:filter_by, :attribute => Blog.model_name.human)
+      = blog_post_scope_select(params[:scope])
+
+- content_for :toolbar_right do
+  = toolbar_forms do
+    = form_for(BlogPost.new, :url => new_admin_blog_post_path, :html => { :method => :get }) do |f|
+      = f.label :blog_id, e9_t(:add)
+      = f.select :blog_id, available_blog_select_options
+      = submit_tag t(:go), :name => nil
+
+= render 'shared/admin/index', :collection => collection

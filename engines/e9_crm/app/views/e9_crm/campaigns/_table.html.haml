@@ -1,0 +1,36 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:type)
+      %th= orderable_column_link('campaign_group_name', :campaign_group)
+      %th= orderable_column_link(:name)
+      %th= orderable_column_link(:code)
+      %th= orderable_column_link(:affiliate_fee)
+      %th= orderable_column_link(:sales_fee)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 7}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td.record-type
+            = display_campaign_type(record.type)
+          %td.record-campaign-group
+            = record.campaign_group_name || e9_t(:no_group, :scope => 'e9_crm.campaigns')
+          %td.record-name
+            = link_to record.name, campaign_visits_path(record), :title => 'View Campaign Activity'
+          %td.record-code
+            = display_campaign_code(record.code)
+          %td.record-affiliate-fee.num
+            = display_campaign_fee(record.affiliate_fee)
+          %td.record-sales-fee.num
+            = display_campaign_fee(record.sales_fee)
+          %td.actions
+            - if record.is_a?(AdvertisingCampaign)
+              = link_to t(:edit_dated_costs), advertising_campaign_dated_costs_path(record), :class => 'dated-costs'
+            = link_to_edit_campaign(record)
+
+- if controller.send(:should_paginate_index)
+  = will_paginate collection

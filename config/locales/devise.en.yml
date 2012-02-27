@@ -1,0 +1,41 @@
+en:
+  errors:
+    messages:
+      not_found: "%{attribute} was not recognized."
+      already_confirmed: "%{attribute} was already confirmed."
+      not_locked: "%{attribute} was not locked."
+
+  devise:
+    failure:
+      access_denied: 'Sorry, but you are not allowed to access that page.'
+      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'Your account is locked.'
+      invalid: 'Email Address or Password is invalid.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Your session expired, please sign in again to continue.'
+      inactive: 'Your account was not activated yet.'
+      existing_email: 'Email address is already in the system.'
+      invalid_email: 'Email address is not properly formatted.'
+      existing_username: 'Username is already in the system.'
+      password_mismatch: 'Passwords must match.'
+    sessions:
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+    passwords:
+      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      updated: 'Your password was changed successfully. You are now signed in.'
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: "Thanks for registering. You can customize your profile, preferences, and avatar by going to <a href=\"/profile/edit\">Edit Profile</a>."
+      updated: 'You updated your account successfully.'
+      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    mailer:
+      confirmation_instructions: 'Confirmation instructions'
+      reset_password_instructions: 'Reset password instructions'
+      unlock_instructions: 'Unlock Instructions'

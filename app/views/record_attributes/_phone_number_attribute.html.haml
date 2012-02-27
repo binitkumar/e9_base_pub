@@ -1,0 +1,7 @@
+- @nested_association_options = capture do
+  - if (types = PhoneNumberAttribute.types).present?
+    = f.fields_for f.object.options do |ff|
+      .field
+        = ff.select :type, types
+
+= render RecordAttribute::LAYOUT_PARTIAL, :f => f

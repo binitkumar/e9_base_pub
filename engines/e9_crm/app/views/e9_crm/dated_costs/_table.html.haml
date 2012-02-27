@@ -1,0 +1,20 @@
+%table.records
+  %thead
+    %tr
+      %th.field= resource_humanize(:date)
+      %th.field= resource_humanize(:cost)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 3}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td.field
+            = l(record.date)
+          %td.field.cost.num
+            = record.cost
+          %td.actions
+            = link_to_edit_resource(record)
+            = link_to_destroy_resource(record, :remote => true)

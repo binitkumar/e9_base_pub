@@ -1,0 +1,22 @@
+<% if @mount.present? %>
+  $("#<%= mount_reset_button_id(resource, :column => @column) %>").show();
+  var $img = $("#<%= mount_image_id(resource, :column => @column) %>");
+  $img.attr("src", function() { 
+    return "<%= @mount.url %>?" + (new Date()).getTime(); 
+  });
+  <% if @mount.width > Image::MAX_FORM_WIDTH %>
+    $img.attr("width", <%= Image::MAX_FORM_WIDTH %>);
+  <% end %>
+  <% @mount.versions.each do |version_name, version| %>
+    <% if version.present?; domid = mount_dom_id(resource, :column => @column, :version => version_name) %>
+      var $img = $("#<%= mount_image_id(domid) %>");
+      $img.attr("src", function() { 
+        return "<%= version.url %>?" + (new Date()).getTime(); 
+      });
+      <% if version.width > Image::MAX_FORM_WIDTH %>
+        $img.attr("width", <%= Image::MAX_FORM_WIDTH %>);
+      <% end %>
+      $("#<%= mount_field_id(domid) %>, #<%= mount_actions_id(domid) %>").show();
+    <% end %>
+  <% end %>
+<% end %>

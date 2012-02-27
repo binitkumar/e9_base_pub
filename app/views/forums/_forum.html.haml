@@ -1,0 +1,7 @@
+.forum.listing{:id => forum.to_anchor }
+  .left-block
+    = content_thumb(forum, :link_to => forum.url)
+  .block
+    = content_header_link(forum)
+    .content-body
+      = forum.meta_description

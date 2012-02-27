@@ -1,0 +1,280 @@
+$textarea-height  :       250px !default;
+$textarea-width   :       245px !default;
+$input-width      :       245px !default;
+$input-padding    :         7px !default;
+$input-margin     :     0.5em 0 !default;
+$fieldset-margin  : 0 0 1.5em 0 !default;
+$fieldset-padding :       1.4em !default;
+
+@import 'includes/form';
+@import 'compass/css3/box-sizing';
+
+
+form.inline { 
+  @include e9-inline-form; 
+}
+
+label, legend { 
+  font-weight: bold; 
+}
+
+fieldset { 
+  float:left;
+  padding: $fieldset-padding;
+  margin: $fieldset-margin;
+}
+
+input {
+  &.text,
+  &.title,
+  &[type=email],
+  &[type=text],
+  &[type=password] { 
+    margin: $input-margin;
+    padding: $input-padding;
+    width: 94%; 
+  }
+}
+textarea { 
+  margin: $input-margin;
+  padding: $input-padding;
+  width:94%;
+  height: $textarea-height; 
+}
+select { 
+  @include box-sizing('content-box');
+  margin: $input-margin;
+  width: $input-width;
+  padding: $input-padding;
+}
+
+label {
+  legend & {
+    margin: 0; 
+    padding: 0;
+  }
+  + input, + select, + textarea {
+    display: block;
+  }
+  &.req, &.required { 
+    padding-right: 9px; 
+    background: url(/images/star.png) no-repeat right center; 
+  } 
+}
+.user_new{
+  float:left;
+}
+.field {
+  @include pie-clearfix;
+  margin: 0 0 $global-spacing-margin 0;
+  padding: 0.1em 0 0;
+
+  select {
+    margin: 0;
+  }
+
+  .date-field {
+    > * { vertical-align: top; }
+    input { @include inline-block; }
+  }
+  
+  img {
+    margin: $input_margin;
+    display: block;
+  }
+
+  &.tinymce {
+    textarea { 
+      height: $tinymce-height; 
+    }
+  }
+
+  &.radio, &.checkbox {
+    @include inline-block;
+    vertical-align: top;
+    width: inherit;
+    position: relative;
+    padding-left: 18px;
+
+    input[type=radio], input[type=checkbox] {
+      background: none;
+      position: absolute;
+      left: 1px;
+      margin: 2px 0;
+      width: 13px;
+      height: 13px;
+      top:5px;
+    }
+    
+    label {
+      float:left;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      position: relative;
+      top: -7px;
+    }
+  }
+  input.field_with_errors{
+    border:$theme-border-width solid $theme-field-error-border-color;
+    background:$theme-field-error-background-color;
+  }
+  div.field_with_errors{
+    background-color:lighten(#F23C3C,30%);
+    color:#F23C3C;
+    padding:10px !important;
+    float:left;
+    width:94%;
+  }
+}
+.checkbox{
+  width:inherit;
+  label{
+    width:100%;
+    float:left;
+  }
+}
+.cbc{
+  .cbc-fields{
+    width:inherit;
+    .cbc-field-2{
+      display:none;
+    }
+  }
+}
+.actions{
+  float:right;
+}
+.user_new{
+  .help{
+    font-size:14px;
+    margin-top:0;
+    margin-bottom:0;
+    color:#F82130;
+    font-style:italic;
+
+    a{
+      font-size:14px;
+      color:$theme-alt-text-color;
+      &:hover{
+        text-decoration:underline;
+        color:$theme-link-color;
+      }
+    }
+  }
+}
+
+/*[>-----credit cards stuff-------<]*/
+
+/*.cbc-fields .field{*/
+	/*margin-bottom:0;*/
+/*}*/
+
+/*.cbc .field.checkbox, #new_deal fieldset .field.checkbox{*/
+	/*margin:0 0;*/
+/*}*/
+
+/*[>-------event costs---------<]*/
+/*#event_transaction_form .field.radio {*/
+		 /*width: 100%;*/
+		 /*}*/
+
+
+/*html body.controller-profiles #profile-tabs, .controller-events, .controller-pages {*/
+	
+	/*.field.checkbox{*/
+	/*width:90% !important;*/
+	/*display:block;*/
+  /*}*/
+/*}*/
+
+
+/*.email-wrapper{*/
+	/*position:relative;*/
+/*}*/
+
+
+
+/*[> fixes to check boxes <]*/
+/*html body .controller-profiles #profile-tabs{*/
+	
+ /*input, select{*/
+    /*height: $base-line-height;*/
+    /*width: 90%;*/
+    /*position: relative;*/
+    /*display: block;*/
+	/*}*/
+/*}*/
+
+/*html body.controller-subscriptions .instructions + fieldset .field.checkbox{*/
+	/*display:block;*/
+	/*width:95%;*/
+/*}*/
+
+/*.controller-profiles {*/
+	/*form.edit_user input[type="text"], form.new_user input[type="text"], input[type="text"] {*/
+	/*//font-size:$x-small;*/
+	/*//height:1.3em;*/
+	/*}*/
+/*}*/
+
+/*[>fix for merge contacts radio button being on right side of inputs<]*/
+	
+/*#new_contact{*/
+	/*position:relative;*/
+	
+	/*.contact-b-value, .contact-b-value{*/
+		/*position:relative;*/
+		/*width:40%;*/
+		/*}*/
+		
+	/*#contact_avatar_a, #contact_avatar_b{*/
+		/*position:absolute;*/
+		/*margin:0 !important;*/
+		/*padding:0 !important;*/
+		/*z-index:10;*/
+		/*top:6px;*/
+		/*left:4px;*/
+		
+	/*}*/
+
+/*.sandwich{*/
+	/*margin:10px;*/
+/*}*/
+	
+	/*div{*/
+		 /*margin-bottom:5px;*/
+		/*}*/
+	
+		/*.field {*/
+			/*input, select {*/
+      /*float: left;*/
+			/*//line-height: 1em;*/
+			/*position: relative;*/
+			/*margin-right:4px;*/
+		/*}*/
+	/*}*/
+/*}*/
+
+
+/*#left, #right {*/
+	/*.field {*/
+		/*&.radio, &.checkbox {*/
+			/*width: auto;//edited by chris used to be 100% but broke sidebar labels*/
+		/*}*/
+	/*}*/
+/*}*/
+
+/*.mceEditor { */
+  /*display: block;*/
+  /*margin: 0.25em 0; */
+  /*.mceIframeContainer {*/
+    /*padding: 0.5em 0;*/
+    /*background-color: $background_color;*/
+  /*}*/
+/*}*/
+
+/*input[type="checkbox"],*/
+/*input[type="radio"] {*/
+	/*padding:1px;*/
+	/*padding:2px 2px 1px 0;*/
+/*}*/

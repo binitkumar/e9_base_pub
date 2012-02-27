@@ -1,0 +1,12 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag admin_events_path, :method => :get, :class => 'scope-selects' do
+      .field
+        %select{:name => 'future', :id => 'events-future'}
+          = options_for_select [[resource_humanize(:future), nil], [resource_humanize(:past), 0]]
+
+- content_for :toolbar_right do
+  = toolbar_forms do
+    = new_with_layout_form(resource_class)
+
+= render 'shared/admin/index', :collection => collection

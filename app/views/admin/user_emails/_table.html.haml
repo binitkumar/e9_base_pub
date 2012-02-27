@@ -1,0 +1,25 @@
+%table.records
+  %thead
+    %tr
+      %th= ordered_on_link(resource_class, :name)
+      %th= ordered_on_link(resource_class, :mailing_list_name)
+      %th= ordered_on_link(resource_class, :sub_type)
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 4}= e9_t(:no_records_text)
+    - else
+      - collection.each do |resource|
+        %tr{:id => "ids_#{resource.id}", :class => cycle('odd', 'even')}
+          %td.txt= resource.name
+          %td.txt= resource.mailing_list_name
+          %td.txt= resource_class.human_attribute_name(resource.sub_type)
+          %td.actions
+            = send_test_email_link(resource)
+            -#= send_email_to_list_link(resource)
+            = copy_email_link(resource)
+            = edit_admin_resource_link(resource)
+            = destroy_admin_resource_link(resource)
+
+= will_paginate collection

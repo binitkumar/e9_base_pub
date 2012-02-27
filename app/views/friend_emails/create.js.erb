@@ -1,0 +1,6 @@
+<% if resource.errors.any? %>
+  $('form#new_friend_email').replaceWith("<%= escape_javascript(render('form')) %>");
+  $.fn.colorbox.resize();
+<% else %>
+  $.fn.colorbox.close();
+<% end %>

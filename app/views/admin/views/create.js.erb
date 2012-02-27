@@ -1,0 +1,5 @@
+<% if resource.errors.any? %>
+  <%= render 'shared/admin/errors' %>
+<% else %>
+  window.location = "<%= page_create_redirect %>";
+<% end %>

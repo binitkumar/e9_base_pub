@@ -1,0 +1,2 @@
+$("h1.title, ul.breadcrumbs li.last").html("<%= escape_javascript(new_title) %>");
+document.title = "<%= escape_javascript(meta_title(new_title)) %>";

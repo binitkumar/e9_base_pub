@@ -1,0 +1,10 @@
+= form_for resource, :url => polymorphic_path([:admin, resource]), :html => { :multipart => true } do |f|
+  .errors= resource_error_messages!
+
+  = render 'profiles/form_inner', :f => f
+
+  .actions
+    = f.submit
+
+- content_for :bottom_javascripts do
+  = javascript_include_tag user_templates_path

@@ -1,0 +1,119 @@
+_defaults: &defaults
+  author: conrad
+  _finder: title
+
+question_1:
+  <<: *defaults
+  faq: faq_1
+  title: What Year Was "Once Upon a Time in the West" Released?
+  body: |
+    <p>Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, 
+    huic melior. Antehabeo valetudo antehabeo praesent scisco qui dne capto in 
+    in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. 
+    Nisl esca illum tation vel hendrerit paratus capto vulputate verto. 
+    Nostrud odio, tamen paulatim appellatio iaceo antehabeo ea nostrud 
+    ventosus quidem voco. Verto nulla patria odio quadrum consequat exerci 
+    valde, immitto incassum, premo verto gilvus ad. Voco abigo, eligo duis et 
+    praesent ullamcorper commodo nisl qui. Oppeto abdo hos cogo, amet laoreet 
+    tamen ibidem. Zelus vel pneum, olim dignissim velit ut blandit letatio 
+    humo defui, haero probo consequat.</p>
+question_2:
+  <<: *defaults
+  faq: faq_1
+  title: Who are the Three Stars of "The Good, The Bad, and the Ugly"?
+  body: |
+    <p>Lorem ipsum<br/>
+    <p>Antehabeo valetudo</p>
+    <p>Praesent olim<br/>
+question_3:
+  <<: *defaults
+  faq: faq_1
+  title: |
+    Did Leone also write the screenplay for "For a Few Dollars More"? If not, 
+    who was credited as the screenwriter?
+  body: |
+    <p>Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo 
+    nimis. Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene 
+    velit valetudo. Eum nulla tincidunt delenit nostrud abigo, iusto illum 
+    esse molior facilisis wisi abdo turpis, ille. Metuo exerci feugait 
+    secundum consequat capto. Ingenium blandit pneum praemitto, tum molior 
+    comis importunus, ut fatua abbas.</p>
+    <p>Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. 
+    Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut 
+    lobortis blandit.</p>
+question_4:
+  <<: *defaults
+  faq: faq_2
+  title: What was Charles Dickens' last novel?
+  body: |
+    <p>Melior euismod haero pagus, wisi usitas venio gravis jumentum, 
+    tincidunt dolus capio patria neo. Adipiscing comis et augue ad velit 
+    mauris minim macto aptent, eligo exerci indoles exerci feugiat.</p>
+question_5:
+  <<: *defaults
+  faq: faq_2
+  title: |
+    Besides their name, what else did George Sand and George Eliot have in 
+    common?
+  body: |
+    <p>Praesent olim ea esse enim scisco capto, veniam nonummy nobis, 
+    ullamcorper, ibidem consequat. Capto vel autem commodo pagus virtus mos, 
+    accumsan valetudo quia dolore roto. Vero facilisis sagaciter blandit 
+    torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat 
+    consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros 
+    tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. 
+    Immitto eu, oppeto sino in eu feugait.</p>
+    <p>Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo 
+    nimis. Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene 
+    velit valetudo. Eum nulla tincidunt delenit nostrud abigo, iusto illum 
+    esse molior facilisis wisi abdo turpis, ille. Metuo exerci feugait 
+    secundum consequat capto. Ingenium blandit pneum praemitto, tum molior 
+    comis importunus, ut fatua abbas.</p>
+question_6:
+  <<: *defaults
+  faq: faq_3
+  title: Was Cheever's novel,"The Wapshot Chronicles" originally a short story?
+  body: |
+    <p>Lorem ipsum dolor sit amet, fatua, sudo bene camur vulputate amet et 
+    duis pneum suscipit opto hendrerit, eum molior inhibeo. Et quis ex 
+    lobortis elit, quis ut abdo tristique aptent decet, augue, dolor secundum. 
+    Brevitas qui premo fatua quod quae hendrerit distineo esca os suscipit in. 
+    Demoveo sagaciter suscipit nibh modo dolus ratis suscipere praesent. 
+    Valetudo vulputate minim illum reprobo paulatim validus nonummy ut metuo 
+    vel lucidus, adsum. Et delenit molior quod euismod ne nimis accumsan, 
+    suscipit gravis ludus vereor opes qui reprobo. Usitas vindico os neque 
+    ulciscor ad acsi tincidunt, saepius nisl, fatua persto saluto nutus.  
+    Feugait et gemino cui quia hos.</p>
+question_7:
+  <<: *defaults
+  faq: faq_3
+  title: |
+    "The Swimmer" was made into a film. Who played the lead in the 1968 movie? 
+    Who directed the film?
+  body: |
+    <p>Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo 
+    nimis. Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene 
+    velit valetudo. Eum nulla tincidunt delenit nostrud abigo, iusto illum 
+    esse molior facilisis wisi abdo turpis, ille. Metuo exerci feugait 
+    secundum consequat capto. Ingenium blandit pneum praemitto, tum molior 
+    comis importunus, ut fatua abbas. Vulputate hendrerit, saluto, demoveo, 
+    voco illum tristique tamen dolor in duis dignissim refero. Eu praesent 
+    capio iriure, abbas vero oppeto iustum acsi feugait. In nisl et quis enim, 
+    facilisi brevitas abigo commoveo capto, bene, huic conventio.</p> 
+    <p>Sit multo tum et, blandit ad populus vulputate gravis modo, virtus, 
+    huic melior. Antehabeo valetudo antehabeo praesent scisco quidne capto in 
+    in similis iriure damnum ulciscor. Vero caecus meus uxor facilisi vereor. 
+    Nisl esca illum tation vel hendrerit paratus capto vulputate verto. 
+    Nostrud odio, tamen paulatim appellatio iaceo antehabeo ea nostrud 
+    ventosus quidem voco. Verto nulla patria odio quadrum consequat exerci 
+    valde, immitto incassum, premo verto gilvus ad. Voco abigo, eligo duis et 
+    praesent ullamcorper commodo nisl qui. Oppeto abdo hos cogo, amet laoreet 
+    tamen ibidem. Zelus vel pneum, olim dignissim velit ut blandit letatio 
+    humo defui, haero probo consequat.</p> 
+    <p>Praesent olim ea esse enim scisco capto, veniam nonummy nobis, 
+    ullamcorper, ibidem consequat. Capto vel autem commodo pagus virtus mos, 
+    accumsan valetudo quia dolore roto. Vero facilisis sagaciter blandit 
+    torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat 
+    consequat exerci suscipere hendrerit feugiat nunc. Quidne multo nobis eros 
+    tego minim, oppeto lenis quis pneum nostrud commodo gravis suscipit feugiat. 
+    Immitto eu, oppeto sino in eu feugait.</p>

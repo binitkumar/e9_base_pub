@@ -1,0 +1,22 @@
+%td.txt
+  .title
+    = comment_link(comment)
+  .body
+    = comment_body_escape(comment.body) 
+%td.txt
+  - if author = comment.author
+    = link_to author.name, admin_user_comments_path(author)
+%td.txt
+  - if comment.deleted?
+    .comment-deleted
+      = e9_t(:comment_deleted, :scope => 'admin.comments')
+  - elsif comment.flagged?
+    .comment-flagged
+      = e9_t(:comment_flagged, :scope => 'admin.comments')
+  - else
+    .comment-okay
+      = e9_t(:comment_okay, :scope => 'admin.comments')
+%td.actions
+  - unless comment.deleted?
+    = flag_link(comment)
+    = delete_comment_link(comment)

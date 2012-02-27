@@ -1,0 +1,21 @@
+= form_tag update_order_admin_menu_submenus_path(parent) do
+  %table.records.sortable
+    %thead
+      %tr
+        %th.c0= resource_humanize(:position)
+        %th.c1= resource_humanize(:id)
+        %th.c2= resource_humanize(:name)
+        %th.c3= resource_humanize(:role)
+        %th.c4= resource_humanize(:window)
+        %th.c5= e9_t(:actions)
+    - if collection.blank?
+      %tbody
+        %tr
+          %td{:colspan => 6}= e9_t(:no_records_text)
+    - else
+      - collection.each_with_index do |menu, index|; menu, children = menu.to_array
+        %tbody{:id => "ids_#{menu.id}", :class => cycle('odd', 'even')}
+          = render 'table_row', :menu => menu, :index => index, :depth => 0
+          - unless children.blank?
+            - children.each do |child, children|
+              = render 'table_row', :menu => child, :children => children, :depth => 1

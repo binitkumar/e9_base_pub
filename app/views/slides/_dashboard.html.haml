@@ -1,0 +1,27 @@
+.action-links
+  %ul
+    - if resource.display_more_info?
+      %li
+        = link_to e9_t(:more_info), '#', :class => 'action-link more-info-link'
+        .tooltip
+          %fieldset.slide-info
+            %h2= resource.title
+            %ul
+              - if (content = content_dateline(resource)).present?
+                %li= content
+              - if (content = content_byline(resource)).present?
+                %li= content
+              - if (content = content_labels(resource)).present?
+                %li= content
+
+    - if resource.display_actions?
+      %li
+        = link_to e9_t(:actions), '#', :class => 'action-link dashboard-link'
+        .tooltip
+          = render 'shared/dashboard', :content  => resource, :legend => false, :hide_print => local_assigns[:hide_print]
+
+    - if resource.display_social_bookmarks?
+      %li
+        = link_to e9_t(:share), '#', :class => 'action-link share-bar-link'
+        .tooltip
+          = render 'shared/share_bar', :content  => resource, :legend => false

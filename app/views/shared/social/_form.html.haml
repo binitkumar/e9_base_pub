@@ -1,0 +1,13 @@
+-# NOTE not used and probably not working
+#social-networking
+  = render 'shared/social/form_inner', :f => f
+
+:javascript
+  $("#social-networking").addClass("popup-display");
+
+- content_for :bottom_javascripts do
+  :javascript
+    $("#content form").socialFormify({ 
+      event: 'submit', 
+      url: "#{polymorphic_url([:social_form_admin, resource])}" 
+    });

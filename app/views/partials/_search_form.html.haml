@@ -1,0 +1,5 @@
+.partial.search-form
+  %form{:action => searches_path, :method => 'GET'}
+    = text_field_tag :query, nil, :id => "search_query"
+    %button{:id => 'search-submit'}
+      = e9_t(:search_submit, :scope => :search)

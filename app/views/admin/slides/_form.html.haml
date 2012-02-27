@@ -1,0 +1,20 @@
+= form_for resource, :url => polymorphic_path([:admin, parent, resource]) do |f|
+  .errors= resource_error_messages!
+  .fields
+    = f.hidden_field :layout_id
+    - f.object.slideshow_ids.each do |sid|
+      = hidden_field_tag 'slide[slideshow_ids][]', sid, :id => "slideshow_ids_#{sid}"
+    .field
+      = f.label :title, nil, :class => :req
+      = f.text_field :title
+    = image_mount_field(resource.image, :f => f)
+    = render 'shared/form_partials/related_data', :f => f
+    = render 'e9_tags/form', :f => f
+    = render 'admin/views/body', :f => f
+    - content_for :extra_settings do
+      .field.checkbox
+        = f.label :display_title
+        = f.check_box :display_title
+    = render 'admin/views/advanced_settings', :f => f
+  .actions
+    = f.submit

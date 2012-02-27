@@ -1,0 +1,58 @@
+_defaults: &defaults
+  system: true
+  _finder: identifier
+page:
+  <<: *defaults
+  name: "Page: Two Column"
+  template: "application/default/page"
+  identifier: "user_page"
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+home:
+  <<: *defaults
+  name: "Page: Home"
+  template: "application/home"
+  identifier: "user_page_home"
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+one_column:
+  <<: *defaults
+  name: "Page: One Column"
+  template: "application/one_column"
+  identifier: "user_page_one_column"
+  region_types: top_nav, main_nav, footer, bottom_footer, content_bottom, banner
+admin:
+  <<: *defaults
+  name: "Admin"
+  template: "application/admin"
+  identifier: "user_page_admin"
+  region_types: top_nav, main_nav, footer, bottom_footer
+blog:
+  <<: *defaults
+  name: "Blog"
+  template: "application/default/blog"
+  identifier: "blog"
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+forum:
+  <<: *defaults
+  name: "Forum"
+  template: "application/default/forum"
+  identifier: "forum"
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+slide_page:
+  <<: *defaults
+  name: "Slide Page"
+  identifier: "user_page_slide"
+  template: "application/default/slide"
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+slide:
+  <<: *defaults
+  name: "Slide One"
+  identifier: "slide"
+  template: "application/default/slides/one"
+  image_spec: slide_1
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+event:
+  <<: *defaults
+  name: "Event Default"
+  identifier: "event"
+  template: "application/default/event"
+  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner

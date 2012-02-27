@@ -1,0 +1,21 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    %form
+      .field
+        = label_tag 'campaign-select', Campaign.model_name.human
+        %select#campaign-select.url-select
+          = visits_campaign_select_options(parent)
+
+    = form_tag(params.slice(:controller, :action), :method => :get, :class => 'scope-selects') do
+      .field
+        = label_tag 'campaign-from', t(:filter_by, :attribute => resource_class.human_attribute_name(:from))
+        %select{:name => 'from', :id => 'campaign-from'}
+          = deal_date_select_options
+      .field
+        = label_tag 'campaign-until', t(:filter_by, :attribute => resource_class.human_attribute_name(:until))
+        %select{:name => 'until', :id => 'campaign-until'}
+          = deal_date_select_options(:type => :until)
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to 'All Page Views on this Campaign', page_views_url(:campaign => parent.id)

@@ -1,0 +1,11 @@
+<div class="hidden">
+  <div id="<%= field_id %>-tags">
+    <h1>Edit Image Tags</h1>
+    <%= form_for(resource.build_image) do |f| %>
+      <%= render 'e9_tags/form', :f => f, :context => [:images, true] %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

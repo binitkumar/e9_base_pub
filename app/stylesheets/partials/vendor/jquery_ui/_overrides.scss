@@ -1,0 +1,128 @@
+@import 'includes/colors';
+@import 'compass/css3/inline-block';
+@import 'includes/theming';
+
+// not an override, but used with sortable for dragging
+.placeholder { display: block; }
+
+.ui-autocomplete { white-space: nowrap; }
+
+a.ui-button:hover { color: black; }
+
+li.ui-sortable-helper { list-style-type: none; }
+
+.ui-button .ui-button-text-only, .ui-button .ui-button-text, input.ui-button {
+  padding: 4px 0.7em;
+}
+
+
+.ui-button-icon-only {
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: middle;
+}
+
+.ui-corner-reset {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0; }
+
+.ui-sortable .handle, table.sortable .handle {
+  @extend .ui-icon;
+  @extend .ui-icon-carat-2-n-s;
+  cursor: pointer;
+  margin: 0 auto; }
+
+.ordered-column {
+  margin-right: -8px;
+
+  .order-gfx {
+    @extend .ui-icon;
+    @include inline-block;
+  }
+  .asc {
+    @extend .ui-icon-triangle-1-n;
+  }
+  .desc {
+    @extend .ui-icon-triangle-1-s;
+  }
+	.h-asc{
+		@extend .ui-icon-carat-1-n;
+	}
+}
+
+table.records tr.active .activated {
+  @extend .ui-button-icon-primary;
+  @extend .ui-icon;
+  @extend .ui-icon-check;
+  margin: 0 auto; }
+
+a.delete-tag {
+  @extend .ui-button-icon-primary;
+  @extend .ui-icon;
+  @extend .ui-icon-circle-close; }
+
+table.records .handle {
+  float: none; }
+
+.ui-tabs {
+	padding: 0;
+	border: none;
+  background: transparent;
+  #errorExplanation {
+    padding: 10px; 
+  }
+  .ui-tabs-panel, .ui-tabs-nav li {
+    border:theme-border-style() ;
+    background-color:#fff;
+    &.ui-tabs-selected{
+      background-color:$theme-alt-text-color;
+      color:#fff;
+      a{
+        color:#fff;
+        cursor:pointer;
+        &:hover{
+          color:darken(#fff,20%);
+        }
+      }
+    }
+    a{
+      color:$theme-link-color;
+      cursor:pointer;
+      &:hover{
+        color:$theme-link-hover-color;
+      }
+    }
+  }
+  ul.ui-tabs-nav {
+    /*@extend .ui-corner-reset;*/
+    padding-left: 0;
+    background: none;
+    margin: 0;
+    border: none;
+  }
+}
+
+.ui-state-default{
+	font-size:.8em;
+  background-color:$theme-border-color;
+}
+.ui-sortable-helper{
+//  background:lighten($theme-border-color,20%);
+  background:red;
+}
+	
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_666666_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_666666_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_8a2529_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_8a2529_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_8a2529_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(images/ui-icons_8a2529_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_199562_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_c13035_256x240.png); }
+
+.ui-widget .ui-widget, .uploadifyQueueItem .ui-widget, .ui-widget .uploadifyQueueItem, .uploadifyQueueItem .uploadifyQueueItem {
+  font-size: x-small;
+}
+

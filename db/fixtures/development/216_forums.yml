@@ -1,0 +1,27 @@
+_defaults: &defaults
+  _finder: title
+  role: user
+  layout: forum
+  author: conrad
+
+alpha:
+  <<: *defaults
+  title: This Is The Alpha Forum
+  meta_description: |
+    Praesent olim ea esse enim scisco capto, veniam nonummy nobis, 
+    ullamcorper, ibidem consequat.  Capto vel autem commodo pagus virtus mos, 
+    accumsan valetudo quia dolore roto. Vero facilisis.
+beta:
+  <<: *defaults
+  title: This Is The Beta Forum with a much longer title
+  meta_description: |
+    Qui vel, consequat pagus iriure abigo te odio os odio suscipere ideo 
+    nimis. Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore 
+    bene velit valetudo. Eum nulla tincidunt dele
+gamma:
+  <<: *defaults
+  title: The Slightly Longer Gamma Forum 
+  meta_description: |
+    Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut 
+    lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat 
+    quadrum dignissim te sed duis. Persto capto

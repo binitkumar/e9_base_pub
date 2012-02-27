@@ -1,0 +1,46 @@
+.actions
+  - if resource.persisted?
+    = link_to_destroy_resource(resource)
+
+- if @deal
+  = hidden_field_tag :deal_id, @deal.id
+- elsif @contact
+  = hidden_field_tag :contact_id, @contact.id
+
+.field
+  = f.label :title, nil, :class => :req
+  = f.text_field :title
+- if resource.is_a?(Task)
+  .field
+    = f.label :due_date, nil, :class => :req
+    = f.text_field :due_date, :class => 'date-picker', :value => I18n.l(resource.due_date)
+.field
+  = help_label(f, :details, :key => :markdown_help, :header => 'Markdown Help')
+  = f.text_area :details
+
+- if resource.is_a?(Task)
+  .field
+    = f.label :owner, nil, :class => :req, :for => 'note_contact_id'
+    = f.collection_select :contact_id, administrator_contacts, :id, :label
+
+.field.select
+  = f.label :contacts
+  %input.contact-autocomplete.list{:type => 'text', 'data-values' => resource.contact_ids.join(','), 'data-iname' => resource_instance_name, 'data-field' => '[contact_ids]'}
+  %ul.select
+    - resource.contacts.each do |contact|
+      %li.ui-state-default
+        %span.content= contact.label
+        %input{:type => :hidden, :name => "#{resource_instance_name}[contact_ids][]", :value => contact.id}
+        %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+.field.select
+  = f.label :deals
+  %input.deal-autocomplete.list{:type => 'text', 'data-values' => resource.deal_ids.join(','), 'data-iname' => resource_instance_name, 'data-field' => '[deal_ids]'}
+  %ul.select
+    - resource.deals.each do |deal|
+      %li.ui-state-default
+        %span.content= deal.label
+        %input{:type => :hidden, :name => "#{resource_instance_name}[deal_ids][]", :value => deal.id}
+        %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+
+= render 'attachments/form', :f => f

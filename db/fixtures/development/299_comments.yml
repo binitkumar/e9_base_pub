@@ -1,0 +1,97 @@
+_defaults: &defaults
+  _finder: id
+  author: commenter
+
+comment_1:
+  <<: *defaults
+  id: 1
+  body: Te verto! (1)
+  commentable: topic_alpha_one (Topic)
+comment_2:
+  <<: *defaults
+  id: 2
+  body: Commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit.
+  commentable: topic_alpha_one (Topic)
+comment_3:
+  <<: *defaults
+  id: 3
+  body: Te verto!
+  commentable: topic_alpha_two (Topic)
+comment_4:
+  <<: *defaults
+  id: 4
+  body: Commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit.
+  commentable: topic_alpha_two (Topic)
+comment_5:
+  <<: *defaults
+  id: 5
+  body: Lorem ipsum dolor sit amet, fatua, sudo bene camur vulputate amet et duis pneum suscipit opto hendrerit, eum molior inhibeo. Et quis ex lobortis elit, quis ut abdo tristique aptent decet, augue, dolor secundum.
+  commentable: topic_alpha_three (Topic)
+comment_6:
+  <<: *defaults
+  id: 6
+  body: Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes.
+  commentable: topic_alpha_three (Topic)
+comment_7:
+  <<: *defaults
+  id: 7
+  body: Melior euismod haero pagus, wisi usitas venio gravis jumentum, tincidunt dolus capio patria neote verto!
+  commentable: topic_beta_one (Topic)
+comment_8:
+  <<: *defaults
+  id: 8
+  body: Nostrud odio, tamen paulatim appellatio iaceo antehabeo ea nostrud ventosus quidem voco. Verto nulla patria odio quadrum consequat exerci valde, immitto incassum, premo verto gilvus ad. Voco abigo, eligo duis et praesent ullamcorper commodo nisl qui. Oppeto abdo hos cogo, amet laoreet tamen ibidem. Zelus vel pneum, olim dignissim velit ut blandit letatio humo defui, haero probo consequat.
+  commentable: topic_beta_one (Topic)
+comment_9:
+  <<: *defaults
+  id: 9
+  body: Tamen paulatim appellatio iaceo antehabeo ea nostrud ventosus quidem voco. Verto nulla patria odio quadrum consequat exerci valde, immitto incassum, premo verto gilvus ad. Voco abigo, eligo duis et praesent ullamcorper commodo nisl qui. Oppeto abdo hos cogo, amet laoreet tamen ibidem. Zelus vel pneum, olim dignissim velit ut blandit letatio humo defui, haero probo consequat.
+  commentable: topic_gamma_one (Topic)
+
+comment_10:
+  <<: *defaults
+  id: 10
+  body: Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes. Ludus valde cui duis luptatum humo hos duis ut capio bene. Cogo wisi vulpes te caecus, opes, duis transverbero veniam usitas. Damnum appellatio tamen, epulae facilisi plaga vulputate abdo eum ullamcorper suscipere comis. Appellatio jugis praemitto abluo pecus meus erat praesent sit eligo vel oppeto.
+  commentable: wysiwyg (UserPage)
+comment_11:
+  <<: *defaults
+  id: 11
+  body: Cogo wisi vulpes te caecus, opes, duis...
+  commentable: wysiwyg (UserPage)
+comment_12:
+  <<: *defaults
+  id: 12
+  body: Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene velit valetudo. Eum nulla tincidunt delenit nostrud abigo!
+  commentable: wysiwyg (UserPage)
+
+comment_13:
+  <<: *defaults
+  id: 13
+  body: Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes. Ludus valde cui duis luptatum humo hos duis ut capio bene. Cogo wisi vulpes te caecus, opes, duis transverbero veniam usitas. Damnum appellatio tamen, epulae facilisi plaga vulputate abdo eum ullamcorper suscipere comis. Appellatio jugis praemitto abluo pecus meus erat praesent sit eligo vel oppeto.
+  commentable: alpha_blog_1 (BlogPost)
+comment_14:
+  <<: *defaults
+  id: 14
+  body: Cogo wisi vulpes te caecus, opes, duis...
+  commentable: alpha_blog_1 (BlogPost)
+comment_15:
+  <<: *defaults
+  id: 15
+  body: Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene velit valetudo. Eum nulla tincidunt delenit nostrud abigo!
+  commentable: alpha_blog_1 (BlogPost)
+
+comment_16:
+  <<: *defaults
+  id: 16
+  body: Te verto, incassum sino vindico ad commoveo nimis hendrerit mauris. Sino jumentum quod virtus iustum eros exputo olim paulatim in pagus ut lobortis blandit. Nostrud nunc jumentum hendrerit wisi gemino consequat quadrum dignissim te sed duis. Persto capto in saluto luptatum vulpes. Ludus valde cui duis luptatum humo hos duis ut capio bene. Cogo wisi vulpes te caecus, opes, duis transverbero veniam usitas. Damnum appellatio tamen, epulae facilisi plaga vulputate abdo eum ullamcorper suscipere comis. Appellatio jugis praemitto abluo pecus meus erat praesent sit eligo vel oppeto.
+  commentable: alpha_blog_2 (BlogPost)
+comment_17:
+  <<: *defaults
+  id: 17
+  body: Cogo wisi vulpes te caecus, opes, duis...
+  commentable: alpha_blog_2 (BlogPost)
+comment_18:
+  <<: *defaults
+  id: 18
+  body: Appellatio natu ulciscor virtus, ymo nulla adipiscing, dolore bene velit valetudo. Eum nulla tincidunt delenit nostrud abigo!
+  commentable: alpha_blog_2 (BlogPost)

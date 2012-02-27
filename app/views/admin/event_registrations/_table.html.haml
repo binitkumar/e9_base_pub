@@ -1,0 +1,20 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:attended)
+      %th= orderable_column_link('contacts.first_name,contacts.last_name', 'Name')
+      %th= orderable_column_link('users.email', 'Email')
+      %th= resource_humanize(:details)
+      %th= resource_humanize(:campaign)
+      %th= orderable_column_link('event_transactions.transaction_id', 'Trans #')
+      %th= orderable_column_link(:promo_code, 'Voucher')
+      %th= orderable_column_link(:paid, 'Fee')
+      %th= e9_t(:actions)
+  %tbody
+    - if collection.empty?
+      %tr
+        %td{:colspan => 9}= e9_t(:no_records_text)
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          = render 'row', :resource => record

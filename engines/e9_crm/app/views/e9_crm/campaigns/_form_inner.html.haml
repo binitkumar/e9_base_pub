@@ -1,0 +1,21 @@
+%fieldset
+  %legend= e9_t(:campaign_information_legend, :scope => 'e9_crm.campaigns')
+  .field
+    = f.label :campaign_group_id
+    = f.collection_select :campaign_group_id, CampaignGroup.ordered.all, :id, :name, :include_blank => 'No Group'
+  .field
+    = f.label :name, nil, :class => :req
+    = f.text_field :name
+  - if f.object.new_record?
+    .field#campaign_code_field
+      = f.label :code, nil, :class => :req
+      = f.text_field :code
+  .field
+    = help_label :campaign_code_hint, :code_hint, :title => t('activerecord.attributes.campaign.code_hint_help', :code => E9Crm.query_param)
+    #campaign_code_hint= display_campaign_code(f.object.code || '')
+  .field
+    = f.label :user_page_id
+    = f.select :user_page_id, campaign_link_select_options
+  .field
+    = f.label :active
+    = f.check_box :active

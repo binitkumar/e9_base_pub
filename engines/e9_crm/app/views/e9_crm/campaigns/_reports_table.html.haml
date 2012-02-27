@@ -1,0 +1,95 @@
+%table.records
+  %thead
+    %tr
+      %th= orderable_column_link(:type, 'Type')
+      %th= orderable_column_link(:campaign_group_name, 'Group')
+      %th= orderable_column_link(:name, 'Campaign')
+      %th= orderable_column_link(:new_visits, 'New')
+      %th= orderable_column_link(:repeat_visits, 'Repeat')
+      %th= orderable_column_link(:lead_count, 'Leads')
+      %th= orderable_column_link(:deal_count, 'Deals')
+      %th= orderable_column_link(:won_deal_count, 'Won')
+      %th= orderable_column_link(:total_value, 'Revenue')
+      %th= orderable_column_link(:average_value, 'Avg.Rev.')
+      %th= orderable_column_link(:total_cost, 'Cost')
+      %th= orderable_column_link(:average_cost, 'Avg.Cost')
+      %th= orderable_column_link(:average_elapsed, 'Avg.Time')
+
+  %tbody
+    -# prepare a hash to store the accumulated row data for calculations
+    - dat = Hash.new {|k,v| k[v] = [] }
+
+    - if collection.empty?
+      %tr
+        %td{:colspan => 13}= e9_t(:no_records_text, :scope => 'e9_crm.reports')
+    - else
+      - collection.each do |record|
+        %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
+          %td.record-campaign-type
+            = display_campaign_type(record.type)
+          %td.record-campaign-group
+            = record.campaign_group_name || e9_t(:no_group, :scope => 'e9_crm.campaigns')
+          %td.record-name
+            = link_to record.to_s, campaign_visits_path(record, params.slice(:from, :until)), :title => 'View Campaign Activity'
+          %td.record-new-visits.num
+            - dat[:new_visits] << record.new_visits
+            = record.new_visits
+          %td.record-repeat-visits.num
+            - dat[:repeat_visits] << record.repeat_visits
+            = record.repeat_visits
+          %td.record-lead-count.num
+            - dat[:lead_count] << record.lead_count
+            = record.lead_count.to_i
+          %td.record-deal-count.num
+            - dat[:deal_count] << record.deal_count
+            = record.deal_count.to_i
+          %td.record-won-deal-count.num
+            - dat[:won_deal_count] << record.won_deal_count
+            = record.won_deal_count.to_i
+          %td.record-total-value.num
+            - dat[:total_value] << record.total_value
+            = m record.total_value
+          %td.record-averate-value.num
+            - dat[:average_value] << record.average_value
+            = m record.average_value
+          %td.record-total-cost.num
+            - dat[:total_cost] << record.total_cost
+            = m record.total_cost
+          %td.record-average-cost.num
+            - dat[:average_cost] << record.average_cost
+            = m record.average_cost
+          %td.record-average-elapsed.num
+            - dat[:average_elapsed] << record.average_elapsed
+            = record.closed_deal_count > 0 ? record.average_elapsed && ("%i days" % record.average_elapsed) || 0 : 'n/a'
+
+        - dat[:closed_deal_count] << record.closed_deal_count
+        - dat[:total_elapsed]     << record.total_elapsed
+
+    %tfooter
+      %tr{:class => 'record-totals'}
+        %td.record-totals-label{:colspan => 3}
+          #{t(:totals)}:
+        %td.record-new-visits.num
+          = dat[:new_visits].sum
+        %td.record-repeat-visits.num
+          = dat[:repeat_visits].sum
+        %td.record-lead-count.num
+          = dat[:lead_count].sum
+        %td.record-deal-count.num
+          = dat[:deal_count].sum.to_i
+        %td.record-won-deal-count.num
+          = won_deal_count = dat[:won_deal_count].sum.to_i
+        %td.record-total-value.num
+          - total_value = dat[:total_value].compact.sum
+          = m(total_value)
+        %td.record-average-value.num
+          = won_deal_count.zero? ? 'n/a' : m(total_value.to_f / won_deal_count)
+        %td.record-total-cost.num
+          - total_cost = dat[:total_cost].compact.sum
+          = m(total_cost)
+        %td.record-average-cost.num
+          = won_deal_count.zero? ? 'n/a' : m(total_cost.to_f / won_deal_count)
+        %td.record-average-elapsed.num
+          - total_elapsed     = dat[:total_elapsed].compact.sum.to_f
+          - closed_deal_count = dat[:closed_deal_count].sum.to_i
+          = closed_deal_count.zero? ? 'n/a' : "%i days" % (total_elapsed / closed_deal_count)

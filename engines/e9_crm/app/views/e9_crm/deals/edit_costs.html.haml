@@ -1,0 +1,10 @@
+= title e9_t(:edit_costs_title)
+
+= form_for resource, :url => polymorphic_path([:update_costs, resource]), :remote => request.xhr? do |f|
+  .errors= resource_error_messages!
+
+  = f.fields_for(:dated_costs) do |df|
+    = render 'e9_crm/dated_costs/form_inner', :f => df
+
+  .actions
+    = f.submit

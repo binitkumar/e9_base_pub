@@ -1,0 +1,7 @@
+%fieldset.radio
+  %legend= f.label(:role, nil, :class => local_assigns[:css_class])
+  = yield :role_insertion
+  - ( local_assigns[:roles] || E9::Roles.content_assignable ).each do |role|; next unless local_assigns[:ignore_privileges] || current_user.role >= role
+    .field.radio
+      = f.label :"role_#{role}", f.object.class.human_attribute_name("role_#{role}")
+      = f.radio_button :role, role

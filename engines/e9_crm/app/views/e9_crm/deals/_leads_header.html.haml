@@ -1,0 +1,21 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag(leads_path, :method => :get, :class => 'scope-selects') do
+      .field
+        = label_tag 'lead-offer', t(:filter_by, :attribute => resource_class.human_attribute_name(:offer))
+        %select{:name => 'offer', :id => 'lead-offer'}
+          = deal_offer_select_options 
+      .field
+        = label_tag 'lead-from', t(:filter_by, :attribute => resource_class.human_attribute_name(:from))
+        %select{:name => 'from', :id => 'lead-from'}
+          = deal_date_select_options
+      .field
+        = label_tag 'lead-until', t(:filter_by, :attribute => resource_class.human_attribute_name(:until))
+        %select{:name => 'until', :id => 'lead-until'}
+          = deal_date_select_options(:type => :until)
+
+- content_for :toolbar_right do
+  = toolbar_actions do
+    = link_to_collection(Deal)
+
+= render 'shared/admin/toolbar'

@@ -1,0 +1,60 @@
+@import "compass/css3/inline-block";
+
+$list_select_border: 1px solid #aaa !default;
+$list_select_width: 300px !default;
+$list_select_line_height: 1.5em !default;
+
+select.list, select.node-selector, select#region_type_ids,
+ul.select, ul.nodes, ul.region-types {
+  width: $list_select_width;
+}
+
+select.list, select.node-selector, select#region_type_ids {
+  margin-bottom: 0.25em;
+}
+
+@mixin remove_node {
+  @include inline-block;
+  @extend .ui-button-icon-primary;
+  @extend .ui-icon;
+  @extend .ui-icon-close;
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+a.remove-node {
+  @include remove_node;
+}
+
+ul.select, ul.nodes, ul.region-types {
+  .ui-sortable-placehoder { 
+  height: $list_select_line_height; }
+  list-style-type: none;
+  padding: 0;
+  position: relative;
+  li {
+    @extend .ui-state-hover;
+    position: relative;
+    line-height: $list_select_line_height;
+    border: $list_select_border;
+    list-style-image: none;
+    padding: 2px; 
+    margin-bottom: 2px;
+    .handle { 
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      margin-top: -8px;
+    }
+    .content {
+      @include inline-block;
+      padding: 0 1.5em;
+    }
+    a.remove {
+      @include remove_node;
+    }
+  } 
+}

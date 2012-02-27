@@ -1,0 +1,21 @@
+= title resource.title
+
+#tabs
+  %ul
+    - if e9_standard_help.present?
+      %li= link_to e9_t(:standard_help_header), '#standard-help'
+
+    - if e9_custom_help.present?
+      %li= link_to e9_t(:custom_help_header), '#custom-help'
+
+  - if e9_standard_help.present?
+    #standard-help.tabbed
+      = e9_standard_help.html_safe
+
+  - if e9_custom_help.present?
+    #custom-help.tabbed
+      = e9_custom_help.html_safe
+
+- content_for :bottom_javascripts do
+  :javascript
+    $(function() { $("#tabs").tabs(); });

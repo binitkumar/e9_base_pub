@@ -1,0 +1,99 @@
+@import 'compass/utilities/general/clearfix';
+@import 'includes/typography';
+@import 'includes/colors';
+@import 'includes/common';
+@import 'includes/theming';
+
+.list-container { 
+  @include clearfix;
+  margin-bottom: 1em; 
+  > .header, .show-more {
+    @include pie-clearfix;
+    clear: both;
+  }
+  > .header {
+    border-bottom: theme-border-style();
+    .heading, .text { 
+      display: inline; 
+    }
+    .actions, .action-links {
+      float: right;
+      font-size:16px;
+      color:$theme-link-color;
+      text-decoration:underline;
+      cursor:pointer;
+      &:hover{
+        color:$theme-link-hover-color;
+      }
+    }
+  }
+  .show-more { 
+    text-align: center; 
+  }
+}
+
+.list {
+  @include clearfix;
+  .listing {
+    @include clearfix;
+    clear: both; 
+    margin-bottom: 1em;
+    border-bottom:theme-border-style();
+    .title { 
+      //margin-bottom: $global_spacing_margin;
+       
+      a { 
+        font-weight: bold;
+        text-decoration: none; 
+				font-size: 16px;
+      }
+    }
+    .info { 
+      font-size: $x-small;
+      font-style: italic; 
+    }
+
+		.event-time{
+	   font-size:$small;
+		}
+    .avatar, .thumb {
+      margin-bottom: 0;
+    }
+  }
+	.read-more {
+		text-align: center;
+    display: block;
+    margin: $global-spacing-margin 0;
+	}
+}
+
+.controller-events .list-container .event.listing .title { 
+  margin-bottom: 0; 
+  
+	a { 
+    font-weight: bold;
+    text-decoration: none; 
+		//font-size: 16px;
+  }
+}
+.forums, {
+  h3.header{
+    margin-bottom:0;
+    a{
+      float:left;
+      width:85%;
+    }
+  }
+  .content-body{
+
+  }
+}
+.forum{
+  h3.header{
+    margin-bottom:0;
+    a{
+      float:left;
+      width:80%;
+    }
+  }
+}

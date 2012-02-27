@@ -1,0 +1,5 @@
+#profile-avatar
+  .instructions
+    = e9_t(:avatar_help).html_safe
+
+  = image_mount_field(resource.avatar(true))

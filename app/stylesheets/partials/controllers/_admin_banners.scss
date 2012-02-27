@@ -1,0 +1,17 @@
+body.controller-admin-banners {
+  #banner-images {
+    .image {
+      @include clearfix;
+      margin-bottom: 10px;
+      img, a.icon-delete  { float: left; }
+      img { margin-right: 10px; }
+    } 
+  }
+
+  #banner-images > .field {
+    @include theme-border;
+    label { display: block; }
+    padding: 1em;
+    width: 33%;
+  }
+}

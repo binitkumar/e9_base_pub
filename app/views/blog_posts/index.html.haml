@@ -1,0 +1,13 @@
+- meta_tags @blog unless @blog.blank?
+
+- if @blog && @blog.role > E9::Roles.public
+  = title(@blog_title)
+- else
+  = title_with_feed(@blog_title, :url => @blog ? blog_url(@blog, :format => :rss) : nil)
+
+- unless @blog_posts.empty?
+  .blog-posts.list
+    = render :partial => 'listed_blog_post', :collection => @blog_posts
+  = will_paginate @blog_posts
+- else
+  %div= e9_t(:no_records_text)

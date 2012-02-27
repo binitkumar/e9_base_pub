@@ -1,0 +1,26 @@
+/**
+ * For semantic classes.
+ * NOTE these classes are included in they wysiwg sheet.
+ */
+
+@import 'includes/colors';
+
+.highlight { 
+  background: $highlight-color; 
+}
+
+.block {
+  display: block !important;
+}
+
+.left { 
+  float: left !important; 
+  margin-left: 0; 
+  margin-right: 0.67em; 
+}
+
+.right { 
+  float: right !important; 
+  margin-right: 0; 
+  margin-left: 0.67em; 
+}

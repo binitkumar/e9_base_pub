@@ -1,0 +1,5 @@
+$("#comment_<%= @comment.id %>:not(.remove-on-unflag)").replaceWith("<%= escape_javascript(render(@comment, :parent => @comment.commentable)) %>");
+$("#comment_<%= @comment.id %>.remove-on-unflag").slideUp(200, function() { $(this).remove(); });
+$("#comments-count").html("<%= escape_javascript(comments_count_tag(@comment.commentable)) %>");
+$("#flagged-comments-count").html("<%= escape_javascript(flagged_comments_count_tag) %>");
+$("tr#ids_<%= @comment.id %>").html("<%= escape_javascript(render 'admin/comments/row', :comment => @comment) %>");

@@ -1,0 +1,13 @@
+= title e9_t(:show_title)
+
+- unless resource.errors.any?
+  = form_for resource, :url => subscription_path(@subscription_token), :remote => true do |f|
+    .instructions
+      %p= e9_t(:instructions1, :username => resource.username, :first_name => resource.first_name)
+      %p= e9_t(:instructions2)
+      %p= e9_t(:instructions3)
+
+    = render 'profiles/mailing_lists', :f => f, :user => resource
+
+    .actions
+      = f.submit e9_t(:submit_text)

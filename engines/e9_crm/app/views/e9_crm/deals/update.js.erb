@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  $('form .errors').html("<%= escape_javascript(resource_error_messages!) %>");
+  try { $.fn.colorbox.resize(); } catch(e) {}
+<% else %>
+  <% if resource.lead? %>
+    $('tr#ids_<%= resource.id %>').html("<%= escape_javascript(render 'lead_row') %>");
+  <% end %>
+  try { $.colorbox.close(); } catch(e) {}
+  $('form .errors').html("");
+<% end %>

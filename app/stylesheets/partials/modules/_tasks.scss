@@ -1,0 +1,76 @@
+@import 'includes/lists';
+
+$task-message-color    :          $theme-info-border-color !default;
+$task-complete-color   :        $theme-notice-border-color !default;
+$task-overdue-color    :         $theme-error-border-color !default;
+$task-due-today-color  : lighten($task-overdue-color, 10%) !default;
+$task-due-future-color : lighten($task-overdue-color, 20%) !default;
+
+.notes-container {
+  $padding: 10px;
+  margin-bottom: 1em;
+
+  ul.attachments {
+    @include blank-list; }
+  .note {
+    border-width: 2px;
+    border-style: solid; }
+  .note  {
+    position: relative;
+    margin-bottom: 0.5em;
+    padding: 0; }
+  .controls-wrapper {
+    $icon-size: 22px;
+    $left: $icon-size + $padding * 2;
+    $right: 5em;
+    padding: $padding $right $padding $left;
+    position: relative;
+    line-height: $icon-size;
+
+    .note-status { cursor: pointer; }
+    .note-status, .note-edit {
+      position: absolute; }
+    .note-status {
+      left: $padding;
+      top: $padding;
+      width: 22px;
+      height: 22px;
+      text-indent: -999em; }
+    .note-edit {
+      @include small;
+      right: $padding;
+      top: $padding - 3px; }
+    .note-dates, .note-title {
+      font-weight: bold;
+      &, div { 
+        display: inline; 
+      } }
+    .note-title {
+      @include x-large;
+      padding: 0 5px; } }
+  .note-info-wrapper {
+    padding: 0 $padding $padding;
+    a { text-decoration: underline; } }
+  .show-more {
+    @include button;
+    @include small;
+    display: block;
+    margin: 1em auto 0;
+    text-align: center;
+    width: 8em; }
+  @mixin -note-border($color) {
+    border-color: $color;
+    .note-title { color: $color; } }
+  .message {
+    border-style: dashed;
+    @include -note-border($task-message-color); }
+  .task {
+    .note-status { background: transparent url(images/unchecked.png) center center no-repeat; }
+    &.completed {
+      @include -note-border($task-complete-color);
+      .note-status { background: transparent url(images/checked.png) center center no-repeat; } }
+    &.overdue { @include -note-border($task-overdue-color); }
+    &.today { @include -note-border($task-due-today-color); }
+    &.future { @include -note-border($task-due-future-color); }
+  }
+}

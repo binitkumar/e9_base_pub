@@ -1,0 +1,139 @@
+en:
+  e9:
+    admin:
+      searches:
+        toolbar_help: **Search Log** shows you every query ever run on your website, along with the date, the number of times the query was requested and the number of search results the user saw. Use this info to fine-tune your content with things your users are seeking.
+        
+      social_feeds:
+        toolbar_help: If you have active **Facebook** and **Twitter** pages for your company, you will be able to watch what happens on each site on this page. You can also post directly to each without having to relate the post directly to your content.
+        
+      users:
+        toolbar_help: Use the filter to look at a particular class of users, or use the **search** function to search for email, first name, last name, and username.
+        
+      comments:
+        toolbar_help: This report shows **all comments** on your content by a particular user. If any comments have been reported as **Abuse**, use **Remove Flag** if you think the comment is fine. If you want to remove any comment, click **Censor** and "Comment deleted by Administrator" will then appear where the comment used to be on the public website. If all or most of the comments appears to be **SPAM**, you can click **Delete User & All Comments** to permanently get rid of the user and their comments.
+        flagged_toolbar_help: **Flagged Comments** are comments on your content that your site visitors thought were inappropriate or SPAM. Use **Remove Flag** if you think the comment is fine. If you want to remove any comment, click **Censor** and "Comment deleted by Administrator" will then appear where the comment used to be on the public website. If the comment appears to be **SPAM**, you should click the username to review all of that user's comments because there is a high probability that all of their comments are SPAM.  
+
+      user_pages:
+        toolbar_help: **Pages** are simply general content pages on your website. Create a new page by choosing a layout and clicking **go**. Use **publish** it to make it visible on the website. **Broadcast** will send it to **facebook** and **twitter** if you haven't done it previously. Lastly, don't forget to add the page to the public menu. You can also create **employee** or **member only** pages that only approved users can view.
+          
+      blog_posts:
+        toolbar_help: Create a **blog post** by choosing the blog it belongs to and clicking **go**. Use **publish** it to make it visible on the website. **Broadcast** will send it **facebook** and **twitter** if you haven't done it previously. Use the **Blog** filter to view all the posts in that blog.
+        
+      faqs:
+        toolbar_help: Organize your FAQs into Categories and choose who can view the Category. For example, a category viewable by "employee" would appear on the Employee FAQ. Once created, you can create and manage questions and answers assigned to it. Use the "Viewable" filter to see the categories assigned to it. You can also reorder the categories within that view by moving the row via the **order** column.
+        
+      questions:
+        toolbar_help: Use the "View" filter to change the category being viewed. Within a category, you can reorder the questions by moving the row via the **order** column.
+        
+      layouts:
+        toolbar_help: **Layouts** shows you all of the structures that are available for use by a particular piece of content. Use **copy** to clone a layout and then change the widgets related to it. This is useful for building out a new section of the website that features default widgets that differ from an existing section.
+
+      submenus:
+        toolbar_help: **Menus** control how the public side navigation renders. Use the **view** filter to change the menu or submenu you want to manage or re-order. **Add Page** is what you will use most often to add your site content to the navigation. **Add Link** is useful if you want to add an external link to your navigation, for example a link to your extranet. You can also create a **employee** or **member only** menu elements that only approved users can view.
+        
+      slides:
+        toolbar_help: Create a **slide** by choosing a layout and clicking **go**. Use **publish** it to make it visible on the website. **Broadcast** will send it **facebook** and **twitter** if you haven't done it previously. Use the **Layout** filter to view all the slides on that layout. You can also create **employee** or **member only** slides that only approved users can view.
+        
+      slideshows:
+        toolbar_help: **Slideshows** are 'published' by default but won't be visible until they have published slides. Click **Manage Slides** to add and remove slides from the selected slideshow. You can also reorder Slide Shows by moving the row via the **order** column. This will adjust the order of slideshows on the public **Gallery** page.
+        
+      slides:
+        toolbar_help: A slide can display once in each slideshow. If a slide already exists, pick it from the **existing slide** menu to add to a slideshow. Otherwise use the **new slide** menu to upload a new one. You can also reorder a slide's position within the slideshow by moving its row via the **order** column. Clicking the **remove** button for any slide will remove it from the slideshow, but it does not delete the slide.
+
+      system_pages:
+        toolbar_help: You can mostly ignore **system pages** except if you want to change the content on the Home Page, or if you want to adjust the default widgets on any of the listed pages.
+
+      feed_widgets:
+        toolbar_help: **Feed Widgets** are reusable pieces of content that query the database for the requested information. You can control the type of content, number of records, how it looks and where it will appear.
+
+      banners:
+        toolbar_help: **Banners** are pieces of pages that are generally used as header art. Banners can consist of one image or many images that will load randomly when requested. Click **Manage Banner** to manage the images related to the banner. Click **Edit** to update the banner's name.
+        manage_toolbar_help: You can upload new images by clicking **browse**. After the image is uploaded you'll have an opportunity to zoom and crop. The banner will be dropped in at the last position. You can **reorder** the images by grabbing and dragging them to a new position. Click the "**X**" to delete the image.
+        
+      widget_templates:
+        toolbar_help: **Widget Templates** determine how your Content Feed Widgets and Top Content Widgets look. In most cases, **e9digital** has to program these for you. You can request additional templates at any time.
+        
+      slideshow_widgets:
+        toolbar_help: **Slideshow Widgets** renders an embeddable slideshow for use on a page or blog post. You can create a custom embeddable widget or have the widget show one of the slideshows you've already curated.
+
+      snippets:
+        toolbar_help: **Snippets** are free-form, reusable pieces of pages. You can embed videos, images, and text. Choose **Text Snippet** to embed iframes and flash. Choose **WYSIWYG Snippet** to manage it like a "mini-page." If you really botch the edit of a snippet, click **revert** to restore it to its earliest **saved** state.
+
+      user_emails:
+        toolbar_help: **Newsletters** will be sent on your graphical template with a one-time usage to your newsletter subscribers. **CRM Templates** are reusable text email that you can send to a contact or subset of contacts. **Lead Nourishing Email** are reusable text email you set-up specifically for sales leads. **Send Test** will send a copy to your mailbox. **Copy** will clone an email as a base for easy changes.
+        
+      email_deliveries:
+        toolbar_help: This report is a log of all email transmitted by the system with the latest email on top. **Requests** are the number of email sent to the mail server. Click **View** to see the email and who you sent it to.
+        
+      email_reports:
+        toolbar_help: This report gives you daily email reporting on a month-by-month basis. **Requests** are the number of email sent to the mail server. **Delivered** are email successfully processed. **Opened** are the number of email that recipients viewed. "Opens" are generally higher than reported because the mechanism of reporting "opens" is blocked by many email programs. **Bounces** are the number of bad email addresses that you tried to send to. **Spam Reports** are the number of email reported as spam to email administrators. Your bounce rate must be lower than 5% to avoid being classified as a spammer.
+
+      event_registrations:
+        toolbar_help: "This report shows you all registrations for this event. Next to each user is an **attendance** checkbox. Clicking or unclicking will instantly update the datebase for that registrant. Clicking **View** will take you the registrant's CRM Contact Record. Clicking **Transfer** will allow you to move the registrant to any **upcoming event**. Clicking **Cancel** will cancel the registration, but you will have to manually refund any money received. When using the **bulk email** tool, the system will email each registrant on this report where their **CRM OK to Email** variable is set to **yes**, which it is by default. **IMPORTANT**: When using the bulk email tool, it takes a few seconds for the email to transmit and the window to close. Please be patient."
+
+      events:
+        toolbar_help: The default view is **upcoming** events. Use the filter to view **past** events. Click **#** next to each event to see a detailed report of attendees for that event. Click **Publish** it to make it visible on the website. Use **Copy** to clone an event's basic settings, and then update the event date.
+        
+      mailing_lists:
+        toolbar_help: Most websites are fine with one **Email List**, but you can create multiple lists to further segment your audience. You can also create an **employee** or **member only** list that only approved users can subscribe to.
+        
+      system_emails:
+        toolbar_help: We've set all **system email** to read nicely without further input, but you can customize the language of each, if you desire.
+
+      blogs:
+        toolbar_help: Our system allows you to have an unlimited number of **blogs** if you have multiple authors. You can also create an **employee** or **member only** blog that only approved users can view. You can also reorder the blog's menu position by moving the row via the **order** column.
+        
+      forums:
+        toolbar_help: Our system allows you to have an unlimited number of **forums** to cover various categories of topics. You can also create **employee** or **member only** forums that only approved users can view.  You can also reorder the forum's menu position by moving the row via the **order** column.
+
+      share_sites:
+        toolbar_help: You can pick the sites that you will allow your visitors to share content with. If the site has **visible** and **enable** checkmarks, it will be visible on the public website. You can also reorder site icon positions within the share toolbar by moving the row via the **order** column.
+
+    e9_attributes:
+      menu_options:
+        toolbar_help: **Menu Options** allow you to control attributes for Phone, like "Work", "Mobile" or "Home." Use the **Key** filter to change the Menu and view its associated attributes. Within a menu, you can reorder the attributes by moving the row via the **order** column.
+
+    e9_polls:
+      polls:
+        toolbar_help: **Poll** widgets are reusable pieces of pages where you can get visitor opinion on topics or questions you create. Click **View Results** to see the current stats for each poll.
+        
+    e9_crm:
+      affiliate_statement:
+        toolbar_help: This **statement** shows you all of the **deals** related to the contact being viewed, and the status on each deal. Deals that are **won** will show the money you owe the contact on that particular deal. This report also shows any **payments** you have made to the contact, and the **balance** on the account.
+
+      affiliates:
+        toolbar_help: This report shows you a list of contacts that are affiliates or salespeople related to **campaigns**. It shows you the amount you owe each one based on deals closed on related campaigns.
+
+      contacts:
+        toolbar_help: 'You can **filter** your contacts by **company name** or **tags**. You can **search** any of the contacts attributes like name, title, email, and phone number. You can also use the **filter** to show you contacts that have email addresses that cause bounces. Using the **email** tools, will further filter the list of contacts being viewed to show you only the contacts that are eligible for the selected email list. If you are sending a **newsletter** email, you will have an opportunity to create a **campaign** to track its success. If you are sending a **crm template** email, you will have an opportunity to give it a **one time** edit and create a campaign to track its success. Use the "Export Mailing Addresses" fuction to get a list of addresses for your filtered contacts. **IMPORTANT**: When using the bulk email tool, it takes a few seconds for the email to transmit and the window to close. Please be patient.'
+
+      companies:
+        toolbar_help: The **Companies** page reports a unique list of companies that your contacts belong to. **Edit** the company record to manage its background information**.
+
+      dated_costs:
+        toolbar_help: This report shows all affiliates or salespeople that are related to **Deals** in your system. Next to each person, you can click **Make Payment** to log a payment you've made to that person. Click **View Statement** to see the full history for that person, including commissions earned and payments you've made.
+        payments_toolbar_help: This report shows the full history of this account including commissions earned and payments you've made. Click **Make Payment** to log a payment you've made to this person. Choose **Print Friendly Version** if you need to send them a printed or PDF version of their statement. Next to each **deal** that is **won**, you can **edit** the cost of that deal. Next to each **payment** record, you can **edit** the previously logged payment.
+        
+      deals:
+        toolbar_help: **Deals** are your opportunities to submit proposals. **Filter** by **deal status**, **deal category**, and who is **responsible** for the deal. You can use the **closed** filter to show you the business **won** in the selected month or for all time. Use **Edit Cost** only for extenuating circumstances like when you need to lower an affiliate fee due to the deal not meeting the minimum criteria you set.
+        leads_toolbar_help: **Leads** are responses to offers. They represent opportunities to speak to potential clients. Use **create deal** when a lead turns into an opportunity to submit a proposal. Use the **filter** to view responses to specific **offers** for a given **date range**. Use **Delete** if the 'lead' data looks bogus. To email the person, click their **email address** and select a **lead nuturing email template** to send.
+
+      campaign_groups:
+        toolbar_help: **Campaign Groups** allows you to arbitrarily organize your campaigns into a structure that makes sense for you.
+
+      campaigns:
+        toolbar_help: **Campaigns** give you the ability to track your marketing investments to a high degree of resolution. Campaign Types include Advertising, Affilate, Email, Google Adwords, and Salesperson. Each campaign will have a unique tracking code that you can append to any public URL on your website. A tracking URL will look something like this -> http://www.domain.com**?code=*{code}***
+        reports_toolbar_help: This report will show all of the campaigns that have activity in the requested time frame. Use the filter choose a **date range**, a **campaign group** or **campaign type**. **New Visits** are the first time a visitors get to the website for a particular campaign. **Repeat Visits** are subsequent visits on campaign. **Revenue** is the gross sales volume on the campaign. **Cost** is total expenditure on the campaign, and the most import stat is **Average Cost** because it shows you what you pay to acquire each and every client. **Average Time** is the amount of time from the creation of a **lead** to its related **deal** being closed. Deals appear as "won" in the month they were created, not in the month they closed. The reason for this is that deals must be associated with the month that the cost to create the lead was incurred. This way, you can properly calculate the ROI of your marketing investment.
+
+      notes:
+        toolbar_help: The default view on the **dashboard** will show your **active tasks**. **Overdue** tasks will be in an alert color like red, tasks that are **due today** will be a normal style like black, and tasks that are **due in the future** will be grayed-out. To **close a task** click its checkbox. To **reopen a task** uncheck its checkbox. Opening or Closing a task will instantly update the datebase status of that task. Click **Edit** to edit a task or add files to it.
+
+      offers:
+        toolbar_help: **Offers** are your way to induce visitors into deepening their relationship with you. When they respond to an **offer** they become a **lead**. A low-level offer is "sign up for my newsletter." The highest-level offer is "contact us now because you are ready to buy." You need a range of offers on your website that appeal to specific types of clients you are trying to attract. A good offer will also help you determine where the respondents are at in the buying cycle.
+
+      page_views: 
+        toolbar_help: The Page View Report shows what landing pages are being hit by specific contacts and the campaign the activity is related to. Use the filters to view a specific campaign, date range or contact.
+
+      visits:
+        toolbar_help: This report gives you a **unique list of contacts** that have activity on a particular campaign, thus allowing you to focus your sales effort. Use the **filter** to change the **campaign** or **date range**.

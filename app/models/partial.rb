@@ -1,0 +1,2 @@
+class Partial < Renderable
+end

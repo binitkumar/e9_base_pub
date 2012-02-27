@@ -1,0 +1,14 @@
+.toolbar
+  .toolbar-inner
+    .toolbar-left
+      - if content_for?(:toolbar_left)
+        = yield(:toolbar_left)
+      - elsif (help = e9_t(@toolbar_help_key || :toolbar_help)).present?
+        = toolbar_help do
+          = kramdown help
+    .toolbar-middle
+      = yield(:toolbar_middle)
+    .toolbar-right
+      - if content_for?(:toolbar_right)
+        = content_tag :div, t(:toolbar_actions), :class => 'toolbar-header'
+        = yield(:toolbar_right)

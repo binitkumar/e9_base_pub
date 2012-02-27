@@ -1,0 +1,14 @@
+- content_for :default_content do
+
+  = yield
+
+  .testimonial{:style => "clear:both;width:300px;padding:0.5em;background-color:#ddddff;overflow:hidden;margin:1em 0;"}
+    %div{:style => "float:left;padding-right:.5em"}
+      = render_region 'testimonial-image-1'
+    %h3
+      = render_region 'testimonial-header'
+    %div
+      = render_region 'testimonial-text'
+
+- add_body_class('testimonial')
+= render :file => 'layouts/application/default'
