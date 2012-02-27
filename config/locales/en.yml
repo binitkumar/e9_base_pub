@@ -77,3 +77,7 @@ en:
 
       email_delivery:
         create: 'Send Email'
+
+  will_paginate:
+    next_label: "Next &gt;"
+    previous_label: "&lt; Previous"

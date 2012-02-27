@@ -8,7 +8,6 @@ class AttachmentUploader < BaseUploader
   end
 
   version :thumb, :if => :should_create_thumbs? do
-    Rails.logger.error("PROCESSING")
     process :resize_to_fill => [72, 72]
   end
 
