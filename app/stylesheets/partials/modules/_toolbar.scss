@@ -6,7 +6,7 @@
 
 $toolbar-background-color: $theme-foreground-color !default;
 $toolbar-header-color: $theme-h1-color !default;
-.admin{
+.admin {
   .toolbar {
     @include theme-border;
     margin-bottom: $global_spacing_margin;
@@ -107,100 +107,101 @@ $toolbar-header-color: $theme-h1-color !default;
       }
     }
   }
+}
 
-  body.admin {
-    @mixin toolbar-two-col($hide: 'middle') {
-      .toolbar-inner { 
-        background: transparent url(images/toolbar_divider.png) 66% 0% repeat-y; 
-      }
-      .toolbar-left { 
-        width: 64%;
-      }
-      .toolbar-middle, .toolbar-right {
-        width: 32%;
-      }
-      // see how the variable is used to determine which section to hide?
-      .toolbar-#{$hide} { display: none; }
+body.admin {
+  @mixin toolbar-two-col($hide: 'middle') {
+    .toolbar-inner { 
+      background: transparent url(images/toolbar_divider.png) 66% 0% repeat-y; 
+    }
+    .toolbar-left { 
+      width: 64%;
+    }
+    .toolbar-middle, .toolbar-right {
+      width: 32%;
+    }
+    // see how the variable is used to determine which section to hide?
+    .toolbar-#{$hide} { display: none; }
+  }
+
+  @mixin toolbar-one-col {
+    .toolbar-inner { 
+      background: transparent none;
+    }
+    .toolbar-left { 
+      width: 98%; 
+    }
+    .toolbar-middle, .toolbar-right { 
+      display: none; 
+    }
+  }
+
+  @mixin toolbar-two-col-special {
+    .toolbar-inner { 
+      background: transparent url(images/toolbar_divider.png) 30% 0% repeat-y; 
+    }
+    
+    .toolbar-left { 
+      width: 25%; 
     }
 
-    @mixin toolbar-one-col {
-      .toolbar-inner { 
-        background: transparent none;
-      }
-      .toolbar-left { 
-        width: 98%; 
-      }
-      .toolbar-middle, .toolbar-right { 
-        display: none; 
-      }
+    .toolbar-middle { 
+      display: none; 
     }
 
-    @mixin toolbar-two-col-special {
-      .toolbar-inner { 
-        background: transparent url(images/toolbar_divider.png) 30% 0% repeat-y; 
-      }
-      
-      .toolbar-left { 
-        width: 25%; 
-      }
-
-      .toolbar-middle { 
-        display: none; 
-      }
-
-      .toolbar-right { 
-        width: 69%; 
-      }
+    .toolbar-right { 
+      width: 69%; 
     }
+  }
 
-    /*- - - - 2 columns - - - - -*/
-    &.controller-admin-comments,
-    &.controller-admin-social-feeds,
-    &.controller-e9-crm-offers,
-    &.controller-admin-slideshows,
-    &.controller-admin-slides,
-    &.controller-admin-feed-widgets,
-    &.controller-admin-widget-templates,
-    &.controller-e9-polls-polls,
-    &.controller-admin-snippets,
-    &.controller-admin-top-widgets,
-    &.controller-admin-blogs,
-    &.controller-admin-mailing-lists,
-    &.controller-admin-user-pages, 
-    &.controller-admin-banners,
-    &.controller-admin-banners.template-manage,
-    &.controller-admin-forums,
-    &.controller-admin-slideshow-widgets,
-    &.controller-admin-mailing-lists,
-    &.controller-e9-crm-dated-costs,
-    &.controller-admin-event-registrations, 
-    &.controller-e9-crm-contacts.template-edit,
-    &.controller-e9-crm-deals.template-edit,
-    &.controller-e9-crm-companies.template-index {
-      @include toolbar-two-col;
-    }
-  	
-  	&.controller-admin-email-reports {
-      @include toolbar-two-col($hide: 'right');
-  	}
-  	
-  	&.controller-e9-crm-deals.template-show, &.controller-e9-crm-contacts.template-show {
-  		@include toolbar-two-col-special;
-  	}	
-  	
-    /*- - - - 1 columns - - - - -*/
-    &.controller-e9-crm-contacts.template-show,
-    &.controller-e9-crm-deals.template-show,
-    &.controller-admin-searches, 
-    &.controller-admin-email-deliveries, 
-    &.controller-admin-system-emails,
-    &.controller-admin-layouts,
-    &.controller-admin-system-pages {
-      @include toolbar-one-col;
-  	}
+  /*- - - - 2 columns - - - - -*/
+  &.controller-admin-comments,
+  &.controller-admin-social-feeds,
+  &.controller-e9-crm-offers,
+  &.controller-admin-slideshows,
+  &.controller-admin-slides,
+  &.controller-admin-feed-widgets,
+  &.controller-admin-widget-templates,
+  &.controller-e9-polls-polls,
+  &.controller-admin-snippets,
+  &.controller-admin-top-widgets,
+  &.controller-admin-blogs,
+  &.controller-admin-mailing-lists,
+  &.controller-admin-user-pages, 
+  &.controller-admin-banners,
+  &.controller-admin-banners.template-manage,
+  &.controller-admin-forums,
+  &.controller-admin-slideshow-widgets,
+  &.controller-admin-mailing-lists,
+  &.controller-e9-crm-dated-costs,
+  &.controller-admin-event-registrations, 
+  &.controller-e9-crm-contacts.template-edit,
+  &.controller-e9-crm-deals.template-edit,
+  &.controller-e9-crm-companies.template-index {
+    @include toolbar-two-col;
+  }
+  
+  &.controller-admin-email-reports {
+    @include toolbar-two-col($hide: 'right');
+  }
+  
+  &.controller-e9-crm-deals.template-show, &.controller-e9-crm-contacts.template-show {
+    @include toolbar-two-col-special;
+  }	
+  
+  /*- - - - 1 columns - - - - -*/
+  &.controller-e9-crm-contacts.template-show,
+  &.controller-e9-crm-deals.template-show,
+  &.controller-admin-searches, 
+  &.controller-admin-email-deliveries, 
+  &.controller-admin-system-emails,
+  &.controller-admin-layouts,
+  &.controller-admin-system-pages {
+    @include toolbar-one-col;
   }
 }
-.toolbar{
+
+.toolbar {
   background:$theme-border-color;
   padding:10px;
   margin-bottom:10px;
