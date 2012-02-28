@@ -12,11 +12,16 @@ module E9
       before_validation :assign_permalink
       validates :permalink, :uniqueness => true
 
+      # The column which is used 
       class_attribute :permalinked_column
       self.permalinked_column = :title
 
+      # Force the generation of the permalink every save.  Note that classes
+      # with this option enabled will never generate UUID appended permalinks
       class_attribute :always_generate_permalink
       self.always_generate_permalink = false
+
+      attr_accessor :preserve_permalink
     end
 
     module ClassMethods
@@ -31,8 +36,8 @@ module E9
       def permalink_for(record)
         to_permalink = record.send(permalinked_column)
 
-        # when a new record, generate a permalink using UUID
-        if !always_generate_permalink && record.new_record?
+        # generate a permalink using UUID if applicable
+        if should_uuid_permalink?(record)
           permalink = permalinkify("#{to_permalink}-#{E9.uuid}")
 
         else 
@@ -46,6 +51,21 @@ module E9
         end
         
         permalink
+      end
+
+      def should_uuid_permalink?(record)
+        # don't generate a UUID for new records
+        return false if record.persisted?
+
+        # don't generate a UUID if the permalink exists and preserve_permalink
+        # is set
+        return false if record.preserve_permalink
+
+        # don't generate a UUID for records that are set to always generate
+        # permalinks
+        return false if always_generate_permalink
+
+        true
       end
     end
 
