@@ -151,7 +151,7 @@ module BaseController
 
   def debug_logger
     if current_page.present?
-      Rails.logger.info("Rendered Page ID:#{current_page.id} (#{current_page.title})")
+      Rails.logger.info("Rendered #{current_page.class.name}##{current_page.id} (#{current_page.title}), Layout##{current_page.layout.try(:id) || 'none'}")
     end
   end
 
