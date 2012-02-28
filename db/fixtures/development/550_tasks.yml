@@ -1,0 +1,60 @@
+_defaults: &defaults
+  _finder: title
+
+task_1:
+  <<: *defaults
+  title: Overdue task to follow up with Susan
+  due_date: <%= Date.today - 1.day %>
+  details: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.
+  owner: conrad
+  contacts: conrad
+  deals: deal_1
+  completed: false
+task_2:
+  <<: *defaults
+  title: This task is due today. How does its styling look especially with a very long title?
+  due_date: <%= Date.today %>
+  details: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.
+  owner: conrad
+  contacts: conrad
+  deals: deal_1
+  completed: false
+task_3:
+  <<: *defaults
+  title: This task is due very far in the future.
+  due_date: <%= Date.today + 1.year %>
+  details: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.
+  owner: conrad
+  contacts: conrad
+  deals: deal_1
+  completed: false
+task_4:
+  <<: *defaults
+  title: This task has been completed
+  due_date: 2011-12-12
+  completed_at: 2012-01-01
+  details: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.
+  owner: conrad
+  contacts: conrad
+  completed: true
+  deals: deal_1

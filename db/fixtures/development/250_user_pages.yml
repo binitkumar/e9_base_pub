@@ -5,6 +5,7 @@ _defaults: &defaults
   published: true
   previously_published: true
   published_at: <%= DateTime.now %>
+  preserve_permalink: true
 
 wysiwyg:
   <<: *defaults

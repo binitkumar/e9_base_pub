@@ -13,6 +13,7 @@ _defaults: &defaults
   event_time: 2020-12-10 18:00:00 -5
   event_max_guests: 1
   event_type: event_type_1
+  preserve_permalink: true
   tag_lists:
     tags:
       - Nostrud

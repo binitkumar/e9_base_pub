@@ -1,0 +1,33 @@
+_defaults: &defaults
+  _finder: name
+
+deal_1:
+  <<: *defaults
+  status: won
+  name: Test Salesperson Deal
+  campaign: campaign_1 (SalesCampaign)
+  value: 10000
+  contacts: conrad
+  owner: conrad
+  created_at: 11/11/2011
+  closed_at: 12/11/2011
+  info: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.
+
+lead_1:
+  <<: *defaults
+  status: lead
+  name: Lead 1
+  contacts: conrad
+  campaign: campaign_1 (SalesCampaign)
+  created_at: 11/11/2011
+  info: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.

@@ -3,6 +3,7 @@ _defaults: &defaults
   author: conrad
   published: true
   previously_published: true
+  preserve_permalink: true
 
 alpha_blog_1:
   <<: *defaults

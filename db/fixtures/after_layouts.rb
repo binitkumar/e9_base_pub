@@ -47,7 +47,7 @@ blog_layout.region("right").add_renderable!(s)
 s = Snippet.find_by_name("Previous/Next Links")
 blog_layout.region("right").add_renderable!(s)
 
-s = FeedWidget.find_by_name("Blog Feed")
+s = FeedWidget.find_by_identifier("blog_feed")
 layouts.map {|layout| layout.region('right') }.compact.each do |region| 
   region.add_renderable!(s)
 end

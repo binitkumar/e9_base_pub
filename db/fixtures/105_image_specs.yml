@@ -7,3 +7,19 @@ slide_1:
   name: Slide One
   width: 505
   height: 335
+
+thumb:
+  <<: *defaults
+  name: Thumb
+  width: 100
+  height: 100
+  identifier: thumb
+  file: '/images/defaults/user_page_thumb.png'
+
+avatar:
+  <<: *defaults
+  name: Avatar
+  width: 100
+  height: 100
+  identifier: avatar
+  file: '/images/defaults/user_avatar.png'

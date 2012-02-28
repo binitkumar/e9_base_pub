@@ -1,0 +1,18 @@
+_defaults: &defaults
+  _finder: title
+
+note_1:
+  <<: *defaults
+  title: This is actually a note. Is it styled?
+  due_date: 2011-12-12
+  completed_at: 2011-12-12
+  owner: conrad
+  contacts: conrad
+  deals: deal_1
+  completed: true
+  details: |
+    Bibendum euismod, leo diam interdum ligula, eu scelerisque sem purus in tellus.
+
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. In sit amet nunc id quam porta varius. Ut aliquet facilisis turpis. Etiam pellentesque quam et erat. Praesent suscipit justo.
+
+    Cras nec metus pulvinar sem tempor hendrerit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam in nulla. Mauris elementum. Curabitur tempor, quam ac rutrum placerat, nunc augue ullamcorper est, vitae molestie neque nunc a nunc. Integer justo dolor, consequat id, rutrum auctor, ullamcorper sed, orci. In hac habitasse platea dictumst. Fusce euismod semper orci. Integer venenatis quam.

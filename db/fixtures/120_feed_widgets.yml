@@ -1,11 +1,12 @@
 _defaults: &defaults
-  _finder: name
+  _finder: identifier
 
 all_data:
   <<: *defaults
   name: Page & Blog Feed With All Data
   widget_template: full
   region_types: right_column
+  identifier: all_data
   options:
     header_text: Page & Blog Feed With All Data with long header asdfasdf
     limit: 2
@@ -16,6 +17,7 @@ slides_image_only:
   name: Slides - Images Only Feed
   widget_template: images
   region_types: right_column
+  identifier: slides_images_only
   options:
     limit: 4
     header_text: Slides - Images Only Feed
@@ -26,6 +28,7 @@ faq_image_and_title:
   name: FAQ Feed With Image & Title
   widget_template: titles_and_images
   region_types: right_column
+  identifier: faq_image_and_title 
   options:
     limit: 2
     header_text: FAQ Feed With Image & Title
@@ -36,6 +39,7 @@ forum_feed:
   name: Forum Feed - Image, Title & Summary
   widget_template: image_title_and_summary
   region_types: right_column
+  identifier: forum_feed 
   options:
     limit: 2
     header_text: Forum Feed - Image, Title & Summary
@@ -46,6 +50,7 @@ blog_feed:
   name: Blog Feed - Title & Author
   widget_template: titles_and_authors
   region_types: right_column
+  identifier: blog_feed 
   options:
     header_text: Blog Feed - Title & Author
     limit: 2
@@ -56,7 +61,30 @@ event:
   name: Event Feed
   widget_template: event
   region_types: right_column
+  identifier: event_feed
   options:
     event_feed: true
     header_text: Check out these upcoming events...
     limit: 5
+
+top_feed_one:
+  <<: *defaults
+  identifier: top_feed_one
+  name: Title/Summary Top Content Feed
+  widget_template: titles_and_summary
+  region_types: right_column
+  options:
+    limit: 5
+    header_text: These are the pages our readers like best...
+    sort: top
+
+top_feed_two:
+  <<: *defaults
+  identifier: top_feed_two
+  name: Top Content Feed - Title Only
+  widget_template: title_only
+  region_types: right_column
+  options:
+    limit: 5
+    header_text: Top Content Feed Title Only
+    sort: top

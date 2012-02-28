@@ -1,0 +1,9 @@
+_defaults: &defaults
+  _finder: label
+
+cost_1:
+  <<: *defaults
+  label: "Check #1234"
+  contact: conrad
+  date: 01/12/2012
+  cost: 5000

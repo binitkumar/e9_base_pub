@@ -10,7 +10,7 @@ wysiwyg.region('right').renderables = [
   FeedWidget.find_by_name("Event Feed"),
   Poll.first,
   Snippet.find_by_name("Large Text Sidebar Snippet"),
-  TopWidget.first,
-  TopWidget.last,
+  FeedWidget.find_by_identifier("top_feed_one"),
+  FeedWidget.find_by_identifier("top_feed_two"),
   Offer.first
 ]

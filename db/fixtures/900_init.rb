@@ -1,5 +1,5 @@
-ContentView.all.each do |page|
-  page.reset_layout!
+[ContentView, Forum, Blog].each do |klass|
+  klass.all.each &:reset_layout!
 end
 
 pages = E9Seeds.fetch_fixtures('SystemPage', %w(
@@ -13,9 +13,9 @@ pages = E9Seeds.fetch_fixtures('SystemPage', %w(
   profiles
   slideshows
   faqs
-)).map(&:reload)
+))
 
-feed_widget = E9Seeds.fetch_fixture('FeedWidget', 'all_data').reload
+feed_widget = E9Seeds.fetch_fixture('FeedWidget', 'all_data')
 
 pages.map {|page| page.region('right') }.compact.each do |region|
   region.add_renderable!(feed_widget)

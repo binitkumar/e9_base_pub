@@ -1,0 +1,9 @@
+_defaults: &defaults
+  _finder: code
+
+campaign_1:
+  <<: *defaults
+  name: salestest
+  code: salestest
+  sales_person: conrad
+  sales_fee: 10000

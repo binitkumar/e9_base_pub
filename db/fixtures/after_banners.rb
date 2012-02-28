@@ -1,7 +1,6 @@
 banner = Banner.first
 
 if banner.images.attached.empty?
-  banner.images << Image.create!(
-    :file => File.open("#{Rails.root}/public/images/site/banner.jpg")
-  )
+  img = Image.create!(:attachment => File.open("#{Rails.root}/public/images/site/banner.jpg"))
+  banner.images.create(:image => img)
 end

@@ -276,6 +276,11 @@ widget_nav_6:
   parent: widget_nav
   name: "Snippets"
   href: "/admin/snippets"
+widget_nav_7:
+  <<: *hard_link_defaults
+  parent: widget_nav
+  name: "Top Content Widgets"
+  href: "/admin/top_widgets"
 
 setting_nav: 
   <<: *hard_link_defaults
