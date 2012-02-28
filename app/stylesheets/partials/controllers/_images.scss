@@ -1,0 +1,67 @@
+@import 'compass/utilities/general/min';
+
+$max-width: 950px;
+$row-height: 100px;
+$image-margin: 5px;
+
+#cboxLoadedContent {
+  .images {
+    height: $row-height * 3 + $image-margin * 2;
+  }
+}
+
+body.controller-images, #cboxLoadedContent {
+  $max-width: 950px;
+  $row-height: 100px;
+  $image-margin: 5px;
+
+  .image-management {
+    margin: 0 $image-margin;
+
+    form {
+      padding: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      float: left;
+      padding: 0 5px 5px 0;
+    }
+
+    .images {
+      max-width: $max-width;
+      overflow-y: auto;
+      padding: 0 5px;
+      clear: both;
+    }
+
+    .image {
+      margin: 0 $image-margin $image-margin 0;
+      float: left;
+
+      .tooltip {
+        display: none;
+      }
+
+      a, img {
+        display: block;
+      }
+
+      &.constrained {
+        @include min-height($row-height);
+        &, img { 
+          max-height: $row-height; 
+        }
+      }
+
+      img {
+        border: none;
+        max-width: $max-width - 10px;
+      }
+    }
+  }
+}
