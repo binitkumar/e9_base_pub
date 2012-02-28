@@ -1,3 +1,4 @@
+@import "includes/theming";
 body.admin {
   #banner { 
     display: none; 
@@ -37,6 +38,9 @@ body.admin {
           text-decoration: underline;
         }
       }
+      &.actions{
+        float:left;
+      }
 
       &.checkbox {
         text-align: center;
@@ -58,6 +62,12 @@ body.admin {
           text-align: right;
           width: 96%;
         }
+      }
+    }
+    tr{
+      border-bottom:theme-border-style();
+      &.even{
+
       }
     }
 
