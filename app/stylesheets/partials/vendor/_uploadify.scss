@@ -3,23 +3,25 @@
 $uploadify-progressbar-color: #666 !default;
 $uploadify-progressbar-background-color: $theme-background-color !default;
 
-a.browse, a.clipboard {
-  position: relative;
+a.button {
+  margin-right: 0.25em;
 
-  // stretch the object element under the anchor to fill its dimensions
-  object, embed {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0; 
-    width: 100% !important;
-    height: 100% !important;
-  } 
+  &.browse { 
+    position: relative;
+    object {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0; 
+      width: 100% !important;
+      height: 100% !important;
+    } 
+  }
+}
 
-  // So the file input field doesn't appear before uploadify runs,
-  // expanding the buttons
-  input[type=file] {
-    display: none;
+a.button {
+  .ui-button-text-only, .ui-button-text {
+    padding: 0.2em 0.25em;
   }
 }
 
@@ -75,4 +77,3 @@ THE SOFTWARE.
 	width: 1px;
 	height: 3px;
 }
-

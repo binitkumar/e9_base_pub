@@ -112,19 +112,15 @@ $tooltip-icon-background-color: #fff !default;
   .ui-icon {
     display: block;
     text-indent: -1000em;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
     width: 18px;
     height: 14px;
     text-align: center;
     text-indent: 0;
     font: normal bold 10px / 13px Tahoma, sans-serif;
     color: inherit;
-    background: transparent none no-repeat -100em -100em; }
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px; }
+    background: transparent none no-repeat -100em -100em; 
+  }
+}
 
 /* Applied to 'focused' tooltips e.g. most recently displayed/interacted with */
 
@@ -133,7 +129,7 @@ $tooltip-icon-background-color: #fff !default;
 /*! Default tooltip style */
 
 .ui-tooltip-titlebar, .ui-tooltip-content {
-  background-color: #f3f8ea;
+//  background-color: #f3f8ea;
 }
 
 .ui-tooltip-titlebar {

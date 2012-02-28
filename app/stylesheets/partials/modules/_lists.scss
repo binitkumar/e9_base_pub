@@ -96,4 +96,40 @@
       width:80%;
     }
   }
+  .title{
+    position:relative;
+    .actions{
+      position:absolute;
+      right:0;
+      padding-top: 4px;
+      top: 0;
+      a{
+        text-decoration:underline;
+      }
+    }
+  }
+}
+body.admin{
+  .advanced-settings{
+    .list{
+      float:left;
+      clear:both;
+      width:95%;
+      position:relative;
+      #selected-layout{
+        float:left;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        label{
+          float:left;
+          clear:both;
+        }
+        img{
+          float:left;
+          clear:both;
+        }
+      }
+    }
+  }
 }

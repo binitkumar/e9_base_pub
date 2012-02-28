@@ -66,7 +66,7 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #aa7175; background: #cfc0c0 50% 50% repeat-x; font-weight: bold; color: #000000; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {font-weight: bold; color: #000000; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #000000; text-decoration: none; }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #aa7175; /*background: url(images/ui-bg_dots-small_70_aa7175_2x2.png) 50% 50% repeat;*/ font-weight: bold; color: #ffffff; }
@@ -89,7 +89,7 @@
 /* Icons
 ----------------------------------*/
 
-/* states and images */
+/* states and images 
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_666666_256x240.png); }
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_666666_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_8a2529_256x240.png); }
@@ -99,7 +99,7 @@
 .ui-state-highlight .ui-icon {background-image: url(images/ui-icons_199562_256x240.png); }
 .ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_c13035_256x240.png); }
 
-/* positioning */
+/* positioning 
 .ui-icon-carat-1-n { background-position: 0 0; }
 .ui-icon-carat-1-ne { background-position: -16px 0; }
 .ui-icon-carat-1-e { background-position: -32px 0; }
@@ -236,7 +236,7 @@
 .ui-icon-seek-prev { background-position: -48px -160px; }
 .ui-icon-seek-end { background-position: -64px -160px; }
 .ui-icon-seek-start { background-position: -80px -160px; }
-/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead 
 .ui-icon-seek-first { background-position: -80px -160px; }
 .ui-icon-stop { background-position: -96px -160px; }
 .ui-icon-eject { background-position: -112px -160px; }
@@ -275,7 +275,7 @@
 .ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
 .ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
 .ui-icon-grip-diagonal-se { background-position: -80px -224px; }
-
+*/
 
 /* Misc visuals
 ----------------------------------*/

@@ -9,6 +9,7 @@ body.admin {
       
       .ordered-column {
         white-space: nowrap;
+        float:left;
         // The <a> will include an icon, so just underline the "text" portion
         a { 
           text-decoration: none; 
@@ -63,5 +64,8 @@ body.admin {
     .viewable-status {
       margin-left: 5px;
     }
+  }
+  .destroy-nested-association{
+    width:100%;
   }
 }

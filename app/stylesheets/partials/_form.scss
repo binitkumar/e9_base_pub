@@ -9,7 +9,15 @@ $fieldset-padding :       1.4em !default;
 @import 'includes/form';
 @import 'compass/css3/box-sizing';
 
-
+.tags{
+  width:90%;
+  .actions button{
+    margin-top:7px;
+  }
+}
+.comment-email{
+  display:none;
+}
 form.inline { 
   @include e9-inline-form; 
 }
@@ -19,9 +27,9 @@ label, legend {
 }
 
 fieldset { 
-  float:left;
   padding: $fieldset-padding;
   margin: $fieldset-margin;
+  clear:both;
 }
 
 input {
@@ -111,7 +119,6 @@ label {
       margin-bottom: 0;
       padding-bottom: 0;
       position: relative;
-      top: -7px;
     }
   }
   input.field_with_errors{
@@ -162,7 +169,11 @@ label {
     }
   }
 }
-
+.edit_topic{
+  .actions{
+    margin-right:25px;
+  }
+}
 /*[>-----credit cards stuff-------<]*/
 
 /*.cbc-fields .field{*/

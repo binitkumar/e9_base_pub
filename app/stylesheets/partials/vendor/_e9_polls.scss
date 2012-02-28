@@ -31,7 +31,11 @@ $poll-answer-bar-color-3: green !default;
     padding: 0;
   }
 }
-
+.user_new{
+  input[type="text"]{
+    width:290px;
+  }
+}
 form {
   .poll-answers {
     $width: 500px;
@@ -51,6 +55,8 @@ form {
 
     .destroy-nested-association {
       vertical-align: top !important;
+      right: 182px;
+      top: 22px;
     }
   }
 }
@@ -73,6 +79,7 @@ form {
 }
 
 .poll-answer {
+  position:relative;
 	//margin: 0 0 0 0.5em;
   &:first-child { margin-top: 0; }
   margin-top: 1em;
@@ -152,7 +159,7 @@ body.admin .poll-answers .fields .actions{
 		.destroy-nested-association{
 			position:absolute;
 			right:12px;
-			top:12px;
+			bottom:12px;
 		}
   }
 }
@@ -169,7 +176,17 @@ html body.admin #content form .poll-answers .poll-answer{
 	 padding:5px;
    }
 }
+.edit_poll{
+  fieldset{
+    float:left;
+    width:90%;
+    position:relative;
+  }
+  #poll_submit{
+    margin-right:25px;
+  }
 
+}
 /*- - - - - - - end edits to treat like other nested association additon UI- - - - - - - */
 
 

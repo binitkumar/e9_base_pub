@@ -1,4 +1,5 @@
 @import "includes/typography";
+@import "includes/theming";
 
 table {
   border-collapse: separate;
@@ -20,6 +21,7 @@ table {
     border-style: $theme-border-style;
     border-color: $theme-border-color;
     border:none;
+    textx-align:left;
     &:first-child { 
       border-left-width: 1px; 
     }
@@ -27,8 +29,7 @@ table {
   
   th {
     border-width: 1px 1px 1px 0;
-    text-align: center;
-    text-align: center; 
+    text-align:left; 
     line-height: 2em;
     font-weight: bold; 
   } 
@@ -39,5 +40,28 @@ table {
     font-weight: normal !important; 
     border-top-width: 0px; 
     padding: 0.5em;
+  }
+}
+body.admin{
+  .txt{
+    a{
+      color:$theme-link-color;
+      text-decoration:underline;
+      &:hover{
+        color:$theme-alt-text-color;
+      }
+    }
+  }
+  .records{
+    border-collapse:collapse;
+    tr{
+      border-bottom:theme-border-style();
+      &.odd{
+        background:#fff;
+      }
+      &.even{
+        background:$theme-border-color;
+      }
+    }
   }
 }

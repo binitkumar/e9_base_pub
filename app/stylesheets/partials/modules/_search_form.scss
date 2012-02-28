@@ -3,7 +3,6 @@
 
 #top-nav li.search {
   padding: 0;
-  width: 27px;
   float: right;
   a {
     text-align: left;
@@ -13,6 +12,8 @@
     width: 22px;
     height: 22px;
     text-indent: -999em;
+    position:relative;
+    top:-2px;
     &:focus {
       outline: none;
     }
@@ -23,6 +24,7 @@
   form {
     float: left;
     margin: 5px 0 0;
+    display:none;
     fieldset { 
       border: 0 none; 
       margin: 0; 
@@ -34,6 +36,7 @@
       input[type=text] {
         width: 200px;
         padding: 2px 4px;
+        margin-bottom:0px;
       }
     }
   }

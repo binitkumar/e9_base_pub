@@ -1,5 +1,7 @@
 @import 'compass/css3/inline-block';
-
+legend{
+  height:22px;
+}
 form.edit_user, form.new_user {
   input[type=text], textarea {
     width: 315px;
@@ -119,13 +121,11 @@ form.edit_user, form.new_user {
 
 	.destroy-nested-association {
 	  position: absolute !important;
-    position: absolute !important;
     text-indent: -999em;
-    top: 17px;
+    top:17px;
 	}
    
   .add-nested-association {
-    margin-top: 10px;
     margin-left:12px;
   }
 
@@ -160,8 +160,8 @@ body.admin .email-wrapper .nested-associations div.field.checkbox{
 
 html .record-attribute .ui-button{
 	position:absolute !important;
-	right:6px;
-	top:6px;
+	right:4px;
+	top:14px;
 }
 
 

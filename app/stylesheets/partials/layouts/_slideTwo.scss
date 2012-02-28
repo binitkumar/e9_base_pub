@@ -80,29 +80,31 @@ body.slide {
   }
 
   #slide-selector {
-    position:absolute;
     height: 102px;
-    top:-147px;
     width:685px;
+    margin-top:25px;
     text-align: center;
-    visibility:hidden;
 
     .slide-pagination {
       display: inline-block;
       @include clearfix;
       overflow: visible;
+      ul{
+        margin-left:2px;
+      }
     }
 
     .slide-pagination-thumbs {
       @include clearfix;
-      height: 91px;
+      height: 113px;
       position: relative;
       float: left;
+      width:460px;
       img { display: block; }
     }
 
     a img, .blank-slide {
-      border: 1px solid #cfc0c0;
+      border: 1px solid $theme-alt-text-color;
       border-left-width: 0;
       width: 113px;
       height: 89px;
@@ -110,6 +112,13 @@ body.slide {
 
     li {
       background-color: #000;
+      &.current{
+        border:1px solid $theme-alt-text-color;
+        border-right:0px;
+        img{
+          height:87px;
+        }
+      }
 
       img {
         @include opacity(0.6);
@@ -141,7 +150,6 @@ body.slide {
       height:11px;
       a, span {
         @include inline-block;
-        background-image: url("/images/buttons/carouselNavSprite.png");
         width: inherit;
         height: inherit;
         text-indent: -999em;
@@ -149,12 +157,14 @@ body.slide {
         background-repeat: no-repeat;
         background-position: left top;
         cursor: default;
+        outline:none;
       }
       a[href] {
         cursor: pointer;
+        outline:none;
       }
       a[href]:hover {
-        background-position: right top;
+        
       }
     }
 
@@ -164,6 +174,16 @@ body.slide {
         right:10px;
         margin-top:40px;
       }
+      a[href]{
+        background: url("/images/previous-next.png") -46px -13px;
+        &:hover{
+          background: url("/images/previous-next.png") -46px -26px;
+        }
+      }
+      a{
+        background: url("/images/previous-next.png") -46px 0;
+      }
+      
     }
 
     .slide-pagination-next {
@@ -171,6 +191,15 @@ body.slide {
                 margin-left:10px;
                 margin-top:40px;
               }
+      a[href]{
+        background: url("/images/previous-next.png") -59px -13px;
+        &:hover{
+          background: url("/images/previous-next.png") -59px -26px;
+        }
+      }
+      a{
+        background: url("/images/previous-next.png") -59px 0;
+      }
     }
   }
 
@@ -298,8 +327,19 @@ body.slide {
       width: 20px; 
       height: 15px;
       z-index:999;
+      a{
+        span{
+          background: url('/images/previous-next.png') no-repeat 0 -18px;
+          width: 20px; 
+          height: 15px;
+          float:left;
+          &:hover{
+            background: url('/images/previous-next.png') no-repeat 0 -36px;
+          }
+        }
+      }
       span{
-        background: url('/images/slider2paginationSprite.png') no-repeat 0 0; 
+        background: url('/images/previous-next.png') no-repeat 0 0; 
         width: 20px; 
         height: 15px;
         float:left;
@@ -313,9 +353,20 @@ body.slide {
       text-indent:-9999em;
       z-index:999;
       width:20px;
+        a{
+          span{
+          background: url('/images/previous-next.png') no-repeat -23px -18px;
+          width: 20px; 
+          height: 15px;
+          float:left;
+            &:hover{
+              background: url('/images/previous-next.png') no-repeat -23px -36px;
+            }
+          }
+        }
         span{
           float:left;
-          background: url('/images/slider2paginationSprite.png') no-repeat 0 -17px; 
+          background: url('/images/previous-next.png') no-repeat -23px 0;
           width: 20px; 
           height: 15px;
         }
@@ -324,4 +375,5 @@ body.slide {
 }
 #slide-bottom{
   position:relative;
+  top:10px;
 }
