@@ -45,6 +45,10 @@ class BlogPost < Page
     blog
   end
 
+  def layout
+    blog.try(:layout) || self.class.default_layout || Blog.default_layout
+  end
+
   # for record sequence
   def previous_record
     BlogPost.in_blog(blog_id).posted_before(self).published.order('published_at DESC').limit(1).first
