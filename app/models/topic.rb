@@ -91,7 +91,7 @@ class Topic < ContentView
   end
 
   def layout
-    forum.try(:layout) || self.class.default_layout
+    forum.try(:layout) || self.class.default_layout || Forum.default_layout
   end
 
   def region(domid)
