@@ -106,14 +106,5 @@
       = f.label :linked_in_company_page_url
       = f.text_field :linked_in_company_page_url
 
-  - if e9_user?
-    %fieldset#bitly_settings
-      .field
-        = f.label :bitly_username
-        = f.text_field :bitly_username
-      .field
-        = f.label :bitly_api_key
-        = f.text_field :bitly_api_key
-
   .actions
     = f.submit e9_t(:save_link)
