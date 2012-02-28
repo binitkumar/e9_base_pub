@@ -8,7 +8,7 @@ class ImagesController < InheritedResources::Base
 
   before_filter :determine_index_title, :only => :index
 
-  filter_access_to :index, :select, :context => :admin
+  filter_access_to :index, :select, :context => :admin, :require => :read
 
   has_scope :attached, :only => [:index, :select], :type => :boolean, :default => true
 
