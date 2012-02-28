@@ -1,6 +1,7 @@
 class ContentViewObserver < ActiveRecord::Observer
 
   def publish_content(record)
+    return true unless observer_enabled?
 
     ##
     # broadcast social (only topics)

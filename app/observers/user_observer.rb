@@ -19,6 +19,8 @@ class UserObserver < ActiveRecord::Observer
 
   # called <tt>before_save</tt> when user's status is being elevated from 'prospect' to 'user'
   def before_elevate(user)
+    return true unless observer_enabled?
+
     add_default_mailing_lists(user)
     user.send(:send_revocation_instructions)
     user.send(:send_new_registrant_notifications)
