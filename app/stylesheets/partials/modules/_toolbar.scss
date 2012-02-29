@@ -123,8 +123,8 @@ $toolbar-header-color: $theme-h1-color !default;
       }
     }
   }
-
-  body.admin {
+}
+body.admin {
     @mixin toolbar-two-col($hide: 'middle') {
       .toolbar-inner { 
         background: transparent url(images/toolbar_divider.png) 66% 0% repeat-y; 
@@ -195,15 +195,15 @@ $toolbar-header-color: $theme-h1-color !default;
     &.controller-e9-crm-companies.template-index {
       @include toolbar-two-col;
     }
-  	
-  	&.controller-admin-email-reports {
+    
+    &.controller-admin-email-reports {
       @include toolbar-two-col($hide: 'right');
-  	}
-  	
-  	&.controller-e9-crm-deals.template-show, &.controller-e9-crm-contacts.template-show {
-  		@include toolbar-two-col-special;
-  	}	
-  	
+    }
+    
+    &.controller-e9-crm-deals.template-show, &.controller-e9-crm-contacts.template-show {
+      @include toolbar-two-col-special;
+    } 
+    
     /*- - - - 1 columns - - - - -*/
     &.controller-e9-crm-contacts.template-show,
     &.controller-e9-crm-deals.template-show,
@@ -213,9 +213,8 @@ $toolbar-header-color: $theme-h1-color !default;
     &.controller-admin-layouts,
     &.controller-admin-system-pages {
       @include toolbar-one-col;
-  	}
+    }
   }
-}
 .toolbar{
   background:$theme-border-color;
   padding:10px;

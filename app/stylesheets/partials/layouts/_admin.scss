@@ -1,8 +1,9 @@
+@import "includes/buttons";
+@import "includes/theming";
 body.admin {
   #banner { 
     display: none; 
   }
-
   table.records {
     th {
       @include small;
@@ -17,7 +18,6 @@ body.admin {
         }
       }
     }
-
     td {
       &.id {
         text-align: center;
@@ -67,5 +67,29 @@ body.admin {
   }
   .destroy-nested-association{
     width:100%;
+  }
+  #records_table{
+    table{
+      tr{
+        border-bottom:theme-border-style();
+        td.actions{
+          float:left;
+          a{
+            @include button;
+          }
+        }
+        .handle{
+          background:url("/images/buttons/uiIcons.png")-243px -12px;
+          width: 7px; 
+          height: 14px;
+        }
+      }
+      tr.even{
+        background-color:#ccc;
+      }
+      tr.odd{
+        background:#fff;
+      }
+    }
   }
 }

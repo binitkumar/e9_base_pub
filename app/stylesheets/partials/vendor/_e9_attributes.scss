@@ -1,10 +1,12 @@
 @import 'compass/css3/inline-block';
+@import 'includes/theming';
 legend{
   height:22px;
 }
 form.edit_user, form.new_user {
   input[type=text], textarea {
     width: 315px;
+    font-size:$theme-font-size;
     &.short {
       width: 100px;
     }

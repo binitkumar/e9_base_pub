@@ -31,11 +31,7 @@ $poll-answer-bar-color-3: green !default;
     padding: 0;
   }
 }
-.user_new{
-  input[type="text"]{
-    width:290px;
-  }
-}
+
 form {
   .poll-answers {
     $width: 500px;
@@ -55,8 +51,12 @@ form {
 
     .destroy-nested-association {
       vertical-align: top !important;
-      right: 182px;
+      right: 177px;
       top: 22px;
+      background:url("/images/buttons/uiIcons.png") -32px -5px; 
+      width: 20px; 
+      height: 15px;
+      display:block;
     }
   }
 }
