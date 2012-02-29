@@ -109,6 +109,11 @@
     }
   }
 }
+#blog_post_results, #user_page_results, #event_results, #slide_results, #topic_results, #comment_results, #question_results{
+  .header{
+    font-size:18px;
+  }
+}
 body.admin{
   .advanced-settings{
     .list{
@@ -131,5 +136,21 @@ body.admin{
         }
       }
     }
+  }
+  #selected-layout{
+    position:absolute;
+    top:65px;
+    right:10px;
+    label{
+          float:left;
+          clear:both;
+        }
+    img{
+      float:left;
+      clear:both;
+    }
+  }
+  .regions{
+    position:relative;
   }
 }

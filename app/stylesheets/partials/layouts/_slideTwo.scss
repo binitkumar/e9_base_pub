@@ -377,3 +377,33 @@ body.slide {
   position:relative;
   top:10px;
 }
+#slide-dashboard{
+  .action-links{
+    li{
+      a{
+        background:url('/images/buttons/uiIcons.png');
+        display:block;
+        height:15px;
+        width:20px;
+        &.more-info-link{
+          background-position: -84px -25px;
+          &:hover{
+            background-position: -84px -6px;
+          }
+        }
+        &.dashboard-link{
+          background-position: -5px -23px;
+          &:hover{
+            background-position: -5px -4px;
+          }
+        }
+        &.share-bar-link{
+          background-position: -58px -25px;
+          &:hover{
+            background-position: -58px -6px;
+          }
+        }
+      }
+    }
+  }
+}

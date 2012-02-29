@@ -8,7 +8,7 @@ body.admin {
   table.records {
     th {
       @include small;
-      
+      text-align:center;
       .ordered-column {
         white-space: nowrap;
         float:left;
@@ -20,6 +20,14 @@ body.admin {
       }
     }
     td {
+      a{
+        text-decoration:underline;
+        color:$theme-alt-text-color;
+        &:hover{
+          color:$theme-link-color;
+        }
+      }
+      border:1px solid $theme-border-color;
       &.id {
         text-align: center;
       }
@@ -32,6 +40,24 @@ body.admin {
           @include button;
         }
       }
+      &.record-campaign-name{
+        a{
+          text-decoration:underline;
+          color:$theme-alt-text-color;
+          &:hover{
+            color:$theme-link-color;
+          }
+        }
+      }
+      &.record-name{
+        a{
+          text-decoration:underline;
+          color:$theme-alt-text-color;
+          &:hover{
+            color:$theme-link-color;
+          }
+        }
+      }
 
       &.link {
         a, a:link, a:visited {
@@ -39,24 +65,40 @@ body.admin {
         }
       }
       &.actions{
-        float:left;
+        a{
+          float:left;
+        }
       }
-
+      &.attended{
+        input{
+          margin:0 auto;
+          display:block;
+        }
+      }
       &.checkbox {
         text-align: center;
       }
 
       &.center {
         text-align: center;
+        a{
+          text-decoration:underline;
+          color:$theme-alt-text-color;
+          &:hover{
+            color:$theme-link-color;
+          }
+        }
       }
 
       &.actions, &.num {
         text-align: right;
+        padding-right:10px;
       }
 
       &.cost {
         text-align: right;
         width: 150px;
+        padding-right:10px;
         input[type=text] {
           float: right;
           text-align: right;
@@ -75,15 +117,29 @@ body.admin {
       margin-left: 5px;
     }
   }
+  .nested-associations{
+    position:relative;
+    .add-nested-association{
+      clear: both;
+      float: left;
+      margin-left: 0;
+    }
+  }
   .destroy-nested-association{
-    width:100%;
+    background: url("/images/buttons/uiIcons.png") repeat scroll -32px -5px transparent;
+    border: 0 none;
+    height: 15px;
+    padding: 0;
+    right: 0px;
+    top: -1px;
+    width: 20px;
   }
   #records_table{
     table{
       tr{
         border-bottom:theme-border-style();
         td.actions{
-          float:left;
+          //float:left;
           a{
             @include button;
           }
@@ -93,12 +149,69 @@ body.admin {
           width: 7px; 
           height: 14px;
         }
+        &.active{
+          .activated{
+            background: url('/images/buttons/uiIcons.png') no-repeat -111px -6px;
+            width: 20px; 
+            height: 15px;
+          }
+        }
       }
       tr.even{
-        background-color:#ccc;
+        background-color:#fff;
       }
       tr.odd{
         background:#fff;
+      }
+    }
+  }
+  .debug-fields{
+    display:none;
+  }
+  .advanced-settings{
+    a{
+      text-decoration:underline;
+      color:$theme-alt-text-color;
+      font-weight:bold;
+      &:hover{
+        color:$theme-link-color;
+      }
+    }
+  }
+  .tag-fields{
+    .field{
+      float:left;
+      margin-right:10px;
+    }
+    .actions{
+      float:left;
+      margin-top:23px;
+    }
+  }
+  .tag-contexts{
+    float:left;
+    clear:left;
+    ul{
+      padding-left:0;
+      .delete-tag{
+        background: url('/images/buttons/uiIcons.png') no-repeat -225px -13px; 
+        display:block;
+        width: 8px; 
+        height: 8px;
+        position:relative;
+        top:5px;
+      }
+    }
+  }
+  #balance-table{
+    td{padding-left:5px;}
+  }
+  .edit_settings{
+    a{
+      color:$theme-alt-text-color;
+      text-decoration:underline;
+      &:hover{
+        color:$theme-link-color;
       }
     }
   }

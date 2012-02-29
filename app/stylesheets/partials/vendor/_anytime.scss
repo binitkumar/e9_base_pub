@@ -10,11 +10,11 @@
  *San Francisco, California, 94105, USA.  For ported versions of the
  *license, visit http://creativecommons.org/international/
  *Any+Time is a trademark of Andrew M. Andrews III. */
-
+@import "includes/theming";
 .AnyTime-pkr * {
   border: 0;
   font: inherit;
-  font-size: x-small;
+  font-size: 12px;
   font-style: normal;
   font-weight: normal;
   list-style: none outside none;
@@ -57,6 +57,8 @@ div.AnyTime-win {
     float: right;
     margin: 0.3em;
     text-align: center;
+    position:relative;
+    top:-2px;
     width: 1.5em;
     -moz-border-radius: 0.4em;
     -webkit-border-radius: 0.4em; }
