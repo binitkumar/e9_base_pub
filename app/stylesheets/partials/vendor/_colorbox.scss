@@ -47,10 +47,10 @@ $colorbox-background: $theme-background-color !default;
 form#new_friend_email {
   #subject, #sender_email {
     display: block;
-    width: 392px;
+    width: 410px;
     padding: 3px;
     margin: 4px 0;
-    border: 1px solid #666;
+    border:theme-border-style();
   }
   .input, input[type=text], textarea {
     width: 400px;

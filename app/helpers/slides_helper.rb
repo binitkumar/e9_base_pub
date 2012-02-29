@@ -36,7 +36,7 @@ module SlidesHelper
     return '' unless slide.present?
 
     link = opts.delete(:text) || begin
-      mount         = slide.image.send(opts.delete(:version) || :thumb)
+      mount         = slide.send(opts.delete(:version) || :thumb)
       image_options = opts.delete(:image_options) || {}
       image_options.reverse_merge!(
         :alt => slide.title, 

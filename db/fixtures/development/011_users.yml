@@ -87,11 +87,13 @@ travis:
   email: travis@e9digital.com
   first_name: Travis
   username: travis 
-chris:
+max:
   <<: *defaults
-  email: chris@e9digital.com
-  first_name: chris
-  username: chris 
+  email: max@e9digital.com
+  first_name: max
+  username: max
+  password: asdfasdf
+  password_confirmation: asdfasdf
 commenter:
   <<: *defaults
   email: testa@e9digital.com
