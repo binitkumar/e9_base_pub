@@ -1,7 +1,7 @@
 namespace :db do
   desc 'Load the seed data from db/seeds.rb or vendor/e9_base/db/seeds.rb'
   task :seed => 'db:abort_if_pending_migrations' do
-    seed_file = [Rails.root, E9Base::Engine.root].each do |root|
+    seed_file = [Rails.root, E9Base::Engine.root].inject(nil) do |_, root|
       path = File.join(root, 'db', 'seeds.rb')
       break path if File.exist?(path)
     end
