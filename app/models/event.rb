@@ -73,7 +73,7 @@ class Event < Page
   def copy
     super.tap do |copied| 
       if thumb.present?
-        copied.thumb_image_id = Image.create(:file => thumb).id
+        copied.thumb.attributes = thumb.attributes
       end
 
       copied.event_type = self.event_type
