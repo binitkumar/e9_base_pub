@@ -92,8 +92,16 @@ class E9Crm::DealsController < E9Crm::ResourcesController
   end
 
   def add_edit_breadcrumb(opts = {})
-    determine_if_conversion
+    add_show_breadcrumb
     add_breadcrumb!(@edit_title = e9_t(:edit_title, interpolation_options))
+  end
+
+  def add_show_breadcrumb
+    determine_if_conversion
+
+    unless resource.status == Deal::Status::Lead
+      add_breadcrumb! resource.name, resource.url
+    end
   end
 
   # nasty hack to get Lead in as a model_name on actions where this is
