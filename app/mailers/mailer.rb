@@ -8,7 +8,6 @@ class Mailer < ActionMailer::Base
     E9::Config.reload!
     self.default_url_options[:host] = E9::Config[:domain_name]
     self.smtp_settings.merge!({
-      :address   => E9::Config[:smtp_url],
       :domain    => E9::Config[:smtp_domain],
       :user_name => E9::Config[:smtp_username],
       :password  => E9::Config[:smtp_password]

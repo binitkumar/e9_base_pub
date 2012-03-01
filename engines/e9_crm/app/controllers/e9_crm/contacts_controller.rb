@@ -94,6 +94,15 @@ class E9Crm::ContactsController < E9Crm::ResourcesController
     add_breadcrumb! e9_t(:index_title), collection_path
   end
 
+  def add_show_breadcrumb
+    add_breadcrumb! resource.name, resource.url 
+  end
+
+  def add_edit_breadcrumb
+    add_show_breadcrumb
+    add_breadcrumb! e9_t(:edit_title)
+  end
+
   def collection_scope
     #TODO fix eager loading, which totally breaks because of the left outer joins in search
     #super.includes(:users => :subscriptions)

@@ -1,9 +1,11 @@
+.toolbar-header Send Email
+
 = form_for EmailDelivery.new(:contact_ids => @contact_ids), :url => form_admin_email_deliveries_url, :html => { 'data-empty' => e9_t(:no_contacts_notification) } do |f|
   = f.hidden_field :contact_ids, :id => "contact_ids"
 
   .field
     = radio_button_tag "mailing-list", '', true, :id => "mailing-list-none", 'data-scope' => 'subscribed_to', :class => 'scope-selects'
-    = label_tag "mailing-list-none", 'No Email'
+    = label_tag "mailing-list-none", 'Email List not Selected'
 
   - MailingList.newsletters.includes(:emails).order('name ASC').each do |ml|
     - data_scope = 'subscribed_to'

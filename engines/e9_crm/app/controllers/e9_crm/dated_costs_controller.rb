@@ -91,7 +91,8 @@ class E9Crm::DatedCostsController < E9Crm::ResourcesController
       end
 
       if parent
-        add_breadcrumb! i18n_translate(:breadcrumb), parent_collection_path
+        add_breadcrumb! parent.class.base_class.model_name.human.pluralize, parent_collection_path
+        add_breadcrumb! i18n_translate(:breadcrumb)
       end
     end
 

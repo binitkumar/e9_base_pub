@@ -18,7 +18,7 @@
 
     = form_tag(resource_class, :method => :get, :class => 'scope-selects') do
       .field
-        = label_tag 'bounced_select', 'Show contacts with email address problems?'
+        = label_tag 'bounced_select', 'Contacts with email problems'
         %select{:name => 'bounced', :id => 'bounced_select'}
           %option{:value => ''} No. Show all contacts.
           %option{:value => '1'} Yes. Show contacts with flagged email addresses.
