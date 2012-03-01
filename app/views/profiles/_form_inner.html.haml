@@ -24,7 +24,7 @@
 
 - if params[:controller] == 'admin/users'
   .field#user_avatar_field
-    = user_avatar_field(resource)
+    = image_mount_field(resource.avatar(true))
 
 - if resource.profiled?
   %fieldset.info-contact

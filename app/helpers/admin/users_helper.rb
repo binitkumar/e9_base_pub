@@ -20,23 +20,4 @@ module Admin::UsersHelper
   def user_default_scope
     controller.send(:default_scope)
   end
-
-  def user_avatar_field(user)
-    ''.html_safe.tap do |html|
-      html << label_tag(:user, User.human_attribute_name(:avatar))
-      html << image_tag(user.avatar_url, :id => :user_avatar)
-
-      if user.avatar?
-        link = link_to(e9_t(:reset_link), reset_avatar_admin_user_path, {
-          :method => :delete, 
-          :remote => true, 
-          :id => :remove_user_avatar, 
-          :class => "button reset"
-        })
-
-        html << content_tag(:div, link, :class => :actions)
-      end
-    end
-  end
-
 end
