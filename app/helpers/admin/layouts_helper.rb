@@ -27,10 +27,10 @@ module Admin::LayoutsHelper
   end
 
   def layout_preview_tag(layout)
-    image_tag "images/defaults/layout_previews/#{layout.default_image_name}.png"
+    image_tag "defaults/layout_previews/#{layout.default_image_name}.png"
   end
 
   def layout_image_tag(layout)
-    image_tag "images/defaults/layout_images/#{layout.default_image_name}.png"
+    image_tag "defaults/layout_images/#{layout.default_image_name}.png"
   end
 end
