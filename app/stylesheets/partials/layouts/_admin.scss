@@ -1,9 +1,102 @@
 @import "includes/buttons";
-@import "includes/theming";
+
 
 body.admin {
   #banner { 
     display: none; 
+  }
+  .admin-sidebar-right{
+    h2, .h2{
+      border-bottom:theme-border-style();
+      .action-links{
+        a{
+          font-size:14px;
+          color:$theme-alt-text-color;
+          text-decoration:underline;
+          &:hover{
+            color:$theme-link-color;
+          }
+        }
+      }
+    }
+    a{
+      color:$theme-alt-text-color;
+      text-decoration:underline;
+      &:hover{
+        color:$theme-link-color;
+      }
+    }
+  }
+  .deals-links{
+    a{
+      @include button;
+    }
+  }
+  .contact-links{
+    a{
+      @include button;
+    }
+  }
+  .deals-sidebar{
+    a{
+      text-decoration:underline;
+      color:$theme-alt-text-color;
+      &:hover{
+        color:$theme-link-color;
+      }
+      img{
+        border:1px solid $theme-background-color;
+        &:hover{
+          border:1px solid $theme-alt-text-color;
+        }
+      }
+    }
+  }
+  .contact-sidebar{
+    a{
+      text-decoration:underline;
+      color:$theme-alt-text-color;
+      &:hover{
+        color:$theme-link-color;
+      }
+    }
+  }
+  .edit_task{
+    position:relative;
+    .actions{
+      position:relative;
+      right:0;
+      text-align:right;
+      a{
+        @include button;
+
+      }
+    }
+  }
+  .pagination{
+      a{
+        //@include button;
+      }
+    }
+    .action-icons{
+      .delete{
+        background:url('/images/buttons/uiIcons.png') no-repeat -32px -5px;
+        width: 20px; 
+        height: 15px;
+        display:block;
+        text-indent:-9999em;
+        &:hover{
+          background-position:-32px -24px;
+        }
+      }
+    }
+  .admin-content-main{
+    h2, .h2{
+      border-bottom:theme-border-style();
+    }
+  }
+  table td{
+    border:1px solid $theme-border-color;
   }
   table.records {
     th {
@@ -116,6 +209,14 @@ body.admin {
     .viewable-status {
       margin-left: 5px;
     }
+    td.record-avatar{
+      img{
+        border:1px solid $theme-border-color;
+        &:hover{
+          border:1px solid $theme-alt-text-color;
+        }
+      }
+    }
   }
   .nested-associations{
     position:relative;
@@ -123,6 +224,9 @@ body.admin {
       clear: both;
       float: left;
       margin-left: 0;
+    }
+    textarea{
+      margin-bottom:1em;
     }
   }
   .destroy-nested-association{
@@ -145,7 +249,7 @@ body.admin {
           }
         }
         .handle{
-          background:url("/images/buttons/uiIcons.png")-243px -12px;
+          background:url("/images/buttons/uiIcons.png")-243px -26px;
           width: 7px; 
           height: 14px;
         }
@@ -194,7 +298,7 @@ body.admin {
     ul{
       padding-left:0;
       .delete-tag{
-        background: url('/images/buttons/uiIcons.png') no-repeat -225px -13px; 
+        background: url('/images/buttons/uiIcons.png') no-repeat -225px -10px; 
         display:block;
         width: 8px; 
         height: 8px;
@@ -212,6 +316,60 @@ body.admin {
       text-decoration:underline;
       &:hover{
         color:$theme-link-color;
+      }
+    }
+  }
+  #banner-images{
+    .image{
+      position:relative;
+    }
+    .icon-delete{
+      position:absolute;
+      right:0;
+      top:0;
+      background: url("/images/buttons/uiIcons.png") repeat scroll -32px -5px transparent;
+      border: 0 none;
+      height: 15px;
+      padding: 0;
+      right: 0px;
+      top: -1px;
+      width: 20px;
+      &:hover{
+        background-position:-32px -24px;
+      }
+    }
+  }
+  .scope-selects{
+    a{
+      text-decoration:underline;
+      cursor:pointer;
+      color:$theme-alt-text-color;
+      &:hover{
+        color:$theme-link-color;
+      }
+    }
+  }
+  .contact-actions{
+    a{
+      font-size:14.4px;
+      text-align:Right;
+      float:right;
+      font-weight:normal;
+    }
+  }
+  #tabs{
+    li{
+      a{
+       width:100%;
+       text-indent:0;
+       background-image:none;
+       height:auto;
+
+      }
+      &.ui-state-active{
+        a{
+          color:#fff;
+        }
       }
     }
   }

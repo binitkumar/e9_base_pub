@@ -11,14 +11,24 @@ $task-due-future-color : lighten($task-overdue-color, 20%) !default;
   margin-bottom: 1em;
 
   ul.attachments {
-    @include blank-list; }
+    @include blank-list; 
+    .attachment{
+      float:left;
+      margin-bottom:10px;
+    }
+
+  }
   .note {
     border-width: 2px;
-    border-style: solid; }
-  .note  {
+    border-style: solid;
+    float:left;
+    width:100%;
     position: relative;
     margin-bottom: 0.5em;
     padding: 0; }
+  .note-dates{
+    float:left;
+  }
   .controls-wrapper {
     $icon-size: 22px;
     $left: $icon-size + $padding * 2;
@@ -50,6 +60,9 @@ $task-due-future-color : lighten($task-overdue-color, 20%) !default;
       padding: 0 5px; } }
   .note-info-wrapper {
     padding: 0 $padding $padding;
+    margin-left:125px;
+    font-size:14px;
+    float:left;
     a { text-decoration: underline; } }
   .show-more {
     @include button;
@@ -60,17 +73,18 @@ $task-due-future-color : lighten($task-overdue-color, 20%) !default;
     width: 8em; }
   @mixin -note-border($color) {
     border-color: $color;
-    .note-title { color: $color; } }
+    .note-title { color: $color;
+    float:left;width:80%;margin-left:10px; } }
   .message {
     border-style: dashed;
-    @include -note-border($task-message-color); }
+    @include -note-border($theme-alt-text-color); }
   .task {
     .note-status { background: transparent url(images/unchecked.png) center center no-repeat; }
     &.completed {
-      @include -note-border($task-complete-color);
+      @include -note-border(#666);
       .note-status { background: transparent url(images/checked.png) center center no-repeat; } }
-    &.overdue { @include -note-border($task-overdue-color); }
-    &.today { @include -note-border($task-due-today-color); }
-    &.future { @include -note-border($task-due-future-color); }
+    &.overdue { @include -note-border($theme-alt-text-color); }
+    &.today { @include -note-border(#000); }
+    &.future { @include -note-border(#666); }
   }
 }

@@ -17,22 +17,8 @@ ul.social-module {
     font-weight: normal;
     font-style: italic;
     font-size: $x-small;
-    @include column(2);
-    @include append(1);
-    height: 75px;
-    margin-top: 6px;
-    .text {
-      margin-top: 4px;
-    }
-    &.hello {
-      @include column(6, true);
-      padding-right: 0;
-      .text { width: 130px; }
-      span {
-        display: block;
-        margin-top: 4px;
-      }
-    }
+    display:block;
+    margin-bottom:10px;
   }
 }
 
@@ -102,7 +88,8 @@ a.social-link {
         right: 0;
 
         a {
-          @extend .icon-delete; } } }
+          //@extend .icon-delete;
+           } } }
 
     .feed-item.fb-post {
       .feed-from {

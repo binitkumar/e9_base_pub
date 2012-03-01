@@ -136,6 +136,8 @@ form.edit_user, form.new_user {
 			.field {
 			@extend .contacts-details-edit-item;
 			margin:12px 4px .5em 12px;
+      clear:both;
+      width:100%;
 
 					&.contact-email {
             font-size:$small;
@@ -176,7 +178,7 @@ html .record-attribute .ui-button{
 	display:inline;
 	margin:0 $global-spacing-margin $global-spacing-margin 0;
 	border:1px #bbb solid;
-	min-height:107px;
+	min-height:175px;
 	
 	select{
 		@extend .contacts-details-edit-item;

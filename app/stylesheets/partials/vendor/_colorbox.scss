@@ -62,14 +62,20 @@ form#new_friend_email {
 
 form#social-networking-form {
   .thumb {
-    @include column(4); 
+    display:inline;
+    float:left;
+    margin-right:10px;
+    width:auto;
   }
   .info {
     .header {
       @extend .title;
       font-weight: bold; 
     }
-    @include column(8); 
+    display:inline;
+    float:left;
+    margin-right:10px;
+    width:400px;
   } 
 }
 

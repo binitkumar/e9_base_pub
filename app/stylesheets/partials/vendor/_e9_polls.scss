@@ -135,6 +135,8 @@ form.edit_poll .actions { margin: 1em 0; }
 
 body.admin .poll-answers .fields .actions{
 	display:inline-block;
+  clear:both;
+  float:left;
 }
 
 .admin {
@@ -152,13 +154,14 @@ body.admin .poll-answers .fields .actions{
 	width:50%;
 	padding:5px;
 	border: 1px #BBB solid;
-	background-color:#FDFAFA;
+	background-color:$theme-foreground-color;
+  float:left;
 	margin-right:10px;
 	margin-bottom:10px;
 	
 		.destroy-nested-association{
 			position:absolute;
-			right:12px;
+			right:26px;
 			bottom:12px;
 		}
   }
@@ -167,13 +170,16 @@ body.admin .poll-answers .fields .actions{
 html body.admin #content form .poll-answers .poll-answer{
 	
 	textarea {
-	width:99% !important;
-	margin:0;
+    float:left;
+	  width:99% !important;
+	  margin:0;
+    margin-bottom:1em;
 	}	
   
    div.field {
 	 width:85% !important;
 	 padding:5px;
+   padding-bottom:20px;
    }
 }
 .edit_poll{

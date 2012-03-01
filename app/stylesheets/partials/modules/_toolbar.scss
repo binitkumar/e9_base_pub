@@ -14,7 +14,13 @@ $toolbar-header-color: $theme-h1-color !default;
     padding: 0.5em;
     background: $toolbar-background-color;
     background: $theme-foreground-color;
-
+    a{
+      color:$theme-alt-text-color;
+      text-decoration:underline;
+      &:hover{
+        color:$theme-link-color;
+      }
+    }
     &, .toolbar-inner {
       @include clearfix;
     }
@@ -22,7 +28,22 @@ $toolbar-header-color: $theme-h1-color !default;
   	.toolbar-inner {
   		background: transparent url(images/toolbar_dividers.png) top center repeat-y;
   	}
-
+    .deal-category{
+      float: left;
+      font-size: 18px;
+      font-weight: bold;
+      margin-right:20px;
+      color:$theme-text-color;
+    }
+    .deal-value{
+      font-size:18px;
+      font-weight:bold;
+      color:$theme-text-color;
+      .deal-value-text,.deal-status-text{
+        font-size:18px;
+        color:$theme-text-color;
+      }
+    }
     .toolbar-header {
       color: $toolbar-header-color;
       @include large;
@@ -41,7 +62,7 @@ $toolbar-header-color: $theme-h1-color !default;
     }
 
     select, input[type=text] {
-      width: inherit;
+      width: 95%;
       margin-top: 0;
     }
 
@@ -99,8 +120,8 @@ $toolbar-header-color: $theme-h1-color !default;
       float: left;
       width: 85%;
 
-      .deal-value, .contact-who {
-        @include x-large;
+      .contact-who {
+      
         color: $theme-header-color;
       }
 
@@ -215,14 +236,14 @@ body.admin {
       @include toolbar-one-col;
     }
   }
-.toolbar{
-  background:$theme-border-color;
-  padding:10px;
-  margin-bottom:10px;
-  input[type="submit"]{
-     padding: 5px 7px 6px;
+  .toolbar{
+    background:$theme-border-color;
+    padding:10px;
+    margin-bottom:10px;
+    input[type="submit"]{
+       padding: 5px 7px 6px;
+    }
+    input[type="text"]{
+      border-color:$theme-field-focus-border-color;
+    }
   }
-  input[type="text"]{
-    border-color:$theme-field-focus-border-color;
-  }
-}

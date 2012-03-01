@@ -41,6 +41,9 @@
           text-decoration: underline;
           float:left;
           margin-right:5px;
+          &:hover{
+            color:$theme-link-color;
+          }
         }
         span.action-link{
           text-decoration:none;

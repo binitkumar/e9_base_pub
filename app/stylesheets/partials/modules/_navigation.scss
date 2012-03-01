@@ -43,3 +43,46 @@
     }
   }
 }
+.forum-menu{
+  .menu{
+    li{
+      display:block;
+      margin: 1em 0 .3em 0;
+      &.active > a{
+        color:$theme-alt-text-color;
+        font-weight:bold;
+      }
+      a{
+        @include large;
+        border-top: theme-border-style();
+        display:block;
+        padding-top:.8em;
+      }
+      ul{
+        padding-left:0px;
+        li{
+          a{
+            font-weight:bold;
+            padding-left:15px;
+          }
+          ul{
+            li{
+              a{
+                font-weight:normal;
+                padding-left:25px;
+                border-top:none;
+                padding-bottom:10px;
+                border-bottom:1px solid lighten($theme-text-color, 50%); ;
+              }
+            }
+          }
+        }
+      }
+    }
+    .current >a{
+      font-weight:bold;
+      color:$theme-alt-text-color;
+
+    }
+  }
+}
