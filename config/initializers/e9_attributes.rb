@@ -24,7 +24,7 @@ Rails.application.config.after_initialize do
     end
 
     def templates
-      render RecordAttribute::TEMPLATES
+      render(RecordAttribute::TEMPLATES, :layout => false)
     end
   end
 
