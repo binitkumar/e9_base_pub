@@ -40,8 +40,6 @@
 
 - content_for :bottom_javascripts do
   = javascript_include_tag templates_contacts_path
-
-- content_for :hidden do
   #merge-dialog{:title => t(:email_taken_title), 'data-id' => resource.try(:id) }
     = t(resource.persisted? ? :edit_conflict : :merge_conflict).html_safe
   #duplicate-dialog{:title => t(:duplicate_email_title), 'data-id' => resource.try(:id) }
