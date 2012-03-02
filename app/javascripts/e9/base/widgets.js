@@ -26,8 +26,10 @@
     }
   });
 
-  $.fn.add_select_template = function(name, id) {
-    this.siblings("ul.select").append(
+  $.fn.add_select_template = function(name, id, el) {
+    var select = el || this.siblings("ul.select");
+
+    el.append(
       feed_select_template
         .replace(/__NAME__/,  name)
         .replace(/__ID__/,    id)

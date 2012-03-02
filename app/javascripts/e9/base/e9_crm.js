@@ -344,7 +344,11 @@
         });
       },
       select: function(evt, ui) {
-        $tag_autocomplete.add_select_template(ui.item.value, ui.item.value);
+        $tag_autocomplete.add_select_template(
+          ui.item.value, 
+          ui.item.value,
+          $tag_autocomplete.closest('.field').siblings('ul.select')
+        );
         $tag_autocomplete.val('').blur();
         tag_update();
         return false;
