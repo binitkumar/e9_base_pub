@@ -73,6 +73,7 @@ body.admin {
       }
     }
   }
+  
   .pagination{
       a{
         //@include button;
@@ -304,6 +305,7 @@ body.admin {
         height: 8px;
         position:relative;
         top:5px;
+        margin-top:0;
       }
     }
   }

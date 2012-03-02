@@ -7,8 +7,9 @@ $nav-border: 2px;
     width:108px;
     padding-left:25px;
     display:block;
-    white-space:nowrap;
-    text-align:left;
+    white-space:pre-wrap;
+    text-align:center;
+    font-size:16px;
     padding-top:16px;
     padding-bottom:10px;
     overflow:hidden;
@@ -19,8 +20,9 @@ $nav-border: 2px;
     display:list-item;
 
     ul{
-      width:108px;
+      width:104px;
       margin-top:1em;
+      margin-left:20px;
       li{
         float:none;
         a{
