@@ -37,10 +37,10 @@
   .field.select
     = f.label :owner
     = f.select :contact_id, deal_contacts_array, { :prompt => true }, :id => :deal_owner 
-  .debug-fields
-    .field.date-picker
-      = f.label :created_at
-      = f.text_field :created_at, :class => 'date-picker', :value => l(resource.created_at.try(:to_date))
-    .field.date-picker
-      = f.label :closed_at
-      = f.text_field :closed_at, :class => 'date-picker', :value => l(resource.closed_at.try(:to_date))
+  -#.debug-fields
+    -#.field.date-picker
+      -#= f.label :created_at
+      -#= f.text_field :created_at, :class => 'date-picker', :value => l(resource.created_at.try(:to_date))
+    -#.field.date-picker
+      -#= f.label :closed_at
+      -#= f.text_field :closed_at, :class => 'date-picker', :value => l(resource.closed_at.try(:to_date))
