@@ -39,7 +39,7 @@ class Campaign < ActiveRecord::Base
                    :exclusion    => { :in => [NoCampaign::CODE], :unless => lambda {|r| r.is_a?(NoCampaign) } }
 
   validate do
-    errors.add(:code, :taken_by_page) if UserPage.find_by_permalink(code)
+    errors.add(:code, :taken_by_page) if ContentView.find_by_permalink(code)
   end
 
   belongs_to :affiliate, :class_name => 'Contact'
