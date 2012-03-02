@@ -49,5 +49,9 @@
 
   $(function() {
     $('.image-mount.field').select_and_crop();
+
+    $('.image-management input[type=checkbox]').live('change', function(e) {
+      $(this).closest('form').callRemote();
+    });
   })
 })(jQuery);
