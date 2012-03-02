@@ -1,32 +1,63 @@
-;jQuery(function($) {
+;(function($) {
+  $.fn.search_form = function(options) {
 
-  $.fn.search_form = function() {
-    /*
-     * search form
-     */
-    var $search_form  = $(this),
-        $search_query = $('input[type=text]', this);
-    
-    $search_form.submit(function(e) {
-      if ($search_query.val() == '') e.preventDefault();
-    })
+    var cache = {}, lastXhr;
 
-    /*
-     * Search logic
-     */
-    var search_cache = {};
-    $search_query.autocomplete({
+    var defaults = {
       delay: 400,
-      source: '/autocomplete/search',
+
       select: function(evt, ui) {
-        $search_query.val(ui.item.value);
-        $search_form.submit();
+        $(this)
+          .val(ui.item.value)
+          .closest('form').submit();
+
         return false;
       },
+
       focus: function(evt, ui) {
-        $search_query.val(ui.item.value);
+        $(this)
+          .val(ui.item.value);
+
         return false;
-      }
-    }); 
+      },
+
+			source: function(request, response) {
+				var term = request.term
+
+				if (term in cache) {
+					response(cache[term]);
+					return;
+				}
+
+				lastXhr = $.getJSON("/autocomplete/search", request, function(data, status, xhr) {
+					cache[term] = data;
+					if (xhr === lastXhr) {
+						response(data);
+					}
+				});
+			}
+    }
+
+    return this.each(function(i, el) {
+      var 
+      $form  = $(el),
+      $input = $('input[type=text]', el),
+      data   = {};
+
+      if ($form.data('search_form')) return;
+
+      options = $.extend({}, defaults, options);
+      
+      $form.submit(function(e) {
+        if ($input.val() == '') e.preventDefault();
+      })
+
+      data.options = options;
+      data.input   = $input;
+
+      $form.data('search_form', data);
+
+      $input.autocomplete(options);
+    })
   }
-});
+}(jQuery));
