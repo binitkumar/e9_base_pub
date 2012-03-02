@@ -27,7 +27,7 @@
   });
 
   $.fn.add_select_template = function(name, id, el) {
-    var select = el || this.siblings("ul.select");
+    el = el || this.siblings("ul.select");
 
     el.append(
       feed_select_template
