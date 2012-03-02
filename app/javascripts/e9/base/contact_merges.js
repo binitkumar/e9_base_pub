@@ -30,31 +30,26 @@
       data = 'email='+email;
       id   = $md.attr('data-id');
 
-      if (id) { data+='&id='+id; }
+      if (id) data+='&id='+id; 
 
-      $.ajax({
-        url: '/users/email_test.json',
-        data: data,
-        success: function(data) {
-          if (data.url) {
-            action = id ? 'Yes, merge now' 
-                        : 'Yes, edit now';
+      $.getJSON('/users/email_test.json', data, function(data) {
+        if (data.url) {
+          action = id ? 'Yes, merge now' : 'Yes, edit now';
 
-            buttons[action] = function() {
-              window.location.href = data.url;
-            }
-
-            buttons['Cancel'] = function() {
-              $( this ).dialog( "close" );
-            }
-
-            $md.dialog({
-              close: function() { $el.val(''); },
-              resizable: false,
-              modal: true,
-              buttons: buttons
-            });
+          buttons[action] = function() {
+            window.location.href = data.url;
           }
+
+          buttons['Cancel'] = function() {
+            $(this).dialog("close");
+          }
+
+          $md.dialog({
+            close: function() { $el.val('') },
+            resizable: false,
+            modal: true,
+            buttons: buttons
+          });
         }
       });
     }
