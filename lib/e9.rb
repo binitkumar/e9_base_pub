@@ -42,6 +42,10 @@ module E9
     autoload :Tags,                 'e9/liquid/tags'
   end
 
+  module Rack
+    autoload :WWWRedirect,          'e9/rack/www_redirect'
+  end
+
   autoload :Roles,                  'e9/roles'
   module Roles
     autoload :Role,                 'e9/roles/role'
