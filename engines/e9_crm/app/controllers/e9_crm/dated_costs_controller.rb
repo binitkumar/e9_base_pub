@@ -91,6 +91,10 @@ class E9Crm::DatedCostsController < E9Crm::ResourcesController
       end
 
       if parent
+        if parent.is_a?(AdvertisingCampaign)
+          @toolbar_help_key = :costs_toolbar_help 
+        end
+
         add_breadcrumb! parent.class.base_class.model_name.human.pluralize, parent_collection_path
         add_breadcrumb! i18n_translate(:breadcrumb)
       end

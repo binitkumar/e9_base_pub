@@ -114,7 +114,8 @@ en:
       dated_costs:
         toolbar_help: This report shows the full history of this account including commissions earned and payments you've made. Click **Make Payment** to log a payment you've made to this person. Choose **Print Friendly Version** if you need to send them a printed or PDF version of their statement. Next to each **deal** that is **won**, you can **edit** the cost of that deal. Next to each **payment** record, you can **edit** the previously logged payment.
         payments_toolbar_help: This report shows all affiliates or salespeople that are related to **Deals** in your system. Next to each person, you can click **Make Payment** to log a payment you've made to that person. Click **View Statement** to see the full history for that person, including commissions earned and payments you've made.
-        
+        costs_toolbar_help: This report shows the full history of **costs** realted to this campaign. You can add a **New Advertising Cost**; **Edit** an existing cost; or **Delete** an existing cost.
+
       deals:
         toolbar_help: **Deals** are your opportunities to submit proposals. **Filter** by **deal status**, **deal category**, and who is **responsible** for the deal. You can use the **closed** filter to show you the business **won** in the selected month or for all time. Use **Edit Cost** only for extenuating circumstances like when you need to lower an affiliate fee due to the deal not meeting the minimum criteria you set.
         leads_toolbar_help: **Leads** are responses to offers. They represent opportunities to speak to potential clients. Use **create deal** when a lead turns into an opportunity to submit a proposal. Use the **filter** to view responses to specific **offers** for a given **date range**. Use **Delete** if the 'lead' data looks bogus. To email the person, click their **email address** and select a **lead nuturing email template** to send.
