@@ -62,7 +62,7 @@ $renderable-bottom-margin: .4em !default;
     .image{
       a{
         img{
-          border:1px solid $theme-background-color;
+          border:1px solid #ccc;
         }
         img:hover{
           border:1px solid $theme-alt-text-color;

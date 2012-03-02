@@ -104,3 +104,27 @@ fieldset.tags {
  		}
 	}
 } 
+.tag-fields{
+  .field{
+    float:left;
+    margin-right:10px;
+  }
+  .actions{
+    float:left;
+    margin-top:23px;
+  }
+}
+.tag-contexts{
+  float:left;
+  clear:left;
+  ul{
+    padding-left:0;
+    .delete-tag{
+      background: url('/images/buttons/uiIcons.png') no-repeat -225px -10px; 
+      display:block;
+      width: 7px;
+      margin-top:7px;
+      height: 8px;
+    }
+  }
+}

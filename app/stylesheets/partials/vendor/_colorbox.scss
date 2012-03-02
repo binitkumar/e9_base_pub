@@ -40,6 +40,13 @@ $colorbox-background: $theme-background-color !default;
       height: $layout-preview-height;
       width: $layout-preview-width;
     }
+    a{
+      text-decoration:underline;
+      color:$theme-alt-text-color;
+      &:hover{
+        color:$theme-link-color;
+      }
+    }
   } 
 }
 

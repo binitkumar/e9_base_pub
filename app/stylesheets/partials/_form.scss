@@ -182,6 +182,22 @@ label {
     margin-right:25px;
   }
 }
+#event_transaction_form{
+  .nested-association{
+    .destroy-nested-association{
+      background: url("/images/buttons/uiIcons.png") repeat scroll -32px -5px transparent;
+      display: block;
+      height: 15px;
+      padding: 0;
+      right: 0;
+      top: 0;
+      width: 20px;
+    }
+    .ui-button-text{
+      padding:0;
+    }
+  }
+}
 /*[>-----credit cards stuff-------<]*/
 
 /*.cbc-fields .field{*/

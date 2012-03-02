@@ -77,7 +77,7 @@ $task-due-future-color : lighten($task-overdue-color, 20%) !default;
     float:left;width:80%;margin-left:10px; } }
   .message {
     border-style: dashed;
-    @include -note-border($theme-alt-text-color); }
+    @include -note-border($theme-link-color); }
   .task {
     .note-status { background: transparent url(images/unchecked.png) center center no-repeat; }
     &.completed {
