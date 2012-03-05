@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
 
   add_resource_breadcrumbs :except => :show
 
-  carrierwave_column_methods :avatar
   filter_access_to :all, :require => :update
 
   before_filter :initialize_mailing_list_ids, :only => :update

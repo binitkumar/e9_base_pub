@@ -5,7 +5,5 @@ class Admin::ImagesController < Admin::ResourceController
 
   respond_to :js
 
-  carrierwave_column_methods :file, :context => :admin
-
   skip_js_skippable_filters
 end

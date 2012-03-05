@@ -5,7 +5,6 @@ class Admin::SlidesController < Admin::PagesController
   belongs_to :slideshow, :finder => :find_by_permalink!, :optional => true
   before_filter :association_chain
 
-  carrierwave_column_methods :image, :context => :admin
   add_resource_breadcrumbs
 
   filter_access_to :index, :attribute_check => true, :load_method => :filter_target, :context => :admin
