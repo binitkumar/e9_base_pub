@@ -25,7 +25,7 @@ class Contact < ActiveRecord::Base
   has_many :credits, :class_name => "DatedCost", :conditions => { :credit => true }
 
   include Notable
-  has_many :owned_notes, :class_name => 'Note', :inverse_of => :contact
+  has_many :owned_notes, :class_name => 'Note', :inverse_of => :owner
 
   def page_views
     PageView.by_users(user_ids)
@@ -274,7 +274,7 @@ class Contact < ActiveRecord::Base
     self.phone_number_attributes             |= other.phone_number_attributes
     self.instant_messaging_handle_attributes |= other.instant_messaging_handle_attributes
 
-    self.note_assignments                    |= other.note_assigments
+    self.note_assignments                    |= other.note_assignments
     self.owned_notes                         |= other.owned_notes
 
     other.associated_deals.clear
