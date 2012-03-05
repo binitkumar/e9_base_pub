@@ -66,6 +66,7 @@ form.edit_user, form.new_user {
     padding: 0 0.75em;
 
     &.date, &.cvv {
+      float:left;
       display: inline-block !important;
       margin: 0;
       label {
@@ -85,8 +86,11 @@ form.edit_user, form.new_user {
 
     &.cvv {
       padding-left: 0;
+      margin-left:10px;
       &, input[type=text] {
         width: 148px;
+        padding-bottom:9px;
+        margin: 0;
       }
     }
   }

@@ -1,18 +1,16 @@
 #right, #left{
 	.field{
-    padding-top:.5em;
-    padding-bottom:.5em;
+
     div{
       padding:inherit;
     }
     input, textarea{
-      float:left;
     }
     input[type="checkbox"], input[type="radio"]{
-      float:left;
       width:auto;
       margin-right:10px;
-      margin-top:2px;
+      margin-top:3px;
+      display:inline-block;
     }
     select{
       width:94%;

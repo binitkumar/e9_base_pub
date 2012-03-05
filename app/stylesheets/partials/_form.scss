@@ -38,9 +38,9 @@ input {
   &[type=email],
   &[type=text],
   &[type=password] { 
-    margin: $input-margin;
     padding: $input-padding;
-    width: 94%; 
+    display:inline;
+    width: 90%; 
     font-size:$theme-font-size;
     font-family:$theme-font-family !important;
   }
@@ -76,7 +76,7 @@ label {
   }
   &.req, &.required { 
     padding-right: 9px; 
-    background: url(/images/star.png) no-repeat right center; 
+    background: url(/images/star.png) no-repeat right top; 
   } 
 }
 .user_new{
@@ -116,12 +116,12 @@ label {
 
     input[type=radio], input[type=checkbox] {
       background: none;
-      position: absolute;
-      left: 1px;
-      margin: 2px 0;
+      float:left;
+      display:inline;
+      margin: 2px 10px 2px 0;
       width: 13px;
       height: 13px;
-      top:5px;
+      
     }
     
     label {

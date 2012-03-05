@@ -9,7 +9,9 @@ $disabled_color: #ddd !default;
 	  } 
 	a{
 		font-weight: bold;
-		
+	}
+	.disabled{
+			color:$theme-disabled-color;
 	}
 	.last a{
 		color:$theme-text-color;

@@ -4,14 +4,17 @@
 @import 'includes/buttons';
 @import 'includes/theming';
 #comments-container{
+  margin-top:2em;
+  
   .header{
-    border-bottom: theme-border-style($color:$theme-alt-text-color);
+    border-bottom: theme-border-style();
     color: $theme-alt-text-color;
     font-size:1.2em;
     font-weight: bold;
     line-height: 1.1em;
-    margin: 0 0 0.25em;
+    margin: 0 0 1em;
     padding: 0 0 0.25em;
+
   }
   .comment{
     float:left;
