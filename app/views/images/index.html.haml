@@ -1,6 +1,30 @@
+- content_for :toolbar_middle do
+  = toolbar_filters do
+    = form_tag(resource_class, :method => :get) do
+      .field.clear
+        %a{:rel => 'clear', :href => images_path} Clear
+
+    = form_tag(resource_class, :method => :get, :class => 'scope-selects') do
+      .field
+        = label_tag 'image_search_field', t(:search)
+        = text_field_tag 'search', params[:search], :class => 'keyup-submit', :placeholder => t(:image_search_placeholder), :id => 'image_search_field'
+
+    = form_tag(resource_class, :method => :get) do
+      .field.tag-selection
+        - tags = Array.wrap(params[:tagged])
+        %label Tags
+        %input.tag-autocomplete.list{:type => 'text', 'data-iname' => 'image', 'data-field' => '[tagged]', :placeholder => t(:tag_search_placeholder)}
+        %ul.tag-select.select
+          - tags.each do |tag|
+            %li.ui-state-default
+              %span.content= tag
+              %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+      .field.untagged.checkbox
+        %input{:type => :checkbox, :name => :untagged, :id => 'untagged-checkbox' }
+        %label{:for => 'untagged-checkbox'} View only untagged
+
 - content_for :toolbar_right do
   = toolbar_actions do
-    = link_to 'Clear Tag Selection', images_path if params[:tagged]
     = image_mount_field(ImageMount.new, :upload_only => true, :hide_select => true)
 
 = render 'shared/admin/index', :collection => collection

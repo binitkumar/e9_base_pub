@@ -194,6 +194,8 @@
 
     form.scope_select_defaults();
 
+    form.trigger('e9:scope-selects:clear');
+
     $.submit_with_query(form.attr('data-remote'), { form: form }); 
   });
 
