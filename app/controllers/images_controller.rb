@@ -12,10 +12,16 @@ class ImagesController < InheritedResources::Base
   filter_access_to :index, :select, :context => :admin, :require => :read
 
   has_scope :attached, :only => [:index, :select], :type => :boolean, :default => true
+  has_scope :search, :only => [:index, :select]
+  has_scope :untagged, :type => :boolean
 
   has_scope :tagged, :only => [:select, :index], :type => :array, :default => %w(none) do |controller, scope, value|
     if value == %w(none)
-      controller.params[:action] == 'select' ? scope.where('1=0') : scope
+      if controller.params[:action] == 'select' && !E9.true_value?(controller.params[:untagged])
+        scope.where('1=0')
+      else
+        scope
+      end
     else
       scope.tagged_with(value, :any => false, :show_hidden => true)
     end
@@ -39,8 +45,14 @@ class ImagesController < InheritedResources::Base
   protected
 
     def determine_index_title
-      if params[:tagged]
-        @index_title = "Images tagged with #{params[:tagged].map {|t| "\"#{t}\"" }.join(" and ")}"
+      @index_title = 'Images'.tap do |t|
+        if params[:search]
+          t << " matching \"#{params[:search]}\""
+        end
+
+        if params[:tagged]
+          t << " tagged #{params[:tagged].map {|t| "\"#{t}\"" }.join(" and ")}"
+        end
       end
     end
 
