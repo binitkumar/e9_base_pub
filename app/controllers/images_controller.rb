@@ -7,6 +7,7 @@ class ImagesController < InheritedResources::Base
   skip_after_filter :flash_to_headers, :only => [:create, :update, :select]
 
   before_filter :determine_index_title, :only => :index
+  before_filter '@tag_instructions_scope = :"e9.images"'
 
   filter_access_to :index, :select, :context => :admin, :require => :read
 
