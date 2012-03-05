@@ -255,7 +255,7 @@ en:
       select_button: Select this image?
       back_button: Back
       edit_title: Add/Edit Image Tags
-      tag_instructions: Tags are words or phrases that describe or categorize this file. When searching a particular tag, the system will show all files with that tag.
+      tag_instructions: Tags are words or phrases that describe or categorize this image. When searching a particular tag, the system will show all images with that tag.
     slides:
       search_index_title: "Slides Matching: %{search}"
       custom_index_title: "All Slides"
