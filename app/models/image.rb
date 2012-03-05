@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
   include E9Tags::Model
+  include E9::ActiveRecord::AttributeSearchable
 
   image_accessor :attachment
 
@@ -7,6 +8,7 @@ class Image < ActiveRecord::Base
 
   scope :attached, lambda {|v=true| where attached_condition(v) }
   scope :unattached, lambda { attached(false) }
+  scope :search, lambda {|query| attr_like(:attachment_name, query) }
 
   def self.attached_condition(attached=true)
     arel_table[:attachment_uid].send(attached ? :not_eq : :eq, nil)
