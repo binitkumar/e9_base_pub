@@ -210,6 +210,16 @@ content_nav_3:
   parent: content_nav
   name: "FAQs"
   href: "/admin/faqs"
+content_nav_3a:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Files"
+  href: "/file_uploads"
+content_nav_3b:
+  <<: *hard_link_defaults
+  parent: content_nav
+  name: "Images"
+  href: "/image_uploads"
 content_nav_4:
   <<: *hard_link_defaults
   parent: content_nav
