@@ -8,9 +8,9 @@
 
 en:
   e9:
-    select_image: Select an image
+    select_image: Select an Image
     crop_image: Crop this image
-    browse_image: Upload an image
+    browse_image: Upload Image
     reset_image: Reset this image
     read_more_link: "Read More"
     toolbar_help: ''
@@ -248,6 +248,7 @@ en:
       add_flag: Report Abuse
       abuse_reported: Abuse Reported
     images:
+      new_title: Upload Image
       index_title: Images
       select_title: Select an Image
       show_title: Use this image?
