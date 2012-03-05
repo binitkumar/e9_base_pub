@@ -130,8 +130,14 @@
     @if $theme-h4-line-height {
       line-height: $theme-h4-line-height; } }
   h5, .h5 { 
-    @if $theme-h5-color {
-      color: $theme-h5-color; } }
+   @if $theme-h5-color {
+      color: $theme-h5-color; }
+    @if $theme-h5-font-size {
+      font-size: $theme-h5-font-size; }
+    @if $theme-h5-font-weight {
+      font-weight: $theme-h5-font-weight; }
+    @if $theme-h5-line-height {
+      line-height: $theme-h5-line-height; } }
   h6, .h6 { 
     @if $theme-h6-color {
       color: $theme-h6-color; } }

@@ -15,8 +15,14 @@ $renderable-bottom-margin: .4em !default;
       color:$theme-link-hover-color;
     }
   }
+  .content-body{
+    margin-top:1em;
+  }
 }
 #left, #right {
+  .left.image img{
+    width:100px;
+  }
   .forum-menu{
     margin-bottom:10px;
   }
@@ -29,6 +35,7 @@ $renderable-bottom-margin: .4em !default;
     font-size:small;
     line-height: 1.2em;
     margin: 0.5em 0 0 1em;
+    color:$theme-link-color;
   }
 
   .actions input, .actions .button {
@@ -36,7 +43,6 @@ $renderable-bottom-margin: .4em !default;
   }
 
   .field {
-    margin:0 0 $renderable-bottom-margin;
     float:left;
   }
 
@@ -102,8 +108,7 @@ $renderable-bottom-margin: .4em !default;
   }
 
   p {
-    margin: 0;
-    @include small;
+    font-size:14px;
     display:run-in;
     clear:none;
     padding:0;
@@ -114,23 +119,11 @@ $renderable-bottom-margin: .4em !default;
     margin-bottom: 0.5em;
   }
 
-  .info p {
-    @include xx-small;
-    margin-bottom: .33em;
-    //display:inline-block;
-
-    //&:last-child {
-      //	margin-bottom: 1.5em;
-    //}
-
-    &:empty {
-      margin: 0;
-    }
-  }
-
   .renderable {
     //margin-top:1.5em;
     border-bottom: theme-border-style();
+    margin-bottom:20px;
+    padding-bottom:12px;
 
     .blog-menu{
       margin-bottom:1em;
@@ -141,11 +134,14 @@ $renderable-bottom-margin: .4em !default;
     }
 
     &.feed_widget, &.top_widget, &.slideshow_widget, &.poll,  &.offer, &.title-description-module {
-      padding-bottom: 10px;
-      margin-bottom: $renderable-bottom-margin;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
       
     }
-
+    blockquote{
+      font-size:18px;
+      color:$theme-alt-text-color;
+    }
     .offer-body{
       padding-bottom:$renderable-bottom-margin;
     }
@@ -155,16 +151,10 @@ $renderable-bottom-margin: .4em !default;
     }
 
     .module-container{
-      margin-bottom:.7em;
+      float:left;
+     // margin-bottom:.7em;
     }
-
   } 
-}
-#right{
-  h4{
-    width:160px;
-    float:left;
-  }
 }
 #footer {
   font-size:small;
@@ -173,8 +163,6 @@ $renderable-bottom-margin: .4em !default;
     width:250px;
     display:block;	
   }
-
-
   .renderable .title-author-module{
     a {
       //display:inline;
@@ -192,4 +180,68 @@ $renderable-bottom-margin: .4em !default;
 }
 .renderable{
   @include pie-clearfix;
+}
+.renderable-region{
+  .renderable-body{
+    .module-container{
+      margin-top:0;
+      margin-bottom:.5em;
+       &:last-child{
+        margin-bottom:0;
+      }
+    } 
+  }
+  .renderable-header{
+    font-style:italic;
+    color:$theme-alt-text-color;
+    line-height:1.1em;
+    font-size:14px;
+    margin-bottom:12px;
+  }
+  h5{
+      margin: 0 0 5px;
+    a{
+
+    }
+  }
+  .info{
+    p{
+      margin-bottom:5px;
+      margin-top:0;
+    }
+  }
+  .image{
+    margin-right:4px;
+    margin-bottom:4px;
+  }
+  .offer{
+    h2{
+      font-size:14px;
+      font-style:italic;
+      color:$theme-alt-text-color;
+      font-weight:normal;
+      line-height:1.1em;
+    }
+    .field{
+      padding:0;
+      margin-top:10px;
+      margin-bottom:10px;
+      float:left;
+      div{
+       margin-top:.7em;
+      }
+    }
+    fieldset{
+      .checkbox{
+        label{
+          float:right;
+          margin-top:2px;
+          width:153px;
+        }
+      }
+    }
+    input[type="text"],select{
+      margin-top:.7em;
+    }
+  }
 }

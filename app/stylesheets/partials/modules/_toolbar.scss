@@ -152,10 +152,10 @@ body.admin {
         background: transparent url(images/toolbar_divider.png) 66% 0% repeat-y; 
       }
       .toolbar-left { 
-        width: 64%;
+        width: 62%;
       }
       .toolbar-middle, .toolbar-right {
-        width: 32%;
+        width: 31%;
       }
       // see how the variable is used to determine which section to hide?
       .toolbar-#{$hide} { display: none; }

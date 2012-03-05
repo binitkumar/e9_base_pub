@@ -6,19 +6,21 @@ $poll-answer-bar-color-3: green !default;
 @import "compass/css3/inline-block";
 @import "includes/theming";
 .e9-poll {
-  .poll-question {
-      padding: 0 0 .75em; 
-  }
   form.edit_poll .actions {
     margin: 10px 5px 0 0;
     float: left;
   }
   .view-poll-results {
     @include inline-block;
-    font-size: 12px;
-    margin-top: 10px;
-    line-height: 33px;
-    height: 33px;
+    font-size:14px;
+    text-decoration:underline;
+    font-style:italic;
+    color:$theme-alt-text-color;
+    margin-top:20px;
+    float:right;
+    &:hover{
+      color:$theme-link-color;
+    }
   }
   .poll-answers {
     padding-top: 0;
@@ -62,11 +64,17 @@ form {
 }
 
 .poll-header {
-  @extend .h3;
+  font-style:italic;
+  color:$theme-alt-text-color;
+  line-height:1.1em;
+  font-size:14px;
+  margin-bottom:12px;
 }
 
 .poll-question {
-  @extend .h5;
+  font-size:14px;
+  color:$theme-link-color;
+  line-height:1.2em;
 }
 
 .poll-answer-bar {
@@ -82,7 +90,7 @@ form {
   position:relative;
 	//margin: 0 0 0 0.5em;
   &:first-child { margin-top: 0; }
-  margin-top: 1em;
+  margin-top:.5em;
   clear: both;
   textarea {
     height: 3em;
@@ -97,9 +105,9 @@ form {
 	
 	label{
 		line-height:1em;
-    position:relative;
-    top:-5px;
-    width:90%;
+    display:inline-block;
+    width:85%;
+    margin-left:1em;
 	}
 		
   textarea {

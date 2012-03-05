@@ -3,16 +3,21 @@ $breadcrumbs-last-color: $theme-text-color !default;
 $breadcrumbs-line-height: $theme-h4-line-height !default;
 .breadcrumbs { 
   @include horizontal-list(5px);
-  a { 
+  font-size:$theme-breadcrumb-font-size;
+  a {
+    font-size:$theme-breadcrumb-font-size; 
     text-decoration:underline;
     padding-right: 3px; 
     line-height:$breadcrumbs-line-height;
+    font-size:$theme-breadcrumb-font-size;
+
   }
   li { 
     font-style: italic; 
+    color:$theme-breadcrumb-color-inactive;
   }
   .last { 
-    color: $breadcrumbs-last-color;
+    color:$theme-breadcrumb-color-inactive;
     font-style: normal;
     font-weight: bold;
     

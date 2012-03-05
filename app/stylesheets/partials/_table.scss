@@ -21,7 +21,7 @@ table {
     border-style: $theme-border-style;
     border-color: $theme-border-color;
     border:none;
-    textx-align:left;
+    text-align:left;
     &:first-child { 
       border-left-width: 1px; 
     }
@@ -57,10 +57,10 @@ body.admin{
     tr{
       border-bottom:theme-border-style();
       &.odd{
-        background:#fff;
+       // background:#fff;
       }
       &.even{
-        background:$theme-border-color;
+        //background:$theme-border-color;
       }
     }
   }

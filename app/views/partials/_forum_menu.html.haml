@@ -1,6 +1,6 @@
 - unless params[:controller] == 'forums'
   - @forums ||= Forum.for_roleable(current_user_or_public_role).ordered
-  .partial.forum-menu
+  .sideBar.forum-menu
     %ul.menu
       - unless params[:controller] == 'forums'
         %li{:class => @forum ? 'active' : nil }
