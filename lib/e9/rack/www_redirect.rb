@@ -1,14 +1,23 @@
 module E9::Rack
+  #
+  # Middleware to redirect www.* to .*
+  #
+  # If the `reverse` option is passed it will do the opposite, redirecting
+  # .* to www.*
+  #
   class WWWRedirect
-    REGEXP = /^www\./i
+    HasWWW = /^www\./i
 
-    def initialize(app)
-      @app = app
+    attr_reader :reverse
+
+    def initialize(app, options={})
+      @app     = app
+      @reverse = if options[:reverse].nil? ? false : options[:reverse]
     end
 
     def call(env)
-      if env['HTTP_HOST'] =~ REGEXP
-        [301, redirection(env), ["Moved Permanently\n"]]
+      if should_redirect?
+        [301, redirect_headers(env), ["Moved Permanently\n"]]
       else
         @app.call(env)
       end
@@ -16,11 +25,20 @@ module E9::Rack
 
     private
 
-    def redirection(env)
-      { 
-        'Location'     => Rack::Request.new(env).url.sub(/www\./i, ''),
-        'Content-Type' => 'text/html' 
-      }
+    def has_www?(env)
+      !!HasWWW.match(env['HTTP_HOST'])
+    end
+
+    def should_redirect?(env)
+      has_www? != reverse
+    end
+
+    def redirect_headers(env)
+      location = Rack::Request.new(env).url.send(:sub, 
+        *(reverse ? [/www\./, ''] : [/:\/\//, 'www'])
+      )
+
+      { 'Location' => location, 'Content-Type' => 'text/html' }
     end
   end
 end
