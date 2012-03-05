@@ -6,17 +6,20 @@ module E9::Rack
   # .* to www.*
   #
   class WWWRedirect
-    HasWWW = /^www\./i
+    HasWWW      = /^www\./i
+    ArgsToWWW   = [/:\/\//,      '://www.'].freeze
+    ArgsFromWWW = [/:\/\/www\./, '://'    ].freeze
 
-    attr_reader :reverse
+    attr_reader :reverse, :sub_args
 
     def initialize(app, options={})
-      @app     = app
-      @reverse = if options[:reverse].nil? ? false : options[:reverse]
+      @app      = app
+      @reverse  = options[:reverse].nil? ? false : options[:reverse]
+      @sub_args = reverse ? ArgsToWWW : ArgsFromWWW
     end
 
     def call(env)
-      if should_redirect?
+      if should_redirect?(env)
         [301, redirect_headers(env), ["Moved Permanently\n"]]
       else
         @app.call(env)
@@ -25,20 +28,19 @@ module E9::Rack
 
     private
 
-    def has_www?(env)
-      !!HasWWW.match(env['HTTP_HOST'])
+    def should_redirect?(env)
+      !!HasWWW.match(env['HTTP_HOST']) != reverse
     end
 
-    def should_redirect?(env)
-      has_www? != reverse
+    def redirect_location(env)
+      Rack::Request.new(env).url.sub *sub_args
     end
 
     def redirect_headers(env)
-      location = Rack::Request.new(env).url.send(:sub, 
-        *(reverse ? [/www\./, ''] : [/:\/\//, 'www'])
-      )
-
-      { 'Location' => location, 'Content-Type' => 'text/html' }
+      { 
+        'Location'     => redirect_location(env),
+        'Content-Type' => 'text/html'
+      }
     end
   end
 end
