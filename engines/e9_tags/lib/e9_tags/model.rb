@@ -130,6 +130,12 @@ module E9Tags
         where(:id => ids)
       }
 
+      scope :untagged, lambda {
+        tagged_sql = Tagging.select(:taggable_id).where(:taggable_type => base_class.to_s).to_sql
+        ids = connection.select_values(tagged_sql)
+        where arel_table[:id].not_in(ids)
+      }
+
       def filtered_taggings(*args)
         options = args.extract_options!
 
