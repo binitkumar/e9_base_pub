@@ -25,8 +25,9 @@ class ImageMount < ActiveRecord::Base
   end
 
   def default_image_tags
-    if mounted_on
-      ["#{mounted_on} #{mounted_association}".titleize]
+    if mounted_association.present?
+      owner_name = owner.present? && owner.class.model_name.human || mounted_on
+      ["#{owner_name} #{mounted_association}".titleize]
     else
       []
     end
