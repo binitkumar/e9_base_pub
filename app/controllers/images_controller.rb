@@ -17,7 +17,7 @@ class ImagesController < InheritedResources::Base
     if value == %w(none)
       controller.params[:action] == 'select' ? scope.where('1=0') : scope
     else
-      scope.tagged_with(value, :any => true, :show_hidden => true)
+      scope.tagged_with(value, :any => false, :show_hidden => true)
     end
   end
 
@@ -40,7 +40,7 @@ class ImagesController < InheritedResources::Base
 
     def determine_index_title
       if params[:tagged]
-        @index_title = "Images tagged with #{params[:tagged].map {|t| "\"#{t}\"" }.join(" or ")}"
+        @index_title = "Images tagged with #{params[:tagged].map {|t| "\"#{t}\"" }.join(" and ")}"
       end
     end
 
