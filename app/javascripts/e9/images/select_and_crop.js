@@ -38,10 +38,7 @@
 
       api.element = $(this).closest(scope);
 
-      $.fn.colorbox({ 
-        href: this.href,
-        width: '60%'
-      });
+      $.fn.colorbox({ href: this.href });
     });
 
     return this;
