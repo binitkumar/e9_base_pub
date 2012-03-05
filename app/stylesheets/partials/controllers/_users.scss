@@ -2,6 +2,7 @@
 body.controller-users {
   .user {
     @include clearfix;
+    margin-top:13px;
   }
   .users .user, .user-section {
     margin-bottom: $global-spacing-margin;
@@ -9,6 +10,7 @@ body.controller-users {
     border-bottom-width: $theme-border-width;
     border-bottom-style:solid;
     border-bottom-color:$theme-border-color;
+    width:100%;
   }
   .avatar {
     display:inline;
@@ -27,7 +29,8 @@ body.controller-users {
   .user-body {
     display: inline;
     float: left;
-		width:580px;
+		width:465px;
+    margin-left:15px;
     .title{
       margin-top:0;
       line-height:1em;
@@ -116,6 +119,13 @@ body.controller-users {
     text-decoration:underline;
     &:hover{
       text-decoration:underline;
+    }
+  }
+}
+.controller-profiles.template-show{
+  .header{
+    .text{
+      font-size:18px;
     }
   }
 }
