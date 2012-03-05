@@ -1,5 +1,6 @@
 .image.constrained
-  = link_to image_tag(listed_image.url), image_path(listed_image), :class => 'do-select'
+  - target = listed_image.attachment && listed_image.attachment.thumb('100x100#') || listed_image
+  = link_to image_tag(target.url), image_path(listed_image), :class => 'do-select'
   .tooltip
     .image-name
       = listed_image.attachment_name
