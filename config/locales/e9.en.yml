@@ -256,6 +256,7 @@ en:
       back_button: Back
       edit_title: Add/Edit Image Tags
       tag_instructions: Tags are words or phrases that describe or categorize this image. When searching a particular tag, the system will show all images with that tag.
+      no_records_text: No images were found.
     slides:
       search_index_title: "Slides Matching: %{search}"
       custom_index_title: "All Slides"
