@@ -5,6 +5,9 @@
 .image-management
   = form_tag select_images_path, :method => :get do
     %ul
+      %li
+        %input{:type => 'checkbox', :name => 'untagged', :value => 'true', :id => "t0", :checked => E9.true_value?(params[:untagged])}
+        %label{:for => "t0"} No Tags
       - all_image_tags.each_with_index do |t, i|
         %li
           %input{:type => 'checkbox', :name => 'tagged[]', :value => t, :id => "t#{i+1}", :checked => current_tags.member?(t) }
