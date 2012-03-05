@@ -4,7 +4,6 @@ class Admin::QuestionsController < Admin::ContentController
   belongs_to :faq
 
   respond_to :html, :js
-  carrierwave_column_methods :thumb, :context => :admin
   
   before_filter :add_faqs_breadcrumb
   add_resource_breadcrumbs

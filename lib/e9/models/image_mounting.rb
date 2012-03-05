@@ -20,7 +20,7 @@ module E9::Models
         s = eval options[:spec]
         s if s.kind_of?(E9::ImageSpecification)
       else
-        mount.spec
+        mount.local_spec
       end
 
       if options[:fallback_url]
@@ -50,7 +50,7 @@ module E9::Models
 
     module ClassMethods
       def mounted_as_name_for(association) 
-        '%s#%s' % [name.underscore, association]
+        '%s#%s' % [base_class.name.underscore, association]
       end
 
       def mounted_as_options_for(association)

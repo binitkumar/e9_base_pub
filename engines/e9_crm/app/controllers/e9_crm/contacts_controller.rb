@@ -7,8 +7,6 @@ class E9Crm::ContactsController < E9Crm::ResourcesController
   respond_to :js, :html
   respond_to :json, :only => :index
 
-  carrierwave_column_methods :avatar, :context => :admin
-
   before_filter :determine_title, :only => :index
   before_filter :load_contact_ids, :only => :index
   before_filter :build_nested_associations, :only => [:new, :edit]
