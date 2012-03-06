@@ -128,7 +128,7 @@ class BlogPostsController < ApplicationController
   end
 
   def find_current_page
-    @current_page = parent || blog_index_page
+    @current_page = params[:id] && resource || parent || blog_index_page
   end
 
   ##
