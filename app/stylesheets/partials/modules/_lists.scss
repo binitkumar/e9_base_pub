@@ -17,19 +17,23 @@
       display: inline; 
     }
     .actions, .action-links {
-      float: right;
-      font-size:16px;
-      color:$theme-link-color;
-      text-decoration:underline;
-      cursor:pointer;
-      &:hover{
+      a{
+        float: right;
+        font-size:14px;
         color:$theme-link-hover-color;
+        text-decoration:underline;
+        cursor:pointer;
+        &:hover{
+          color:$theme-link-color;
+        }
       }
     }
   }
   .show-more { 
     text-align: center; 
   }
+  
+
 }
 
 .list {

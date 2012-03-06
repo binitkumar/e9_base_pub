@@ -8,18 +8,25 @@
  */
 $renderable-bottom-margin: .4em !default;
 #content-main{
-  a{
-    color:$theme-link-color;
-    text-decoration:underline;
-    &:hover{
-      color:$theme-link-hover-color;
-    }
-  }
   .content-body{
     margin-top:1em;
   }
+  .actions, .action-links {
+      a{
+        float: right;
+        font-size:14px;
+        color:$theme-link-hover-color;
+        text-decoration:underline;
+        cursor:pointer;
+        font-weight:bold;
+        &:hover{
+          color:$theme-link-color;
+        }
+      }
+    }
 }
 #left, #right {
+  
   .left.image img{
     width:100px;
   }
@@ -108,15 +115,19 @@ $renderable-bottom-margin: .4em !default;
   }
 
   p {
-    font-size:14px;
+   
     display:run-in;
     clear:none;
-    padding:0;
+    font-size:12px;
+    line-height:1.2em;
   }
 
   .info {
-    @include xx-small;
+    //@include xx-small;
     margin-bottom: 0.5em;
+    p{
+      font-size:10px;
+    }
   }
 
   .renderable {
@@ -141,6 +152,7 @@ $renderable-bottom-margin: .4em !default;
     blockquote{
       font-size:18px;
       color:$theme-alt-text-color;
+      line-height:1.2em;
     }
     .offer-body{
       padding-bottom:$renderable-bottom-margin;
@@ -182,6 +194,9 @@ $renderable-bottom-margin: .4em !default;
   @include pie-clearfix;
 }
 .renderable-region{
+  input[type="text"],select,textarea {
+    display: inline-block;
+  }
   .renderable-body{
     .module-container{
       margin-top:0;
@@ -198,16 +213,29 @@ $renderable-bottom-margin: .4em !default;
     font-size:14px;
     margin-bottom:12px;
   }
+  p {
+   
+    display:run-in;
+    clear:none;
+    font-size:12px;
+    line-height:1.2em;
+  }
   h5{
       margin: 0 0 5px;
     a{
 
     }
   }
+  h4{
+    margin: 0 0 5px;
+    font-size:14px;
+  }
   .info{
     p{
-      margin-bottom:5px;
+      margin-bottom:0px;
       margin-top:0;
+      font-size:10px;
+      line-height:1em;
     }
   }
   .image{
@@ -232,6 +260,7 @@ $renderable-bottom-margin: .4em !default;
       }
     }
     fieldset{
+      padding:10px;
       .checkbox{
         label{
           float:right;

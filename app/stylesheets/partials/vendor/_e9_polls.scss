@@ -17,7 +17,7 @@ $poll-answer-bar-color-3: green !default;
     font-style:italic;
     color:$theme-alt-text-color;
     margin-top:20px;
-    float:right;
+    float:left;
     &:hover{
       color:$theme-link-color;
     }
@@ -120,10 +120,11 @@ form {
    } 
   input{
     padding: 0;
-    margin:0;
     vertical-align: top;
     *overflow: hidden;
     display:inline-block;
+    position:absolute;
+    top:2px;
   }
 }
 

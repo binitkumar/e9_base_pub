@@ -25,7 +25,7 @@ form.edit_user, form.new_user {
   }
 
   .info-bio textarea {
-    width: 100%;
+    width: 96%;
     height: 150px;
   }
   
@@ -100,7 +100,7 @@ form.edit_user, form.new_user {
   //display: block;
   vertical-align: middle;
   width: auto;
-  margin-right:10px;
+ 
 }
 
 .filter-links{
@@ -136,7 +136,6 @@ form.edit_user, form.new_user {
   }
 
 	.nested-association {
-			
 			.field {
 			@extend .contacts-details-edit-item;
 			margin:12px 4px .5em 12px;
@@ -158,6 +157,7 @@ form.edit_user, form.new_user {
 /**----- ok to email block---**/
 body.admin .email-wrapper .nested-associations div.field.checkbox{
 	display:block;
+  width:100%;
 }
 
 

@@ -6,7 +6,7 @@
 @import 'includes/colors';
 
 .highlight { 
-  background: $theme-highlight-color; 
+  background: lighten($theme-highlight-color,30%); 
 }
 
 .block {

@@ -163,6 +163,8 @@ body.admin{
     background:url("/images/buttons/uiIcons.png") -32px -5px;
     border:none;
     padding:0;
+    right: 0;
+    top: 0;
     &:hover{
       background:url("/images/buttons/uiIcons.png") -32px -24px;
     }
@@ -195,8 +197,8 @@ body.admin{
     background:url("/images/buttons/uiIcons.png") -32px -5px;
     border:none;
     padding:0;
-
     top: 6px;
+    right:0;
     &:hover{
       background:url("/images/buttons/uiIcons.png") -32px -24px;
     }
@@ -262,5 +264,5 @@ body.admin{
   }
 }
 .ui-autocomplete{
-  z-index:999!important;
+  z-index:99999 !important;
 }
