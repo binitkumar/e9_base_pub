@@ -1,7 +1,11 @@
 class Attachment < ActiveRecord::Base
+  include E9Tags::Model
+  include E9::ActiveRecord::AttributeSearchable
+
   scope :attached,   lambda {|bool=true| where arel_table[:file].eq(nil).send(bool ? :not : :presence) }
   scope :unattached, lambda { attached(false) }
   scope :ordered,    lambda { order(:position) }
+  scope :search, lambda {|query| attr_like(:file, query) }
 
   belongs_to :owner, :polymorphic => true
 
@@ -13,10 +17,6 @@ class Attachment < ActiveRecord::Base
   delegate :width, :height, :format, :url, :path, :to => :file
 
   delegate :thumb, :to => :file, :allow_nil => true
-
-  def should_create_thumbs?
-    owner.respond_to?(:create_attachment_thumbs) && owner.create_attachment_thumbs
-  end
 
   def has_thumb?
     thumb.present? && thumb.url =~ /\.(jpe?g|png|gif|bmp)/i
@@ -41,6 +41,14 @@ class Attachment < ActiveRecord::Base
     end
 
     ActiveSupport::StringInquirer.new(retv)
+  end
+
+  def file_tags
+    tag_list_on('files__h__').sort {|a, b| a.upcase <=> b.upcase }
+  end
+
+  def file_tags=(tags)
+    self.set_tag_list_on('files__h__', tags)
   end
 
   ##

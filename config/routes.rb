@@ -115,6 +115,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :attachments, :path => 'file_uploads'
+
   resource :profile, :only => [:edit, :update, :show] do
     member do
       delete :unsave_all

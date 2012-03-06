@@ -1,29 +1,22 @@
-- form_is_active = !request.xhr?
+= form_for(resource, :remote => request.xhr?) do |f|
 
-- unless form_is_active
-  - content_for :additional_actions do
-    = f.submit 'Need to attach files?', :name => :commit_and_edit
-
-- attachments_html = capture do 
-  - f.fields_for(:attachments) do |af|
-    - if af.object.persisted?
-      %li.attachment
-        = link_to af.object.url, :title => af.object.file_name, :class => "attachment-#{af.object.file_type}" do
-          - if af.object.has_thumb?
-            = image_tag af.object.thumb.url
+  .attachment
+    - if resource.persisted?
+      .attachment-thumb
+        = content_tag :div, :title => resource.file_name, :class => "attachment-icon attachment-#{resource.file_type}" do
+          - if resource.has_thumb?
+            = image_tag resource.thumb.url
           - else
-            = af.object.file_name
-        - if form_is_active
-          %span.delete-attachment{:title => 'Remove this file'}
-            Remove
-            = af.hidden_field '_destroy'
-    - elsif form_is_active
-      %li.attachment-form
-        = af.hidden_field :owner_type
-        = af.hidden_field :owner_id
-        = af.file_field :file
+            = resource.file_name
+      .attachment-name
+        = resource.file_name
+      - if resource.file_type.image?
+        .attachment-dimensions
+          = "#{resource.width}x#{resource.height}"
+      .attachment-created
+        = l(resource.created_at)
 
-- if attachments_html.present?
-  %fieldset
-    %ul.attachments
-      = attachments_html
+  = render 'e9_tags/form', :f => f, :context => [:files, true]
+
+  .actions
+    = f.submit

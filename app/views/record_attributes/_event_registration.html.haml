@@ -36,5 +36,5 @@
       = f.text_field :promo_code, :class => 'promo-code'
 
   .field.checkbox
-    = f.label :newsletter_optin, default_mailing_list.try(:description)
     = f.check_box :newsletter_optin
+    = f.label :newsletter_optin, default_mailing_list.try(:description)

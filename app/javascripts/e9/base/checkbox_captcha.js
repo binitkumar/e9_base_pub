@@ -6,12 +6,14 @@
 
   bot_field = '\
 <div class="field checkbox cbc-field-2">\
-  <label for="cb_optin_2_INDEX" class="req">I am a spambot</label>\
   <input id="cb_optin_2_INDEX" type="checkbox" name="cb_optin_2" />\
+  <label for="cb_optin_2_INDEX" class="req">I am a spambot</label>\
 </div>',
       
   human_field = '\
 <div class="field checkbox cbc-field-1">\
+ <input id="cb_optin_1_INDEX" \
+     type="checkbox" name="cb_optin_1" class="required" />\
   <label for="cb_optin_1_INDEX" class="req">\
    Check here if you are a real person \
    <span class="help" rel="tooltip" title=\
@@ -20,9 +22,6 @@
      looking for vulnerable website forms. Its goal is to create accounts that \
      it could then use to send spam.">[?]</span>\
  </label>\
- <input id="cb_optin_1_INDEX" \
-   type="checkbox" name="cb_optin_1" \
-   class="required" />\
 </div>';
 
   (_f = function() {

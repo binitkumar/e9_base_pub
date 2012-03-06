@@ -1,4 +1,18 @@
 = form_for(resource, :remote => request.xhr?) do |f|
+
+  .attachment
+    - if resource.persisted?
+      .attachment-thumb
+        - target = resource.attachment && resource.attachment.thumb('100x100#') || resource 
+        = image_tag target.url, :alt => resource.attachment_name
+      .attachment-name
+        = resource.attachment_name
+      .attachment-dimensions
+        = resource.dimensions
+      .attachment-created
+        = l(resource.created_at)
+
   = render 'e9_tags/form', :f => f, :context => [:images, true]
+
   .actions
     = f.submit

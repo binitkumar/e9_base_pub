@@ -1,0 +1,17 @@
+%td.date
+  = l(resource.created_at)
+%td
+  = link_to resource.file_url, :title => resource.file_name, :class => "attachment-icon attachment-#{resource.file_type}" do
+    - if resource.has_thumb?
+      = image_tag resource.thumb.url
+    - else
+      = resource.file_name
+%td.text
+  = resource.file_name
+%td.tags
+  - resource.file_tags.each do |tag|
+    = link_to tag, attachments_path(:tagged => [tag])
+%td.actions
+  = link_to "Copy URL to Clipboard", Linkable.urlify_path(resource.file_url), :class => 'clipboard'
+  = link_to_edit_resource('Edit Tags', resource, :rel => 'popup')
+  = link_to_destroy_resource(resource)
