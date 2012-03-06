@@ -3,40 +3,37 @@
 - content_for :toolbar_middle do
   = toolbar_filters do
 
-    = form_tag(resource_class, :method => :get, :id => 'contact_search_form') do
+    -#= form_tag(resource_class, :method => :get, :id => 'contact_search_form') do
+    = form_tag(resource_class, :method => :get, :class => 'scope-selects', :id => 'contact-filters') do
       .field.clear
         %a{:rel => 'clear', :href => collection_path} Clear
       .field
         = label_tag 'contact_search_field', t(:search)
         = text_field_tag 'search', params[:search], :class => 'keyup-submit', :placeholder => t(:contact_search_placeholder)
 
-    = form_tag(resource_class, :method => :get, :class => 'scope-selects', :id => 'company_search_form') do
       .field
         = label_tag 'contact_company_select', Company.model_name.human
         %select{:name => 'company', :id => 'contact_company_select'}
           = company_select_options
 
-    = form_tag(resource_class, :method => :get, :class => 'scope-selects') do
       .field
         = label_tag 'bounced_select', 'Contacts with email problems'
         %select{:name => 'bounced', :id => 'bounced_select'}
           %option{:value => ''} No. Show all contacts.
           %option{:value => '1'} Yes. Show contacts with flagged email addresses.
 
-    #contact_tag_list.field
-      - tags = Array.wrap(params[:tagged])
-      %label{:for => 'contact_tag_autocomplete'} Tags
-      .field
-        %input#contact_tag_autocomplete.list{:type => 'text', 'data-iname' => 'contact', 'data-field' => '[tagged]', :placeholder => t(:tag_search_placeholder)}
-      = form_tag(resource_class, :method => :get, :class => 'scope-selects') do
-        .field.checkbox
+      .field.tag-selection
+        - tags = Array.wrap(params[:tagged])
+        %label Tags
+        %input.tag-autocomplete.list{:type => 'text', 'data-iname' => 'contact', 'data-field' => '[tagged]', :placeholder => t(:tag_search_placeholder)}
+        %ul.tag-select.select
+          - tags.each do |tag|
+            %li.ui-state-default
+              %span.content= tag
+              %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
+        .field.matchall.checkbox
           %label{:for => 'contact_tag_match_all'} Match All?
           %input#contact_tag_match_all{:type => 'checkbox', :name => 'tagged_all', :value => 1, :disabled => tags.length < 2}
-      %ul#contact_tag_select.select
-        - tags.each do |tag|
-          %li.ui-state-default
-            %span.content= tag
-            %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
 
     - content_for :toolbar_right do
       = toolbar_actions do

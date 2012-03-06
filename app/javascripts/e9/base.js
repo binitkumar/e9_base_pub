@@ -213,6 +213,7 @@
         el.data('scope_select', true);
 
         var do_change = function() {
+
           var 
           $this = $(this),
           name  = get_key($this),
@@ -247,6 +248,7 @@
           $.submit_with_query(form.attr('data-remote'), { form: form }); 
         }
 
+        // Initialize the fields from $.query
         if (el.is(':radio') || el.is(':checkbox')) {
           el.attr('checked', function(n, v) {
             var cVal = $.query[get_key(el)] || '';
@@ -256,12 +258,9 @@
           el.val($.query[get_key(el)] || '');
         }
 
+        //
         if (el.is('input[type=text]')) {
-          // NOTE would make sense to call this here, as opposed to classing
-          // it with .keyup-submit, since it's required for this to work
-          //
-          //el.keyup_submit();
-          el.submit(do_change);
+          el.bind('keyup_submit', do_change);
         } else {
           el.change(do_change);
         }
@@ -349,29 +348,6 @@
       })
     });
   }
-
-  $.fn.keyup_submit = function() {
-    $(this)
-      .bind('input keyup', function(){
-        var $this = $(this);
-        var delay = 400;
-
-        clearTimeout($this.data('timer'));
-
-        $this.data('timer', setTimeout(function(){
-          $this.removeData('timer');
-          $this.submit();
-        }, delay));
-      })
-      .bind('blur', function(){
-        var $this = $(this);
-        clearTimeout($this.data('timer'));
-        $this.submit();
-      })
-    ;
-  }
-
-  $('input.keyup-submit').keyup_submit();
 
   $('select.url-select').live('change', function() {
     location.href = $(this).val();

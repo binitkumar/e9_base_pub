@@ -1,4 +1,59 @@
 ;jQuery(function($) {
+  $('body.controller-attachments')
+    // hook to tag images and reload the page
+    .bind('e9:upload:complete', function(event, file) {
+      $.fn.colorbox({ 
+        href:       '/file_uploads/'+file.id+'/edit',
+        scrolling:  false,
+        width:      600,
+        onClosed: function() {
+          window.location = '/file_uploads';
+        }
+      });
+    })
+
+    // uploadify initializer
+    .each(function(i, el) {
+      $('#file-upload-input', el).uploadify({
+        script: '/file_uploads.json',
+        hideButton: true,
+        wmode: "transparent",
+        uploader: "/swf/uploadify.swf",
+        fileDataName: "attachment[file]",
+        auto: true,
+        cancelImg: "/images/buttons/cancel.png",
+        onComplete: function(evt, id, fileObj, response) { 
+          var f = $.parseJSON(response);
+          $.event.trigger("e9:upload:complete", [f]);
+        },
+        queueID: 'file-upload-queue',
+        scriptData: {},
+        sizeLimit: 1024 * 1000 * 5, // 1mb * 5
+        onError: function(event, ID, fileObj, errorObj) {
+          // catch file size errors to give a more descriptive message
+          if (errorObj.type == "File Size") {
+            $("#" + $this.attr("id") + ID)
+              .addClass("uploadifyError")
+              .find(".percentage")
+                .text("").end()
+              .find(".fileName")
+                .text(function(e, v){
+                  var max  = Math.round(parseInt(errorObj.info) / 1024000 * 100) / 100,
+                      size = v.replace(/[^(]*/, "");
+
+                  return "Your upload is too large "+size+". The maximum upload size is "+max+"MB.";
+                })
+              ;
+
+            return false;
+          }
+        }
+      });
+    })
+  ;
+
+  // code for the attachment forms
+
   var 
   img_rx  = /(jpe?g|png|gif|bmp)$/i,
   html_rx = /html?$/i,

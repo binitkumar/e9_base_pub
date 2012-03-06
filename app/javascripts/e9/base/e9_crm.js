@@ -81,20 +81,20 @@
     }
   });
 
-  $('form#contact_search_form', $(selector_prefix))
-    .live('submit', function(e) {
-      e.preventDefault();
+  //$('form#contact_search_form', $(selector_prefix))
+    //.live('submit', function(e) {
+      //e.preventDefault();
 
-      $.extend($.query, {
-        'search': $(this).find('input[name=search]').val()
-      });
+      //$.extend($.query, {
+        //'search': $(this).find('input[name=search]').val()
+      //});
 
-      $.submit_with_query();
-    })
-    .each(function(i, el) {
-      $('input[type=text]', el).val($.query['search'] || '');
-    })
-  ;
+      //$.submit_with_query();
+    //})
+    //.each(function(i, el) {
+      //$('input[type=text]', el).val($.query['search'] || '');
+    //})
+  //;
 
   $('a[rel=clear]', $(selector_prefix))
     .live('click', function(e) {
@@ -286,79 +286,6 @@
       }
     })
   ; 
-
-  var $tag_autocomplete = $('#contact_tag_autocomplete'),
-      $tag_select       = $('#contact_tag_select');
-
-  var get_tags = function() {
-    return $.makeArray($('.content', $tag_select).map(function(i, el){ return $(el).html() }));
-  }
-
-  var update_disabled;(update_disabled = function() {
-    var disabled = get_tags().length < 2, radio = $('#contact_tag_match_all');
-
-    radio.attr('disabled', disabled);
-
-    if (disabled) {
-      $.query['tagged_all'] = null;
-      radio.attr('checked', false);
-    }
-  })();
-
-  var tag_update = function() {
-    $.extend($.query, { 'tagged[]': get_tags() });
-    update_disabled();
-    $.submit_with_query();
-  }
-
-  /* this is in addition to the usual select.list click */
-  $('a', $tag_select).live('click', function(e) {
-    e.preventDefault();
-    _.defer(tag_update);
-  });
-
-  $tag_autocomplete
-    .blur(function() { 
-      $(this).val('');
-    })
-    .autocomplete({
-      delay: 350,
-      source: function(request, response) {
-        var request_str = "term=" + request.term + "&context=Users*";
-
-        if ($.query['tagged[]']) {
-          request_str += '&' + $.param({ except: $.query['tagged[]'] });
-        }
-        
-        $.ajax({
-          url: "/autocomplete/tags",
-          dataType: "json",
-          data: request_str,
-          success: function(data) {
-            var tags = get_tags();
-
-            response(_.select(data, function(obj, i) {
-              return !_.include(tags, obj.value);
-            }));
-          }
-        });
-      },
-      select: function(evt, ui) {
-        $tag_autocomplete.add_select_template(
-          ui.item.value, 
-          ui.item.value,
-          $tag_autocomplete.closest('.field').siblings('ul.select')
-        );
-        $tag_autocomplete.val('').blur();
-        tag_update();
-        return false;
-      },
-      focus: function(evt, ui) {
-        $tag_autocomplete.val(ui.item.value);
-        return false;
-      }
-    })
-  ;
 
   $('.renderable form.new_deal').livequery('submit', function(e) {
     e.preventDefault();

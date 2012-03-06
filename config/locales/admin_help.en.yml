@@ -1,5 +1,10 @@
 en:
   e9:
+    attachments:
+      toolbar_help: 'Search by **file name** or by **tag**. Use multiple tags to refine your results, i.e. **blue** and **sky** would only return files that have both of those tags. **View untagged files** will only show files without any tags. Use **Copy to Clipboard** to grab the URL of the file for use in the WYSIWYG. **Edit Tags** will allow you to add or delete tags from an file.'
+    images:
+      toolbar_help: 'Search by **file name** or by **tag**. Use multiple tags to refine your results, i.e. **blue** and **sky** would only return images that have both of those tags. **View untagged images** will only show images without any tags. Use **Copy to Clipboard** to grab the URL of the image for use in the WYSIWYG. **Edit Tags** will allow you to add or delete tags from an image.'
+
     admin:
       searches:
         toolbar_help: **Search Log** shows you every query ever run on your website, along with the date, the number of times the query was requested and the number of search results the user saw. Use this info to fine-tune your content with things your users are seeking.
