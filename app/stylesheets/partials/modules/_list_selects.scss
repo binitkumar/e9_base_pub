@@ -6,7 +6,6 @@ $list_select_line_height: 1.5em !default;
 
 select.list, select.node-selector, select#region_type_ids,
 ul.select, ul.nodes, ul.region-types {
-  width: 385px;
 }
 
 select.list, select.node-selector, select#region_type_ids {
@@ -34,7 +33,6 @@ ul.select, ul.nodes, ul.region-types {
   height: $list_select_line_height; }
   list-style-type: none;
   padding: 0;
-  position: relative;
   li {
     @extend .ui-state-hover;
     position: relative;

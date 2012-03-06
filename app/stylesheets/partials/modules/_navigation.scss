@@ -7,14 +7,14 @@
       display:block;
       &.active > a{
         font-weight:bold;
-        border-bottom:theme-border-style();
+        border-bottom:1px solid $theme-border-color;
       }
       a{
         font-size:16px;
         display:block;
         padding-top:10px;
         padding-bottom:10px;
-        border-bottom:theme-border-style();
+        border-bottom:1px solid $theme-border-color;
         color:#000;
         &:hover{
           color:$theme-link-hover-color;
@@ -35,7 +35,7 @@
                 font-size:16px;
                 padding-left:25px;
                 border-top:none;
-                border-bottom:theme-border-style(); 
+                border-bottom:1px solid $theme-border-color; 
               }
             }
           }

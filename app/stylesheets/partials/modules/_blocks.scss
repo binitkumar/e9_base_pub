@@ -22,6 +22,7 @@
       li { display: block; }
     }
     a { 
+      float:left !important;
       @include inline-block;
       @include theme-border;
       border-top: none;
@@ -34,7 +35,7 @@
   }
   .thumb, .avatar {
     img { 
-      @include theme-border;
+      border:theme-border-style();
       width: $width;
       height: $height;
     }

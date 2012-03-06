@@ -89,7 +89,7 @@ fieldset.tags {
   #tag-contexts { clear: both; } 
 }
 
-#contact_tag_select { 
+.tag-select { 
   li {
     @include inline-block;
     @include border-radius($admin-tag-border-radius);
@@ -111,7 +111,7 @@ fieldset.tags {
   }
   .actions{
     float:left;
-    margin-top:23px;
+    margin-top:20px;
   }
 }
 .tag-contexts{

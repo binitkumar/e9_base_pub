@@ -79,4 +79,5 @@ ul.social-module li:hover a.social-link {
 a.feed {
   @include sprite-background('/images/buttons/rss.png', 15px);
   margin-right: 5px;
+  width:15px;
 }
