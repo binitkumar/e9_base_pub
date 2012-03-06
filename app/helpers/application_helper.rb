@@ -274,10 +274,21 @@ module ApplicationHelper
     if region = view.region(domid)
       locs = liquid_env.merge(:region => region)
 
+      inherited_region = view != region.view
+
       content_tag(:div, :id => "#{domid}-region", :class => 'renderable-region') do
         ''.html_safe.tap do |buffer|
           region.nodes(:include => :renderable).each do |node|
-            render_renderable node.renderable, buffer, locs.merge(:node => node)
+
+            renderable = node.renderable
+            options    = renderable.options
+
+            if render_restriction = options.respond_to?(:render_restriction) && options.render_restriction
+              next if render_restriction == 'self' && inherited_region
+              next if render_restriction == 'inherited' && !inherited_region
+            end
+
+            render_renderable renderable, buffer, locs.merge(:node => node)
           end
         end
       end

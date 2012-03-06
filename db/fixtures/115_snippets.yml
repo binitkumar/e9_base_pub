@@ -85,6 +85,8 @@ previous_next_links:
   region_types: <%= column_regions %>
   set_revert_template: true
   formatter: 1
+  options:
+    render_restriction: 'inherited'
   template: |
     {% if page.previous_record or page.next_record %}
       <div class="record-seq">

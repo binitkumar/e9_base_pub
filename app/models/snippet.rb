@@ -1,6 +1,19 @@
 class Snippet < Renderable
   validates :template, :presence => true, :liquid => true
 
+  include E9::ActiveRecord::InheritableOptions
+
+  # NOTE render_restriction takes 'self' or 'inherited'. If 'self' the
+  # renderable will only render when the rendered region is owned by the
+  # view, if 'inherited' it will only render if the region is inherited
+  # by the view.  
+  #
+  # This was implemented for the particular case of the blog subnav, and is
+  # only on `Snippet` for that reason.  It uses options, which would conflict
+  # with `Renderable::Widget`, so for now is `Snippet` only.
+  #
+  self.options_parameters = [ :render_restriction ]
+
   attr_writer :set_revert_template
   before_save :set_revert_template_if_necessary
 
