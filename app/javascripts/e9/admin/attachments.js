@@ -57,7 +57,7 @@
         .addClass('attachment')
         .find('input[type=file]')
           .css('display', 'none')
-          .before('<div class="attachment-'+klass+'" title="'+val+'" />')
+          .before('<div class="attachment-icon attachment-'+klass+'" title="'+val+'" />')
           .before('<span title="Remove this file" class="delete-attachment">Remove</span>')
       ;
 

@@ -11,13 +11,22 @@
     return function(evt, id, fileObj, response) {
       var image = $.parseJSON(response);
 
-      if (el.data('crop')) {
-        $.extend(el.data('crop'), { image: image })
-        $.e9.crop.element = el;
-        $.e9.crop.openCropbox();
-      } else {
-        // else?
-      }
+      // Hook in here and offer a chance to edit the tags
+      $.fn.colorbox({ 
+        href:       '/image_uploads/'+image.id+'/edit',
+        scrolling:  false,
+        width:      600,
+
+        // and we'll go ahead and reopen the crop window
+        // when this colorbox closes
+        onClosed: function() {
+          if (el.data('crop')) {
+            $.extend(el.data('crop'), { image: image })
+            $.e9.crop.element = el;
+            $.e9.crop.openCropbox();
+          } 
+        }
+      });
 
       return true;
     }

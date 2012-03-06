@@ -35,7 +35,7 @@
         <div class="actions">Attached Files <a href="<%= edit_url %>">Edit</a></div>
         <% _.each(attachments, function(attachment) { %>
           <li class="attachment">
-            <a href="<%= attachment.url %>" title="<%= attachment.name %>" class="attachment-<%= attachment.file_type %>" target="_blank">
+            <a href="<%= attachment.url %>" title="<%= attachment.name %>" class="attachment-icon attachment-<%= attachment.file_type %>" target="_blank">
               <% if (attachment.thumb) { %>
                 <img src="<%= attachment.thumb %>" alt="<%= attachment.name %>" />
               <% } else { %>

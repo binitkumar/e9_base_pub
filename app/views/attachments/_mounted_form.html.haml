@@ -1,0 +1,29 @@
+- form_is_active = !request.xhr?
+
+- unless form_is_active
+  - content_for :additional_actions do
+    = f.submit 'Need to attach files?', :name => :commit_and_edit
+
+- attachments_html = capture do 
+  - f.fields_for(:attachments) do |af|
+    - if af.object.persisted?
+      %li.attachment
+        = link_to af.object.url, :title => af.object.file_name, :class => "attachment-icon attachment-#{af.object.file_type}" do
+          - if af.object.has_thumb?
+            = image_tag af.object.thumb.url
+          - else
+            = af.object.file_name
+        - if form_is_active
+          %span.delete-attachment{:title => 'Remove this file'}
+            Remove
+            = af.hidden_field '_destroy'
+    - elsif form_is_active
+      %li.attachment-form
+        = af.hidden_field :owner_type
+        = af.hidden_field :owner_id
+        = af.file_field :file
+
+- if attachments_html.present?
+  %fieldset
+    %ul.attachments
+      = attachments_html

@@ -52,6 +52,8 @@ class ImagesController < InheritedResources::Base
 
         if params[:tagged]
           t << " tagged #{params[:tagged].map {|t| "\"#{t}\"" }.join(" and ")}"
+        elsif E9.true_value?(params[:untagged])
+          t.sub! /^/, 'Untagged '
         end
       end
     end

@@ -258,6 +258,7 @@ en:
           
     # Translate model names. Used in Model.human_name().
     models:
+      attachment: Uploaded File
       address_attribute: Address
       content_view: Content
       blog_post: Blog Post

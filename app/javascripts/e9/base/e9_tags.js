@@ -121,30 +121,26 @@
       $addtf.autocomplete({
         delay: 350,
         source: function(request, response) {
-          var request_str = "term=" + request.term;
-          var context = $tag_context.val();
+          var 
+          term        = request.term,
+          context     = $tag_context.val(),
+          target      = cache;
 
           if (context != undefined && context != '') {
-            request_str += "&context=" + context;
+            request.context = context;
+            cache[context] = cache[context] || {};
+            target = cache[context];
           }
 
-          // TODO Caching tag autocomplete with context
-          //if (cache.term == request.term && cache.content) {
-            //response(cache.content);
-            //return;
-          //}
-          //if (new RegExp(cache.term).test(request.term) && cache.content && cache.content.length < 13) {
-            //response($.ui.autocomplete.filter(cache.content, request.term));
-            //return;
-          //}
-          
-          $.ajax({
-            url: "/autocomplete/tags",
-            dataType: "json",
-            data: request_str,
-            success: function(data) {
-              //cache.term = request.term;
-              //cache.content = data;
+          if (term in target) {
+            response(target[term]);
+            return;
+          }
+
+          lastXhr = $.getJSON("/autocomplete/tags", request, function(data, status, xhr) {
+            target[term] = data;
+
+            if (xhr === lastXhr) {
               response(data);
             }
           });

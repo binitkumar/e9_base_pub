@@ -247,6 +247,13 @@ en:
       remove_flag: Remove Flag
       add_flag: Report Abuse
       abuse_reported: Abuse Reported
+    attachments:
+      new_title: Upload File
+      index_title: Files
+      tag_instructions: Tags are words or phrases that describe or categorize this file. When searching a particular tag, the system will show all files with that tag.
+      edit_title: Add/Edit File Tags
+      no_records_text: No files were found.
+      browse_file: Upload File
     images:
       new_title: Upload Image
       index_title: Images

@@ -1,0 +1,7 @@
+<% if !resource.errors.any? %>
+  try { $.colorbox.close() } catch(e) {}
+
+  $("#ids_<%= resource.id %>")
+    .html("<%= escape_javascript(render 'row') %>")
+    .effect('highlight');
+<% end %>

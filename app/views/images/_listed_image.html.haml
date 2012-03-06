@@ -2,13 +2,13 @@
   - target = listed_image.attachment && listed_image.attachment.thumb('100x100#') || listed_image
   = link_to image_tag(target.url), image_path(listed_image), :class => 'do-select'
   .tooltip
-    .image-name
+    .attachment-name
       = listed_image.attachment_name
-    .image-dimensions
+    .attachment-dimensions
       = listed_image.dimensions
-    .image-created
+    .attachment-created
       = l(listed_image.created_at)
-    .image-tags
+    .attachment-tags
       - tags = listed_image.tag_list_on('images__h__').sort {|a, b| a.upcase <=> b.upcase }
       %ul
         - tags.each do |tag|

@@ -12,9 +12,6 @@ class Note < ActiveRecord::Base
   validates :title,   :presence => true
   validates :owner, :presence => true
 
-  class_attribute :create_attachment_thumbs
-  self.create_attachment_thumbs = true
-
   has_many :attachments, :as => :owner, :inverse_of => :owner, :dependent => :delete_all
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => :reject_attachment?
 
