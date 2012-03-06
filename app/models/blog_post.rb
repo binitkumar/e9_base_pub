@@ -49,6 +49,13 @@ class BlogPost < Page
     blog.try(:layout) || self.class.default_layout || Blog.default_layout
   end
 
+  def region(domid)
+    # NOTE falling back to super could work for having layouts that share regions
+    #blog.try(:region, domid) || super
+
+    blog.try(:region, domid)
+  end
+
   # for record sequence
   def previous_record
     BlogPost.in_blog(blog_id).posted_before(self).published.order('published_at DESC').limit(1).first
