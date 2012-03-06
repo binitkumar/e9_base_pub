@@ -1,22 +1,20 @@
 class AttachmentUploader < BaseUploader
+  HasImageExtension = /(jp?g|png|gif|bmp)$/i
+
   # this won't run if there are no specified_dimensions, making it ok
   # for non-image attachments
   process :resize_to_specified_dimensions!
-
-  def extension_white_list
-    model.is_a?(Image) ? %w(jpg jpeg gif png) : nil
-  end
 
   version :thumb, :if => :should_create_thumbs? do
     process :resize_to_fill => [72, 72]
   end
 
   def name(*args)
-    if model.is_a?(Image)
-      label_name(*args)
-    else
-      file.try(:filename) || 'attachment'
-    end
+    file.try(:filename) || 'Attachment'
+  end
+
+  def extension_white_list
+    nil
   end
 
   def extension
@@ -30,15 +28,10 @@ class AttachmentUploader < BaseUploader
     "Files (#{file_ext(',')})"
   end
 
-  def default_url
-    if model.is_a?(Image)
-      model.default_url || File.join('/', DEFAULTS_BASE_PATH, 'upload_image_thumb.png')
-    end
-  end
-
   protected
 
-    def should_create_thumbs?(file)
-      model.should_create_thumbs? && (file.nil? || (file.path =~ /(jpe?g|png|gif|bmp)$/i).present?)
-    end
+  # NOTE I don't remember why this is "true" for nil files
+  def should_create_thumbs?(file)
+    file.nil? || !!HasImageExtension.match(file.path)
+  end
 end
