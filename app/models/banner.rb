@@ -28,6 +28,13 @@ class Banner < Renderable
   # we don't generate a template
   def template() false end
 
+  def as_json(options={})
+    {
+      :id => id,
+      :images => images.attached.as_json
+    }
+  end
+
   protected
 
   def ensure_appropriate_defaults

@@ -101,7 +101,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :banners, :only => [] do
+  resources :banners, :only => :show do
     resources :image_mounts do
       collection do
         post :update_order
