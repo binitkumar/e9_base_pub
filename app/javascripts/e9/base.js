@@ -317,38 +317,6 @@
     ;
   });
 
-
-  /*
-   * Hack to enable [placeholder] in old browsers
-   */
-  if (!('placeholder' in document.createElement('input'))) {
-    $('[placeholder]')
-      .live('focus', function() {
-        var input = $(this);
-        if (input.val() == input.attr('placeholder')) {
-          input.val('');
-          input.removeClass('placeholder');
-        }
-      })
-      .live('blur', function() {
-        var input = $(this);
-        if (input.val() == '' || input.val() == input.attr('placeholder')) {
-          input.addClass('placeholder');
-          input.val(input.attr('placeholder'));
-        }
-      })
-    ;
-
-    $('form').submit(function() {
-      $(this).find('[placeholder]').each(function() {
-        var input = $(this);
-        if (input.val() == input.attr('placeholder')) {
-          input.val('');
-        }
-      })
-    });
-  }
-
   $('select.url-select').live('change', function() {
     location.href = $(this).val();
   });
@@ -391,4 +359,12 @@
       $f.submit();
     }
   });
+
+  var init_placeholders = function() {
+    $('input, textarea').placeholder();
+  }
+  $(init_placeholders);
+  $(document).bind('e9-attributes:add', init_placeholders);
+  $(document).ajaxComplete(init_placeholders);
+
 });
