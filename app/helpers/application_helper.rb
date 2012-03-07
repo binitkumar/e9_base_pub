@@ -276,6 +276,9 @@ module ApplicationHelper
 
       inherited_region = view != region.view
 
+      # this is used to generate numbered classes, e.g. .renderable-1
+      index = 0
+
       content_tag(:div, :id => "#{domid}-region", :class => 'renderable-region') do
         ''.html_safe.tap do |buffer|
           region.nodes(:include => :renderable).each do |node|
@@ -283,12 +286,16 @@ module ApplicationHelper
             renderable = node.renderable
             options    = renderable.options
 
+            next unless renderable.present?
+
             if render_restriction = options.respond_to?(:render_restriction) && options.render_restriction
               next if render_restriction == 'self' && inherited_region
               next if render_restriction == 'inherited' && !inherited_region
             end
 
-            render_renderable renderable, buffer, locs.merge(:node => node)
+            index += 1
+
+            render_renderable renderable, buffer, locs.merge(:node => node, :render_index => index)
           end
         end
       end
@@ -301,8 +308,6 @@ module ApplicationHelper
   # TODO Renderable should include enough View that it knows how to render itself and the decision is not made in a helper
   #
   def render_renderable(renderable, buffer = nil, locs = {})
-    return '' unless renderable.present?
-
     buffer ||= ''.html_safe
 
     benchmark "Rendered #{renderable.cache_key}", :level => :warn, :silence => true do
@@ -317,7 +322,7 @@ module ApplicationHelper
 
       element = klass.respond_to?(:element) ? klass.element : klass.model_name.element
 
-      div_args = { :id => renderable.to_anchor, :class => "renderable #{element}" }
+      div_args = { :id => renderable.to_anchor, :class => "renderable renderable-#{locs[:render_index]} #{element}" }
 
       if klass.renderable? && current_user.role.includes?(renderable.role)
         div_args[:"data-node"]             = node = locs[:node] && locs[:node].id
