@@ -27,18 +27,13 @@ module E9::ActiveRecord
         end
       end
 
-      # NOTE this strips order from the scopes and returns an Array, NOT a scope
-      def find_union_of(other_scope, options = {})
+      def union_of(other_scope, options = {})
         ast1 = scoped.except(:order).ast
         ast2 = other_scope.except(:order).ast
 
         union = Arel::Nodes::Union.new(ast1, ast2)
 
-        # to_sql gives us wrapping parens, e.g. (stmnt1 UNION stmnt2),
-        # which for whatever reason breaks find_by_sql
-        sql   = union.to_sql[1..-2].strip
-
-        find_by_sql(sql)
+        from("#{union.to_sql} as #{arel_table.name}")
       end
     end
   end

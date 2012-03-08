@@ -5,7 +5,7 @@ class Attachment < ActiveRecord::Base
   scope :attached,   lambda {|bool=true| where arel_table[:file].eq(nil).send(bool ? :not : :presence) }
   scope :unattached, lambda { attached(false) }
   scope :ordered,    lambda { order(:position) }
-  scope :search, lambda {|query| attr_like(:file, query) }
+  scope :search,     lambda {|query| attr_like(:file, query) }
 
   belongs_to :owner, :polymorphic => true
 

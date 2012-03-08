@@ -72,7 +72,7 @@ class Page < ContentView
   ##
   # scopes
   #
-  def self.search(*args)
+  scope :search, lambda {|*args|
     opts = args.extract_options!
     term = args.shift
 
@@ -86,22 +86,10 @@ class Page < ContentView
         find_scope = find_scope.where(:role => opts.delete(:roles))
       end
 
-      # TODO There is a problem in that UNION is unsupported by ActiveRelation,
-      # yet required because we want records tagged with the query, or matching
-      # the query (and tagged_with in particular does a lot of JOIN alchemy to get
-      # its results, making joining conditions in Arel a non-option)
-      #
-      # We're using a workaround here via find_by_sql to get it to return the proper
-      # dataset, but still, there's no clear/clean way to get the order into
-      # the scope.  Thus we're returning all here and the sort is **hardcoded**
-      #
-      # NOTE This problem is repeated in Topic
-      # NOTE Union returns an Array (find_by_sql)
-      #
       find_scope.where(conditions).
-          find_union_of(find_scope.tagged_with(term)).sort_by(&:published_at).reverse
+          union_of(find_scope.tagged_with(term)).order('published_at DESC')
     end
-  end
+  }
 
   ##
   # instance methods
