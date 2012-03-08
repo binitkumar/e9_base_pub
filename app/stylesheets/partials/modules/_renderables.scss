@@ -223,12 +223,15 @@ $renderable-bottom-margin: .4em !default;
   h5{
       margin: 0 0 5px;
     a{
-
+      color:$theme-text-color;
     }
   }
   h4{
     margin: 0 0 5px;
     font-size:14px;
+    a{
+      color:$theme-text-color;
+    }
   }
   .info{
     p{
@@ -266,11 +269,49 @@ $renderable-bottom-margin: .4em !default;
           float:right;
           margin-top:2px;
           width:153px;
+          margin-left:20px;
         }
       }
     }
     input[type="text"],select{
       margin-top:.7em;
+    }
+  }
+}
+.footer-menu {
+  float: left;
+  margin-top: 0;
+  li{
+    clear: both;
+    float: left;
+   // margin-bottom: 1em;
+    a{
+      font-weight:bold;
+      font-size:16px;
+      color:#000000;
+      line-height:1.8em;
+      &.active{
+        color:$theme-link-hover-color;
+      }
+    }
+    .submenu{
+      margin-left:20px;
+      li{
+        width:160px;
+        margin-bottom:10px;
+        a{
+          font-weight:normal;
+          color:$theme-link-color;
+          white-space:pre-wrap;
+          line-height:.4em;
+          &:hover{
+            color:$theme-link-hover-color;
+          }
+        }
+        &:last-child{
+          margin-bottom:0;
+        }
+      }
     }
   }
 }
