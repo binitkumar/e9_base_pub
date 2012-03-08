@@ -74,25 +74,8 @@ body.admin {
     }
   }
   
-  .pagination{
-      a{
-        //@include button;
-      }
-    }
-    .action-icons{
-      .delete{
-        background: image-url('buttons/uiIcons.png') no-repeat -32px -5px;
-        width: 20px; 
-        height: 15px;
-        display:block;
-        text-indent:-9999em;
-        &:hover{
-          background-position:-32px -24px;
-        }
-      }
-    }
   .admin-content-main{
-    h2, .h2{
+    h2, .h2 {
       border-bottom:theme-border-style();
     }
   }

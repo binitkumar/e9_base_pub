@@ -1,0 +1,50 @@
+$action-icon-width: 20px;
+$action-icon-height: 15px;
+$action-icon-sprite-map: image-url('buttons/uiIcons.png');
+
+@mixin action-icon-base(
+  $width:      $action-icon-width,
+  $height:     $action-icon-height,
+  $sprite-map: $action-icon-sprite-map
+) {
+  width: $width;
+  height: $height;
+  display: block;
+  text-indent: -9999em;
+  cursor: pointer;
+  background: $sprite-map no-repeat 9999em 9999em;
+  padding: 0;
+}
+
+@mixin action-icon-position(
+  $left, 
+  $top, 
+  $hover-top: false
+) {
+
+  $hover-top: if($hover-top, $hover-top, $top - $action-icon-height);
+  background-position: $left $top;
+  &:hover { 
+    background-position: $left $hover-top; 
+  }
+}
+
+@mixin action-icon-delete {
+  @include action-icon-base;
+  @include action-icon-position(-32px, -5px, -24px);
+}
+
+@mixin action-icon-x {
+  @include action-icon-base(8px, 8px);
+  @include action-icon-position(-225px, -10px, -10px);
+}
+
+@mixin action-icon-x2 {
+  @include action-icon-base(8px, 8px);
+  @include action-icon-position(-225px, -30px, -30px);
+}
+
+@mixin action-icon-sort {
+  @include action-icon-base(7px, 14px);
+  @include action-icon-position(-243px, -25px, -25px);
+}

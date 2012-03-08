@@ -1,4 +1,5 @@
 @import 'includes/common';
+@import 'includes/action_icons';
 @import 'compass/css3/inline-block';
 
 fieldset ul.attachments {
@@ -31,19 +32,10 @@ ul.attachments {
     margin: 0 5px 5px 0;
 
     .delete-attachment {
-      display: block;
-      //width: 15px;
-      //height: 15px; 
+      @include action-icon-delete;
       position: absolute;
       top: 2px;
       right: 2px;
-      cursor: pointer;
-      text-indent: -999em;
-      //background-color: red;
-			background-position: -32px -192px;
-			width: 16px;
-			height: 16px;
-			/*background-image: stylesheet-url("ui-icons_cccccc_256x240.png");*/
     }
   }
 }

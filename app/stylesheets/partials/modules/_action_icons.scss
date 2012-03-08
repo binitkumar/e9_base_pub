@@ -1,0 +1,11 @@
+@import 'includes/action_icons';
+@import 'compass/css3/inline-block';
+
+.action-icons {
+  .delete { @include action-icon-delete; }
+}
+
+a.remove {
+  @include action-icon-delete;
+  @include inline-block;
+}
