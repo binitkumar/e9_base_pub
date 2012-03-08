@@ -1,6 +1,9 @@
 class ImageMount < ActiveRecord::Base
   CATCHALL_FALLBACK_URL = '/images/defaults/upload_image_thumb.png'
 
+  include Image::DimensionCaching
+  self.dimension_target = :processed_image
+
   serialize :instructions, Hash
 
   #
@@ -53,16 +56,14 @@ class ImageMount < ActiveRecord::Base
   # Delegations
   #
 
-  delegate :width, :height, :aspect_ratio, :portrait?, :landscape?, :depth, :number_of_colours, :format, :image?, 
+  # NOTE width/height are cached on the record and handled in the DimensionCaching module
+  delegate :aspect_ratio, :portrait?, :landscape?, :depth, :number_of_colours, :format, :image?, 
       :to => :processed_image, :allow_nil => true
 
   delegate :attachment, :to => :image, :allow_nil => true
 
   delegate :file_ext, :file_desc, :persisted?, :to => :image, :prefix => true, :allow_nil => true
 
-  # fall back to 0 for dimensions
-  def width() processed_image.try(:width) || 0 end
-  def height() processed_image.try(:height) || 0 end
 
   # fallback to the fallback_url for our url
   def url() processed_image.try(:url) || fallback_url end
@@ -103,10 +104,6 @@ class ImageMount < ActiveRecord::Base
     spec.try(:spec_dimensions) || Dimensions.new(self, 0, 0)
   end
 
-  def dimensions
-    [width, height]
-  end
-
   #
   # Callbacks
   #
@@ -117,7 +114,6 @@ class ImageMount < ActiveRecord::Base
 
   before_save :coerce_image_dimensions
   before_save :reset_versions, :if => 'image_id_changed?'
-
 
   #
   # Instance Methods
@@ -231,6 +227,10 @@ class ImageMount < ActiveRecord::Base
   end
 
   protected
+
+    def should_cache_dimensions?
+      !cached_dimensions? || image.nil? || self.instructions_changed? || self.image_id_changed? || image.should_cache_dimensions?
+    end
 
     def reset_versions
       versions.each do |version|

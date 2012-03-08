@@ -1,4 +1,6 @@
 class Banner < Renderable
+  CATCHALL_FALLBACK_URL = '/images/defaults/upload_image_thumb.png'
+
   include E9::ImageSpecification
   def spec_name() read_attribute(:spec_name).presence || name end
   def spec_width() width end
@@ -34,6 +36,9 @@ class Banner < Renderable
       :images => images.attached.as_json
     }
   end
+
+  def fallback_url() file.presence || CATCHALL_FALLBACK_URL end
+  def fallback_url=(url) self.file = url end
 
   protected
 

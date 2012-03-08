@@ -17,11 +17,6 @@ class Image < ActiveRecord::Base
   delegate :url, :aspect_ratio, :portrait?, :landscape?, :depth, :number_of_colours, :format, :image?, 
       :to => :attachment, :allow_nil => true
 
-  before_save :cache_dimensions, :if => 'attachment_uid_changed?'
-
-  def width() read_attribute(:width) || attachment.try(:width) || 0 end
-  def height() read_attribute(:height) || attachment.try(:height) || 0 end
-
   # Instructions are in the form:
   #
   #     {
@@ -38,9 +33,6 @@ class Image < ActiveRecord::Base
     end
   end
 
-  def dimensions
-    Dimensions.new(width, height)
-  end
 
   def as_json(options={})
     {
@@ -77,23 +69,56 @@ class Image < ActiveRecord::Base
     self.set_tag_list_on('images__h__', tags)
   end
 
-  protected
+  module DimensionCaching
+    extend ActiveSupport::Concern
+
+    included do
+      class_attribute :dimension_target
+      self.dimension_target = :attachment
+
+      before_save :cache_dimensions, :if => :should_cache_dimensions?
+    end
+
+    # fall back to 0 for dimensions
+    def width
+      read_attribute(:width) || _target_width
+    end
+
+    def height
+      read_attribute(:height) || _target_height
+    end
+
+    def dimensions
+      E9::ImageSpecification::Dimensions.new(self, width, height)
+    end
+
+    def should_cache_dimensions?
+      !cached_dimensions? || self.attachment_uid_changed?
+    end
+
+    def cached_dimensions?
+      [ read_attribute(:width), read_attribute(:height) ].all?
+    end
+
+    protected
+
+    def _target_width
+      send(dimension_target).try(:width) || 0
+    end
+
+    def _target_height
+      send(dimension_target).try(:height) || 0
+    end
 
     def cache_dimensions
-      self.width  = attachment.try(:width)
-      self.height = attachment.try(:height)
+      self.width, self.height = _target_width, _target_height
     end
 
-  class Dimensions < Array
-    def initialize(width, height)
-      super [width, height]
-    end
-
-    alias :width :first
-    alias :height :last
-
-    def to_s
-      "#{width}x#{height}"
+    def cache_dimensions!
+      cache_dimensions
+      save
     end
   end
+
+  include DimensionCaching
 end
