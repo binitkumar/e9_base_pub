@@ -13,7 +13,7 @@
 
 @mixin -knockoutBase($image) {
   display: block;
-	background: image_url($image, false, false) no-repeat top left;
+	background: image-url($image) no-repeat top left;
   width: image-width($image);
   text-indent: -999em;
 	&:focus { 

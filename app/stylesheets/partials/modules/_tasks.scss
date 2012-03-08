@@ -79,10 +79,10 @@ $task-due-future-color : lighten($task-overdue-color, 20%) !default;
     border-style: dashed;
     @include -note-border($theme-link-color); }
   .task {
-    .note-status { background: transparent url(images/unchecked.png) center center no-repeat; }
+    .note-status { background: transparent image-url("tasks/unchecked.png") center center no-repeat; }
     &.completed {
       @include -note-border(#666);
-      .note-status { background: transparent url(images/checked.png) center center no-repeat; } }
+      .note-status { background: transparent image-url("tasks/checked.png") center center no-repeat; } }
     &.overdue { @include -note-border($theme-alt-text-color); }
     &.today { @include -note-border(#000); }
     &.future { @include -note-border(#666); }

@@ -211,7 +211,7 @@ form#social-networking-form {
   //top: 50%
   //right: 5px
   //margin-top: -32px
-  //background: url(/images/colorbox/controls.png) top right no-repeat
+  //background: image_url(/images/colorbox/controls.png) top right no-repeat
   //width: 28px
   //height: 65px
   //text-indent: -9999px
@@ -221,7 +221,7 @@ form#social-networking-form {
 
 
 #cboxLoadingGraphic {
-  background: url(/images/spinner.gif) center center no-repeat; }
+  background: image-url("spinner.gif") center center no-repeat; }
 
 // effectively 30px
 #cboxClose {
@@ -229,7 +229,7 @@ form#social-networking-form {
   top: 7px;
   right: 7px;
   display: block;
-  background: url(/images/buttons/uiIcons.png) -32px -24px no-repeat;
+  background: image-url("buttons/uiIcons.png") -32px -24px no-repeat;
   width: 20px;
   height: 15px;
   text-indent: -999em;
@@ -244,7 +244,7 @@ form#social-networking-form {
   //top: 50%
   //left: 5px
   //margin-top: -32px
-  //background: url(/images/colorbox/controls.png) top left no-repeat
+  //background: image_url(/images/colorbox/controls.png) top left no-repeat
   //width: 28px
   //height: 65px
   //text-indent: -9999px

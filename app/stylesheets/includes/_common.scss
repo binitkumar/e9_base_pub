@@ -15,7 +15,7 @@
   @if (not $height) { $height: $width; }
   width: $width;
   height: $height;
-  background: url($image) no-repeat $left $top;
+  background: image-url($image) no-repeat $left $top;
   &:hover { 
     background-position: $left ($top + $height * -1);
   }

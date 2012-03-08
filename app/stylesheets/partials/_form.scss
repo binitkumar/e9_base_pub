@@ -95,7 +95,7 @@ label {
   }
   &.req, &.required { 
     padding-right: 9px; 
-    background: url(/images/star.png) no-repeat right top; 
+    background: image-url("star.png") no-repeat right top; 
   } 
 }
 .user_new{

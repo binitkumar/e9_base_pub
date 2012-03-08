@@ -81,7 +81,7 @@ body.admin {
     }
     .action-icons{
       .delete{
-        background:url('/images/buttons/uiIcons.png') no-repeat -32px -5px;
+        background: image-url('buttons/uiIcons.png') no-repeat -32px -5px;
         width: 20px; 
         height: 15px;
         display:block;
@@ -231,7 +231,7 @@ body.admin {
     }
   }
   .destroy-nested-association{
-    background: url("/images/buttons/uiIcons.png") repeat scroll -32px -5px transparent;
+    background: image-url("buttons/uiIcons.png") repeat scroll -32px -5px transparent;
     border: 0 none;
     height: 15px;
     padding: 0;
@@ -250,13 +250,13 @@ body.admin {
           }
         }
         .handle{
-          background:url("/images/buttons/uiIcons.png")-243px -26px;
+          background: image-url("buttons/uiIcons.png")-243px -26px;
           width: 7px; 
           height: 14px;
         }
         &.active{
           .activated{
-            background: url('/images/buttons/uiIcons.png') no-repeat -111px -6px;
+            background: image-url('buttons/uiIcons.png') no-repeat -111px -6px;
             width: 20px; 
             height: 15px;
           }
@@ -299,7 +299,7 @@ body.admin {
     ul{
       padding-left:0;
       .delete-tag{
-        background: url('/images/buttons/uiIcons.png') no-repeat -225px -10px; 
+        background: image-url('buttons/uiIcons.png') no-repeat -225px -10px; 
         display:block;
         width: 8px; 
         height: 8px;
@@ -329,7 +329,7 @@ body.admin {
       position:absolute;
       right:0;
       top:0;
-      background: url("/images/buttons/uiIcons.png") repeat scroll -32px -5px transparent;
+      background: image-url("buttons/uiIcons.png") repeat scroll -32px -5px transparent;
       border: 0 none;
       height: 15px;
       padding: 0;

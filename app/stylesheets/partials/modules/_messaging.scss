@@ -44,7 +44,7 @@ $flash_notice_color: #666 !default;
     margin: 0;
     padding: 10px 30px;
     width: inherit;
-    background: url(/images/buttons/messaging_close.png) no-repeat right center;
+    background: image-url("buttons/messaging_close.png") no-repeat right center;
     cursor: pointer; 
     &.alert {
       background-color: $flash_alert_bgcolor;

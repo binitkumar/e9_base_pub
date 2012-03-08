@@ -43,7 +43,7 @@ ul.attachments {
 			background-position: -32px -192px;
 			width: 16px;
 			height: 16px;
-			background-image: url(images/ui-icons_cccccc_256x240.png);
+			/*background-image: stylesheet-url("ui-icons_cccccc_256x240.png");*/
     }
   }
 }
@@ -69,11 +69,11 @@ ul.attachments {
   /**
    * individual styles for the different file types
    */
-  &.attachment-image { background:transparent url(images/icon_file.png) top left no-repeat; }
-  &.attachment-html { background:transparent url(images/icon_html.png) top left no-repeat; }
-  &.attachment-xls { background:transparent url(images/icon_xls.png) top left no-repeat; } 
-  &.attachment-doc { background:transparent url(images/icon_doc.png) top left no-repeat; } 
-  &.attachment-ppt { background:transparent url(images/icon_ppt.png) top left no-repeat; }
-  &.attachment-file { background:transparent url(images/icon_file.png) top left no-repeat; }
-  &.attachment-pdf { background:transparent url(images/icon_pdf.png) top left no-repeat; }
+  &.attachment-image { background:transparent image_url("attachments/icon_file.png") top left no-repeat; }
+  &.attachment-html { background:transparent image_url("attachments/icon_html.png") top left no-repeat; }
+  &.attachment-xls { background:transparent image_url("attachments/icon_xls.png") top left no-repeat; } 
+  &.attachment-doc { background:transparent image_url("attachments/icon_doc.png") top left no-repeat; } 
+  &.attachment-ppt { background:transparent image_url("attachments/icon_ppt.png") top left no-repeat; }
+  &.attachment-file { background:transparent image_url("attachments/icon_file.png") top left no-repeat; }
+  &.attachment-pdf { background:transparent image_url("attachments/icon_pdf.png") top left no-repeat; }
 }
