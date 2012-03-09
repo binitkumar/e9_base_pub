@@ -202,26 +202,6 @@ body.admin {
       }
     }
   }
-  .nested-associations{
-    position:relative;
-    .add-nested-association{
-      clear: both;
-      float: left;
-      margin-left: 0;
-    }
-    textarea{
-      margin-bottom:1em;
-    }
-  }
-  .destroy-nested-association{
-    background: image-url("buttons/uiIcons.png") repeat scroll -32px -5px transparent;
-    border: 0 none;
-    height: 15px;
-    padding: 0;
-    right: 0px;
-    top: -1px;
-    width: 20px;
-  }
   #records_table{
     table{
       tr{

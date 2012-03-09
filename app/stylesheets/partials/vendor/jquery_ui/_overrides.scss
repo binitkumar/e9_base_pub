@@ -131,18 +131,18 @@ body.admin{
       border:none;
     }
   }
-  .ui-state-default{
-    background-color:$theme-alt-text-color;
-    color:$theme-background-color;
-    border:theme-border-style();
-    text-indent:0;
-    .remove {
-      @include action-icon-delete;
-      float: right;
-      margin-right: 4px;
-      margin-top: -4px;
-    }
-  }
+  /*.ui-state-default{*/
+    /*background-color:$theme-alt-text-color;*/
+    /*color:$theme-background-color;*/
+    /*border:theme-border-style();*/
+    /*text-indent:0;*/
+    /*.remove {*/
+      /*@include action-icon-delete;*/
+      /*float: right;*/
+      /*margin-right: 4px;*/
+      /*margin-top: -4px;*/
+    /*}*/
+  /*}*/
   .advanced-settings{
     .ui-state-default{
       width:295px;
@@ -163,13 +163,6 @@ body.admin{
         top: 15px;
       }
     }
-  }
-}
-
-.nested-association{
-  .destroy-nested-association.button{
-    @include action-icon-delete;
-    top: 3px;
   }
 }
 

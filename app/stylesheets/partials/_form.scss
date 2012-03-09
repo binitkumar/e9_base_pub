@@ -2,7 +2,7 @@ $textarea-height  :       250px !default;
 $textarea-width   :       245px !default;
 $input-width      :       245px !default;
 $input-padding    :         7px !default;
-$input-margin     :     0.5em 0 !default;
+$input-margin     :   0 0 0.5em !default;
 $fieldset-margin  : 0 0 1.5em 0 !default;
 $fieldset-padding :       1.4em !default;
 
@@ -29,7 +29,10 @@ label, legend {
 fieldset { 
   padding: $fieldset-padding;
   margin: $fieldset-margin;
-  clear:both;
+  clear: both;
+  fieldset {
+    margin-bottom: 0.5em;
+  }
 }
 
 input {
@@ -208,61 +211,4 @@ label {
   .actions{
     margin-right:25px;
   }
-}
-#event_transaction_form{
-  .nested-association{
-    .ui-button-text{
-      padding:0;
-    }
-  }
-}
-.edit_user{
-  .record-attribute{
-    border:theme-border-style();
-    width:390px;
-    position:relative;
-    margin-bottom:10px;
-  }
-  .nested-association{
-    .field{
-      input{
-        float:left;
-      }
-    }
-  }
-  .field{
-    width:480px;
-    label{
-      display:inline-block;
-      float:left;
-      padding-left:0;
-      margin-left:0;
-    }
-    .image-mount{
-      clear:left;
-    }
-    input{
-      float:left;
-      width:315px;
-      clear:both;
-    }
-  }
-  fieldset{
-    textarea{
-      width:90%;
-    }
-    .field{
-      width:550px;
-      label{
-        width:440px;
-        margin-left:0;
-      }
-    }
-  }
-  #user_avatar_field{
-    .field{
-      width:550px;
-    }
-    
-  } 
 }

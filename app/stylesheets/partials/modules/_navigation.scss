@@ -1,20 +1,21 @@
 @import "includes/theming";
 @import "includes/typography";
+
+$sidebar-border: 1px solid $theme-border-color; 
+
 .sideBar{
-  border-top:none;
   .menu{
     li{
       display:block;
-      &.active > a{
+      &.active > a {
         font-weight:bold;
-        border-bottom:1px solid $theme-border-color;
       }
-      a{
+      a {
         font-size:16px;
         display:block;
         padding-top:10px;
         padding-bottom:10px;
-        border-bottom:1px solid $theme-border-color;
+        border: none;
         color:#000;
         &:hover{
           color:$theme-link-hover-color;
@@ -26,23 +27,22 @@
           a{
             font-weight:bold;
             padding-left:15px;
+            border-top: $sidebar-border;
           }
           ul{
             li{
               a{
-                font-weight:normal;
-                font-family:arial;
-                font-size:16px;
-                padding-left:25px;
-                border-top:none;
-                border-bottom:1px solid $theme-border-color; 
+                font-weight: normal;
+                font-family: arial;
+                font-size: 16px;
+                padding-left: 25px;
               }
             }
           }
         }
       }
     }
-    .current >a{
+    .current > a{
       font-weight:bold;
       color:$theme-alt-text-color;
     }

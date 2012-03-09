@@ -1,11 +1,13 @@
 .email-wrapper
   %fieldset.nested-associations
-    %legend= f.label(:users)
-    .field.checkbox
+    .field.checkbox.ok-to-email
       = f.label :ok_to_email
       = f.check_box :ok_to_email
+
+    %legend= f.label(:users)
     = render_record_attribute_association(:users, f)
     = link_to_add_record_attribute(:users)
+
 
 %fieldset.contact-standard-fields
   %legend= e9_t(:form_legend_standard)

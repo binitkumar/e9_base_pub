@@ -4,7 +4,7 @@
     - if resource.persisted?
       .attachment-thumb
         - target = resource.attachment && resource.attachment.thumb('100x100#') || resource 
-        = image_tag target.url, :alt => resource.attachment_name
+        = image_tag target.url, :alt => resource.attachment_name, :height => target.height, :width => target.width
       .attachment-name
         = resource.attachment_name
       .attachment-dimensions

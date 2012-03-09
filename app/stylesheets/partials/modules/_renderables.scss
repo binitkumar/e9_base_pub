@@ -2,36 +2,40 @@
 @import 'includes/typography';
 @import 'includes/colors';
 
+#user_submit {
+  float: left;
+}
+
+
 /**
  * Most sidebar renderables have automatic bottom borders,
  * with padding to match the margin;
  */
 $renderable-bottom-margin: .4em !default;
-#content-main{
+#content-main {
   .content-body{
     margin-top:1em;
   }
   .actions, .action-links {
-      a{
-        float: right;
-        font-size:14px;
-        color:$theme-link-hover-color;
-        text-decoration:underline;
-        cursor:pointer;
-        font-weight:bold;
-        &:hover{
-          color:$theme-link-color;
-        }
+    a {
+      float: left;
+      line-height: 32px;
+      margin-left: 10px;
+      font-size: 14px;
+      color: $theme-link-hover-color;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+      &:hover {
+        color: $theme-link-color;
       }
     }
+  }
 }
 #left, #right {
   
   .left.image img{
     width:100px;
-  }
-  .forum-menu{
-    margin-bottom:10px;
   }
 
   blockquote {
@@ -59,9 +63,7 @@ $renderable-bottom-margin: .4em !default;
   }
 
   /* ensure clearfix for quickedit */
-  .renderable, .region ,.renderable-body {
-    @include pie-clearfix;
-
+  .renderable, .region, .renderable-body {
     &, > * {
       @include pie-clearfix;
     }
@@ -74,10 +76,10 @@ $renderable-bottom-margin: .4em !default;
   .renderable-body{
     .image{
       a{
-        img{
+        img {
           border:1px solid #ccc;
         }
-        img:hover{
+        img:hover {
           border:1px solid $theme-alt-text-color;
         }
       }
@@ -135,10 +137,6 @@ $renderable-bottom-margin: .4em !default;
     border-bottom: theme-border-style();
     margin-bottom:20px;
     padding-bottom:12px;
-
-    .blog-menu{
-      margin-bottom:1em;
-    }
 
     &:first-child {
       margin-top:0 !important;

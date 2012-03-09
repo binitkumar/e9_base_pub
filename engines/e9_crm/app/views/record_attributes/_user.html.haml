@@ -18,11 +18,11 @@
     - if f.object.persisted?
       = f.hidden_field :id
       = f.hidden_field :_destroy, :value => 0
-      .field.contact-email
+      .field.primary
         <input type="hidden" value="#{f.object.email}"/>
         = f.object.email
     - else
-      .field.contact-email
+      .field.primary
         = f.text_field :email
   
     - if (types = User.email_types).present?

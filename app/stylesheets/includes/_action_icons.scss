@@ -14,6 +14,7 @@ $action-icon-sprite-map: image-url('buttons/uiIcons.png');
   cursor: pointer;
   background: $sprite-map no-repeat 9999em 9999em;
   padding: 0;
+  border: none;
 }
 
 @mixin action-icon-position(
