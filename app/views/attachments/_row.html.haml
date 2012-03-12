@@ -12,6 +12,7 @@
   - resource.file_tags.each do |tag|
     = link_to tag, attachments_path(:tagged => [tag])
 %td.actions
-  = link_to "Copy URL to Clipboard", Linkable.urlify_path(resource.file_url), :class => 'clipboard'
-  = link_to_edit_resource('Edit Tags', resource, :rel => 'popup')
-  = link_to_destroy_resource(resource)
+  = tool_buttons do
+    = link_to "Copy URL to Clipboard", Linkable.urlify_path(resource.file_url), :class => 'clipboard'
+    = link_to_edit_resource('Edit Tags', resource, :rel => 'popup')
+    = link_to_destroy_resource(resource)

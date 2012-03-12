@@ -22,7 +22,8 @@
             %td.txt= record.name
             %td.actions
               - if e9_user?
-                = edit_admin_resource_link(record)
-                = destroy_admin_resource_link(record)
+                = tool_buttons do
+                  = edit_admin_resource_link(record)
+                  = destroy_admin_resource_link(record)
   .warning
     = e9_t(:share_sites_limit_warning, :limit => E9::Config[:maximum_share_site_count])

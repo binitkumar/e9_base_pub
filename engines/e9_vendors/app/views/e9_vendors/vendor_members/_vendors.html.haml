@@ -20,5 +20,6 @@
         %td= record.discount_percentage
         %td= record.sales_contact
         %td.actions
-          = vendor_landing_page_link(record)
-          = edit_admin_resource_link(record)
+          = tool_buttons do
+            = vendor_landing_page_link(record)
+            = edit_admin_resource_link(record)

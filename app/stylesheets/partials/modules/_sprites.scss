@@ -14,6 +14,7 @@
 .icon-permalink { @extend .sprite; @extend .common-sprite; @include common-sprite(link); }
 .icon-favorite { @extend .sprite; @extend .common-sprite; @include common-sprite(favorite); }
 .icon-unfavorite { @extend .sprite; @extend .common-sprite; @include common-sprite(unfavorite); }
+.icon-tools { @extend .sprite; @extend .common-sprite; @include common-sprite(tools); }
 a.help { @extend .sprite; @extend .common-sprite; @include common-sprite(info); }
 
 .share-site a {

@@ -16,5 +16,6 @@
         %td.txt
           = record.vendor_categories.order(:name).map(&:name).join(", ").html_safe
         %td.actions
-          = link_to_edit_resource(record)
-          = link_to_destroy_resource(record)
+          = tool_buttons do
+            = link_to_edit_resource(record)
+            = link_to_destroy_resource(record)

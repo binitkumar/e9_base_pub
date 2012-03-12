@@ -20,5 +20,6 @@
             = record.repeat_visits.to_i
           %td.actions
             - if record.contact_id
-              = link_to "View Contact", contact_url(record.contact_id)
-              = link_to "View Contact's Page Views", page_views_url(:contact => record.contact_id, :campaign => parent.id)
+              = tool_buttons do
+                = link_to "View Contact", contact_url(record.contact_id)
+                = link_to "View Contact's Page Views", page_views_url(:contact => record.contact_id, :campaign => parent.id)

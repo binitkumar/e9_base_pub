@@ -19,9 +19,10 @@
           %td.txt= record.email
           %td.txt= resource_class.human_attribute_name("role_#{record.role}")
           %td.actions
-            = link_to_new_window('View', record) if record.profiled?
-            = link_to e9_t(:view_all_comments_link), admin_user_comments_path(record) unless record.prospect?
-            = edit_admin_resource_link(record)
-            = destroy_admin_resource_link(record)
+            = tool_buttons do
+              = link_to_new_window('View', record) if record.profiled?
+              = link_to e9_t(:view_all_comments_link), admin_user_comments_path(record) unless record.prospect?
+              = edit_admin_resource_link(record)
+              = destroy_admin_resource_link(record)
 
 = will_paginate(collection)

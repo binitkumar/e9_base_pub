@@ -99,6 +99,13 @@ module AdminHelper
     content_tag(:div, content, :class => css_class)
   end
 
+  def tool_buttons(&block)
+    ''.html_safe.tap do |html|
+      html << content_tag(:span, t(:tool_button), :class => 'tool-button icon-tools', :rel => 'tooltip')
+      html << content_tag(:div, with_output_buffer(&block), :class => 'tooltip tool-buttons')
+    end
+  end
+
   def ordered_on_link(klass, column_name, override_name = nil)
     if respond_to?(:orderable_column_link)
       orderable_column_link(column_name, override_name)

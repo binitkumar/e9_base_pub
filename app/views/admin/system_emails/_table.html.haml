@@ -12,7 +12,8 @@
         %tr{:id => "ids_#{resource.id}", :class => cycle('odd', 'even')}
           %td.txt= resource.name
           %td.actions
-            = send_test_email_link(resource)
-            = edit_admin_resource_link(resource)
+            = tool_buttons do
+              = send_test_email_link(resource)
+              = edit_admin_resource_link(resource)
 
 = will_paginate collection

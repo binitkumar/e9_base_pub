@@ -16,10 +16,11 @@
               .handle +++
             %td.txt= record.title
             %td.actions
-              = link_to e9_t(:slides_link), admin_slideshow_slides_path(record)
-              = edit_admin_resource_link(record)
-              = preview_page_link(record)
-              = social_feed_link(record)
-              = destroy_admin_resource_link(record)
+              = tool_buttons do
+                = link_to e9_t(:slides_link), admin_slideshow_slides_path(record)
+                = edit_admin_resource_link(record)
+                = preview_page_link(record)
+                = social_feed_link(record)
+                = destroy_admin_resource_link(record)
 
 = will_paginate(collection)

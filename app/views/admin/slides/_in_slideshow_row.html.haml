@@ -5,6 +5,7 @@
 %td.txt= role_text(record)
 %td.txt= published_status_text(record)
 %td.actions
-  = content_publish_link(parent, record)
-  = edit_admin_resource_link(record, :scopes => parent)
-  = remove_slide_from_slideshow_link(parent, record)
+  = tool_buttons do
+    = content_publish_link(parent, record)
+    = edit_admin_resource_link(record, :scopes => parent)
+    = remove_slide_from_slideshow_link(parent, record)

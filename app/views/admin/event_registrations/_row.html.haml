@@ -24,6 +24,7 @@
   = link_to 'Edit', edit_voucher_admin_event_event_registration_path(parent, resource), :rel => 'popup'
 %td= resource.paid.format
 %td.actions
-  = link_to_resource(resource.contact)
-  = link_to 'Transfer', transfer_admin_event_event_registration_path(parent, resource), :rel => 'popup'
-  = link_to resource_humanize(resource.cancelled ? :uncancel : :cancel), admin_event_event_registration_path(parent, resource, { :event_registration => { :cancelled => !resource.cancelled } }), :method => :put, :remote => :true
+  = tool_buttons do
+    = link_to_resource(resource.contact)
+    = link_to 'Transfer', transfer_admin_event_event_registration_path(parent, resource), :rel => 'popup'
+    = link_to resource_humanize(resource.cancelled ? :uncancel : :cancel), admin_event_event_registration_path(parent, resource, { :event_registration => { :cancelled => !resource.cancelled } }), :method => :put, :remote => :true

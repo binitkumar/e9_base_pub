@@ -20,5 +20,6 @@
             %td{:class => "record-#{key.to_s.dasherize}"}
               = value.respond_to?(:call) ? value.call(record) : record.send(key)
           %td.actions
-            = link_to_edit_resource(record)
-            = link_to_destroy_resource(record)
+            = tool_buttons do
+              = link_to_edit_resource(record)
+              = link_to_destroy_resource(record)

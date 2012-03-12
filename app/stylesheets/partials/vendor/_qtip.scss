@@ -3,7 +3,7 @@
 @import 'includes/colors';
 @import 'includes/lists';
 
-$tooltip-border: $theme-border-style !default;
+$tooltip-border: theme-border-style() !default;
 $tooltip-permalink-width: 300px !default;
 $tooltip-permalink-padding: 3px !default;
 $tooltip-icon-color: #666 !default;
@@ -77,6 +77,7 @@ $tooltip-icon-background-color: #fff !default;
   overflow-y: auto;
   word-wrap: break-word;
   border: $tooltip-border;
+  background: $theme-background-color;
 }
 
 .ui-tooltip-titlebar {

@@ -132,6 +132,15 @@
         }));
       });
 
+      $('.tool-button[rel=tooltip]').each(function(i, el) {
+        tooltips(el, $.extend({}, help_options, {
+          style: { tip: { corner: false } },
+          position: { my: 'top left', at: 'top right' },
+          hide: { fixed: true, delay: 75 },
+          show: { delay: 15, solo: true }
+        }));
+      });
+
       $('img[title]').qtip(image_options);
 
       $('.img[rel=tooltip]').each(function() {

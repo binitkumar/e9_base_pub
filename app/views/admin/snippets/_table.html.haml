@@ -12,9 +12,10 @@
       %tr{:id => "ids_#{resource.id}", :class => cycle('odd', 'even')}
         %td.txt= resource.name
         %td.actions
-          = revert_snippet_link(resource) if resource.revert_template?
-          = edit_admin_resource_link(resource)
-          = new_admin_resource_link(resource_class, :text => I18n.t(:copy), :path_args => { :id => resource.id })
-          = destroy_admin_resource_link(resource)
+          = tool_buttons do
+            = revert_snippet_link(resource) if resource.revert_template?
+            = edit_admin_resource_link(resource)
+            = new_admin_resource_link(resource_class, :text => I18n.t(:copy), :path_args => { :id => resource.id })
+            = destroy_admin_resource_link(resource)
 
 = will_paginate collection

@@ -12,7 +12,8 @@
 
   - unless params[:print]
     %td.actions
-      - if record.deal.blank? || record.deal.status == 'won'
-        = link_to_edit_resource(record, :rel => :popup) 
-      - unless record.deal.present?
-        = link_to_destroy_resource(record, :remote => true)
+      = tool_buttons do
+        - if record.deal.blank? || record.deal.status == 'won'
+          = link_to_edit_resource(record, :rel => :popup) 
+        - unless record.deal.present?
+          = link_to_destroy_resource(record, :remote => true)

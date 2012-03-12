@@ -21,7 +21,8 @@
     .tooltip
       = k resource.info
 %td.actions
-  - if resource.contacts.present?
-    = link_to 'View Contact', contact
-  = link_to_edit_resource('Create Deal', resource, :convert => true)
-  = link_to 'Delete Lead', resource, :method => :delete, :remote => true, :confirm => I18n.t("#{resource_class.i18n_scope}.links.confirm_destroy")
+  = tool_buttons do
+    - if resource.contacts.present?
+      = link_to 'View Contact', contact
+    = link_to_edit_resource('Create Deal', resource, :convert => true)
+    = link_to 'Delete Lead', resource, :method => :delete, :remote => true, :confirm => I18n.t("#{resource_class.i18n_scope}.links.confirm_destroy")
