@@ -1,5 +1,4 @@
 @import "compass/utilities/general/clearfix";
-@import "compass/utilities/general/min";
 @import "compass/css3/inline-block";
 
 $fat-nav-columns: 6;
@@ -19,7 +18,7 @@ $fat-nav-padding: 5px;
 ) {
   $col-width: floor($blueprint-container-size / $columns);
   a {
-    @include min-width($col-width);
+    width: $col-width;
     padding: 16px 0;
   }
 
@@ -46,7 +45,6 @@ $fat-nav-padding: 5px;
     display: list-item;
 
     ul {
-      width:104px;
       margin-top:1em;
       min-height:250px;
       
