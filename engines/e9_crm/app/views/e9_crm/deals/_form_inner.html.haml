@@ -30,7 +30,7 @@
     %input.contact-autocomplete.list{:type => 'text', 'data-values' => resource.contact_ids.join(','), 'data-iname' => resource_instance_name, 'data-field' => '[contact_ids]'}
     %ul.select
       - resource.contacts.each do |contact|
-        %li.ui-state-default
+        %li
           %span.content= contact.label
           %input{:type => :hidden, :name => "#{resource_instance_name}[contact_ids][]", :value => contact.id}
           %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove

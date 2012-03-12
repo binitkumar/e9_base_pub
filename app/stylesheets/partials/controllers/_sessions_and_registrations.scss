@@ -1,10 +1,14 @@
 body.controller-sessions, body.controller-registrations {
+  form .actions > * {
+    margin-right: 10px;
+  }
+
   #sign_in_form {
     margin-bottom: 2.25em;
   }
+
+  /* honeypot */
   #sign_up_form {
-    .field.email {
-      display: none;
-    }
+    .field.email { display: none; }
   }
 }

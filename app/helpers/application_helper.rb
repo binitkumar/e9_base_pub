@@ -74,8 +74,17 @@ module ApplicationHelper
     params.except(:action, :controller)
   end
   
-  def spinner
-    image_tag('spinner.gif', :alt => "Loading!", :class => "spinner", :style => "display: none")
+  def spinner(options = {})
+    options.symbolize_keys!
+
+    tag_options = { :alt => 'Loading!', :class => 'spinner' }
+
+    if options[:site]
+      tag_options[:style] = 'display: none'
+      tag_options[:id]    = 'spinner'
+    end
+
+    image_tag 'spinner.gif', tag_options
   end
 
   def session_key_hash
@@ -188,7 +197,7 @@ module ApplicationHelper
       options[:class] = [options[:class], 'title'].compact.join(' ')
       options[:class].concat(' error') if options[:error]
 
-      options[:insert] = [options[:insert], spinner].join(' ').html_safe
+      options[:insert] = [options[:insert], spinner(:site => true)].join(' ').html_safe
 
       unless options[:hide_title]
         content = sanitize(_resolve_title_segment(args.first))

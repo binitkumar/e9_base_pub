@@ -42,13 +42,8 @@
   $(document).ajaxComplete(_f);
 
   $(document)
-    .ajaxStart(function() { $('#spinner, .spinner').show() })
-    .ajaxStop(function() { $('#spinner, .spinner').hide() })
-  ;
-
-  $('#spinner, .spinner')
-    .live('ajaxStart', function(){ $(this).show() })
-    .live('ajaxStop', function(){ $(this).hide() })
+    .ajaxStart(function() { $('#spinner').show() })
+    .ajaxStop(function() { $('#spinner').hide() })
   ;
 
   /* Open links with "external" rel in new windows */

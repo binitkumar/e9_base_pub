@@ -15,5 +15,4 @@
         = render(:partial => PollAnswer.model_name.partial_path, :collection => poll.poll_answers, :locals => { :f => f })
         .actions
           = f.submit t(:submit_answer, :scope => :e9_polls)
-
-      = poll_results_link(poll)
+          = poll_results_link(poll)

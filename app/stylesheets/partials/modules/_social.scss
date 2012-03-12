@@ -46,123 +46,84 @@ a.social-link {
   textarea { height: 140px; }
 }
 
+.admin-sidebar-right .social-feed {
+  width: 100%;
+  float: none;
+
+  .feed-description {
+    display: none;
+  }
+}
 .social-feed {
-  	@include spaceless;
-	  color: #000;
-	  float: left;
-	  width: 49%;
-	  border-left: none;
+  @include spaceless;
+  float: left;
+  width: 49%;
+  border-left: none;
 
   .social-feed-title {
     padding: 5px 10px;
     border-bottom: 1px solid #cccccc;
     @extend .site-sans;
     font-weight: bold; 
-   }
+  }
 
-  .pagination { text-align: center; }
+  .pagination {
+    text-align: center; 
+  }
 
   .feed {
     padding: 10px;
+    @include small;
+
+    .feed-avatar, .inner {
+      float: left;
+    }
+
+    .feed-status {
+      color: $theme-alt-text-color;
+    }
+
+    .inner {
+      width: auto;
+      div {
+        margin-bottom: 0.33em;
+      }
+    }
+
+    .feed-name {
+      display: none;
+    }
+
+    .feed-time, .feed-caption {
+      font-style: italic; 
+    }
+
     .feed-item {
-      display: block;
-      position: relative;
       @include clearfix;
-      margin-bottom: 1.5em;
-      .feed-time {
-        @extend .small-sans;
-        font-style: italic; }
-      .feed-status {
-        @extend .small-sans; }
-      .feed-caption {
-        @extend .small-sans;
-        font-style: italic;
-        margin-bottom: 0; }
-      .inner {
-        width: 355px;
-        float: left;
-        overflow: hidden; }
-      .action-icons {
+      position: relative;
+      margin-bottom: 1.2em;
+
+      $avatar-width: 50px;
+      $button-width: 20px;
+      $padding: 5px;
+
+      padding-left: $avatar-width + $padding;
+      padding-right: $button-width + $padding;
+
+      .feed-avatar, .action-icons {
         position: absolute;
         top: 0;
-        right: 0;
-
-        a {
-          //@extend .icon-delete;
-           } } }
-
-    .feed-item.fb-post {
-      .feed-from {
-        margin-right: 5px; }
-      .feed-avatar {
-        float: left;
-        width: 50px;
-        height: 100%;
-        margin-right: 10px; }
-      .feed-from {
-        font-weight: bold;
-        float: left; }
-      .feed-picture {
-        img {
-          margin-right: 10px; } }
-      .feed-body {
-        > div {
-          padding-bottom: 0.5em; } } }
-    .feed-item.tw-status {
-      .inner {
-        > div {
-          padding-bottom: 0.5em; 
-          width: 370px;
-        } 
-        > div.action-icons {
-          width: auto;
-        }
       }
+
       .feed-avatar {
-        float: left;
-        width: 50px;
-        height: 100%;
-        margin-right: 10px; }
-      .feed-from {
-        @include clearfix;
-        .feed-screen-name {
-          float: left;
-          font-weight: bold;
-          margin-right: 5px; 
-        }
-      } 
-    } 
+        &, img { width: $avatar-width }
+        left: 0;
+      }
+
+      .action-icons {
+        position: absolute;
+        right: 0;
+      }
+    }
   } 
-}
-
-html body.admin .admin-sidebar-right .social-feed{
-	width: 100% !important;
-}
-
-html body.admin .admin-sidebar-right{
-			  
-		
-		.social-feed .feed .feed-item .inner {
-		width: 180px !important;
-		float: left;
-		overflow: hidden;
-		
-			&> div{
-				padding-bottom: 0.5em;
-				width: 180px !important;
-				line-height: 1.2em;
-			}
-		}	
-		
-		table.plain, table.plain th, table.plain tr, table.plain td {
-			border:0;
-			border-style:none;
-		}
-		
-}
-
-html body.controller-admin-social-feeds{
-	table td, table td.field{
-		font-size:medium;
-	}
 }

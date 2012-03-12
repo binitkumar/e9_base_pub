@@ -3,9 +3,10 @@
 - field_id              = "image-mount-#{index}"
 - fld_args              = {:id => field_id, :'data-index' => index}
 - fld_args['data-tags'] = resource.default_image_tags.join('|') if admin?
+- fld_args['class']     = "image-mount field #{resource.new_record? ? 'un' : ''}saved #{!resource.attached? ? 'un' : ''}attached"
 - f                     = local_assigns[:f]
 
-.image-mount.field{fld_args}
+%div{fld_args}
   -# for new records we append the nested_attribute fields to the form
   - if f && resource.new_record?
     = f.fields_for(resource.mounted_association) do |mf|

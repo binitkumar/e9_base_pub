@@ -17,7 +17,7 @@
         %input.tag-autocomplete.list{:type => 'text', 'data-iname' => 'attachment', 'data-field' => '[tagged]', :placeholder => t(:tag_search_placeholder)}
         %ul.tag-select.select
           - tags.each do |tag|
-            %li.ui-state-default
+            %li
               %span.content= tag
               %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
       .field.untagged.checkbox

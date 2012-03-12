@@ -5,7 +5,12 @@
   .delete { @include action-icon-delete; }
 }
 
-a.remove {
+a.remove, a.remove-node {
   @include action-icon-delete;
+  @include inline-block;
+}
+
+.handle {
+  @include action-icon-sort;
   @include inline-block;
 }

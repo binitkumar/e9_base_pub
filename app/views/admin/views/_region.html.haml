@@ -5,9 +5,9 @@
   - select_id = "region_#{f.object.object_id}_renderable_id"
   = label_tag select_id, f.object.name.titleize
   = select_tag select_id, renderables_for_region_select_options(f.object), :name => nil, :class => "node-selector"
-  %ul.nodes.ui-sortable
+  %ul.nodes.select
     - unless f.object.nodes.empty?
       - f.object.nodes.each do |node|
-        %li.ui-state-default
+        %li
           = f.fields_for :nodes, node do |nf|; node.id = nil
             = render 'admin/views/node', :f => nf

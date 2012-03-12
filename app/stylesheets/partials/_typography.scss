@@ -58,3 +58,20 @@ ul.menu,
     @include blank-list;
   }
 }
+
+.actions > * {
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, .header {
+  .text {
+    float: left;
+  }
+  .actions {
+    float: right;
+    > * {
+      display: inline;
+      float: none;
+    }
+  }
+}

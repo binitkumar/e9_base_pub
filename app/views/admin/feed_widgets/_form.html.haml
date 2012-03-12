@@ -28,7 +28,7 @@
           = widget_specific_content_select
           %ul.select
             - resource.contents.each do |o|
-              %li.ui-state-default
+              %li
                 %span.content= widget_select_option_text(o)
                 %input{:type => :hidden, :name => "feed_widget[options][content_id][]", :value => o.id}
                   %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
@@ -38,7 +38,7 @@
           = widget_blog_select
           %ul.select
             - resource.blogs.each do |o|
-              %li.ui-state-default
+              %li
                 %span.content= widget_select_option_text(o)
                 %input{:type => :hidden, :name => "feed_widget[options][blog_id][]", :value => o.id}
                   %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
@@ -53,7 +53,7 @@
           = widget_forum_select
           %ul.select
             - resource.forums.each do |o|
-              %li.ui-state-default
+              %li
                 %span.content= widget_select_option_text(o)
                 %input{:type => :hidden, :name => "feed_widget[options][forum_id][]", :value => o.id}
                   %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
@@ -63,7 +63,7 @@
           = widget_slideshow_select
           %ul.select
             - resource.slideshows.each do |o|
-              %li.ui-state-default
+              %li
                 %span.content= widget_select_option_text(o)
                 %input{:type => :hidden, :name => "feed_widget[options][slideshow_id][]", :value => o.id}
                   %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove
