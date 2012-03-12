@@ -16,13 +16,14 @@ $fat-nav-padding: 5px;
   $columns: $fat-nav-columns, 
   $padding: $fat-nav-padding
 ) {
-  $col-width: floor($blueprint-container-size / $columns);
+  $col-width: floor($blueprint-container-size / $columns) - 2 * $padding;
+
   a {
     width: $col-width;
-    padding: 16px 0;
+    padding: 16px $padding;
   }
 
-  li ul li a {
+  ul li a {
     padding: 0 $padding 10px $padding;
   }
 }
