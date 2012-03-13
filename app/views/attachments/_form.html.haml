@@ -5,7 +5,7 @@
       .attachment-thumb
         = content_tag :div, :title => resource.file_name, :class => "attachment-icon attachment-#{resource.file_type}" do
           - if resource.has_thumb?
-            = image_tag resource.thumb.url, :height => resource.height, :width => resource.width
+            = image_tag resource.thumb.url, :height => 72, :width => 72
           - else
             = resource.file_name
       .attachment-name
