@@ -225,6 +225,10 @@ unless ''.respond_to?(:humanize_without_titleize)
   end
 end
 
+# This is a little hook to get an array of the rendered templates in a view.
+# The purpose is to be able to inspect `rendered_templates` and find the first
+# template rendered, which in our case is used to add a class to the body, e.g.
+# 'template-index', 'template-show', etc.
 module ActionView::Rendering 
   alias_method :_render_template_original, :_render_template
   def _render_template(*args)
@@ -234,5 +238,35 @@ module ActionView::Rendering
 
   def rendered_templates
     @_rendered_templates ||= []
+  end
+end
+
+
+require 'rush'
+
+# This dirty hack is thanks to the Rush gem which Heroku includes, which
+# mixes in a bunch of methods into Array, short circuiting 
+# ActiveRecord::Relation's method_missing lookup for both scopes and class
+# methods.
+class ActiveRecord::Relation
+  RUSH_METHODS = Array.included_modules.
+                    select {|mod| mod.to_s =~ /^Rush/ }.
+                    map {|mod| mod.instance_methods }.
+                    flatten.freeze
+
+  protected
+
+  def method_missing(method, *args, &block)
+    if !RUSH_METHODS.member?(method) && Array.method_defined?(method)
+      to_a.send(method, *args, &block)
+    elsif @klass.scopes[method]
+      merge(@klass.send(method, *args, &block))
+    elsif @klass.respond_to?(method)
+      scoping { @klass.send(method, *args, &block) }
+    elsif arel.respond_to?(method)
+      arel.send(method, *args, &block)
+    else
+      super
+    end
   end
 end
