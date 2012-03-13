@@ -25,6 +25,9 @@
 
 - content_for :toolbar_right do
   = toolbar_actions do
-    = image_mount_field(ImageMount.new, :upload_only => true, :hide_select => true)
+    = image_mount_field(ImageMount.new, :upload_only => true, :hide_select => true, :queue_id => 'file-upload-queue')
+
+  = toolbar_forms do
+    .upload-queue{:id => "file-upload-queue"}
 
 = render 'shared/admin/index', :collection => collection
