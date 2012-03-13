@@ -36,9 +36,7 @@
 
 <%= render :partial => 'profiles/mailing_lists', :locals => { :user => f.object, :f => f } %>
 
-<div class="field recaptcha">
-  <%= raw recaptcha_tag(:registrations, :challenge) %>
-</div>
+<%= checkbox_captcha(f.object) %>
 
 <div class="actions">
   <%= f.submit "Sign up" %>

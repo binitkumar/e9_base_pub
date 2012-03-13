@@ -59,7 +59,13 @@
 
     help_defaults = {
       position: { my: 'top left', at: 'top right' },
-      hide: false
+      show: { event: 'click', solo: true },
+      hide: false,
+      events: {
+        show: function(e, api) {
+          e.originalEvent.preventDefault();
+        }
+      }
     },
 
     default_options   = $.extend({}, defaults, options.defaults),

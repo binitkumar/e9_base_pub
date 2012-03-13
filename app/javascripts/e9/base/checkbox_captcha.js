@@ -12,7 +12,7 @@
       
   human_field = '\
 <div class="field checkbox cbc-field-1">\
- <input id="cb_optin_1_INDEX" \
+ <input id="cb_optin_1_INDEX" value="1" \
      type="checkbox" name="cb_optin_1" class="required" />\
   <label for="cb_optin_1_INDEX" class="req">\
    Check here if you are a real person \
@@ -26,16 +26,23 @@
 
   (_f = function() {
     $('form .cbc:empty').each(function(i, el) {
-      $(el)
-        .closest('form').bind('ajax:complete', function(e, xhr) {
-          if (xhr.status == 205) { $(this).replaceWith('Thanks!') }
-        }).end()
-        .append(
-          $('<fieldset class="cbc-fields checkbox"/>')
-            .append(bot_field.replace(/INDEX/g, i))
-            .append(human_field.replace(/INDEX/g, i))
-        )
-      ;
+      el = $(el);
+
+      var hf = $(human_field.replace(/INDEX/g, i)),
+          bf = $(bot_field.replace(/INDEX/g, i)),
+          fs;
+
+      fs = $('<fieldset class="cbc-fields checkbox"/>')
+      fs.append(bf, hf);
+      el.append(fs);
+
+      el.closest('form').bind('ajax:complete', function(e, xhr) {
+        if (xhr.status == 205) { $(this).replaceWith('Thanks!') }
+      })
+
+      if (el.attr('data-checked') === '1') {
+        $('[name=cb_optin_1]', el).attr('checked', 'checked');
+      }
     });
   })();
 

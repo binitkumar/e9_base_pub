@@ -1,12 +1,18 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
 
-$fat-nav-columns: 6;
-$fat-nav-padding: 5px;
+$fat-nav-columns:                6 !default;
+$fat-nav-line-height:         17px !default;
+$fat-nav-horizontal-padding:   5px !default;
+$fat-nav-vertical-padding:    16px !default;
+
+@function fat-nav-height() {
+  @return $fat-nav-line-height + 2 * $fat-nav-vertical-padding;
+}
 
 @mixin fat-nav(
   $columns: $fat-nav-columns, 
-  $padding: $fat-nav-padding
+  $padding: $fat-nav-horizontal-padding
 ) {
   @include fat-nav-dimensions($columns, $padding);
   @include fat-nav-base;
@@ -14,13 +20,13 @@ $fat-nav-padding: 5px;
 
 @mixin fat-nav-dimensions(
   $columns: $fat-nav-columns, 
-  $padding: $fat-nav-padding
+  $padding: $fat-nav-horizontal-padding
 ) {
   $col-width: floor($blueprint-container-size / $columns) - 2 * $padding;
 
   a {
     width: $col-width;
-    padding: 16px $padding;
+    padding: $fat-nav-vertical-padding $padding;
   }
 
   ul li a {
@@ -38,7 +44,7 @@ $fat-nav-padding: 5px;
     text-align: center;
     font-size: 16px;
     overflow: hidden;
-    line-height: 17px;
+    line-height: $fat-nav-line-height;
   }
 
   li {

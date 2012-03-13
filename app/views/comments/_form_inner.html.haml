@@ -12,8 +12,4 @@
   = text_field_tag "#{element}[email]", '', :id => "#{element}_email"
 
 - unless local_assigns[:skip_captcha]
-  .field.recaptcha
-    = raw recaptcha_tag(:comments, :ajax)
-
-  - content_for :javascripts do
-    = recaptcha_script(:comments)
+  = checkbox_captcha(resource)

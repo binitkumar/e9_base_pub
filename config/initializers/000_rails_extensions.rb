@@ -6,6 +6,8 @@ ActiveRecord::Base.send(:include, E9::ActiveRecord::Scopes)
 ActiveRecord::Base.send(:include, E9::Models::RecordSequence)
 ActiveRecord::Base.send(:include, E9::Models::ImageMounting)
 
+ActionController::Base.send(:helper, E9::Controllers::CheckboxCaptcha::HelperMethods)
+
 #
 # Hack to allow passing options for polymorphic routes resolved through url_for
 #
