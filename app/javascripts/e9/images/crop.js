@@ -82,32 +82,28 @@
         _w = _h * options.aspect_ratio;
       }
 
-      // We need to make sure the image is loaded before calling Jcrop.
-      // The fn method of Jcrop does this already, but the API returning 
-      // version we're using here does not.
+      // $.fn.Jcrop(image) handles load issues out of the box, but the API 
+      // returning function, $.Jcrop, does not.  We preset the dimensions,
+      // which we have from the JSON, on the image element, so Jcrop can
+      // init and open before the image is loaded.
+      img.height(options.image.height).width(options.image.width);
 
-      img
-        .height(options.image.height)
-        .width(options.image.width);
+      jcrop_api = $.Jcrop(img, { 
+        boxWidth: options.max_crop_width,
+        boxHeight: options.max_crop_height,
+        onChange: api.cropSelect,
+        onSelect: api.cropSelect,
+        aspectRatio: options.aspect_ratio,
+        allowSelect: false,
+        keySupport: false,
+        setSelect: [0, 0, _w, _h]
+      });
 
-      // $.Jcrop.Loader(img, function() {
-        jcrop_api = $.Jcrop(img, { 
-          boxWidth: options.max_crop_width,
-          boxHeight: options.max_crop_height,
-          onChange: api.cropSelect,
-          onSelect: api.cropSelect,
-          aspectRatio: options.aspect_ratio,
-          allowSelect: false,
-          keySupport: false,
-          setSelect: [0, 0, _w, _h]
-        });
+      image_w.val(options.crop_width);
+      image_h.val(options.crop_height);
 
-        image_w.val(options.crop_width);
-        image_h.val(options.crop_height);
-
-        // because of boxWidth resizing of images the height can be off
-        $.colorbox.resize();
-      // });
+      // because of boxWidth resizing of images the height can be off
+      $.colorbox.resize();
     },
 
     cleanUp: function() {
