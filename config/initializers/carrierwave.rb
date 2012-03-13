@@ -1,6 +1,6 @@
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
-require 'e9_base'
+require 'e9'
 
 CarrierWave.configure do |config|
   config.storage = :file
@@ -25,6 +25,14 @@ end
 unless Rails.env.development?
 
   require 'carrierwave/storage/fog'
+
+  CarrierWave.configure do |config|
+    config.storage        = :fog
+    config.fog_directory  = E9::AWS.config[:bucket_name]
+    config.fog_host       = "https://#{E9::AWS.config[:bucket_name]}.s3.amazonaws.com"   # optional, defaults to nil
+    config.fog_public     = true # optional, defaults to true
+    config.fog_attributes = {}  # optional, defaults to {}
+  end
 
   class CarrierWave::Storage::Fog::File
     # Rescues if delete is called on a file in the cloud that no longer exists

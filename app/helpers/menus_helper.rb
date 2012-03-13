@@ -55,6 +55,7 @@ module MenusHelper
 
   def render_menu(menu, options = {})
     Rails.cache.fetch("#{menu.cache_key}/#{current_user.role}/#{options.hash}") do
+
       menu, children = menu.to_array
 
       html = if options[:display_root]
@@ -80,8 +81,10 @@ module MenusHelper
     content_tag(:li, :class => options.delete(:css_class)) do
       ''.html_safe.tap do |buffer|
         buffer << menu_link(submenu, level, options)
+
+        show_children = options[:show_children].nil? || true_value?(options[:show_children])
       
-        if submenu.show_children?
+        if show_children && submenu.show_children?
           if !children.blank?
             buffer << content_tag(:ul, :class => 'submenu') do
               children.inject(''.html_safe) do |html, ch|

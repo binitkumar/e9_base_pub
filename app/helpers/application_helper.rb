@@ -1,3 +1,5 @@
+require 'kramdown'
+
 module ApplicationHelper
   include Rack::Recaptcha::Helpers
 

@@ -1,13 +1,10 @@
-require 'declarative_authorization'
-require 'active_record/base'
-
 # fall back to the gem's auth rules if their config is not found locally
 unless File.exists?(File.join(Rails.root, 'config', 'authorization_rules.rb'))
-  module Authorization
-    remove_const(:AUTH_DSL_FILES) if const_defined?(:AUTH_DSL_FILES)
-    AUTH_DSL_FILES = ["#{E9Base::Engine.root}/site/config/authorization_rules.rb"]
-  end
+  AUTH_DSL_FILES = ["#{E9Base::Engine.root}/site/config/authorization_rules.rb"]
 end
+
+require 'declarative_authorization'
+require 'active_record/base'
 
 # we never want the rule browser
 Authorization.instance_eval do

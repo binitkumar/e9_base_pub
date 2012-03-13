@@ -1,3 +1,5 @@
+require 'draper'
+
 class BaseDecorator < Draper::Base
 
   delegate :is_a?, :kind_of?, :to => :model

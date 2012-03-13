@@ -1,7 +1,7 @@
 module E9::Liquid::Tags
   class MenuTag < Base
     FIND_ATTRIBUTES = [:name, :identifier, :id].freeze
-    MENU_OPTIONS    = [:display_root, :truncate, :truncate_all].freeze
+    MENU_OPTIONS    = [:display_root, :truncate, :truncate_all, :show_children].freeze
 
     class << self
       def title

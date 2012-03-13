@@ -32,6 +32,11 @@ ActionDispatch::Routing::RouteSet.class_eval do
 end
 
 class ActiveRecord::Base
+  # This is for delayed job?
+  def display_name
+    self.class.name
+  end
+
   # override read_attribute_for_validation to allow :base errors to be added via Errors#add
   #
   def read_attribute_for_validation(attr)

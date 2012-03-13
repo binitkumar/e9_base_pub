@@ -2,15 +2,11 @@ require 'rails'
 
 require 'awesome_nested_set'
 require 'carrierwave'
-require 'delayed_job'
 require 'devise'
 require 'devise_revokable'
-require 'draper'
 require 'haml'
-require 'inherited_resources'
-require 'jammit'
-require 'kramdown'
 require 'sass'
+require 'inherited_resources'
 require 'will_paginate'
 
 module E9Base
