@@ -70,7 +70,9 @@
 
     // called when the cropbox opens, setting crop behavior
     initJcrop: function() {
-      var _w, _h, options = api.currentOptions();
+      var _w, _h, 
+        options = api.currentOptions(),
+        img     = $('#crop-box');
 
       if (options.aspect_ratio > 1) {
         _w = Math.min(options.crop_width, options.image.width);
@@ -80,22 +82,34 @@
         _w = _h * options.aspect_ratio;
       }
 
-      jcrop_api = $.Jcrop("#crop-box", { 
-        boxWidth: options.max_crop_width,
-        boxHeight: options.max_crop_height,
-        onChange: api.cropSelect,
-        onSelect: api.cropSelect,
-        aspectRatio: options.aspect_ratio,
-        allowSelect: false,
-        keySupport: false,
-        setSelect: [0, 0, _w, _h]
+      // We need to make sure the image is loaded before calling Jcrop.
+      // The fn method of Jcrop does this already, but the API returning 
+      // version we're using here does not.
+
+      // img
+      //   .height(options.image.height)
+      //   .width(options.image.width);
+
+      // alert(img.width()+'x'+img.height());
+      
+      $.Jcrop.Loader(img, function() {
+        jcrop_api = $.Jcrop(img, { 
+          boxWidth: options.max_crop_width,
+          boxHeight: options.max_crop_height,
+          onChange: api.cropSelect,
+          onSelect: api.cropSelect,
+          aspectRatio: options.aspect_ratio,
+          allowSelect: false,
+          keySupport: false,
+          setSelect: [0, 0, _w, _h]
+        });
+
+        image_w.val(options.crop_width);
+        image_h.val(options.crop_height);
+
+        // because of boxWidth resizing of images the height can be off
+        $.colorbox.resize();
       });
-
-      image_w.val(options.crop_width);
-      image_h.val(options.crop_height);
-
-      // because of boxWidth resizing of images the height can be off
-      $.colorbox.resize();
     },
 
     cleanUp: function() {
