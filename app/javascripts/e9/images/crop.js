@@ -86,13 +86,11 @@
       // The fn method of Jcrop does this already, but the API returning 
       // version we're using here does not.
 
-      // img
-      //   .height(options.image.height)
-      //   .width(options.image.width);
+      img
+        .height(options.image.height)
+        .width(options.image.width);
 
-      // alert(img.width()+'x'+img.height());
-      
-      $.Jcrop.Loader(img, function() {
+      // $.Jcrop.Loader(img, function() {
         jcrop_api = $.Jcrop(img, { 
           boxWidth: options.max_crop_width,
           boxHeight: options.max_crop_height,
@@ -109,7 +107,7 @@
 
         // because of boxWidth resizing of images the height can be off
         $.colorbox.resize();
-      });
+      // });
     },
 
     cleanUp: function() {
