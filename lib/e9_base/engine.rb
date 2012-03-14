@@ -8,6 +8,7 @@ require 'haml'
 require 'sass'
 require 'inherited_resources'
 require 'will_paginate'
+require 'jammit'
 
 module E9Base
   class Engine < Rails::Engine
