@@ -3,7 +3,7 @@
     $("#<%= field_id %>").image_upload({
       fileExt: "<%= resource.image_file_ext %>",
       fileDesc: "<%= resource.image_file_desc %>",
-      queueID: "<%= field_id %>-queue",
+      queueID: "<%= queue_id %>",
       inputID: "<%= field_id %>-file",
       reload: <%= resource.persisted? && resource.versions.any? %>,
       scriptData: {

@@ -10,6 +10,7 @@ if Rails.env.production? || ENV['USE_S3']
   app.datastore = Dragonfly::DataStorage::S3DataStore.new
 
   app.datastore.configure do |c|
+    c.bucket_name       = E9::AWS.config[:bucket_name]
     c.region            = E9::AWS.config[:region]
     c.access_key_id     = E9::AWS.config[:access_key_id]
     c.secret_access_key = E9::AWS.config[:secret_access_key]

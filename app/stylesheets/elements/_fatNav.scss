@@ -1,44 +1,72 @@
 @import "compass/utilities/general/clearfix";
-$main-nav-bg-color: $theme-background-color;
-$nav-border: 2px;
-@mixin fat_nav{
-  width:100%;
+@import "compass/css3/inline-block";
+
+$fat-nav-columns:                6 !default;
+$fat-nav-line-height:         17px !default;
+$fat-nav-horizontal-padding:   5px !default;
+$fat-nav-vertical-padding:    16px !default;
+
+@function fat-nav-height() {
+  @return $fat-nav-line-height + 2 * $fat-nav-vertical-padding;
+}
+
+@mixin fat-nav(
+  $columns: $fat-nav-columns, 
+  $padding: $fat-nav-horizontal-padding
+) {
+  @include fat-nav-dimensions($columns, $padding);
+  @include fat-nav-base;
+}
+
+@mixin fat-nav-dimensions(
+  $columns: $fat-nav-columns, 
+  $padding: $fat-nav-horizontal-padding
+) {
+  $col-width: floor($blueprint-container-size / $columns) - 2 * $padding;
+
+  a {
+    width: $col-width;
+    padding: $fat-nav-vertical-padding $padding;
+  }
+
+  ul li a {
+    padding: 0 $padding 10px $padding;
+  }
+}
+
+@mixin fat-nav-base {
+  @include inline-block;
+  width: auto;
   
-  a{
-    width:140px;
-    display:block;
-    white-space:pre-wrap;
-    text-align:center;
-    font-size:16px;
-    padding-top:16px;
-    padding-bottom:10px;
-    overflow:hidden;
+  a {
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 16px;
+    overflow: hidden;
+    line-height: $fat-nav-line-height;
+  }
 
-    }
-  li{
-    float:left;
-    display:list-item;
+  li {
+    float: left;
+    display: list-item;
 
-    ul{
-      width:104px;
+    ul {
       margin-top:1em;
       min-height:250px;
       
-      li{
+      li {
         float:none;
-        a{
+        a {
           color: #FFFFFF;
           font-size: 12px;
-          padding-left: 25px;
-          padding-top: 0;
           text-align: left;
           white-space: pre-wrap;
-         
         }
       }
     }
   }
-  .submenu{
-    display:none;
+  .submenu {
+    display: none;
   }
 }

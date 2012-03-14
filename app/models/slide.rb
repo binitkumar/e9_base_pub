@@ -6,9 +6,9 @@ class Slide < Page
   has_many :slideshows, :through => :slideshow_assignments, :uniq => true
 
   mounts_image :image, :spec => 'self.layout.try(:image_spec)', :versions => {
-    :wide_thumb => { :spec => [150, 100] },
-    :thumb => { :spec => [100, 100] },
-    :embeddable => { :spec => [400, 300] }
+    :embeddable => { :spec => %w(slide_embeddable_width slide_embeddable_height) },
+    :thumb      => { :spec => %w(avatar_size avatar_size) },
+    :wide_thumb => { :spec => %w(wide_thumb_width wide_thumb_height) }
   }
 
   ##

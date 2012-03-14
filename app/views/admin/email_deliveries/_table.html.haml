@@ -18,6 +18,7 @@
           %td.txt= resource.subject
           %td.num= resource.requests
           %td.actions
-            = link_to_show_resource(resource)
+            = tool_buttons do
+              = link_to_show_resource(resource)
 
 = will_paginate collection

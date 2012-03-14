@@ -8,7 +8,6 @@ $theme-button-gradient-active-top   : false !default;
 $theme-button-gradient-active-bottom: false !default;
 
 $theme-button-padding     :            0.5em 0.75em !default;
-$theme-button-margin      :                 0 0 3px !default;
 $theme-button-color       : $theme-foreground-color !default;
 $theme-button-bg-color    : $theme-background-color !default;
 $theme-button-text-color  :       $theme-text-color !default;
@@ -22,7 +21,6 @@ $theme-button-line-height :                     1.4 !default;
   /* fallback to button-color */
   @if not $color { $color: $theme-button-color; }
   padding: $theme-button-padding;
-  margin: $theme-button-margin;
   line-height: $theme-button-line-height;
 
   cursor: pointer;

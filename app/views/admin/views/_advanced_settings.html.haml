@@ -28,9 +28,5 @@
 
     - unless f.object.is_a?(BlogPost)
       = render 'shared/form_partials/roles_for_content', :f => f
-    - else
-      -# little javascript to make the avatar swap when the author changes
-      :javascript
-        $(function() { $("#author-select").authorImageSwappify({ map : #{author_avatar_url_map.to_json} }); });
 
     = render 'admin/views/region_manager', :f => f

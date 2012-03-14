@@ -13,8 +13,9 @@
           %td.text
             = record.name
           %td.actions
-            = poll_results_link(record)
-            = e9_polls_resource_link(:edit, record)
-            = e9_polls_resource_link(:destroy, record)
+            = tool_buttons do
+              = poll_results_link(record)
+              = e9_polls_resource_link(:edit, record)
+              = e9_polls_resource_link(:destroy, record)
 
 = will_paginate collection

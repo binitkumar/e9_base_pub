@@ -8,6 +8,7 @@
 @mixin sprite-like {
   @include inline-block;
   text-indent: -999em;
+  text-align: left;
 }
 
 @mixin sprite-background($image, $width, $height: false, $left: 0, $top: 0) {

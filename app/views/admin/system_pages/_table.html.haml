@@ -13,6 +13,7 @@
           %td.txt
             = page.title
           %td.actions
-            = edit_admin_resource_link(page)
+            = tool_buttons do
+              = edit_admin_resource_link(page)
 
 = will_paginate(collection)

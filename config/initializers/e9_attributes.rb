@@ -1,4 +1,3 @@
-require 'e9_base'
 require 'e9_attributes'
 
 Rails.application.config.after_initialize do

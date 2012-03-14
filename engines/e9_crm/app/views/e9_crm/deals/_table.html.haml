@@ -32,11 +32,12 @@
             - dat[:value] << record.value
             = record.value.to_money.format
           %td.actions
-            = link_to_show_resource(record)
-            = link_to_edit_resource(record)
-            - if record.won? && record.dated_costs.present?
-              = link_to "Edit Costs", edit_costs_deal_path(record), :rel => :popup
-            = link_to_destroy_resource(record)
+            = tool_buttons do
+              = link_to_show_resource(record)
+              = link_to_edit_resource(record)
+              - if record.won? && record.dated_costs.present?
+                = link_to "Edit Costs", edit_costs_deal_path(record), :rel => :popup
+              = link_to_destroy_resource(record)
 
     %tfooter
       %tr{:class => 'record-totals'}

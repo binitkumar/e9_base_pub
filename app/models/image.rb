@@ -33,6 +33,9 @@ class Image < ActiveRecord::Base
     end
   end
 
+  def attached?
+    attachment_uid.present?
+  end
 
   def as_json(options={})
     {

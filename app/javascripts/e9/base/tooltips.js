@@ -59,7 +59,13 @@
 
     help_defaults = {
       position: { my: 'top left', at: 'top right' },
-      hide: false
+      show: { event: 'click', solo: true },
+      hide: false,
+      events: {
+        show: function(e, api) {
+          e.originalEvent.preventDefault();
+        }
+      }
     },
 
     default_options   = $.extend({}, defaults, options.defaults),
@@ -129,6 +135,15 @@
         tooltips(el, $.extend({}, help_options, {
           show: { event: 'click', solo: true },
           content: { title: { text: '&nbsp;', button: true } }
+        }));
+      });
+
+      $('.tool-button[rel=tooltip]').each(function(i, el) {
+        tooltips(el, $.extend({}, help_options, {
+          style: { tip: { corner: false } },
+          position: { my: 'top right', at: 'top left' },
+          hide: { fixed: true, delay: 50, inactive: 1500 },
+          show: { delay: 15, solo: true }
         }));
       });
 

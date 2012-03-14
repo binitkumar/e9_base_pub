@@ -15,5 +15,6 @@
             .handle +++
           %td.txt= record.title
           %td.actions
-            = edit_admin_resource_link(record, :scopes => @faq)
-            = destroy_admin_resource_link(record, :scopes => @faq)
+            = tool_buttons do
+              = edit_admin_resource_link(record, :scopes => @faq)
+              = destroy_admin_resource_link(record, :scopes => @faq)

@@ -3,9 +3,11 @@
 - field_id              = "image-mount-#{index}"
 - fld_args              = {:id => field_id, :'data-index' => index}
 - fld_args['data-tags'] = resource.default_image_tags.join('|') if admin?
+- fld_args['class']     = "image-mount field #{resource.new_record? ? 'un' : ''}saved #{!resource.attached? ? 'un' : ''}attached"
 - f                     = local_assigns[:f]
+- queue_id              = local_assigns[:queue_id] || "#{field_id}-queue"
 
-.image-mount.field{fld_args}
+%div{fld_args}
   -# for new records we append the nested_attribute fields to the form
   - if f && resource.new_record?
     = f.fields_for(resource.mounted_association) do |mf|
@@ -37,9 +39,10 @@
       = link_to_image_mount_crop(resource)
       = link_to_image_mount_reset(resource)
 
-  .upload-queue{:id => "#{field_id}-queue"}
+  - unless local_assigns[:queue_id]
+    .upload-queue{:id => queue_id}
 
-  = render "image_mounts/#{uploadify_operation}", :resource => resource, :field_id => field_id
+  = render "image_mounts/#{uploadify_operation}", :resource => resource, :field_id => field_id, :queue_id => queue_id
   
 - if resource.persisted? && resource.attachment.present?
   - resource.versions.each do |v|

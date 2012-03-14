@@ -1,0 +1,8 @@
+@import 'includes/buttons';
+
+.tool-buttons {
+  a {
+    @include button;
+    display: block;
+  }
+}

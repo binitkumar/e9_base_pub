@@ -7,26 +7,37 @@ jQuery(function($) {
   /*
    * Sortable settings for node lists
    */
-  $('ul.nodes').sortable({
-    axis: 'y', 
-    dropOnEmpty: false, 
-    cursor: 'pointer',
-    items: 'li',
-    handle: '.handle',
-    opacity: 0.5,
-    update: function(event, ui) {
-      refresh_list_order(this);
-    }
-  }).disableSelection();
+  function initialize_node_sortable() {
+    $('ul.nodes').sortable({
+      axis: 'y', 
+      dropOnEmpty: false, 
+      cursor: 'pointer',
+      items: 'li',
+      handle: '.handle',
+      opacity: 0.5,
+      appendTo: 'body',
+      update: function(event, ui) {
+        refresh_list_order(this);
+      }
+    }).disableSelection();
 
-  function refresh_list_order(obj) {
-    var el = $(obj);
-    el.find('li').each(function(index) {
-      $(this).find('input').attr('name', function() {
-        return this.name.replace(/nodes_attributes\]\[\d+/, "nodes_attributes][" + index );
+    function refresh_list_order(obj) {
+      var el = $(obj);
+      el.find('li').each(function(index) {
+        $(this).find('input').attr('name', function() {
+          return this.name.replace(/nodes_attributes\]\[\d+/, "nodes_attributes][" + index );
+        });
       });
-    });
+    }
   }
+
+  function destroy_node_sortable() {
+    $('ul.nodes').sortable('destroy');
+  }
+
+  $(document)
+    .bind('e9:advanced_settings:show', initialize_node_sortable)
+    .bind('e9:advanced_settings:hide', destroy_node_sortable);
 
   /*
    * function to add a node to region's list
@@ -80,7 +91,7 @@ jQuery(function($) {
     var n  = $.trim(el.prev('.content').html());
 
     // and add the option back to the select
-    el.closest('.region').find('select').append("<option value=\""+id+"\">"+n+"</option>");
+    el.closest('.region').find('select').append('<option value="'+id+'">'+n+'</option>');
 
     // if a hidden input exists prev to the link it
     // is a _destroy field used by nested_resources.

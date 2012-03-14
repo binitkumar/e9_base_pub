@@ -115,6 +115,9 @@ $toolbar-header-color: $theme-h1-color !default;
     .deal-photo, .contact-photo {
       float: left;
       width: 11%;
+      img {
+        width: 90px;
+      }
     }
     .deal-info, .contact-info {
       float: left;

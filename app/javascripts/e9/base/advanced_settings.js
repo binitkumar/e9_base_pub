@@ -31,10 +31,16 @@
 
           if (target.is(':hidden')) {
             options.showFn(target);
-            $(this).find('a').text(options.hideText);
+
+            $(this)
+              .find('a').text(options.hideText).end()
+              .trigger('e9:advanced_settings:show');
           } else {
             options.hideFn(target);
-            $(this).find('a').text(options.showText);	
+
+            $(this)
+              .find('a').text(options.showText).end()
+              .trigger('e9:advanced_settings:hide');
           }
         }).insertBefore(target);
 

@@ -28,9 +28,10 @@
           %td.record-sales-fee.num
             = display_campaign_fee(record.sales_fee)
           %td.actions
-            - if record.is_a?(AdvertisingCampaign)
-              = link_to t(:edit_dated_costs), advertising_campaign_dated_costs_path(record), :class => 'dated-costs'
-            = link_to_edit_campaign(record)
+            = tool_buttons do
+              - if record.is_a?(AdvertisingCampaign)
+                = link_to t(:edit_dated_costs), advertising_campaign_dated_costs_path(record), :class => 'dated-costs'
+              = link_to_edit_campaign(record)
 
 - if controller.send(:should_paginate_index)
   = will_paginate collection

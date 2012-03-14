@@ -18,6 +18,7 @@
           %td.txt= record.title
           %td.txt= resource_humanize("role_#{record.role}")
           %td.actions
-            = edit_admin_resource_link(record)
-            = change_page_layout_link(record)
-            = destroy_admin_resource_link(record)
+            = tool_buttons do
+              = edit_admin_resource_link(record)
+              = change_page_layout_link(record)
+              = destroy_admin_resource_link(record)

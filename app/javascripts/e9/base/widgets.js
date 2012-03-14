@@ -1,7 +1,7 @@
 ;jQuery(function($) {
 
   var feed_select_template = '\
-<li class="ui-state-default">\
+<li>\
   <span class="content">__NAME__</span>\
   <input type="hidden" value="__ID__" name="__INAME____FIELD__[]"/>\
   <a class="remove" title="Remove" alt="Remove">Remove</a>\
@@ -54,7 +54,7 @@
   /*
    * ul.select remove links - remove the li and add the option to the select
    */ 
-  $("ul.select a").live('click', function(e) {
+  $("ul.select a.remove").live('click', function(e) {
     var $this = $(this),
           $li = $this.closest('li'),
           $ul = $this.closest('ul.select'),

@@ -1,4 +1,4 @@
-%fieldset.regions.list
+%fieldset.regions.list-like
   %input{:type => :hidden, :id => 'resource-iname', :value => resource_instance_name}
   %legend
     = f.label :region_type_ids
@@ -6,7 +6,7 @@
     = select_tag :region_type_ids, options_for_select(region_type_select_array_for_renderable_and_user(resource, current_user))
     %ul.region-types
       - resource.region_types.each do |rt|
-        %li.ui-state-default
+        %li
           %span.content= rt.name
           %input{:type => :hidden, :name => "#{resource_instance_name}[region_type_ids][]", :value => rt.id}
-            %a{:class => :remove, :title => "Remove Region", :alt => "Remove Region"} Remove
+            %a{:class => :remove, :title => "Remove", :alt => "Remove"} Remove

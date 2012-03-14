@@ -60,7 +60,7 @@ class ImageMount < ActiveRecord::Base
   delegate :aspect_ratio, :portrait?, :landscape?, :depth, :number_of_colours, :format, :image?, 
       :to => :processed_image, :allow_nil => true
 
-  delegate :attachment, :to => :image, :allow_nil => true
+  delegate :attachment, :attached?, :to => :image, :allow_nil => true
 
   delegate :file_ext, :file_desc, :persisted?, :to => :image, :prefix => true, :allow_nil => true
 

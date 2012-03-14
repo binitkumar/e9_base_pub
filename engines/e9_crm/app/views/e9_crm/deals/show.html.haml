@@ -4,7 +4,7 @@
     .toolbar-inner
       .toolbar-left
         .deal-photo
-          %img{:src => "/images/defaults/deal_thumb.png", :alt => "Avatar for #{resource.name}"}
+          = image_tag "defaults/deal_thumb.png", :alt => "Thumbnail for #{resource.name}"
         .deal-info
           - if resource.category.present?
             .deal-category

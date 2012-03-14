@@ -121,18 +121,10 @@
     }, options));
   }
 
-  /*
-   * Swaps author images as authors change in the dropdown, used in blog_posts.
-   */
-  $.fn.authorImageSwappify = function(options) {
-    var $author_avatar = $("img[id$=thumb-image]");
-
-    $(this).bind($.browser.msie ? "propertychange" : "change", function(e) {
-      var src = $author_avatar.attr('src');
-      if(!src.match(/\/uploads\/(blog_post|tmp)\//)) {
-        var id = $(this).children("option:selected").val();
-        $author_avatar.attr('src', options.map[id]);
-      }
+  $("body.controller-admin-blog-posts #blog-post-thumb .unattached img").each(function(i, el) {
+    $('#author-select').bind($.browser.msie ? "propertychange" : "change", function(e) {
+      var id = $(this).children("option:selected").val();
+      $(el).attr('src', window.e9.author_thumb_map[id]);
     });
-  }
+  });
 });

@@ -20,8 +20,9 @@
             %td{:class => "record-#{key.to_s.dasherize}"}
               = value.respond_to?(:call) ? value.call(record) : record.send(key)
           %td.actions
-            - field_map[:links][record].each do |link|
-              = link
+            = tool_buttons do
+              - field_map[:links][record].each do |link|
+                = link
 
 - if controller.send(:should_paginate_index)
   = will_paginate collection

@@ -1,0 +1,14 @@
+#content-main {
+  a, a:hover {
+    text-decoration: underline;
+  }
+  .content-body {
+    margin-top: 1em;
+  }
+  .actions, .action-links {
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+}

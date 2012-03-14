@@ -70,7 +70,9 @@
 
     // called when the cropbox opens, setting crop behavior
     initJcrop: function() {
-      var _w, _h, options = api.currentOptions();
+      var _w, _h, 
+        options = api.currentOptions(),
+        img     = $('#crop-box');
 
       if (options.aspect_ratio > 1) {
         _w = Math.min(options.crop_width, options.image.width);
@@ -80,7 +82,13 @@
         _w = _h * options.aspect_ratio;
       }
 
-      jcrop_api = $.Jcrop("#crop-box", { 
+      // $.fn.Jcrop(image) handles load issues out of the box, but the API 
+      // returning function, $.Jcrop, does not.  We preset the dimensions,
+      // which we have from the JSON, on the image element, so Jcrop can
+      // init and open before the image is loaded.
+      img.height(options.image.height).width(options.image.width);
+
+      jcrop_api = $.Jcrop(img, { 
         boxWidth: options.max_crop_width,
         boxHeight: options.max_crop_height,
         onChange: api.cropSelect,

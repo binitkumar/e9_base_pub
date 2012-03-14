@@ -1,5 +1,5 @@
 class CommentsController < InheritedResources::Base
-  include E9::Controllers::Recaptcha
+  include E9::Controllers::CheckboxCaptcha
 
   belongs_to :content_view, :optional => true, :finder => :find_by_permalink!
   respond_to :js, :xml

@@ -8,15 +8,12 @@
     float: left;
   }
   .view-poll-results {
-    @include inline-block;
     font-size:14px;
     text-decoration:underline;
     font-style:italic;
-    color:$theme-alt-text-color;
-    margin-top:20px;
-    float:left;
-    &:hover{
-      color:$theme-link-color;
+    color: $theme-alt-text-color;
+    &:hover {
+      color: $theme-link-color;
     }
   }
   .poll-answers {
@@ -198,6 +195,6 @@ html body.admin #content form .poll-answers .poll-answer{
     position:relative;
   }
   #poll_submit{
-    margin-right:25px;
+    margin-right: 1.2em;
   }
 }

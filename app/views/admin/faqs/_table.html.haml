@@ -18,6 +18,7 @@
             %td.txt= record.title
             %td.txt= resource_humanize("role_#{record.role}")
             %td.actions
-              = link_to e9_t(:questions_link), admin_faq_questions_path(record)
-              = edit_admin_resource_link(record)
-              = destroy_admin_resource_link(record)
+              = tool_buttons do
+                = link_to e9_t(:questions_link), admin_faq_questions_path(record)
+                = edit_admin_resource_link(record)
+                = destroy_admin_resource_link(record)

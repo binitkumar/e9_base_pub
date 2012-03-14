@@ -18,5 +18,6 @@
       = e9_t(:comment_okay, :scope => 'admin.comments')
 %td.actions
   - unless comment.deleted?
-    = flag_link(comment)
-    = delete_comment_link(comment)
+    = tool_buttons do
+      = flag_link(comment)
+      = delete_comment_link(comment)

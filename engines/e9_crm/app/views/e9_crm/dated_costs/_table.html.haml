@@ -16,5 +16,6 @@
           %td.field.cost.num
             = record.cost
           %td.actions
-            = link_to_edit_resource(record)
-            = link_to_destroy_resource(record, :remote => true)
+            = tool_buttons do
+              = link_to_edit_resource(record)
+              = link_to_destroy_resource(record, :remote => true)

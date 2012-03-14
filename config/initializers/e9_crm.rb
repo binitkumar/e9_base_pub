@@ -1,4 +1,3 @@
-require 'e9_base'
 require 'e9_crm'
 
 E9Crm.configure do |config|

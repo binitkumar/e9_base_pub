@@ -1,8 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
   include PublicFacingController
 
-  def self.resource_class; User end
-  include E9::Controllers::Recaptcha
+  def resource_instance_name() User.model_name.element end
+  include E9::Controllers::CheckboxCaptcha
 
   prepend_before_filter :check_honeypot, :only => :create
   before_filter :add_new_breadcrumb

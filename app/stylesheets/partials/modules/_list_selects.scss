@@ -1,58 +1,51 @@
 @import "compass/css3/inline-block";
 
 $list_select_border: 1px solid #aaa !default;
-$list_select_width: 300px !default;
+$list_select_width: 320px !default;
 $list_select_line_height: 1.5em !default;
-
-select.list, select.node-selector, select#region_type_ids,
-ul.select, ul.nodes, ul.region-types {
-}
 
 select.list, select.node-selector, select#region_type_ids {
   margin-bottom: 0.25em;
 }
 
-@mixin remove_node {
-  @include inline-block;
-  @extend .ui-button-icon-primary;
-  @extend .ui-icon;
-  @extend .ui-icon-close;
-  cursor: pointer;
-  position: absolute;
-  right: 2px;
-  top: 50%;
-  margin-top: -8px;
-}
-
-a.remove-node {
-  @include remove_node;
-}
 
 ul.select, ul.nodes, ul.region-types {
-  .ui-sortable-placehoder { 
-  height: $list_select_line_height; }
+  .ui-sortable-placeholder { 
+    height: $list_select_line_height; 
+  }
   list-style-type: none;
   padding: 0;
+  max-width: $list_select_width;
+  margin-top: 3px;
+
+  &, li {
+    list-style: none outside none;
+  }
+
   li {
-    @extend .ui-state-hover;
     position: relative;
     line-height: $list_select_line_height;
     border: $list_select_border;
-    list-style-image: none;
-    padding: 2px; 
+    padding: 3px 0; 
     margin-bottom: 2px;
-    .handle { 
+
+    .remove, .handle, .remove-node { 
       position: absolute;
-      left: 2px;
-      top: 50%;
-      margin-top: -8px;
     }
+
+    .handle { 
+      top: 6px;
+      left: 8px; 
+    }
+
+    .remove, .remove-node { 
+      top: 3px;
+      right: 3px; 
+    }
+
     .content {
       @include inline-block;
-      padding: 0 1.5em;
-    }
-    a.remove {
-      @include remove_node;
+      padding: 0 23px;
     }
   } 
 }

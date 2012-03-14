@@ -27,5 +27,6 @@
             %td.field.num
               $<span class="cost">#{"%.2f" % total}</span>
             %td.actions
-              = link_to('Make Payment', new_contact_dated_cost_path(contact), :rel => :popup)
-              = link_to('View Statement', contact_dated_costs_path(contact))
+              = tool_buttons do
+                = link_to('Make Payment', new_contact_dated_cost_path(contact), :rel => :popup)
+                = link_to('View Statement', contact_dated_costs_path(contact))

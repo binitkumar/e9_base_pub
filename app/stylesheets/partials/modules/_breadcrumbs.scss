@@ -1,6 +1,9 @@
 @import 'includes/colors';
+@import 'compass/typography/lists/horizontal-list';
+
 $breadcrumbs-last-color: $theme-text-color !default;
 $breadcrumbs-line-height: $theme-h4-line-height !default;
+
 .breadcrumbs { 
   @include horizontal-list(5px);
   font-size:$theme-breadcrumb-font-size;

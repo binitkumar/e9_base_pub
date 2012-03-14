@@ -238,6 +238,12 @@ form#social-networking-form {
   } 
 }
 
+#social-networking-form {
+  .field {
+    clear: both;
+  }
+}
+
 #cboxPrevious {
   display: none;
   //position: absolute

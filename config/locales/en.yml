@@ -18,6 +18,7 @@ en:
   show_more: Show More
   copy_of: "Copy of %{name}"
   no_email_templates: "You have no appropriate email templates defined.  <a href=\"/admin/email/templates\">View your templates?</a>"
+  tool_button: Actions
 
   toolbar_help: Help
   toolbar_actions: Actions
