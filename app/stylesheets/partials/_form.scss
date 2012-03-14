@@ -11,9 +11,6 @@ $fieldset-padding :       1.4em !default;
 
 .tags{
   width:90%;
-  .actions button{
-    //margin-top:7px;
-  }
 }
 .comment-email{
   display:none;
@@ -135,8 +132,9 @@ label {
     width: inherit;
     position: relative;
     padding-left: 18px;
-    float:left;
-    clear:both;
+    float: left;
+    clear: both;
+    margin: 0;
 
     input[type=radio], input[type=checkbox] {
       background: none;
@@ -146,7 +144,6 @@ label {
       width: 13px;
       height: 13px;
       position:absolute;
-
       left:0;
     }
     
@@ -170,19 +167,12 @@ label {
     width:94%;
   }
 }
+
 .checkbox{
   width:inherit;
   label{
     width:100%;
     float:left;
-  }
-}
-.cbc{
-  .cbc-fields{
-    width:inherit;
-    .cbc-field-2{
-      display:none;
-    }
   }
 }
 
