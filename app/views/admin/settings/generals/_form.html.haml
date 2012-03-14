@@ -1,27 +1,27 @@
 = form_for(resource, :url => admin_settings_general_path, :html => { :multipart => true }) do |f|
   = resource_error_messages!
 
-  %fieldset#site-settings
-    %legend Site Settings
-    %fieldset.radio
-      %legend= f.label(:use_captcha_registrations)
-      .field.radio
-        = f.label 'Yes'
-        = f.radio_button :use_captcha_registrations, true
-      .field.radio
-        = f.label 'No'
-        = f.radio_button :use_captcha_registrations, false
+  - if e9_user?
+    %fieldset#site-settings
+      %legend Site Settings
+      -# %fieldset.radio
+      -#   %legend= f.label(:use_captcha_registrations)
+      -#   .field.radio
+      -#     = f.label 'Yes'
+      -#     = f.radio_button :use_captcha_registrations, true
+      -#   .field.radio
+      -#     = f.label 'No'
+      -#     = f.radio_button :use_captcha_registrations, false
 
-    %fieldset.radio
-      %legend= f.label(:use_captcha_comments)
-      .field.radio
-        = f.label 'Yes'
-        = f.radio_button :use_captcha_comments, true
-      .field.radio
-        = f.label 'No'
-        = f.radio_button :use_captcha_comments, false
+      -# %fieldset.radio
+      -#   %legend= f.label(:use_captcha_comments)
+      -#   .field.radio
+      -#     = f.label 'Yes'
+      -#     = f.radio_button :use_captcha_comments, true
+      -#   .field.radio
+      -#     = f.label 'No'
+      -#     = f.radio_button :use_captcha_comments, false
 
-    - if e9_user?
       .field
         = f.label :header_text
         = f.text_area :header_text
@@ -58,21 +58,6 @@
         = f.label :wide_thumb_height
         = f.text_field :wide_thumb_height
 
-  %fieldset#merchant-settings
-    %legend= e9_t(:merchant_settings_legend)
-    .field
-      = f.label :m_gateway
-      = f.select :m_gateway, [['Authorize.net', 'authorize_net']]
-    .field
-      = f.label :m_gateway_login
-      = f.text_field :m_gateway_login
-    .field
-      = f.label :m_gateway_pass
-      = f.text_field :m_gateway_pass
-    .field.checkbox
-      = f.label :m_gateway_test
-      = f.check_box :m_gateway_test
-
   %fieldset#company_information
     %legend= e9_t(:company_information)
     .field
@@ -97,6 +82,21 @@
     .field
       = f.label :default_meta_keywords, (resource_humanize(:default_meta_keywords) << %Q| <span class="help" rel="tooltip" title="#{e9_t(:meta_keywords_instructions)}">[?]</span>|).html_safe
       = f.text_area :default_meta_keywords
+
+  %fieldset#merchant-settings
+    %legend= e9_t(:merchant_settings_legend)
+    .field
+      = f.label :m_gateway
+      = f.select :m_gateway, [['Authorize.net', 'authorize_net']]
+    .field
+      = f.label :m_gateway_login
+      = f.text_field :m_gateway_login
+    .field
+      = f.label :m_gateway_pass
+      = f.text_field :m_gateway_pass
+    .field.checkbox
+      = f.label :m_gateway_test
+      = f.check_box :m_gateway_test
 
   %fieldset#records_to_display_settings
     %legend= e9_t(:records_to_display_settings)
