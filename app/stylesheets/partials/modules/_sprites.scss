@@ -2,20 +2,21 @@
 @import "includes/common";
 
 .sprite { @include sprite-like; }
-
+$common-sprite-dimensions:true;
 @import "sprites/common/*.png"; /**/
 
-.common-sprite { width: 23px; height: 23px; }
 
-.icon-delete { @extend .sprite; @extend .common-sprite; @include common-sprite(close); }
-.icon-print { @extend .sprite; @extend .common-sprite; @include common-sprite(print); }
-.icon-edit { @extend .sprite; @extend .common-sprite; @include common-sprite(edit); }
-.icon-friend-email { @extend .sprite; @extend .common-sprite; @include common-sprite(email); }
-.icon-permalink { @extend .sprite; @extend .common-sprite; @include common-sprite(link); }
-.icon-favorite { @extend .sprite; @extend .common-sprite; @include common-sprite(favorite); }
-.icon-unfavorite { @extend .sprite; @extend .common-sprite; @include common-sprite(unfavorite); }
-.icon-tools { @extend .sprite; @extend .common-sprite; @include common-sprite(tools); }
-a.help { @extend .sprite; @extend .common-sprite; @include common-sprite(info); }
+
+.icon-delete { @extend .sprite; @include common-sprite(close); }
+.icon-print { @extend .sprite; @include common-sprite(print); }
+.icon-edit { @extend .sprite; @include common-sprite(edit); }
+.icon-friend-email { @extend .sprite; @include common-sprite(email); }
+.icon-permalink { @extend .sprite; @include common-sprite(link); }
+.icon-favorite { @extend .sprite; @include common-sprite(favorite); }
+.icon-unfavorite { @extend .sprite; @include common-sprite(unfavorite); }
+.icon-tools { @extend .sprite; @include common-sprite(tools); }
+a.help { @extend .sprite; @include common-sprite(info); }
+
 
 .share-site a {
   @extend .sprite;
@@ -36,10 +37,9 @@ a.help { @extend .sprite; @extend .common-sprite; @include common-sprite(info); 
   &.i30 { @include common-sprite(technorati); }
   &.i31 { @include common-sprite(twitter); }
 }
-
+$slide-sprite-dimensions:true;
 @import "sprites/slide/*.png"; /**/
 
-.slide-sprite { width: 20px; height: 15px; }
 
 body.slide .action-links {
   a.more-info-link, a.dashboard-link, a.comments-link, a.share-bar-link {
@@ -54,10 +54,9 @@ body.slide .action-links {
   }
 }
 
-
+$social-sprite-dimensions:true;
 @import "sprites/social/*.png"; /**/
 
-.social-sprite { width: 30px; height: 30px; margin-top:6px;}
 
 a.social-link {
   .img { @extend social-sprite; }

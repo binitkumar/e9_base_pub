@@ -63,12 +63,14 @@
 }
 #comment-form{
   $spacing: 15px;
-  position: relative;
 
   form {
     padding: 0 0 0 ($avatar-width + $spacing);
+    
   }
-
+  .form{
+    position:relative;
+  }
   label[for='comment_body'] {
     display:none;
   }
