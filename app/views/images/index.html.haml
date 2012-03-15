@@ -14,7 +14,7 @@
         - tags = Array.wrap(params[:tagged])
         %label Tags
         %input.tag-autocomplete.list{:type => 'text', 'data-iname' => 'image', 'data-field' => '[tagged]', :placeholder => t(:tag_search_placeholder)}
-        %ul.tag-select.select
+        %ul.tag-select
           - tags.each do |tag|
             %li
               %span.content= tag

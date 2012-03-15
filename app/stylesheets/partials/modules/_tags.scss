@@ -3,10 +3,14 @@
 @import "compass/utilities/general/clearfix";
 @import "includes/typography";
 
-$admin-tag-border: 1px solid $theme-border-color !default;
+$admin-tag-border: 1px solid darken($theme-foreground-color, 20%) !default;
 $admin-tag-border-radius: 12px !default;
 $admin-tag-padding: 5px !default;
 $admin-tag-field-width: 200px !default;
+
+.tags {
+  width: 90%;
+}
 
 .tag-context-list {
   @include clearfix;
@@ -20,8 +24,8 @@ $admin-tag-field-width: 200px !default;
   .tag-list { 
     display: inline;
   }
-  a{
-    text-decoration:underline;
+  a {
+    text-decoration: underline;
   }
 }
 
@@ -90,19 +94,25 @@ fieldset.tags {
 }
 
 .tag-select { 
+  $tag-spacing: 10px;
+
+  margin: 0;
+  padding: 0;
+
+  .content {
+    @include inline-block;
+    padding: 0 $tag-spacing;
+  }
   li {
+    margin-top: 3px;
     @include inline-block;
     @include border-radius($admin-tag-border-radius);
     @include clearfix;
-    //padding: $admin-tag-padding;
     border: $admin-tag-border;
-    span { 
-      float: left; 
-      span { 
-        margin: 0 0.5em; white-space: nowrap; 
-      } 
- 		}
 	}
+  a {
+    margin-right: $tag-spacing;
+  }
 } 
 .tag-fields{
   .field{

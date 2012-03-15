@@ -1,10 +1,9 @@
 @import 'includes/logo';
 
 #logo { 
-  @include site-logo();
+  @include logo;
 }
 
 body.admin #logo {
-  @include admin-site-logo;
-  float:left;
+  @include admin-logo;
 }

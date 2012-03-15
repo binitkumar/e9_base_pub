@@ -1,16 +1,19 @@
 class Menu < ActiveRecord::Base
   include E9::DestroyRestricted::Model
 
+
+
+  # NOTE before_destroy must be added *before* acts_as_nested_set's callback
+  before_destroy :touch_ancestors
+
   ##
   # Acts as nested set setup
   #
   acts_as_nested_set :dependent => :restrict
   alias :descendents :descendants
 
-  # NOTE after_save needs to be called after acts_as_nested_set to take
-  # advantage of ancestors, etc, in the callback
-  after_save :touch_ancestors
-  before_destroy :touch_ancestors
+  # NOTE after_save must be added *after* acts_as_nested_set's callback
+  after_save :touch_ancestors_with_reload
 
   html_safe_columns :name
 
@@ -146,11 +149,17 @@ class Menu < ActiveRecord::Base
 
   protected
 
-  def touch_ancestors
-    ancestral_ids = self.reload.ancestors.map(&:id)
+  def touch_ancestors(reload = false)
+    self.reload if reload
+
+    ancestral_ids = self.ancestors.map(&:id)
 
     unless ancestral_ids.blank?
       Menu.update_all ["updated_at = ?", DateTime.now], ["id in (?)", ancestral_ids]
     end
+  end
+
+  def touch_ancestors_with_reload
+    touch_ancestors(true)
   end
 end

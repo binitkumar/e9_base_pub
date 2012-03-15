@@ -9,15 +9,6 @@ $fieldset-padding :       1.4em !default;
 @import 'includes/form';
 @import 'compass/css3/box-sizing';
 
-.tags{
-  width:90%;
-  .actions button{
-    //margin-top:7px;
-  }
-}
-.comment-email{
-  display:none;
-}
 form.inline { 
   @include e9-inline-form; 
 }
@@ -48,6 +39,7 @@ input {
     font-family:$theme-font-family !important;
   }
 }
+
 .user_new{
   margin-top:1em;
   .field{
@@ -66,6 +58,7 @@ input {
    clear:both;
   }
 }
+
 .edit-user{
   .checkbox{
     label{
@@ -73,6 +66,7 @@ input {
     }
   }
 }
+
 textarea { 
   margin: $input-margin;
   padding: $input-padding;
@@ -101,9 +95,7 @@ label {
     background: image-url("star.png") no-repeat right top; 
   } 
 }
-.user_new{
-  float:left;
-}
+
 .field {
   @include pie-clearfix;
   margin: 0 0 $global-spacing-margin 0;
@@ -123,6 +115,12 @@ label {
     display: block;
   }
 
+  /* This is a honeypot field and should never be displayed */
+  &.comment-email {
+    display: none;
+  }
+
+
   &.tinymce {
     textarea { 
       height: $tinymce-height; 
@@ -135,8 +133,9 @@ label {
     width: inherit;
     position: relative;
     padding-left: 18px;
-    float:left;
-    clear:both;
+    float: left;
+    clear: both;
+    margin: 0;
 
     input[type=radio], input[type=checkbox] {
       background: none;
@@ -146,7 +145,6 @@ label {
       width: 13px;
       height: 13px;
       position:absolute;
-
       left:0;
     }
     
@@ -170,6 +168,7 @@ label {
     width:94%;
   }
 }
+
 .checkbox{
   width:inherit;
   label{
@@ -177,38 +176,9 @@ label {
     float:left;
   }
 }
-.cbc{
-  .cbc-fields{
-    width:inherit;
-    .cbc-field-2{
-      display:none;
-    }
-  }
-}
 
-.user_new{
-  div.help{
-    display:none;
-  }
-  .help{
-    font-size:14px;
-    margin-top:0;
-    margin-bottom:0;
-    color:#F82130;
-    font-style:italic;
-  
-    a{
-      font-size:14px;
-      color:$theme-alt-text-color;
-      &:hover{
-        text-decoration:underline;
-        color:$theme-link-color;
-      }
-    }
-  }
-}
-.edit_topic{
-  .actions{
+.edit_topic {
+  .actions {
     margin-right:25px;
   }
 }

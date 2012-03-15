@@ -62,40 +62,37 @@
   }
 }
 #comment-form{
-  .avatar{
-    float:left;
-    margin-right:10px;
+  $spacing: 15px;
+  position: relative;
+
+  form {
+    padding: 0 0 0 ($avatar-width + $spacing);
   }
-  .new_comment{
-    float:left;
-    width:500px;
-    label{
-      display:none;
-    }
-  }
-  .field{
-    
-    #comment_body{
-      margin-top:0px;
-    }
-    .info{
-        font-size:0.65em;
-    }
-  } 
-  .comment-email{
+
+  label[for='comment_body'] {
     display:none;
   }
-  .actions{
-    clear:both;
-    float:left;
-    ul{
-      margin-top:10px;
-      li{
-        margin:.5em;
-      }
+
+  #comment_body {
+    margin-top: 0px;
+  }
+
+  .avatar {
+    position: absolute;
+    left: 0;
+  }
+
+  .info {
+    font-size: 0.65em;
+  }
+
+  .actions {
+    clear: both;
+    float: left;
+    ul {
+      margin-top: 10px;
+      li { margin: 0.5em; }
     }
-    a{
-      @include button;
-    }
+    a { @include button; }
   }
 }

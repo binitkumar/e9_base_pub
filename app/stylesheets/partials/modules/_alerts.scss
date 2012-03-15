@@ -1,12 +1,14 @@
-.flash-messages{
-	.flash{
+.flash-messages {
+  > div { margin-bottom: 0.67em; }
+
+	.flash {
 		padding-top:10px;
 		padding-bottom:10px;
 		width:98%;
 		padding-left:10px;
 		font-weight:bold;
 	}
-	.alert{
+	.alert {
 		background-color:lighten(#F23C3C,30%);
 		color:#F23C3C;
 		padding:10px;

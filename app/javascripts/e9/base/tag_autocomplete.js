@@ -26,7 +26,7 @@
       var 
 
       $input    = $('input.tag-autocomplete', el),
-      $list     = $('ul.select', el),
+      $list     = $('ul.tag-select', el),
 
       $matchall = $('.matchall input', el), 
       has_match = $matchall.length > 0,
