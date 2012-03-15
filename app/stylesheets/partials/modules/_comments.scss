@@ -30,12 +30,12 @@
         font-size:.9em;
       }
       .action-links{
-        position:absolute;
         float:left;
         right:0;
         top:-3px;
         ul{
           margin-right:10px;
+          float:right;
         }
         a.action-link{
           text-decoration: underline;
@@ -63,12 +63,14 @@
 }
 #comment-form{
   $spacing: 15px;
-  position: relative;
 
   form {
     padding: 0 0 0 ($avatar-width + $spacing);
+    
   }
-
+  .form{
+    position:relative;
+  }
   label[for='comment_body'] {
     display:none;
   }

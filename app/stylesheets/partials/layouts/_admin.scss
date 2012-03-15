@@ -212,7 +212,6 @@ body.admin {
     table{
       tr{
         td.actions{
-          //float:left;
           a{
             @include button;
           }
