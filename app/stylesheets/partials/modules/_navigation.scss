@@ -1,6 +1,17 @@
+@import 'compass/css3/border-radius';
 @import "includes/theming";
 @import "includes/typography";
+@mixin gradient($start-color, $end-color) {
+  background-color: $start-color;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($start-color), to($end-color)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $start-color, $end-color); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, $start-color, $end-color); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, $start-color, $end-color); /* IE10 */
+  background-image:      -o-linear-gradient(top, $start-color, $end-color); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $start-color, $end-color);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start-color}', EndColorStr='#{$end-color}'); /* IE6–IE9 */
 
+}
 $sidebar-border: 1px solid $theme-border-color; 
 
 .sideBar{
@@ -50,4 +61,77 @@ $sidebar-border: 1px solid $theme-border-color;
       font-weight:bold;
     }
   }
+}
+
+@mixin dropdown($width: 180px, $background: #151515 url(/images/site/2-column-nav-background.png) no-repeat center top, $padding: 15px 20px) {
+  margin-bottom: 20px;
+  padding-bottom: 2px;
+  background: #151515;
+
+  ul.menu {
+    background: $background;
+    > li.hover > ul { z-index: 10; left: auto; } 
+    li li.hover > ul { z-index: 10; left: auto; margin-left: $width; } 
+    > li > a { padding: $padding; }
+
+    a { padding: $padding; }
+
+    li { 
+      text-align: left;
+      position: relative; 
+      @include inline-block; 
+      vertical-align: middle; 
+      margin: 0 0 0 0; 
+      z-index: 5;
+      &:hover {
+        a { color: white; }
+      }
+      a { 
+        display: block; 
+        font-size: 15px; 
+        text-decoration: none;  
+        color: #ccc;
+      }
+      ul {
+        ul { top: 0; padding-top: 0; }
+        padding-top: 3px;
+        position: absolute; 
+        left: -999em; 
+        display: block; 
+        width: $width;
+        li:first-child { border-top: none; }
+        > li.last { 
+          @include border-radius(0 0 5px 5px); 
+          &.parent:hover {
+            @include border-radius(0 0 0 5px);
+          }
+        }
+        li:hover {
+          @include gradient(#333, #2c2c2c);
+        }
+        li { 
+          li:first-child { 
+            @include border-radius(0 5px 0 0); 
+          }
+          border-top: 1px solid #1a1a1a;
+          @include gradient(#303030, #222);
+          width: 100%; 
+          a { 
+            display: block; 
+            border-left: 0 none; 
+            font-size: 12px; 
+            padding: 12px 10px; 
+            font-weight: bold; 
+            &:hover { color: white; }
+          }
+        }
+      } 
+      &.current > a { color: #8a2529; }
+    }
+  }
+}
+
+#admin-Main-nav { 
+  @include dropdown(180px, #151515);
+  margin-top: 20px;
 }
