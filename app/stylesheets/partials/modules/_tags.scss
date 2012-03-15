@@ -8,6 +8,10 @@ $admin-tag-border-radius: 12px !default;
 $admin-tag-padding: 5px !default;
 $admin-tag-field-width: 200px !default;
 
+.tags {
+  width: 90%;
+}
+
 .tag-context-list {
   @include clearfix;
   font-size: $x-small;
@@ -20,8 +24,8 @@ $admin-tag-field-width: 200px !default;
   .tag-list { 
     display: inline;
   }
-  a{
-    text-decoration:underline;
+  a {
+    text-decoration: underline;
   }
 }
 

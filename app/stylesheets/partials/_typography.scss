@@ -16,12 +16,11 @@
 .x-large      { @include x-large; }
 .xx-large     { @include xx-large; }
 
-a               { text-decoration:none;}
+a               { text-decoration: none; outline: none; }
 img             { margin: 0; }
-p               { margin: 0.5em 0;}
+p               { margin: 0.5em 0; }
 p:empty         { margin-bottom: 0; }
-blockquote      { margin: 0 4em 0 2.5em; font-style: italic; color:#000; }
-blockquote p    { margin: 0 4em 0 2.5em; font-style: italic; color:#000; }
+blockquote      { margin: 0 4em 0 2.5em; font-style: italic; }
 strong, dfn     { font-weight: bold; }
 em, dfn         { font-style: italic; }
 sup, sub        { line-height: 0; }
@@ -31,20 +30,23 @@ pre             { margin: 1.5em 0; white-space: pre; }
 pre, code, tt   { @include fixed-width; }
 ul, ol          { padding-left: 2em; list-style-position: outside; }
 li ul, li ol    { margin: 0; }
-ul              { list-style-type:square; }
-ol              { list-style-type: decimal; clear:both;}
+ul              { list-style-type: square; }
+ol              { list-style-type: decimal; clear: both; }
 li              { padding: 5px 0; }
-dl              { margin: 0 0 1.5em 0;
-dt              { font-weight: bold; } }
-dd              { margin-left: 1.5em; }
+
+dl { 
+  margin: 0 0 1.5em 0;
+  dt { font-weight: bold; } 
+  dd { margin-left: 1.5em; }
+}
 
 hr { 
   width: 100%; 
-  border:none;
-  background-color:$theme-border-color;
-  float:left;
-  height:1px;
-  margin-top:1em;
+  border: none;
+  background-color: $theme-border-color;
+  float: left;
+  height: 1px;
+  margin-top: 1em;
   &.space {
     border-bottom: none;
     visibility: hidden;
@@ -59,13 +61,22 @@ ul.menu,
   }
 }
 
+/* assume everything in .actions is a clickable */
 .actions > * {
   cursor: pointer;
 }
 
-h1.title {
-  margin-top: 0;
+@mixin -h-margins($margin) {
+  margin-bottom: $margin;
+  #content-body, .snippet { margin-top: $margin; }
 }
+
+h1 { @include -h-margins(0.67em); }
+h2 { @include -h-margins(0.85em); }
+h3 { @include -h-margins(1em); }
+h4 { @include -h-margins(1em); }
+h5 { @include -h-margins(1.2em); }
+h6 { @include -h-margins(1.2em); }
 
 h1, h2, h3, h4, h5, h6, .header {
   .text {

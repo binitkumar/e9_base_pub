@@ -63,10 +63,10 @@
 }
 #comment-form{
   $spacing: 15px;
+  position: relative;
 
-  .form {
+  form {
     padding: 0 0 0 ($avatar-width + $spacing);
-    position: relative;
   }
 
   label[for='comment_body'] {
@@ -83,11 +83,7 @@
   }
 
   .info {
-    font-size:0.65em;
-  }
-
-  .comment-email {
-    display: none;
+    font-size: 0.65em;
   }
 
   .actions {
@@ -97,8 +93,6 @@
       margin-top: 10px;
       li { margin: 0.5em; }
     }
-    a {
-      @include button;
-    }
+    a { @include button; }
   }
 }

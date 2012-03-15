@@ -9,12 +9,6 @@ $fieldset-padding :       1.4em !default;
 @import 'includes/form';
 @import 'compass/css3/box-sizing';
 
-.tags{
-  width:90%;
-}
-.comment-email{
-  display:none;
-}
 form.inline { 
   @include e9-inline-form; 
 }
@@ -45,6 +39,7 @@ input {
     font-family:$theme-font-family !important;
   }
 }
+
 .user_new{
   margin-top:1em;
   .field{
@@ -63,6 +58,7 @@ input {
    clear:both;
   }
 }
+
 .edit-user{
   .checkbox{
     label{
@@ -70,6 +66,7 @@ input {
     }
   }
 }
+
 textarea { 
   margin: $input-margin;
   padding: $input-padding;
@@ -98,9 +95,7 @@ label {
     background: image-url("star.png") no-repeat right top; 
   } 
 }
-.user_new{
-  float:left;
-}
+
 .field {
   @include pie-clearfix;
   margin: 0 0 $global-spacing-margin 0;
@@ -119,6 +114,12 @@ label {
     margin: $input_margin;
     display: block;
   }
+
+  /* This is a honeypot field and should never be displayed */
+  &.comment-email {
+    display: none;
+  }
+
 
   &.tinymce {
     textarea { 
@@ -176,29 +177,8 @@ label {
   }
 }
 
-.user_new{
-  div.help{
-    display:none;
-  }
-  .help{
-    font-size:14px;
-    margin-top:0;
-    margin-bottom:0;
-    color:#F82130;
-    font-style:italic;
-  
-    a{
-      font-size:14px;
-      color:$theme-alt-text-color;
-      &:hover{
-        text-decoration:underline;
-        color:$theme-link-color;
-      }
-    }
-  }
-}
-.edit_topic{
-  .actions{
+.edit_topic {
+  .actions {
     margin-right:25px;
   }
 }
