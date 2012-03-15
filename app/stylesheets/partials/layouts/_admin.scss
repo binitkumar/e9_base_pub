@@ -87,7 +87,7 @@ body.admin {
     }
   }
   table td{
-    border:1px solid $theme-border-color;
+   // border:1px solid $theme-border-color;
   }
   table.records {
     th {
@@ -111,7 +111,7 @@ body.admin {
           color:$theme-link-color;
         }
       }
-      border:1px solid $theme-border-color;
+     // border:1px solid $theme-border-color;
       &.id {
         text-align: center;
       }
@@ -191,7 +191,7 @@ body.admin {
       }
     }
     tr{
-      border-bottom:theme-border-style();
+     // border-bottom:theme-border-style();
       &.even{
 
       }
@@ -212,7 +212,7 @@ body.admin {
   #records_table{
     table{
       tr{
-        border-bottom:theme-border-style();
+        //border-bottom:theme-border-style();
         td.actions{
           //float:left;
           a{

@@ -2,7 +2,7 @@
 @import "includes/theming";
 
 table {
-  border-collapse: separate;
+  border-collapse: collapse;
   margin-bottom: 1.5em; 
   width: 100%;
 
@@ -11,24 +11,19 @@ table {
 
   &.plain {
     th, td {
-      border: none;
       padding: 0;
       margin: 0;
     }
   }
 
   th, td {
-    border-style: $theme-border-style;
-    border-color: $theme-border-color;
-    border:none;
+    border:theme-border-style();
     text-align:left;
     &:first-child { 
-      border-left-width: 1px; 
     }
   }
   
   th {
-    border-width: 1px 1px 1px 0;
     text-align:left; 
     line-height: 2em;
     font-weight: bold; 
@@ -36,9 +31,8 @@ table {
 
   td {
     @include small;
-    border-width: 0 1px 1px 0;
     font-weight: normal !important; 
-    border-top-width: 0px; 
+
     padding: 0.5em;
   }
 }
@@ -53,9 +47,7 @@ body.admin{
     }
   }
   .records{
-    border-collapse:collapse;
     tr{
-      border-bottom:theme-border-style();
       &.odd{
        // background:#fff;
       }
