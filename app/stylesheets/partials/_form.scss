@@ -40,33 +40,6 @@ input {
   }
 }
 
-.user_new{
-  margin-top:1em;
-  .field{
-    margin-top:1em;
-  }
-  input[type="text"],input[type="password"]{
-    width:290px;
-    clear:both;
-    float:left;
-  }
-  label{
-    float:left;
-  }
-  #sign_in_email,#sign_in_password{
-   float:left;
-   clear:both;
-  }
-}
-
-.edit-user{
-  .checkbox{
-    label{
-      float:left;
-    }
-  }
-}
-
 textarea { 
   margin: $input-margin;
   padding: $input-padding;
@@ -119,7 +92,6 @@ label {
   &.comment-email {
     display: none;
   }
-
 
   &.tinymce {
     textarea { 

@@ -8,13 +8,22 @@ body.admin {
     }
   }
 
+  .txt {
+    a {
+      color: $theme-link-color;
+      text-decoration: underline;
+      &:hover {
+        color: $theme-alt-text-color;
+      }
+    }
+  }
 
   #banner { 
     display: none; 
   }
   .admin-sidebar-right{
     h2, .h2{
-      border-bottom:theme-border-style();
+      border-bottom: theme-border-style();
       .action-links{
         a{
           font-size:14px;
@@ -81,13 +90,10 @@ body.admin {
     }
   }
   
-  .admin-content-main{
+  .admin-content-main {
     h2, .h2 {
-      border-bottom:theme-border-style();
+      border-bottom: theme-border-style();
     }
-  }
-  table td{
-   // border:1px solid $theme-border-color;
   }
   table.records {
     th {
@@ -111,7 +117,6 @@ body.admin {
           color:$theme-link-color;
         }
       }
-     // border:1px solid $theme-border-color;
       &.id {
         text-align: center;
       }
@@ -190,21 +195,15 @@ body.admin {
         }
       }
     }
-    tr{
-     // border-bottom:theme-border-style();
-      &.even{
-
-      }
-    }
 
     .viewable-status {
       margin-left: 5px;
     }
     td.record-avatar{
       img{
-        border:1px solid $theme-border-color;
-        &:hover{
-          border:1px solid $theme-alt-text-color;
+        border: 1px solid $theme-border-color;
+        &:hover {
+          border: 1px solid $theme-alt-text-color;
         }
       }
     }
@@ -212,9 +211,7 @@ body.admin {
   #records_table{
     table{
       tr{
-        //border-bottom:theme-border-style();
         td.actions{
-          //float:left;
           a{
             @include button;
           }
@@ -362,3 +359,4 @@ body.admin {
     img { display: block; }
   }
 }
+

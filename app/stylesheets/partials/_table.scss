@@ -17,14 +17,11 @@ table {
   }
 
   th, td {
-    border:theme-border-style();
-    text-align:left;
-    &:first-child { 
-    }
+    border: theme-border-style();
+    text-align: left;
   }
   
   th {
-    text-align:left; 
     line-height: 2em;
     font-weight: bold; 
   } 
@@ -32,28 +29,6 @@ table {
   td {
     @include small;
     font-weight: normal !important; 
-
     padding: 0.5em;
-  }
-}
-body.admin{
-  .txt{
-    a{
-      color:$theme-link-color;
-      text-decoration:underline;
-      &:hover{
-        color:$theme-alt-text-color;
-      }
-    }
-  }
-  .records{
-    tr{
-      &.odd{
-       // background:#fff;
-      }
-      &.even{
-        //background:$theme-border-color;
-      }
-    }
   }
 }

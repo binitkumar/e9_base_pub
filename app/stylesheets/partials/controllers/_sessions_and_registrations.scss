@@ -3,6 +3,10 @@ body.controller-sessions, body.controller-registrations {
     margin-right: 10px;
   }
 
+  #sign_in_form, #sign_up_form {
+    width: 400px;
+  }
+
   #sign_in_form {
     margin-bottom: 2.25em;
   }
