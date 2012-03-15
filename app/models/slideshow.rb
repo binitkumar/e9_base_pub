@@ -1,4 +1,5 @@
 class Slideshow < Category
+  def self.liquid_scope() ordered end
 
   def thumb
     if slides.present?

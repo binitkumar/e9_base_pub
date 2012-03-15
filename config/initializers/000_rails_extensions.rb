@@ -6,6 +6,8 @@ ActiveRecord::Base.send(:include, E9::ActiveRecord::Scopes)
 ActiveRecord::Base.send(:include, E9::Models::RecordSequence)
 ActiveRecord::Base.send(:include, E9::Models::ImageMounting)
 
+ActiveRecord::Base.send(:extend, E9::Liquid::Find)
+
 ActionController::Base.send(:helper, E9::Controllers::CheckboxCaptcha::HelperMethods)
 
 #

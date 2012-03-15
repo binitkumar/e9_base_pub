@@ -40,6 +40,7 @@ module E9
     autoload :Env,                  'e9/liquid/env'
     autoload :Filters,              'e9/liquid/filters'
     autoload :Tags,                 'e9/liquid/tags'
+    autoload :Find,                 'e9/liquid/find'
   end
 
   module Rack
