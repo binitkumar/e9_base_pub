@@ -2,7 +2,8 @@ _defaults: &defaults
   _finder: title
   _validate: false
   author: conrad
-  slideshow: slideshow_1
+  slideshows: slideshow_1
+  layout: slide
 
 # NOTE Permalinks are pre-generated from the titles here so we can get 
 # by without running the save callbacks on Slides, which are not validated

@@ -1,9 +1,6 @@
 class ImageMount < ActiveRecord::Base
   CATCHALL_FALLBACK_URL = '/images/defaults/upload_image_thumb.png'
 
-  include Image::DimensionCaching
-  self.dimension_target = :processed_image
-
   serialize :instructions, Hash
 
   #
@@ -115,6 +112,11 @@ class ImageMount < ActiveRecord::Base
   before_save :coerce_image_dimensions
   before_save :reset_versions, :if => 'image_id_changed?'
 
+  # NOTE include DimensionCaching *AFTER* coerce_image_dimensions, so the 
+  # processed target will execute the correct instructions
+  include Image::DimensionCaching
+  self.dimension_target = :processed_image
+
   #
   # Instance Methods
   #
@@ -189,13 +191,14 @@ class ImageMount < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {
-      :id         => id,
-      :width      => width,
-      :height     => height,
-      :url        => url,
-      :attachment => image.as_json
-    }
+    {}.tap do |json|
+      json[:id]         = id
+      json[:width]      = width
+      json[:height]     = height
+      json[:url]        = url
+      json[:attachment] = image.as_json
+      json[:versions]   = versions.as_json
+    end
   end
 
   def reset

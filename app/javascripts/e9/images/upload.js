@@ -86,49 +86,6 @@
         });
       }
 
-      //if (has_tags) {
-
-        //if (tags) data['image[image_tags][]'] = tags.split('|');
-
-        //options.onSelectOnce = function(e, id, fobj) {
-
-          //$.fn.colorbox({ 
-            //href:       '/image_uploads/new?'+$.param(data),
-            //scrolling:  false,
-            //width:      600,
-            //onComplete: function() {
-              //var el = $('#cboxLoadedContent');
-
-              //$("form", el)
-                //.removeAttr('data-remote')
-                //.submit(function(e) {
-                  //e.preventDefault();
-
-                  //var 
-                  //sd = $input.uploadifySettings("scriptData");
-
-                  //var tags = $("input.tag-input", el).map(function(i, e) {
-                    //return $(e).val();
-                  //});
-
-                  //$.extend(sd, {
-                    //"image[images__h___tag_list]": $.makeArray(tags)
-                  //});
-
-                  //$input.uploadifySettings("scriptData", sd);
-                  //$input.uploadifyUpload();
-                //})
-              //;
-            //},
-            //onClosed: function() {
-              //$input.uploadifyClearQueue();
-            //}
-          //});
-
-          //return false;
-        //}
-      //}
-
       // Handle Uploadify
       $input.uploadify($.extend({
         script: "/image_uploads",
@@ -147,6 +104,8 @@
         sizeLimit: 1024 * 1000 * 5, // 1mb * 5
         onError: function(event, ID, fileObj, errorObj) {
           // catch file size errors to give a more descriptive message
+          console.dir(errorObj);
+
           if (errorObj.type == "File Size") {
             $("#" + $this.attr("id") + ID)
               .addClass("uploadifyError")

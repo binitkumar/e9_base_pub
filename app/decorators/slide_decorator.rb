@@ -8,9 +8,7 @@ class SlideDecorator < BaseDecorator
       hash[:id]             = model.id
       hash[:type]           = model.class.name
       hash[:param]          = model.to_param
-      hash[:image]          = model.image_url
-      hash[:thumb]          = model.thumb_url
-      hash[:embeddable]     = model.embeddable_url
+      hash[:image]          = model.image.as_json
       hash[:title]          = model.title
       hash[:description]    = model.description
       hash[:url]            = h.contextual_slide_url(model)

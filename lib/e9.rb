@@ -54,6 +54,8 @@ module E9
     autoload :Controller,           'e9/roles/controller'
   end
 
+  autoload :Seeds,                  'e9/seeds'
+
   module Social
     autoload :Clients,              'e9/social/clients'
     autoload :Controller,           'e9/social/controller'

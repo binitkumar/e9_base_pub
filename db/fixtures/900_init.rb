@@ -2,7 +2,7 @@
   klass.all.each &:reset_layout!
 end
 
-pages = E9Seeds.fetch_fixtures('SystemPage', %w(
+pages = E9::Seeds.fetch_fixtures('SystemPage', %w(
   sign_in
   sign_up
   manage_account 
@@ -15,7 +15,7 @@ pages = E9Seeds.fetch_fixtures('SystemPage', %w(
   faqs
 ))
 
-feed_widget = E9Seeds.fetch_fixture('FeedWidget', 'all_data')
+feed_widget = E9::Seeds.fetch_fixture('FeedWidget', 'all_data')
 
 pages.map {|page| page.region('right') }.compact.each do |region|
   region.add_renderable!(feed_widget)

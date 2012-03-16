@@ -63,5 +63,5 @@ layouts.map {|layout| layout.region('right') }.compact.each do |region|
   region.add_renderable!(s)
 end
 
-snippets = E9Seeds.fetch_fixtures("Snippet", %w(home_snippet_1 home_snippet_2 home_snippet_3))
+snippets = E9::Seeds.fetch_fixtures("Snippet", %w(home_snippet_1 home_snippet_2 home_snippet_3))
 home_layout.region('content-bottom').add_renderables!(snippets)

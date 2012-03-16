@@ -32,11 +32,6 @@ class Slide < Page
   def change_layout(new_layout)
     super do |_self, _prototype|
       _self.published = false
-
-      #if self.layout.specified_dimensions != new_layout.specified_dimensions
-        #_self.remove_image!
-        #_self.send(:write_attribute, :image, nil)
-      #end
     end
   end
 

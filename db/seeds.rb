@@ -1,2 +1,2 @@
-require 'e9_seeds'
-E9Seeds.load!
+require 'e9'
+E9::Seeds.load!
