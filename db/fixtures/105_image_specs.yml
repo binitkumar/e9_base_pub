@@ -5,8 +5,8 @@ _defaults: &defaults
 slide_1:
   <<: *defaults
   name: Slide One
-  width: 505
-  height: 335
+  width: 665
+  height: 475
 
 thumb:
   <<: *defaults

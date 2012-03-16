@@ -5,7 +5,7 @@ snippet_1:
   <<: *defaults
   name: Large Text Sidebar Snippet
   formatter: 1
-  region_types: right_column
+  region_types: right_column, left_column
   set_revert_template: false
   template: |
     <blockquote>

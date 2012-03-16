@@ -1,4 +1,4 @@
-<% column_regions = "right_column" %>
+<% column_regions = "right_column, left_column" %>
 
 _defaults: &defaults
   _finder: name
@@ -33,22 +33,11 @@ top_nav:
       </li>
     </ul>
 
-footer_menu:
-  <<: *defaults
-  name: "Footer Menu"
-  region_types: footer
-  set_revert_template: true
-  template: |
-    <div class="footer-module">
-      <ul class="footer-menu menu">
-        {% menu identifier[footer_menu] %}
-      </ul>
-    </div>
 
 social_module:
   <<: *defaults
   name: "Social Module"
-  region_types: footer
+  region_types: right_column, left_column
   set_revert_template: true
   template: |
     <div class="footer-module">

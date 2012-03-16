@@ -4,7 +4,7 @@ _defaults: &defaults
 offer_1:
   <<: *defaults
   name: This is the default test offer!
-  region_types: right_column
+  region_types: right_column, left_column
   template: |
     Vero facilisis sagaciter blandit torqueo commoveo euismod humo mos obruo lobortis ut.Veniam luctus volutpat consequat exerci suscipere hendrerit feugiat nunc. Your free consultation code is **{{ campaign.code }}** and the campaign name is **{{ campaign.name }}.**
   options:

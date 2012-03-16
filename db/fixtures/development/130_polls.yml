@@ -4,7 +4,7 @@ _defaults: &defaults
 poll_1:
   <<: *defaults
   name: Shakespeare Poll
-  region_types: right_column
+  region_types: right_column, left_column
   template: When he himself might his quietus make with a bare bodkin?
   poll_answers_attributes:
     - value: Hamlet

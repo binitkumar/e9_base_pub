@@ -5,7 +5,7 @@ all_data:
   <<: *defaults
   name: Page & Blog Feed With All Data
   widget_template: full
-  region_types: right_column
+  region_types: right_column, left_column
   identifier: all_data
   options:
     header_text: Page & Blog Feed With All Data with long header asdfasdf
@@ -16,7 +16,7 @@ slides_image_only:
   <<: *defaults
   name: Slides - Images Only Feed
   widget_template: images
-  region_types: right_column
+  region_types: right_column, left_column
   identifier: slides_images_only
   options:
     limit: 4
@@ -27,7 +27,7 @@ faq_image_and_title:
   <<: *defaults
   name: FAQ Feed With Image & Title
   widget_template: titles_and_images
-  region_types: right_column
+  region_types: right_column, left_column
   identifier: faq_image_and_title 
   options:
     limit: 2
@@ -38,7 +38,7 @@ forum_feed:
   <<: *defaults
   name: Forum Feed - Image, Title & Summary
   widget_template: image_title_and_summary
-  region_types: right_column
+  region_types: right_column, left_column
   identifier: forum_feed 
   options:
     limit: 2
@@ -49,7 +49,7 @@ blog_feed:
   <<: *defaults
   name: Blog Feed - Title & Author
   widget_template: titles_and_authors
-  region_types: right_column
+  region_types: right_column, left_column
   identifier: blog_feed 
   options:
     header_text: Blog Feed - Title & Author
@@ -60,7 +60,7 @@ event:
   <<: *defaults
   name: Event Feed
   widget_template: event
-  region_types: right_column
+  region_types: right_column, left_column
   identifier: event_feed
   options:
     event_feed: true
@@ -72,7 +72,7 @@ top_feed_one:
   identifier: top_feed_one
   name: Title/Summary Top Content Feed
   widget_template: titles_and_summary
-  region_types: right_column
+  region_types: right_column, left_column
   options:
     limit: 5
     header_text: These are the pages our readers like best...
@@ -83,7 +83,7 @@ top_feed_two:
   identifier: top_feed_two
   name: Top Content Feed - Title Only
   widget_template: title_only
-  region_types: right_column
+  region_types: right_column, left_column
   options:
     limit: 5
     header_text: Top Content Feed Title Only

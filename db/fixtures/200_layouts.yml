@@ -6,53 +6,47 @@ page:
   name: "Page: Two Column"
   template: "application/default/page"
   identifier: "user_page"
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
-home:
+  region_types: top_nav, main_nav, bottom_footer, left_column, content_bottom
+three_column:
   <<: *defaults
-  name: "Page: Home"
-  template: "application/home"
-  identifier: "user_page_home"
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
-one_column:
-  <<: *defaults
-  name: "Page: One Column"
-  template: "application/one_column"
-  identifier: "user_page_one_column"
-  region_types: top_nav, main_nav, footer, bottom_footer, content_bottom, banner
+  name: "Page: Three Column"
+  template: "application/three_column"
+  identifier: "user_page_three_column"
+  region_types: top_nav, main_nav, bottom_footer, right_column, left_column, content_bottom
 admin:
   <<: *defaults
   name: "Admin"
   template: "application/admin"
   identifier: "user_page_admin"
-  region_types: top_nav, main_nav, footer, bottom_footer
+  region_types: top_nav, main_nav, bottom_footer
 blog:
   <<: *defaults
   name: "Blog"
   template: "application/default/blog"
   identifier: "blog"
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+  region_types: top_nav, main_nav, bottom_footer, left_column, content_bottom
 forum:
   <<: *defaults
   name: "Forum"
   template: "application/default/forum"
   identifier: "forum"
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+  region_types: top_nav, main_nav, bottom_footer, left_column, content_bottom
 slide_page:
   <<: *defaults
   name: "Slide Page"
   identifier: "user_page_slide"
   template: "application/default/slide"
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+  region_types: top_nav, main_nav, bottom_footer, left_column, content_bottom
 slide:
   <<: *defaults
   name: "Slide One"
   identifier: "slide"
   template: "application/default/slides/one"
   image_spec: slide_1
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+  region_types: top_nav, main_nav, bottom_footer, right_column, left_column, content_bottom
 event:
   <<: *defaults
   name: "Event Default"
   identifier: "event"
   template: "application/default/event"
-  region_types: top_nav, main_nav, footer, bottom_footer, right_column, content_bottom, banner
+  region_types: top_nav, main_nav, bottom_footer, left_column, content_bottom

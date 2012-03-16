@@ -2,7 +2,7 @@ wysiwyg = Page.find_by_title "WYSIWYG Style Test With A Very Very Very Very Very
 
 wysiwyg.reset_layout!
 
-wysiwyg.region('right').renderables = [
+renderables = [
   FeedWidget.find_by_name("Page & Blog Feed With All Data"),
   FeedWidget.find_by_name("Slides - Images Only Feed"),
   FeedWidget.find_by_name("FAQ Feed With Image & Title"),
@@ -14,3 +14,5 @@ wysiwyg.region('right').renderables = [
   FeedWidget.find_by_identifier("top_feed_two"),
   Offer.first
 ]
+
+wysiwyg.region('left').renderables = renderable

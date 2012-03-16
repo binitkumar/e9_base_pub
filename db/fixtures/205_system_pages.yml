@@ -195,7 +195,7 @@ passwords:
 home:
   <<: *defaults
   _klass: LinkableSystemPage
-  layout: home
+  layout: three_column
   title: "Home"
   identifier: <%= Page::Identifiers::HOME %>
   permalink: ''

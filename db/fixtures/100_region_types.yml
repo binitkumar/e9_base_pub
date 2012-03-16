@@ -16,18 +16,18 @@ bottom_footer:
   name: Bottom Footer
   domid: bottom-footer
 
-footer:
-  <<: *defaults
-  name: Footer
-  domid: footer 
-  role: administrator
+#footer:
+ # <<: *defaults
+ # name: Footer
+ # domid: footer 
+ # role: administrator
 
-banner:
-  <<: *defaults
-  name: Main Banner
-  domid: main-banner
-  role: administrator
-  identifier: banner_main
+#banner:
+ # <<: *defaults
+  #name: Main Banner
+  #domid: main-banner
+  #role: administrator
+  #identifier: banner_main
 
 right_column:
   <<: *defaults
@@ -46,11 +46,11 @@ content_bottom:
   #name: Middle Column
   #domid: middle
   #role: administrator
-#left_column:
-  #<<: *defaults
-  #name: Left Column
-  #domid: left
-  #role: administrator
+left_column:
+  <<: *defaults
+  name: Left Column
+  domid: left
+  role: administrator
 #content_top:
   #<<: *defaults
   #name: Content Top
