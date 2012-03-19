@@ -12,14 +12,14 @@ full:
           <img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/>
         </a>
       </div>
-      <h4>
+      <h5>
         <a href="{{record.path}}">{{record.title}}</a>
-      </h4>
+      </h5>
       <div class="info">
         <p>{{record.published_at}}</p>
         <p>by {{record.author.name}}</p>
       </div>
-      <p>{{record.description | truncate:100 }} <span class="action-links visible"><a href="{{record.path}}">Read More &gt;</a></span></p>
+      <p>{{record.description | truncate:100 }} </p>
     </div>
 
 titles_and_authors:
@@ -28,8 +28,8 @@ titles_and_authors:
   css_class: titles-authors-module list-item
   body: |
     <div class="module-container">
-    <h4 class="title"><a href="{{record.path}}">{{record.title}}</a></h4>
-    <p class="author">{{record.author.name}}</p>
+      <h4 class="title"><a href="{{record.path}}">{{record.title}}</a></h4>
+      <p class="author">{{record.author.name}}</p>
     </div>
 
 image_title_and_summary:
@@ -92,16 +92,16 @@ event:
   css_class: full-content-feed-module list-item
   body: |
     <div class="module-container">
-    <div class="left image">
-      <a href="{{record.path}}">
-        <img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/>
-      </a>
-    </div>
-    <h4>
-      <a href="{{record.path}}">{{record.title}}</a>
-    </h4>
-    <div class="info">
-      <p>{{record.time}}</p>
-    </div>
-    <p>{{record.description | truncate:100 }} <span class="action-links visible"><a href="{{record.path}}">Read More &gt;</a></span></p>
+      <div class="left image">
+        <a href="{{record.path}}">
+          <img src="{{record.thumb_url}}" alt="{{record.title | escape}}"/>
+        </a>
+      </div>
+      <h4>
+        <a href="{{record.path}}">{{record.title}}</a>
+      </h4>
+      <div class="info">
+        <p>{{record.time}}</p>
+      </div>
+      <p>{{record.description | truncate:100 }}</p>
     </div>
