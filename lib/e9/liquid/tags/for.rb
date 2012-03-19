@@ -3,8 +3,6 @@ module E9::Liquid::Tags
     Syntax = /(\w+)\s+in\s+([\w\.]+)/
 
     def initialize(tag_name, markup, tokens)
-      @logger = Logger.new(STDOUT)
-
       if markup =~ Syntax
         @variable_name   = $1
         @collection_name = $2
@@ -19,14 +17,10 @@ module E9::Liquid::Tags
     def render(context)        
       context.registers[:for] ||= Hash.new(0)
 
-      @logger.debug("rendering")
-      
       begin
         obj = context[@collection_name] || @collection_name.classify.constantize
       rescue NameError
       end
-
-      @logger.debug("object: #{obj.to_s}")
 
       collection = build_collection(obj, context)
     
