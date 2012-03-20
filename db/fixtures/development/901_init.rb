@@ -1,8 +1,8 @@
-wysiwyg = Page.find_by_title "WYSIWYG Style Test With A Very Very Very Very Very Very Very Very Very Very Long Title"
+wysiwyg = E9::Seeds.fetch_fixture("UserPage","wysiwyg")
 
 wysiwyg.reset_layout!
 
-wysiwyg.region('right').renderables = [
+wysiwyg.region('left').renderables = [
   FeedWidget.find_by_name("Page & Blog Feed With All Data"),
   FeedWidget.find_by_name("Slides - Images Only Feed"),
   FeedWidget.find_by_name("FAQ Feed With Image & Title"),

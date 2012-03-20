@@ -1,4 +1,4 @@
-<% column_regions = 'right_column' %>
+<% column_regions = 'left_column, content_bottom' %>
 
 _defaults: &defaults
   _finder: name
