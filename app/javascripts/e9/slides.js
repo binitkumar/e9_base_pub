@@ -11,8 +11,11 @@
   },
 
   events = slides.events = {
-    load : 'e9_slides_load'
+    load  : 'e9_slides_load',
+    init  : 'e9_slides_init'
   },
+
+  loaded = slides.loaded = {},
 
   defaults = {
     body_selector     : '#slide',
@@ -52,39 +55,47 @@
   init = function(opts) {
     slides(opts);
     do_hashchange();
+    $.event.trigger(events.init);
   },
 
   load = function(slide) {
-    var params = {};
+    var params = {}, success = function(slide) {
+      if (!loaded[slide.param]) loaded[slide.param] = slide;
 
-    params.id = slide;
+      slides.current = slide;
 
-    // let the JSON know we want HTML partials rendered
-    params.html = 1;
-
-    $.ajax({
-      url: slides.options.url,
-      method: 'GET',
-      dataType: 'json',
-      data: params,
-      success: function(slide, status, xhr) {
-        /*
-         * If the param of the loaded slide is different than
-         * the param asked for, then the slide was not found or
-         * otherwise inaccessible.  Unbind hashchange and
-         * reset the hash to the param of the new slide.
-         */
-        if (slide.param != params.id) {
-          set_hash_without_change(slide.param);
-        }
-
-        /* then call the load complete callback */
-        options.complete(slide, status, xhr);
-
-        /* trigger slide loaded */
-        $.event.trigger(events.load, [slide]);
+      /*
+       * If the param of the loaded slide is different than
+       * the param asked for, then the slide was not found or
+       * otherwise inaccessible.  Unbind hashchange and
+       * reset the hash to the param of the new slide.
+       */
+      if (slide.param != params.id) {
+        set_hash_without_change(slide.param);
       }
-    });
+
+      /* then call the load complete callback */
+      options.complete(slide);
+
+      /* trigger slide loaded */
+      $.event.trigger(events.load, [slide]);
+    }
+
+    if (loaded[slide]) {
+      success(loaded[slide]);
+    } else {
+      // let the JSON know we want HTML partials rendered
+      params.id   = slide;
+      params.html = 1;
+
+      $.ajax({
+        url: slides.options.url,
+        method: 'GET',
+        dataType: 'json',
+        data: params,
+        success: success
+      });
+    }
   },
 
   do_hashchange = function() {
