@@ -197,7 +197,7 @@ class ImageMount < ActiveRecord::Base
       json[:height]     = height
       json[:url]        = url
       json[:attachment] = image.as_json
-      json[:versions]   = versions.as_json
+      json[:versions]   = versions.inject({}) {|h, v| h[v.mounted_association] = v; h }.as_json
     end
   end
 
