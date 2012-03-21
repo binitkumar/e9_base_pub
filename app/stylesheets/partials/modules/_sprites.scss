@@ -63,6 +63,7 @@ a.social-link {
   &.facebook .img { @include social-sprite(facebook); }
   &.twitter .img { @include social-sprite(twitter); }
   &.linked-in .img { @include social-sprite(linked_in); }
+  &.yelp .img { @include social-sprite(yelp); }
   &.hello .img { @include social-sprite(hello); }
 }
 

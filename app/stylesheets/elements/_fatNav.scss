@@ -1,6 +1,6 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
-
+$fat-nav-container-width:        $blueprint-container-size !default;
 $fat-nav-columns:                6 !default;
 $fat-nav-line-height:         17px !default;
 $fat-nav-horizontal-padding:   5px !default;
@@ -22,7 +22,7 @@ $fat-nav-vertical-padding:    16px !default;
   $columns: $fat-nav-columns, 
   $padding: $fat-nav-horizontal-padding
 ) {
-  $col-width: floor($blueprint-container-size / $columns) - 2 * $padding;
+  $col-width: floor($fat-nav-container-width / $columns) - 2 * $padding;
 
   a {
     width: $col-width;
