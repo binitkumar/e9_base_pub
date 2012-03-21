@@ -1,3 +1,5 @@
+-# NOTE slides are never loaded outside the slideshow context anymore,
+-# rendering this template unused/useless for now
 - if resource.published? || admin?
   - content_for :slide_bottom do
     #slide-comments
@@ -6,9 +8,7 @@
     = include_javascripts :slides
 
   - content_for :bottom_javascripts do
-    = recaptcha_script(:comments)
-    :javascript
-      $(function() { $.slide_load("#{resource.to_param}") });
+    #slide-load{'data-param' => resource.to_param}
 
 - else
   - content_for :slide_content do

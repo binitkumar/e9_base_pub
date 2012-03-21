@@ -17,13 +17,6 @@
 - else
   - content_for :javascripts do
     = include_javascripts :slides
-    = recaptcha_script(:comments)
 
   - content_for :bottom_javascripts do
-    :javascript
-      $(function() {
-        $.slideshow_load({
-          url:   "#{contextual_slide_url(parent)}", 
-          slide: "#{resource.to_param}"
-        });
-      });
+    #slideshow-load{'data-url' => contextual_slide_url(parent), 'data-slide' => resource.to_param}
