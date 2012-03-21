@@ -1,4 +1,4 @@
-  = form_tag polymorphic_path([:update_order, :admin, @faq, resource_class]) do
+= form_tag polymorphic_path([:update_order, :admin, @faq, resource_class]) do
   %table.records.sortable
     %thead
       %tr
@@ -11,8 +11,7 @@
     - else
       - collection.each do |record|
         %tr{:id => "ids_#{record.id}", :class => cycle('odd', 'even')}
-          %td
-            .handle +++
+          %td.handle +++
           %td.txt= record.title
           %td.actions
             = tool_buttons do
