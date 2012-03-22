@@ -126,7 +126,7 @@ $sidebar-border: 1px solid $theme-border-color;
           }
         }
       } 
-      &.current > a { color: #8a2529; }
+      &.current > a { color: $theme-highlight-color; }
     }
   }
 }
