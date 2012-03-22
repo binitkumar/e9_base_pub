@@ -1,26 +1,94 @@
-;jQuery(function($) {
-  /*
-   * NOTE: this depends on doTimeout
-   */
+/*
+ * NOTE: this depends on doTimeout
+ */
+;(function($) {
+  window.e9 = window.e9 || {};
 
-  $.e9 = $.e9 || {};
+  var 
+  options,
 
-  $.extend($.e9, {
-    flash: {
-      timeout  : 3000,
-      speed    : 300,
-      selector : '.flash-messages'
-    }
-  });
+  flash = window.e9.flash = {
+    init: function(opts) {
+      options = flash.options = _.defaults(flash.options || {}, opts, defaults);
 
-  if (!$.fn.hasOwnProperty('flashHide')) {
-    /** method to animate flash hide */
-    $.fn.flashHide = function(callback) {
+      flash.element = $(options.selector);
+
+      if (flash.element.length) {
+        flash.element.hide().detach();
+      } else {
+        flash.element = $('<div '+options.selector+' />');
+      }
+
+      flash.element.click(handlers.click);
+
+      options.insert(flash.element);
+
+      if (flash.has_messages) flash.show();
+
+      $(document).ajaxComplete(handlers.ajax_complete);
+
+      $.event.trigger(events.init, [flash]);
+    },
+
+    notify: function(message, css_class) {
+      if (!message) return;
+
+      flash.element.empty();
+
+      flash.hide(function() {
+        $('<div />')
+          .addClass(css_class || options.default_class)
+          .html(message)
+          .appendTo(flash.element);
+
+        render();
+      });
+    },
+
+    show: function(callback) {
+      timeout.clear();
+      options.show(flash.element, callback);
+    },
+
+    hide: function(callback) {
+      timeout.clear();
+      options.hide(flash.element, callback);
+    },
+
+    has_messages: function() {
+      return flash.element.children().length > 0;
+    },
+
+    define_notification: function(type) {
+      flash.notify[type] = function(message) { flash.notify(message, type) }
+    },
+  }
+
+  options, 
+
+  DoTimeoutKey    = 'flash_message',
+  XhrNoticeHeader = 'X-Flash-Notice',
+  XhrAlertHeader  = 'X-Flash-Alert',
+
+  events = flash.events = {
+    show : 'e9_flash:show',
+    hide : 'e9_flash:hide',
+    init : 'e9_flash:init'
+  },
+
+  defaults = {
+    timeout       : 3000,
+    speed         : 300,
+    selector      : '.flash-messages',
+    insert        : function(el) { el.prependTo('body'); },
+    default_class : 'alert',
+
+    hide: function(el, callback) {
       // simple fadeout
-      //$(this).fadeOut(callback);
+      el.fadeOut(callback);
 
       // slide up
-      this.animate({ top: this.outerHeight() * -1 }, $.e9.flash.speed, 'linear', callback);
+      // el.animate({ top: el.outerHeight() * -1 }, flash.options.speed, 'linear', callback);
 
       // Simply passes control to the callback if it is passed, effectively skipping the hide.  
       // If callback is otherwise true (the click event is passed by default) then it will
@@ -30,83 +98,59 @@
       //} else if (callback) {
         //$(this).fadeOut($.e9.flash.speed);
       //}
-    }
-  }
+    },
 
-  if (!$.fn.hasOwnProperty('flashShow')) {
-    /** method to animate flash show */
-    $.fn.flashShow = function(callback) {
+    show: function(el, callback) {
+      // simple fadeout
+      el.fadeIn(callback);
+
       // slide down
-      this.css('top', -9999).show();
-      var h = this.outerHeight();
-      this
-        .css('top', h * -1)
-        .animate({ top: 0 }, $.e9.flash.speed, 'linear', callback)
-      ;
+      // el.css('top', -9999).show();
+      // var h = el.outerHeight();
+      // el 
+      //   .css('top', h * -1)
+      //   .animate({ top: 0 }, flash.options.speed, 'linear', callback)
+      // ;
     }
-  }
-
-  $.fn.alertMessage = function(message, css_class) {
-    $(this).flashHide(function() {
-      if(message != null && message != undefined) {
-        var $this = $(this);
-        $this
-          .hide()
-          .html('<div class="'+(css_class || 'alert')+'">'+message+'</div>')
-          .flashShow(function() {
-            $.doTimeout('flash_message', $.e9.flash.timeout, function() {
-              $this.flashHide();
-            });
-          })
-        ;
-      }
-    });
-  }
+  },
 
 
-  $($.e9.flash.selector)
-    // hide initially, regardless
-    .hide()
+  handlers = {
+    click: function(e) {
+      flash.hide();
+    },
 
-    .hover( 
-      function(){ $(this).addClass('hover'); }, 
-      function(){ $(this).removeClass('hover'); }
-    )
+    ajax_complete: function(e, xhr) {
+      var msg;
 
-    .bind('e9:flash', function(e, message, css_class) {
-      $(this).alertMessage(message, css_class);
-    })
-
-    // on click clear the flash_message timeout and hide
-    .click(function(e) { 
-      $.doTimeout('flash_message');
-      $(this).flashHide(e);
-    })
-
-    // On ajaxComplete, hide if no xhr, otherwise if xhr and the headers 
-    // contain a custom flash header (a message), hide then set the
-    // timeout to show the message.
-    .ajaxComplete(function(e, xhr) {
-      var $el = $(this), msg;
       if (xhr == undefined) {
-        $el.hide();
-      } else if (msg = xhr.getResponseHeader('X-Flash-Alert')) {
-        $el.hide().alertMessage(msg, 'alert');
-      } else if (msg = xhr.getResponseHeader('X-Flash-Notice')) {
-        $el.hide().alertMessage(msg, 'notice');
+        flash.hide();
+      } else if (msg = xhr.getResponseHeader(XhrAlertHeader)) {
+        flash.notify.alert(msg);
+      } else if (msg = xhr.getResponseHeader(XhrNoticeHeader)) {
+        flash.notify.notice(msg);
       }
-    })
+    }
+  },
 
-    // On load if there is a message, show it and hide after a timeout.
-    .each(function(i, el) {
-      var $el = $(el);
-      if ($el.children().length > 0) {
-        $el.flashShow(function() {
-          $.doTimeout('flash_message', $.e9.flash.timeout, function() {
-            $el.flashHide();
-          });
-        });
-      }
-    })
-  ;
-});
+  timeout = {
+    clear: function() {
+      $.doTimeout(DoTimeoutKey);
+    },
+
+    start: function(callback) {
+      timeout.clear();
+      $.doTimeout(DoTimeoutKey, options.timeout, callback);
+    }
+  },
+
+  render = function() {
+    flash.show(function() { timeout.start(flash.hide) });
+  }
+
+  flash.define_notification('alert');
+  flash.define_notification('notice');
+
+  $(flash.init);
+
+}(jQuery));
