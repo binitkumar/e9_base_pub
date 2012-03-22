@@ -1,4 +1,6 @@
 .flash-messages {
+  display: none;
+
   > div { margin-bottom: 0.67em; }
 
 	.flash {
@@ -12,9 +14,8 @@
 		background-color:lighten(#F23C3C,30%);
 		color:#F23C3C;
 		padding:10px;
-		
 	}
-	.notice{
+	.notice {
 		background-color:#F4F794;
 		padding:10px;
 	}
