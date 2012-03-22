@@ -6,14 +6,8 @@
   });
 
   // ajax deletes should respond with a request for index if the delete is successful (204)
-  $('#records_table a[data-remote][data-method=delete], #records_table input[data-remote][data-method=delete]').live("ajax:success", function(evt, data, status, xhr) {
-    if(xhr.status == 204) {
-      //var url = xhr.getResponseHeader('Location');
-      //if(url != undefined && url != '') {
-        //$.ajax({ url: url, dataType: 'script' });
-      //}
-      //
-
+  $('.tool-buttons a[data-remote][data-method=delete]').live("ajax:success", function(evt, data, status, xhr) {
+    if (xhr.status == 204) {
       $.submit_with_query(true);
     }
   });
