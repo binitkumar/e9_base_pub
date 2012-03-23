@@ -23,7 +23,7 @@
 
       options.insert(flash.element);
 
-      if (flash.has_messages) flash.show();
+      if (flash.has_messages) flash.show_with_timeout();
 
       $(document).ajaxComplete(handlers.ajax_complete);
 
@@ -41,18 +41,24 @@
           .html(message)
           .appendTo(flash.element);
 
-        render();
+        flash.show_with_timeout();
       });
     },
 
     show: function(callback) {
       timeout.clear();
       options.show(flash.element, callback);
+      $.event.trigger(events.show, [flash]);
     },
 
     hide: function(callback) {
       timeout.clear();
       options.hide(flash.element, callback);
+      $.event.trigger(events.hide, [flash]);
+    },
+
+    show_with_timeout: function() {
+      flash.show(function() { timeout.start(flash.hide) });
     },
 
     has_messages: function() {
@@ -77,7 +83,7 @@
   },
 
   defaults = {
-    timeout       : 3000,
+    timeout       : 6000,
     speed         : 300,
     selector      : '.flash-messages',
     insert        : function(el) { el.prependTo('body'); },
@@ -114,7 +120,6 @@
     }
   },
 
-
   handlers = {
     click: function(e) {
       flash.hide();
@@ -142,10 +147,6 @@
       timeout.clear();
       $.doTimeout(DoTimeoutKey, options.timeout, callback);
     }
-  },
-
-  render = function() {
-    flash.show(function() { timeout.start(flash.hide) });
   }
 
   flash.define_notification('alert');
