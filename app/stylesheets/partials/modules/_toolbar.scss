@@ -53,6 +53,7 @@ $toolbar-header-color: $theme-h1-color !default;
 
     .toolbar-actions a {
       @include x-small;
+      margin-bottom:5px;
     }
   	
     label {
