@@ -88,7 +88,12 @@
       // init and open before the image is loaded.
       img.height(options.image.height).width(options.image.width);
 
-      jcrop_api = $.Jcrop(img, { 
+      // NOTE it's important to pass the <img> rather than the jquery
+      // object.  If passed an image element, JCrop will clone it and
+      // preserve the original image, resetting it after the crop is over.
+      // If passed a jQuery wrapped <img>, JCrop will use it as is,
+      // (here's the important part) and throw it away on api.destroy
+      jcrop_api = $.Jcrop(img[0], { 
         boxWidth: options.max_crop_width,
         boxHeight: options.max_crop_height,
         onChange: api.cropSelect,
