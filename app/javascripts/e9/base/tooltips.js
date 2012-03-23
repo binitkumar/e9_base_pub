@@ -1,4 +1,4 @@
-;jQuery(function($) {
+;(function($) {
   $.e9 = $.e9 || {};
 
   /**
@@ -37,9 +37,9 @@
    *  with the exception being that "hide" is false by default for help
    *  tooltips.  See defaults below.
    */
-  $.e9.tooltips = function(options) {
+  var tooltips = $.e9.tooltips = function(options, overrides) {
     options = options || {};
-    
+
     var 
 
     defaults = {
@@ -66,115 +66,119 @@
           e.originalEvent.preventDefault();
         }
       }
-    },
-
-    default_options   = $.extend({}, defaults, options.defaults),
-    slideshow_options = $.extend({}, default_options, slideshow_defaults, options.slideshow),
-    image_options     = $.extend({}, default_options, image_defaults, options.image),
-    help_options      = $.extend({}, default_options, help_defaults, options.help),
-
-    tooltips = function(el, options) {
-      var $el = $(el), $tip = $el.next('.tooltip');
-
-      if ($tip.length) {
-        options.content = options.content || {};
-
-        $.extend(options.content, {
-          text: $tip
-        });
-
-        $el.click(function(e){e.preventDefault()})
-           .qtip(options);
-      }
     }
 
-    $.fn.helpTooltips = function(e) {
-      return this.each(function(i, el) {
+    tooltips.options = function(type) {
+      return $.extend(true, {}, tooltips.options[type || 'defaults']);
+    }
+
+    tooltips.options.defaults  = $.extend({}, defaults, options.defaults);
+    tooltips.options.slideshow = $.extend({}, tooltips.options.defaults, slideshow_defaults, options.slideshow);
+    tooltips.options.image     = $.extend({}, tooltips.options.defaults, image_defaults, options.image);
+    tooltips.options.help      = $.extend({}, tooltips.options.defaults, help_defaults, options.help);
+  }
+
+  $.fn.tooltips = function(type, overrides) {
+    return this.live('mouseover click', function(e) {
+      e.preventDefault();
+
+      var tip, content, options;
+
+      return $(this).each(function(i, el) {
+
         el = $(el);
 
-        if (!el.data('qtip')) {
-          var 
+        if (!el.data('e9_tooltips')) {
 
-          title = el.attr('data-title') || 'Help',
+          el.data('e9_tooltips', true);
+          
+          tip = el.next('.tooltip');
 
-          opts  = $.extend({}, help_options, { 
-            content: { title: { text: title, button: true } }
-          });
+          if (tip.length) {
+            options = tooltips.options(type);
+            options.content = options.content || {};
 
-          el
-            .click(function(e){ if(e) e.preventDefault() })
-            .qtip(opts).attr('title', function(i, val) {
-              val = val.replace(/\n/gi, '<br />');
-              val = val.replace(/\t/gi, '&nbsp;&nbsp;&nbsp;&nbsp;');
+            $.extend(options, overrides);
 
-              return val;
-            })
-            .mouseover()
-          ;
+            $.extend(options.content, {
+              text: tip
+            });
+
+            el.qtip(options).mouseover();
+          }
         }
       })
-    }
+    })
+  }
 
-    /*
-     * Ajax tooltips
-     */
-    var _f;(_f=function() {
-      $('.left-block a.action-link').each(function(i, el) {
-        tooltips(this, default_options);
-      });
+  $.fn.helpTooltips = function(e) {
+    return this.each(function(i, el) {
+      el = $(el);
 
-      $('#slide-dashboard a.action-link').each(function(i, el) {
-        tooltips(this, slideshow_options);
-      });
+      if (!el.data('qtip')) {
+        var 
 
-      $('a.do-select').each(function(i, el) {
-        tooltips(this, image_options);
-      });
+        title = el.attr('data-title') || 'Help',
 
-      $('.click[rel=tooltip]').each(function(i, el) {
-        tooltips(el, $.extend({}, help_options, {
-          show: { event: 'click', solo: true },
-          content: { title: { text: '&nbsp;', button: true } }
-        }));
-      });
+        opts  = $.extend({}, tooltips.options.help, { 
+          content: { title: { text: title, button: true } }
+        });
 
-      $('.tool-button[rel=tooltip]').each(function(i, el) {
-        tooltips(el, $.extend({}, help_options, {
-          style: { tip: { corner: false } },
-          position: { my: 'top right', at: 'top left' },
-          hide: { fixed: true, delay: 50, inactive: 1500 },
-          show: { delay: 15, solo: true }
-        }));
-      });
+        el
+          .click(function(e){ if(e) e.preventDefault() })
+          .qtip(opts).attr('title', function(i, val) {
+            val = val.replace(/\n/gi, '<br />');
+            val = val.replace(/\t/gi, '&nbsp;&nbsp;&nbsp;&nbsp;');
 
-      $('img[title]').qtip(image_options);
+            return val;
+          })
+          .mouseover()
+        ;
+      }
+    })
+  }
 
-      $('.img[rel=tooltip]').each(function() {
-          var 
-          thumb = $(this).attr('data-src'),
-          content = $('<img />', { src: thumb });
-          
-          $(this).qtip({
-             content: {
-                text: content,
-                title: { text: $(this).attr('data-title') || 'Help' }
-             },
-             position: {
-                my: 'left bottom',
-                at: 'bottom right'
-             },
-             style: defaults.style
-          });
-       });
-    })();
-    $(document).ajaxComplete(_f);
+  $(function() {
+    $.e9.tooltips();
 
-    /*
-     * "help" tooltips, no need for Ajax reload
-     */
     $('.help[rel=tooltip]').live('mouseover click', function() {
       $(this).helpTooltips();
     });
-  }
 
-});
+    $('.img[rel=tooltip]').each(function() {
+        var 
+        thumb = $(this).attr('data-src'),
+        content = $('<img />', { src: thumb });
+        
+        $(this).qtip({
+           content: {
+              text: content,
+              title: { text: $(this).attr('data-title') || 'Help' }
+           },
+           position: {
+              my: 'left bottom',
+              at: 'bottom right'
+           },
+           style: defaults.style
+        });
+    });
+
+    $('.left-block a.action-link').tooltips();
+
+    $('#slide-dashboard a.action-link').tooltips('slideshow');
+
+    $('a.do-select').tooltips('image');
+
+    $('.click[rel=tooltip]').tooltips('help', {
+      show: { event: 'click', solo: true },
+      content: { title: { text: '&nbsp;', button: true } }
+    });
+
+    $('.tool-button[rel=tooltip]').tooltips('help', {
+      style: { tip: { corner: false } },
+      position: { my: 'top right', at: 'top left' },
+      hide: { fixed: true, delay: 50, inactive: 1500 },
+      show: { delay: 15, solo: true }
+    });
+  });
+})(jQuery);
