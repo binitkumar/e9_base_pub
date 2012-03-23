@@ -204,11 +204,12 @@ class ImageMount < ActiveRecord::Base
   def reset
     self.image = parent.try(:image)
     self.instructions = nil
+    clear_cached_dimensions
   end
 
   def reset!
     reset
-    save(:validate => false) && reload
+    save && reload
   end
 
   def versions

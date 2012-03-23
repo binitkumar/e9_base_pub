@@ -117,6 +117,10 @@ class Image < ActiveRecord::Base
       self.width, self.height = _target_width, _target_height
     end
 
+    def clear_cached_dimensions
+      self.width, self.height = nil, nil
+    end
+
     def cache_dimensions!
       cache_dimensions
       save
