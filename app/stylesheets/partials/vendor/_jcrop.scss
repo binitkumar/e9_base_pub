@@ -1,6 +1,11 @@
 #crop {
-  form { padding: 15px 0 17px 15px; }
-  .crop-box, .preview-window { padding: 1em; }
+  form { 
+    padding: 15px 0 17px 15px; 
+  }
+  .info { 
+    margin: 1em; 
+  }
+  .crop-box, .preview-window { margin: 1em; }
   #preview-window { overflow: hidden; margin: 0; padding: 0; } 
 }
 

@@ -17,10 +17,16 @@
   image_y,
   preview,
   preview_window,
+  nocrop_button,
+  crop_instruction_fields,
 
   html = '\
     <div id="crop" class="popup-display">\
       <h1>Crop Your Image</h1>\
+      <div class="info" style="display: none">\
+        This image is already the correct size.\
+        <a id="nocrop-button" href="#nocrop">Use original?</a>\
+      </div>\
       <div class="crop-box">\
         <label for="crop-box">Current Image</label>\
         <img id="crop-box"/>\
@@ -35,12 +41,14 @@
         <form id="crop-form" method="POST" data-type="json">\
           <input type="hidden" name="_method" />\
           <input type="hidden" name="image_mount[image_id]" class="tocopy" />\
-          <input type="hidden" name="image_mount[instructions][0][]" value="crop" class="tocopy" />\
-          <input type="hidden" name="image_mount[instructions][0][][x]" value="0" id="image_x" class="tocopy" />\
-          <input type="hidden" name="image_mount[instructions][0][][y]" value="0" id="image_y" class="tocopy" />\
-          <input type="hidden" name="image_mount[instructions][0][][width]" value="0" id="image_w" class="tocopy" />\
-          <input type="hidden" name="image_mount[instructions][0][][height]" value="0" id="image_h" class="tocopy" />\
-          <input type="hidden" name="image_mount[instructions][0][][resize]" value="0" id="image_r" class="tocopy" />\
+          <div id="crop-instruction-fields">\
+            <input type="hidden" name="image_mount[instructions][0][]" value="crop" class="tocopy" />\
+            <input type="hidden" name="image_mount[instructions][0][][x]" value="0" id="image_x" class="tocopy" />\
+            <input type="hidden" name="image_mount[instructions][0][][y]" value="0" id="image_y" class="tocopy" />\
+            <input type="hidden" name="image_mount[instructions][0][][width]" value="0" id="image_w" class="tocopy" />\
+            <input type="hidden" name="image_mount[instructions][0][][height]" value="0" id="image_h" class="tocopy" />\
+            <input type="hidden" name="image_mount[instructions][0][][resize]" value="0" id="image_r" class="tocopy" />\
+          </div>\
           <input type="submit" value = "Crop"/>\
         </form>\
       </div>\
@@ -130,12 +138,12 @@
     // the submission of the crop
     cropSubmitFormHandler: function(e) {
       e.preventDefault();
+      $(this).callRemote();
+    },
 
-      if ( parseInt( image_w.val() ) ) {
-        $(this).callRemote();
-      } else { 
-        alert('Please select a crop region then press submit.');
-      }
+    allowNoCrop: function(options) {
+      return options.image.width  == options.crop_width   &&
+             options.image.height == options.crop_height;
     },
 
     // crop handler that sets form values as the crop changes
@@ -214,8 +222,19 @@
       $.fn.colorbox.close();
     },
 
+    nocropHandler: function() {
+      crop_instruction_fields.detach();
+      crop_form.submit();
+    },
+
     openCropbox: function(options) {
       options = options || api.currentOptions();
+
+      nocrop_button.parent().css('display', api.allowNoCrop(options) ? 'block' : 'none');
+
+      if (crop_form.find(crop_instruction_fields).length == 0) {
+        crop_instruction_fields.prependTo(crop_form);
+      }
 
       crop_form.attr('action', options.script);
       crop_form.find('input[type=submit]').removeAttr('disabled');
@@ -286,6 +305,9 @@
       crop_box = $('#crop-box');
       crop_form = $('#crop-form');
       preview_window = $('#preview-window');
+      nocrop_button = $('#nocrop-button');
+      nocrop_button.bind('click', api.nocropHandler);
+      crop_instruction_fields = $('#crop-instruction-fields');
 
       crop_form
         .bind('submit', api.cropSubmitFormHandler)

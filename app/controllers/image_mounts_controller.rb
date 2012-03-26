@@ -37,4 +37,14 @@ class ImageMountsController < InheritedResources::Base
       format.js { head 200 }
     end
   end
+
+  protected
+
+    # force instructions to be empty if it's not passed in params
+    def resource_params
+      rp = params[resource_request_name] || params[resource_instance_name] || {}
+      rp[:instructions] ||= {}
+      rp
+    end
+
 end
