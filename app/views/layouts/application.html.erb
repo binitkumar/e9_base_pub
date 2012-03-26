@@ -1,0 +1,131 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title><%= meta_title %></title>
+  <%= meta_tags %>
+  <%= favicon_link_tag %>
+  <%= google_site_verification_meta_tag %>
+  <%= csrf_meta_tag %>
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+  <%= stylesheet_link_tag( 'screen.css', :media => 'screen, projection') %>
+
+  <!-- TODO integrate print.css into the base using media queries -->
+  <%= stylesheet_link_tag('print.css', :media => 'print') %>
+  <%= yield :stylesheets %>
+
+  <%= yield :head %>
+
+  <% if (code = E9::Config[:header_text]).present? %>
+    <%= code.html_safe %>
+  <% end %>
+
+  <%= include_javascripts :head %>
+</head>
+
+<%= raw body_class.present? ? "<body class=\"#{body_class.join(' ')}\">" : "<body>" %>
+  <header>
+    <% if content_for?(:main_nav_content) %>
+      <div id="main-nav-wrapper">
+        <div id="main-nav">
+          <%= yield :main_nav_content %>
+        </div>
+      </div>
+    <% end %>
+    <% if content_for?(:admin_nav_content) %>
+      <div id="admin-main-nav-wrapper">
+        <div id="admin-main-nav">
+          <%= yield :admin_nav_content %>
+        </div>
+      </div>
+    <% end %>
+    <div id="top-nav-wrapper">
+      <div id="top-nav">
+        <%= render_region 'top-nav' %>
+      </div>
+    </div>
+    <div id="logo-wrapper">
+      <div id="logo">
+        <%= link_to(E9::Config[:site_name], "/") %>
+      </div>
+    </div>
+    
+    <!--<% if content_for?(:banner_content) %>
+      <div id="banner-wrapper">
+        <div id="banner">
+          <%= yield :banner_content %>
+        </div>
+      </div>
+    <% end %>-->
+  </header>
+  <div id="body-wrapper">
+    <div id="body" role="main">
+      <%= content_for?(:application_content) ? yield(:application_content) : yield %>
+    </div>
+    <div id="content-bottom"
+      <%= render_region 'content-bottom' %>
+  </div>
+  <footer>
+    <div id="footer-wrapper">
+      <div id="footer">
+        <%= render_region 'footer' %>
+      </div>
+      <div id="bottom-footer">
+        <%= render_region 'bottom-footer' %>
+      </div>
+    </div>
+  </footer>
+
+  <div class="hidden">
+    <%= include_javascripts :base %>
+    <%= javascript_include_tag '/js/tags.js' %>
+    <% if admin? %>
+      <script defer>
+        $(function() {
+          var _f;(_f = function(){$(".renderable-region").quick_edit()})();
+          $(document).ajaxComplete(_f);
+        })
+      </script>
+    <% end %>
+
+    <!-- begin yield javascripts -->
+    <%= yield :javascripts %>
+    <!-- end yield javascripts -->
+
+    <!-- begin yield bottom_javascripts -->
+    <%= yield :bottom_javascripts %>
+    <!-- end yield bottom_javascripts -->
+
+    <!-- begin yield hidden -->
+    <%= yield :hidden %>
+    <!-- end yield hidden -->
+
+    <% unless !Rails.env.production? || @hide_google_analytics %>
+      <% if (code = E9::Config['google_analytics_code']).present? %>
+        <%= code.html_safe %>
+      <% end %>
+    <% end %>
+
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+         chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+      <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+      <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    <![endif]-->
+  </div>
+</body>
+</html>

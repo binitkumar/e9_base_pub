@@ -131,7 +131,13 @@ $sidebar-border: 1px solid $theme-border-color;
   }
 }
 
-#admin-Main-nav { 
-  @include dropdown(180px, #151515);
-  margin-top: 20px;
+body.admin #admin-main-nav-wrapper{ 
+  #admin-main-nav{
+    @include dropdown(180px, #151515);
+    margin-top: 20px;
+    #main-nav-region{
+      margin:0 auto;
+    }
+  }
+
 }
