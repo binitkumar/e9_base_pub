@@ -63,15 +63,14 @@ a.social-link {
   &.facebook .img { @include social-sprite(facebook); }
   &.twitter .img { @include social-sprite(twitter); }
   &.linked-in .img { @include social-sprite(linked_in); }
-  &.yelp .img { @include social-sprite(yelp); }
-  &.hello .img { @include social-sprite(hello); }
+
 }
 
 ul.social-module li:hover a.social-link {
   &.facebook .img { @extend .facebook-hover; }
   &.twitter .img { @extend .twitter-hover; }
   &.linked-in .img { @extend .linked_in-hover; }
-  &.hello .img { @extend .hello-hover; }
+
 }
 /**
  * oddball
