@@ -4,10 +4,24 @@ jQuery(function($) {
    * probably eventually be replaced/refactored.
    */
 
+  function destroy_node_sortable() {
+    $('ul.nodes').sortable('destroy');
+  }
+
+  function refresh_list_order(el) {
+    $(el).find('li').each(function(index) {
+      $(this).find('input').attr('name', function() {
+        return this.name.replace(/nodes_attributes\]\[\d+/, "nodes_attributes][" + index );
+      });
+    });
+  }
+
   /*
    * Sortable settings for node lists
    */
   function initialize_node_sortable() {
+    destroy_node_sortable();
+
     $('ul.nodes').sortable({
       axis: 'y', 
       dropOnEmpty: false, 
@@ -20,20 +34,9 @@ jQuery(function($) {
         refresh_list_order(this);
       }
     }).disableSelection();
-
-    function refresh_list_order(obj) {
-      var el = $(obj);
-      el.find('li').each(function(index) {
-        $(this).find('input').attr('name', function() {
-          return this.name.replace(/nodes_attributes\]\[\d+/, "nodes_attributes][" + index );
-        });
-      });
-    }
   }
 
-  function destroy_node_sortable() {
-    $('ul.nodes').sortable('destroy');
-  }
+  initialize_node_sortable();
 
   $(document)
     .bind('e9:advanced_settings:show', initialize_node_sortable)
