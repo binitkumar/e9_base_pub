@@ -12,6 +12,35 @@ require 'will_paginate'
 require 'jammit'
 
 module E9Base
+  ASSETS_DIR = 'static'
+
+  def E9Base.static_paths
+    @_static_paths ||= begin
+      paths = %w(
+        /404.html
+        /422.html
+        /500.html
+        /crossdomain.xml
+        /favicon.ico
+        /fonts
+        /images
+        /javascripts
+        /robots.txt
+        /stylesheets
+        /swf
+      )
+
+      # In production we serve assets statically (not Jammit)...
+      if Rails.env.production?
+        paths << '/assets'
+
+      # ...while in development we still need to serve from /static, but not cache
+      else
+        paths.map {|url| "#{url}*" }
+      end
+    end
+  end
+
   class Engine < Rails::Engine
     config.e9_base = E9Base
     config.autoload_paths += %w(lib lib/validators).map {|dir| File.join(config.root, dir) }
@@ -38,6 +67,9 @@ module E9Base
     initializer 'e9_base.include_all_helpers', :before => 'action_controller.set_configs' do |app|
       # ensures our helpers path is included before action_controller is loaded and does its includes
       app.config.paths.app.helpers.concat config.paths.app.helpers.paths
+
+      # NOTE this is essential for the static_cache setup below
+      app.config.action_controller.assets_dir = E9Base::ASSETS_DIR
     end
     
     initializer 'e9_base.add_final_catchall_route', :after => :build_middleware_stack do |app|

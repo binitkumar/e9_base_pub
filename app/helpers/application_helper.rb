@@ -329,7 +329,13 @@ module ApplicationHelper
       html = ''
 
       partial_path = klass.respond_to?(:partial_path) ? klass.partial_path : klass.model_name.partial_path
-      html.concat render(:partial => partial_path, :object => renderable)
+
+      html.concat render({
+        :partial => partial_path,
+        :object  => renderable,
+        :locals  => locs,
+        :layout  => 'shared/renderable'
+      })
 
       element = klass.respond_to?(:element) ? klass.element : klass.model_name.element
 

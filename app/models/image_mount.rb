@@ -201,14 +201,15 @@ class ImageMount < ActiveRecord::Base
     end
   end
 
-  def reset
-    self.image = parent.try(:image)
+  def reset(image=nil)
+    self.image = image || parent.try(:image)
     self.instructions = nil
+    clear_cached_dimensions
   end
 
-  def reset!
-    reset
-    save(:validate => false) && reload
+  def reset!(image=nil)
+    reset(image)
+    save && reload
   end
 
   def versions
@@ -236,11 +237,7 @@ class ImageMount < ActiveRecord::Base
     end
 
     def reset_versions
-      versions.each do |version|
-        version.image = self.image
-        version.instructions = nil
-        version.save
-      end
+      versions.each {|version| version.reset!(self.image) }
     end
 
     def coerce_image_dimensions
