@@ -44,7 +44,7 @@
           $('.slide-pagination-next a', el).bind('click', clickHandler(true))
           $('.slide-pagination-prev a', el).bind('click', clickHandler(false))
 
-          $(this).bind(carousel.events.change, function(e, data) {
+          el.bind(carousel.events.change, function(e, data) {
             $('.slide-pagination-prev a', this).each(function() {
               if (data.prev) {
                 $(this).attr('href', '#!prev');
@@ -62,34 +62,48 @@
             });
           });
 
-          $(this).bind(e9.slides.events.load, function(e, slide) {
+          el.bind(e9.slides.events.load, function(e, slide) {
             $("#slide_thumb_" + slide.id, this)
               .closest('li')
               .addClass('current')
               .siblings()
               .removeClass('current')
             ;
+
+            $(this)[api]('paginate', slide.page);
           });
         }
       });
     },
 
-    paginate : function(page, force) {
-      if (page === undefined || page === 0) return;
+    /**
+     * page (boolean) : true/next or false/prev
+     * page (number)  : a specific page
+     */
+    paginate : function(page) {
+      // return unless page is passed
+      if (page === undefined) return;
 
       var el = $(this), data = el.data(api);
 
-      if (!force && data.animating) return;
-      data.animating = true;
+      // return if we're already on the page
+      if (page === data.page) return;
 
-      if (typeof(page) === 'boolean') {
+      // if page is a boolean, determine page # of prev or next
+      if (typeof page === 'boolean') {
         page = page ? data.page + 1 : data.page - 1;
-      }
-
-      if (page <= 0 || page > data.pages) {
-        data.animating = false;
+      } 
+      
+      // if at this point page is not a number or if it's outside
+      // the range of possible pages, return
+      if (typeof page !== 'number' || page <= 0 || page > data.pages) {
         return;
       }
+
+      // finally, return if the pagination animation is running, or start
+      // the animation process
+      if (data.animating) return;
+      data.animating = true;
 
       var li = $('li', data.list).eq(data.per_page * (page - 1));
 
