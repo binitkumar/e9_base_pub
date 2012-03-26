@@ -1,35 +1,34 @@
 .flash-messages {
   display: none;
-  margin-bottom:40px;
-  > div { margin-bottom: 0.67em;
-  position:fixed;
-  z-index:10001; }
+
+  .touch & {
+    height: 0;
+    .flash {
+      position: absolute;
+      width: $blueprint-container-size;
+    }
+  }
 
 	.flash {
-		padding-top:10px;
-		padding-bottom:10px;
-		width:98%;
-		padding-left:10px;
+    position: fixed;
+
+    top: 0;
+    z-index: 10001;
+    margin-bottom: 0.67em;
+		padding: 10px 0;
 		font-weight:bold;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
 
-	}
-	.alert {
-		background-color:lighten(#F23C3C,30%);
-		color:#F23C3C;
-		padding:10px;
+    &.alert {
+      background-color: $theme-error-bg-color;
+      color: $theme-error-color;
+    }
 
-	}
-	.notice {
-		background-color:#F4F794;
-		padding:10px;
-	}
-}
-
-
-.touch{
-	.flash-messages{
-		> div{
-			position:relative;
-		}
+    &.notice {
+      background-color: $theme-notice-bg-color;
+      color: $theme-notice-color;
+    }
 	}
 }

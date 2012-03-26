@@ -22,38 +22,65 @@
 
   defaults = {
     timeout       : 6000,
+    duration      : 350,
+    easing        : 'swing',
     selector      : '.flash-messages',
     default_class : 'alert',
     insert        : function(el) { el.prependTo('body'); },
 
+    /*
+     * The default hide animation works with the default style, which
+     */
     hide : function(el, callback) {
-      // simple fadeout
-      el.fadeOut(callback);
+      var m = el.find('.flash'), h = m.outerHeight(), body = $('body'), step;
 
-      // slide up
-      // el.animate({ top: el.outerHeight() * -1 }, 500, 'linear', callback);
+      step = Modernizr.touch ? function() {} : function(p) {
+        body.css('padding-top', h + Math.round(p));
+      }
 
-      // Simply passes control to the callback if it is passed, effectively skipping the hide.  
-      // If callback is otherwise true (the click event is passed by default) then it will
-      // fade out.
-      //if (typeof callback == 'function') {
-        //callback.apply(this);
-      //} else if (callback) {
-        //$(this).fadeOut();
-      //}
+      m.animate({ top: h * -1 }, {
+        duration: flash.options.duration, 
+        easing: flash.options.easing, 
+        complete: callback,
+        step: function(p) {
+          var t = h + Math.round(p);
+
+          if (Modernizr.touch) {
+            body.css('padding-top', t);
+          } else {
+            el.height(t);
+          }
+        }
+      });
     },
 
     show : function(el, callback) {
-      // simple fadeout
-      el.fadeIn(callback);
-
       // slide down
-      // el.css('top', -9999).show();
-      // var h = el.outerHeight();
-      // el 
-      //   .css('top', h * -1)
-      //   .animate({ top: 0 }, 500, 'linear', callback)
-      // ;
+      var m = el.find('.flash'), body = $('body'), h, touch;
+
+      // move the flash off screen and show the container
+      m.css('top', -9999)
+      el.show();
+
+      // get the drawn height
+      h = m.outerHeight();
+
+
+      // then animate the body's padding and top of the flash
+      m.css('top', h * -1).animate({ top: 0 }, {
+        duration: flash.options.duration, 
+        easing: flash.options.easing, 
+        complete: callback,
+        step: function(p) {
+          var t = h + Math.round(p);
+
+          if (Modernizr.touch) {
+            body.css('padding-top', t);
+          } else {
+            el.height(t);
+          }
+        }
+      });
     }
   },
 
@@ -151,7 +178,4 @@
 
   flash.define_notification('alert');
   flash.define_notification('notice');
-
-  $(flash.init);
-
 }(jQuery));

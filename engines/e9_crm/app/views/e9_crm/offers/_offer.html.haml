@@ -1,4 +1,8 @@
 %div{:id => "offer_#{offer.id}_body"}
 - content_for :bottom_javascripts do
   :javascript
-    $(function(){ $("#offer_#{offer.id}_body").load("#{new_public_offer_deal_path(offer)}") });
+    $(function(){ 
+      $("#offer_#{offer.id}_body").load("#{new_public_offer_deal_path(offer)}", function() {
+        $.event.trigger('e9_crm:offer:load');
+      }) 
+    });
