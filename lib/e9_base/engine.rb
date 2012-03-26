@@ -10,7 +10,6 @@ require 'sass'
 require 'inherited_resources'
 require 'will_paginate'
 require 'jammit'
-require 'rack/contrib'
 
 module E9Base
   ASSETS_DIR = 'static'
@@ -75,14 +74,6 @@ module E9Base
     
     initializer 'e9_base.add_final_catchall_route', :after => :build_middleware_stack do |app|
       app.routes_reloader.paths << File.join(File.dirname(__FILE__), "routes.rb")
-    end
-
-    initializer 'e9_base.configure_static_cache' do |app|
-      app.config.middleware.use Rack::StaticCache, {
-        :urls       => E9Base.static_paths,
-        :root       => E9Base::ASSETS_DIR,
-        :versioning => false
-      }
     end
   end
 end
