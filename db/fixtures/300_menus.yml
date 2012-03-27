@@ -78,7 +78,7 @@ top_nav_sign_up:
 admin_home:
   <<: *hard_link_defaults
   parent: admin_menu
-  name: "Admin Home"
+  name: "Dashboard"
   href: "/admin/dashboard"
 admin_home_1:
   <<: *hard_link_defaults
@@ -138,6 +138,11 @@ marketing_nav:
   parent: admin_menu
   name: "Marketing"
   href: "/admin/crm/marketing_report"
+marketing_nav_0: 
+  <<: *hard_link_defaults
+  parent: marketing_nav
+  name: "Affiliates & Salespeople"
+  href: "/admin/crm/campaigns/1/activity"
 marketing_nav_1: 
   <<: *hard_link_defaults
   parent: marketing_nav
@@ -286,11 +291,6 @@ widget_nav_6:
   parent: widget_nav
   name: "Snippets"
   href: "/admin/snippets"
-widget_nav_7:
-  <<: *hard_link_defaults
-  parent: widget_nav
-  name: "Top Content Widgets"
-  href: "/admin/top_widgets"
 
 setting_nav: 
   <<: *hard_link_defaults
