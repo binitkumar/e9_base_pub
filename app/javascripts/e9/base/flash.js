@@ -32,55 +32,62 @@
      * The default hide animation works with the default style, which
      */
     hide : function(el, callback) {
-      var m = el.find('.flash'), h = m.outerHeight(), body = $('body'), step;
+      var m = el.find('.flash'), h, body;
 
-      step = Modernizr.touch ? function() {} : function(p) {
-        body.css('padding-top', h + Math.round(p));
-      }
+      if (m.length == 0) {
+        if (callback) callback();
+      } else {
+        h = m.outerHeight(), body = $('body');
 
-      m.animate({ top: h * -1 }, {
-        duration: flash.options.duration, 
-        easing: flash.options.easing, 
-        complete: callback,
-        step: function(p) {
-          var t = h + Math.round(p);
+        m.animate({ top: h * -1 }, {
+          duration: flash.options.duration, 
+          easing: flash.options.easing, 
+          complete: callback,
+          step: function(p) {
+            var t = h + Math.round(p);
 
-          if (Modernizr.touch) {
-            body.css('padding-top', t);
-          } else {
-            el.height(t);
+            if (Modernizr.touch) {
+              body.css('padding-top', t);
+            } else {
+              el.height(t);
+            }
           }
-        }
-      });
+        });
+      }
     },
 
     show : function(el, callback) {
       // slide down
-      var m = el.find('.flash'), body = $('body'), h, touch;
+      var m = el.find('.flash'), body, h;
 
-      // move the flash off screen and show the container
-      m.css('top', -9999)
-      el.show();
+      if (m.length == 0) {
+        if (callback) callback();
+      } else {
+        // move the flash off screen and show the container
+        m.css('top', -9999)
+        el.show();
 
-      // get the drawn height
-      h = m.outerHeight();
+        // get the drawn height
+        h = m.outerHeight();
 
+        body = $('body');
 
-      // then animate the body's padding and top of the flash
-      m.css('top', h * -1).animate({ top: 0 }, {
-        duration: flash.options.duration, 
-        easing: flash.options.easing, 
-        complete: callback,
-        step: function(p) {
-          var t = h + Math.round(p);
+        // then animate the body's padding and top of the flash
+        m.css('top', h * -1).animate({ top: 0 }, {
+          duration: flash.options.duration, 
+          easing: flash.options.easing, 
+          complete: callback,
+          step: function(p) {
+            var t = h + Math.round(p);
 
-          if (Modernizr.touch) {
-            body.css('padding-top', t);
-          } else {
-            el.height(t);
+            if (Modernizr.touch) {
+              body.css('padding-top', t);
+            } else {
+              el.height(t);
+            }
           }
-        }
-      });
+        });
+      }
     }
   },
 
@@ -139,10 +146,10 @@
     notify: function(message, css_class) {
       if (!message) return;
 
-      flash.element.empty();
-
       flash.hide(function() {
-        $('<div />')
+        flash.element.empty();
+
+        $('<div class="flash" />')
           .addClass(css_class || options.default_class)
           .html(message)
           .appendTo(flash.element);
