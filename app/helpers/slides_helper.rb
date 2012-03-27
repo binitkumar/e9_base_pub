@@ -79,7 +79,7 @@ module SlidesHelper
     end
 
     unless paged.present?
-      content_tag(:span, opts[:text])
+      content_tag(:span, opts[:text], :class => 'inactive')
     else
       slide_link(paged, show, opts)
     end
