@@ -137,6 +137,16 @@ module ApplicationHelper
     @_body_class
   end
 
+  def body_tag(options={}, &block)
+    classes = body_class.dup
+    classes << options.delete(:class)
+    classes.compact.uniq!
+
+    options[:class] = classes.join(' ').strip if classes.present?
+
+    content_tag :body, with_output_buffer(&block), options
+  end
+
   def current_page
     controller.current_page
   end
