@@ -44,13 +44,7 @@
           easing: flash.options.easing, 
           complete: callback,
           step: function(p) {
-            var t = h + Math.round(p);
-
-            if (Modernizr.touch) {
-              body.css('padding-top', t);
-            } else {
-              el.height(t);
-            }
+            body.css('padding-top', h + Math.round(p));
           }
         });
       }
@@ -78,13 +72,7 @@
           easing: flash.options.easing, 
           complete: callback,
           step: function(p) {
-            var t = h + Math.round(p);
-
-            if (Modernizr.touch) {
-              body.css('padding-top', t);
-            } else {
-              el.height(t);
-            }
+            body.css('padding-top', h + Math.round(p));
           }
         });
       }

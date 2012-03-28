@@ -1,16 +1,11 @@
+@import 'compass/utilities/general/min';
+
 .flash-messages {
   display: none;
 
-  .touch & {
-    height: 0;
-    .flash {
-      position: absolute;
-      width: $blueprint-container-size;
-    }
-  }
-
 	.flash {
     position: fixed;
+    @include min-width(100%);
 
     top: 0;
     z-index: 10001;
@@ -18,7 +13,6 @@
 		padding: 10px 0;
 		font-weight:bold;
     text-align: center;
-    width: 100%;
     cursor: pointer;
 
     &.alert {
