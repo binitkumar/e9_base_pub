@@ -19,11 +19,7 @@
 = javascript_include_tag '/js/tags.js'
 = if admin?
   - content_for(:bottom_javascripts) do
-    :javascript
-      $(function() {
-        var _f;(_f = function(){$(".renderable-region").quick_edit()})();
-        $(document).ajaxComplete(_f);
-      })
+    <div id="qe-link" data-selector=".renderable-region" />
 = yield :javascripts
 
 = yield :head

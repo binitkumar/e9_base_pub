@@ -1,15 +1,22 @@
 ;jQuery(function($) {
-
   // quick_edit may be defined before we load this (for setting options)
   $.quick_edit = $.quick_edit || {};
 
-  var noop = function() {}
-
   $.extend($.quick_edit, {
+    init: function() {
+      $('#qe-link[data-selector]').each(function() {
+        var link = $(this).detach();
+
+        $.quick_edit.link = link;
+
+        $(link.attr('data-selector')).quick_edit();
+      });
+    },
+    selector: undefined,
     targets: $(),
     enabled: false,
-    onInit: noop,
-    onCbox: noop,
+    onInit: function(){},
+    onCbox: function(){},
 
     enableText: 'Enable Quick Edit',
     disableText: 'Disable Quick Edit',
@@ -68,7 +75,6 @@
     }
   }, $.quick_edit.class_handlers);
 
-
   var
 
   inited = false,
@@ -97,20 +103,24 @@
     })
   },
 
-  init_regions = function(targets, force) {
+  init_regions = function(targets) {
+    /* 
+     * this was a work in progress allowing quick edit "regions" with orderable 
+     * renderables
+     */
   },
 
-  init_renderables = function(targets, force) {
+  init_renderables = function(targets) {
 
+    // $.fn.add returns a list of unique elements
     $.quick_edit.targets = $.quick_edit.targets.add(targets);
 
     $.quick_edit.targets.each(function(i, el) {
       var $el = $(el);
 
-      if ($el.data('quick_edit')) {
-        if (!force) return true;
-        $el.data('quick_edit').remove();
-      }
+      if ($el.data('quick_edit')) return;
+
+      console.log(i);
 
       var $rel = $('<div class="renderable-edit-layer" style="position: absolute" />');
 
@@ -159,15 +169,22 @@
     $.quick_edit.enabled = !$.quick_edit.enabled;
   },
 
-  init = function() {
+  init = function(target) {
+    if (inited) return;
+
+    $.quick_edit.selector = target.selector;
+
     inited    = true;
     container = $('<div id="qe-container" />').appendTo('body');
 
     /* append quick edit link */
-    $.quick_edit.link = $('<a id="qe-link">'+$.quick_edit.enableText+'</a>')
-      .appendTo('body')
+    $.quick_edit.link = $.quick_edit.link || $('<div id="qe-link" />');
+
+    $.quick_edit.link
       .click(toggle)
-    ;
+      .html($.quick_edit.enableText)
+      .ajaxComplete(setup)
+      .appendTo('body');
 
     /* prepare quick edit tooltip live links */
     $(".qe-qelink, .qe-rlink, .qe-ulink").live('click', function(e) {
@@ -181,20 +198,25 @@
 
     /* optional callback */
     $.quick_edit.onInit();
-  };
+  },
 
-  $.fn.quick_edit = function(force) {
-    if (!inited) init();
+  setup = function() {
+    var targets = $($.quick_edit.selector);
 
     if ($.quick_edit.enabled) toggle();
 
-    var targets = $(this);
-
     if (targets.selector.match('region')) {
-      init_regions(targets, force);
-      init_renderables($('.renderable[data-node]', targets), force);
+      init_regions(targets);
+      init_renderables($('.renderable[data-node]', targets));
     } else {
-      init_renderables(targets, force);
+      init_renderables(targets);
     }
   }
+
+  $.fn.quick_edit = function() {
+    init(this);
+    setup();
+  }
+
+  $($.quick_edit.init);
 });
