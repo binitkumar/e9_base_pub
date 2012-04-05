@@ -126,7 +126,7 @@ $sidebar-border: 1px solid $theme-border-color;
           }
         }
       } 
-      &.current > a { color: $theme-highlight-color; }
+      &.current > a { color: $theme-highlight-color; font-weight:normal; }
     }
   }
 }

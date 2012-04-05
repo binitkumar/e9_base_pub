@@ -305,6 +305,10 @@
         submitHandler: function(v) {
           $f.callRemote();
         }
+        ,errorPlacement: function(label, element) {
+          
+          element.closest(".field").append(label);
+        }
       });
 
       // then re-submit, to the now validated form

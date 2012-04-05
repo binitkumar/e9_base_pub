@@ -14,6 +14,9 @@ $disabled_color: #ddd !default;
 			color:$theme-disabled-color;
 	}
 	.last a{
-		color:$theme-text-color;
+		color:$theme-link-hover-color;
+		&:hover{
+			color:$theme-link-color;
+		}
 	}
 }
