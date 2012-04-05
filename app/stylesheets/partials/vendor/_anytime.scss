@@ -95,10 +95,17 @@ div.AnyTime-win {
     height: 2.6em;
     text-align: center;
     width: 18.6em; }
+  .AnyTime-yrs.ui-state-default, .AnyTime-yr-prior-btn, .AnyTime-yr-cur-btn.ui-state-default,
+  .AnyTime-yr-next-btn.ui-state-default,.AnyTime-yrs-ahead-btn.ui-state-default,.AnyTime-yrs-past-btn.ui-state-default{
+    text-indent:0;
+  }
   .AnyTime-yrs-past-btn {
     width: 2.7em; }
   .AnyTime-yr-prior-btn, .AnyTime-yr-cur-btn, .AnyTime-yr-next-btn {
     width: 3.75em; }
+  .AnyTime-yr-prior-btn.ui-state-default, .AnyTime-yr-cur-btn.ui-state-default, .AnyTime-yr-next-btn.ui-state-default {
+    width: 3.75em;
+    text-indent:0; }
   .AnyTime-yrs-ahead-btn {
     width: 2.7em; }
   .AnyTime-mons {
@@ -107,6 +114,9 @@ div.AnyTime-win {
     width: 18.8em; }
   .AnyTime-mon-btn {
     width: 2.75em; }
+    .AnyTime-mon-btn.ui-state-default {
+    width: 2.75em;
+    text-indent:0; }
   .AnyTime-mon7-btn {
     clear: left; }
   .AnyTime-dom-table {

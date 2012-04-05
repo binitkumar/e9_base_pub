@@ -79,35 +79,32 @@
   }
 
   $.fn.tooltips = function(type, overrides) {
+
     return this.live('mouseover click', function(e) {
-      e.preventDefault();
+      var tip, content, options,
+          el = $(this);
 
-      var tip, content, options;
+      if (!el.data('e9_tooltips')) {
 
-      return $(this).each(function(i, el) {
+        el.data('e9_tooltips', true);
+        
+        tip = el.next('.tooltip');
 
-        el = $(el);
+        if (tip.length) {
+          e.preventDefault();
+          options = tooltips.options(type);
+          options.content = options.content || {};
 
-        if (!el.data('e9_tooltips')) {
+          $.extend(options, overrides);
 
-          el.data('e9_tooltips', true);
-          
-          tip = el.next('.tooltip');
+          $.extend(options.content, {
+            text: tip
+          });
 
-          if (tip.length) {
-            options = tooltips.options(type);
-            options.content = options.content || {};
-
-            $.extend(options, overrides);
-
-            $.extend(options.content, {
-              text: tip
-            });
-
-            el.qtip(options).mouseover();
-          }
+          el.qtip(options).mouseover();
         }
-      })
+      }
+
     })
   }
 

@@ -20,11 +20,11 @@
       a{
         float: right;
         font-size:14px;
-        color:$theme-link-hover-color;
+        color:$theme-link-color;
         text-decoration:underline;
         cursor:pointer;
         &:hover{
-          color:$theme-link-color;
+          color:$theme-link-hover-color;
         }
       }
     }
