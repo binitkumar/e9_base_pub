@@ -50,7 +50,7 @@
     },
 
     slideshow_defaults = {
-      position: { my: 'top left', at: 'bottom left', adjust: { y: 10 } }
+      position: { my: 'top right', at: 'bottom right', adjust: { y: 10 } }
     },
     
     image_defaults = {
@@ -92,6 +92,7 @@
 
         if (tip.length) {
           e.preventDefault();
+
           options = tooltips.options(type);
           options.content = options.content || {};
 
@@ -160,9 +161,7 @@
         });
     });
 
-    $('a.action-link').tooltips();
-
-    $('#slide-dashboard a.action-link').tooltips('slideshow');
+    $('a.action-link').tooltips('slideshow');
 
     $('a.do-select').tooltips('image');
 
