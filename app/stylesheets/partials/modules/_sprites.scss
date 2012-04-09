@@ -41,7 +41,7 @@ $slide-sprite-dimensions:true;
 @import "sprites/slide/*.png"; /**/
 
 
-body.slide .action-links {
+.action-links {
   a.more-info-link, a.dashboard-link, a.comments-link, a.share-bar-link {
     @include sprite-like;
     @extend .sprite;
@@ -80,4 +80,7 @@ a.feed {
   @include sprite-background('/images/buttons/rss.png', 15px);
   margin-right: 5px;
   width:15px;
+}
+h3.header.title{
+  padding-right:82px;
 }

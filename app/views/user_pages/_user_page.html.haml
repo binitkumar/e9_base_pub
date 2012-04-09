@@ -1,9 +1,9 @@
 - if resource.published? || admin?
   - meta_tags(resource)
-
+  = content_action_links(resource)
   .left-block
     = content_thumb(resource)
-    = content_action_links(resource)
+
   .block
     .date-and-byline
       = content_dateline(resource)
