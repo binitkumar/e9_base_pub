@@ -160,7 +160,7 @@
         });
     });
 
-    $('.left-block a.action-link').tooltips();
+    $('a.action-link').tooltips();
 
     $('#slide-dashboard a.action-link').tooltips('slideshow');
 
