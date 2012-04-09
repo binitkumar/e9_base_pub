@@ -1,6 +1,8 @@
 - if resource.published? || admin?
   - meta_tags(resource)
-  = content_action_links(resource)
+
+  .content-action-links
+    = content_action_links(resource)
   .left-block
     = content_thumb(resource)
 

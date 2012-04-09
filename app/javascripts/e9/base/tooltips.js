@@ -161,7 +161,7 @@
         });
     });
 
-    $('a.action-link').tooltips('slideshow');
+    $('#slide-dashboard a.action-link, .content-action-links a.action-link').tooltips('slideshow');
 
     $('a.do-select').tooltips('image');
 

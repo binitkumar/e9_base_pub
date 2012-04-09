@@ -1,5 +1,7 @@
 .blog-post.listing{:id => listed_blog_post.to_anchor }
-  = content_action_links(listed_blog_post, :hide_print => true)
+
+  .content-action-links
+    = content_action_links(listed_blog_post, :hide_print => true)
   .left-block
     = content_avatar(listed_blog_post)
     
