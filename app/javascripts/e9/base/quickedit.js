@@ -120,8 +120,6 @@
 
       if ($el.data('quick_edit')) return;
 
-      console.log(i);
-
       var $rel = $('<div class="renderable-edit-layer" style="position: absolute" />');
 
       $el.data('quick_edit', $rel);
