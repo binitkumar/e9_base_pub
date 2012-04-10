@@ -59,12 +59,14 @@
 
     help_defaults = {
       position: { my: 'top left', at: 'top right' },
-      show: { event: 'click', solo: true },
-      hide: false,
-      events: {
-        show: function(e, api) {
-          e.originalEvent.preventDefault();
-        }
+      show: { 
+        event: 'click', 
+        solo: true 
+      },
+      hide: {
+        event: 'mouseleave',
+        'fixed': true,
+        'delay': 250
       }
     }
 
@@ -110,36 +112,43 @@
   }
 
   $.fn.helpTooltips = function(e) {
-    return this.each(function(i, el) {
+
+    $(this).not('.tip-inited').each(function(i, el) {
+
       el = $(el);
 
-      if (!el.data('qtip')) {
-        var 
+      el.addClass('tip-inited');
 
-        title = el.attr('data-title') || 'Help',
+      var 
 
-        opts  = $.extend({}, tooltips.options.help, { 
-          content: { title: { text: title, button: true } }
-        });
+      title   = el.attr('data-title') || 'Help',
 
-        el
-          .click(function(e){ if(e) e.preventDefault() })
-          .qtip(opts).attr('title', function(i, val) {
-            val = val.replace(/\n/gi, '<br />');
-            val = val.replace(/\t/gi, '&nbsp;&nbsp;&nbsp;&nbsp;');
+      content = el.attr('title')
+                  .replace(/\n/gi, '<br />')
+                  .replace(/\t/gi, '&nbsp;&nbsp;&nbsp;&nbsp;');
 
-            return val;
-          })
-          .mouseover()
-        ;
-      }
-    })
+      el.removeAttr('title');
+
+      opts = $.extend({}, tooltips.options.help, { 
+        content: { 
+          title: { text: title, button: true },
+          text: content
+        }
+      });
+
+      el
+        .bind('click mouseover', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        })
+        .qtip(opts)
+    });
   }
 
   $(function() {
     $.e9.tooltips();
 
-    $('.help[rel=tooltip]').live('mouseover click', function() {
+    $('.help[rel=tooltip]').live('mouseover', function() {
       $(this).helpTooltips();
     });
 
