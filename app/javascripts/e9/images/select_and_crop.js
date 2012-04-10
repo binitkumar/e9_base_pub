@@ -20,6 +20,15 @@
             image_id: image.id
           })
 
+          /* NOTE 
+           *
+           * There's no actual "crop" information here, "select and crop" 
+           * depends on the element already being intialized with the crop api 
+           * via #crop or #upload_and_crop.
+           *
+           * So if a Slide has no dimensions, for example, #openCropbox will
+           * fail because the element has no crop options.
+           */
           $.e9.crop.element = el;
           $.e9.crop.openCropbox();
         });
