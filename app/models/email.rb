@@ -346,7 +346,7 @@ class Email < ActiveRecord::Base
       end
 
       # return the recipients (Users)
-      recipients
+      all_merges[:recipients]
     end
 
 end
