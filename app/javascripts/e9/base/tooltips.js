@@ -115,19 +115,15 @@
 
     $(this).not('.tip-inited').each(function(i, el) {
 
-      el = $(el);
+      var $el = $(el), title, content;
 
-      el.addClass('tip-inited');
+      $el.addClass('tip-inited');
 
-      var 
+      title   = $el.attr('data-title') || 'Help';
 
-      title   = el.attr('data-title') || 'Help',
-
-      content = el.attr('title')
+      content = el.attributes.title.value
                   .replace(/\n/gi, '<br />')
                   .replace(/\t/gi, '&nbsp;&nbsp;&nbsp;&nbsp;');
-
-      el.removeAttr('title');
 
       opts = $.extend({}, tooltips.options.help, { 
         content: { 
@@ -136,7 +132,7 @@
         }
       });
 
-      el
+      $el
         .bind('click mouseover', function(e) {
           e.preventDefault();
           e.stopPropagation();
