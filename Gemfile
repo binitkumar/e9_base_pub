@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gemspec
 
+gem 'rush'
 gem 'e9_attributes', :path => 'engines/e9_attributes'
 gem 'e9_crm',        :path => 'engines/e9_crm'
 gem 'e9_polls',      :path => 'engines/e9_polls'
