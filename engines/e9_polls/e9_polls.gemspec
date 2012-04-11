@@ -12,9 +12,7 @@ Gem::Specification.new do |s|
   s.description = File.open('README.rdoc').read rescue nil
 
   s.rubyforge_project = "e9_polls"
-
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+
+  s.files = Dir.glob("{app,lib,config}/**/*") + %w(Gemfile Rakefile README.rdoc)
 end

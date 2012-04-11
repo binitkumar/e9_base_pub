@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 require "e9_base/version"
+require "rubygems/package_task"
+
 
 Gem::Specification.new do |s|
   s.name          = "e9_base"
@@ -10,9 +12,17 @@ Gem::Specification.new do |s|
   s.email         = ["travis@e9digital.com"]
   s.summary       = "e9digital Rails 3 CMS"
   s.description   = File.open('README.markdown').read rescue nil
-  s.files         = `git ls-files`.split("\n")
 
   s.require_paths = ["lib"]
+
+  s.files = FileList[
+    ".gitignore",
+    "Gemfile",
+    "README.markdown",
+    "Rakefile",
+    "VERSION",
+    "{script,engines,db,app,lib,config}/**/*"
+  ]
 
   s.add_dependency('rails', '3.0.10')
   s.add_dependency('devise', '~> 1.1.5')
