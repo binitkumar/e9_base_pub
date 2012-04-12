@@ -151,8 +151,33 @@
       var options = api.currentOptions(), w, h, x, y, rx, ry;
 
       if (parseInt(coords.w) > 0) {
+
+        // NOTE the preview_window may be smaller than the actual destination
+        // crop as it's capped at the max_crop_width/max_crop_height.  For this
+        // reason it's necessary to calculate image size twice, once for the
+        // preview window, and once again for the resize/crop numbers for the
+        // real crop image size.
+
+        // first calculate the scale/positioning of the original
+        // image behind the preview window.
         rx = preview_window.width() / coords.w;
         ry = preview_window.height() / coords.h;
+        x  = Math.round(rx * coords.x);
+        y  = Math.round(ry * coords.y);
+        w  = Math.round(rx * options.image.width);
+        h  = Math.round(ry * options.image.height);
+
+        preview.css({
+          width:          w+'px',
+          height:         h+'px',
+          marginLeft: '-'+x+'px',
+          marginTop:  '-'+y+'px'
+        });
+
+        // then recalculate for the actual crop width
+        rx = options.crop_width / coords.w;
+        ry = options.crop_height / coords.h;
+
         x  = Math.round(rx * coords.x);
         y  = Math.round(ry * coords.y);
         w  = Math.round(rx * options.image.width);
@@ -161,13 +186,6 @@
         image_x.val(x); 
         image_y.val(y);
         image_r.val(w + "x" + h + '!');
-
-        preview.css({
-          width:          w+'px',
-          height:         h+'px',
-          marginLeft: '-'+x+'px',
-          marginTop:  '-'+y+'px'
-        });
       }
     },
 
