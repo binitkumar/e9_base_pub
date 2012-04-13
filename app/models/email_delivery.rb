@@ -103,7 +103,7 @@ class EmailDelivery < ActiveRecord::Base
 
         update_attributes(
           :requests   => recipients.length,
-          :recipients => recipients.map(&:email).join(',')
+          :recipients => recipients.to_s
         )
       else
         Rails.logger.error("EmailDelivery #{id} attempted delivery without attached email")

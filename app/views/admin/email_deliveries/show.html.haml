@@ -21,7 +21,4 @@
 .field
   = label_tag :recipients, "#{resource_humanize(:recipients)} (#{resource.requests})"
   .value
-    - if resource.recipients.present?
-      = resource.recipients.gsub(',', '<br/>').html_safe
-    - else
-      = e9_t(:no_recipients)
+    = resource.recipients.presence || e9_t(:no_recipients)

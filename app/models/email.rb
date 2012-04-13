@@ -327,9 +327,10 @@ class Email < ActiveRecord::Base
       # iterating over them.
       #
       all_merges = merges.dup
+      count = recipients.length
 
       # slice up the recipient indices, 0 to length...
-      (0...(recipients.length)).each_slice(CHUNK_SIZE) do |range|
+      (0...count).each_slice(CHUNK_SIZE) do |range|
         # ...and make a range out of each which will be used to slice the
         # subarrays in the merges
         range = (range.first)..(range.last)
@@ -345,8 +346,7 @@ class Email < ActiveRecord::Base
         Mailer.rendered_mail(self, opts).deliver
       end
 
-      # return the recipients (Users)
-      all_merges[:recipients]
+      count
     end
 
 end
