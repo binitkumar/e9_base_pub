@@ -12,6 +12,7 @@ class ContentViewDecorator < BaseDecorator
       hash[:updated_at]     = updated_at.utc
       hash[:created_at]     = created_at.utc
       hash[:url]            = _url
+      hash[:tags]           = model.tags
 
       if h.params[:html]
         hash[:html] = {}.tap do |html|

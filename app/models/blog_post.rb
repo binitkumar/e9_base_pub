@@ -12,6 +12,14 @@ class BlogPost < Page
   scope :posted_before, lambda {|post| post.is_a?(BlogPost) ? excluding(post.id).where('published_at <= ?', post.published_at) : where("1 = 0") }
   scope :posted_after,  lambda {|post| post.is_a?(BlogPost) ? excluding(post.id).where('published_at >= ?', post.published_at) : where("1 = 0") }
 
+  scope :tagged, lambda {|tags, options={}|
+    if tags.present?
+      tagged_with tags, options.reverse_merge(:show_hidden => false)
+    else
+      where("1=0")
+    end
+  }
+
   ##
   # associations
   #
