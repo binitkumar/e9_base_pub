@@ -104,8 +104,6 @@
         sizeLimit: 1024 * 1000 * 5, // 1mb * 5
         onError: function(event, ID, fileObj, errorObj) {
           // catch file size errors to give a more descriptive message
-          console.dir(errorObj);
-
           if (errorObj.type == "File Size") {
             $("#" + $this.attr("id") + ID)
               .addClass("uploadifyError")

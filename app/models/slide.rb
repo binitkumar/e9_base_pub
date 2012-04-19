@@ -31,6 +31,12 @@ class Slide < Page
 
   def change_layout(new_layout)
     super do |_self, _prototype|
+      begin
+        _self.image.spec = _prototype.image.spec
+      rescue
+        _self.image.destroy
+      end
+
       _self.published = false
     end
   end
