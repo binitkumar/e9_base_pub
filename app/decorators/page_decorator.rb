@@ -1,0 +1,2 @@
+class PageDecorator < ContentViewDecorator
+end

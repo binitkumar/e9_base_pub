@@ -86,21 +86,27 @@ class BlogPostsController < ApplicationController
   # IR
   #
   def collection 
-    @blog_posts ||= if should_group_by_date?
-      base_collection_scope.all
-    else
-      base_collection_scope.recent.paginate(pagination_parameters)
+    @blog_posts ||= begin
+      objects = if should_group_by_date?
+        base_collection_scope.all
+      else
+        base_collection_scope.recent.paginate(pagination_parameters)
+      end
+
+      objects.map! {|object| BlogPostDecorator.decorate(object) }
+    end
+  end
+
+  def resource
+    @blog_post ||= begin
+      object = end_of_association_chain.find_by_permalink!(params[:id])
+      object.increment_hits!
+      BlogPostDecorator.decorate(object)
     end
   end
 
   def base_collection_scope
     end_of_association_chain.published.for_role(current_user_or_public_role)
-  end
-
-  def resource
-    @blog_post ||= end_of_association_chain.find_by_permalink!(params[:id]).tap do |blog_post|
-      blog_post.increment_hits!
-    end
   end
 
   def build_blog_posts_for_resource_menu

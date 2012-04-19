@@ -160,8 +160,14 @@ module BaseController
   end
 
   def prepare_path
-    # NOTE prepare_path takes the "nl" no layout route into account for pages
-    @path = request.path.sub(/^\/(nl\/)?/,'')
+    @path = request.path.
+
+      # NOTE prepare_path takes the "nl" no layout route into account for pages
+      sub(/^\/(nl\/)?/,'').
+
+      # NOTE prepare_path strips the extension
+      sub(/\.\w+$/, '')
+
   end
 
   def find_current_page

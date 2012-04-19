@@ -1,8 +1,8 @@
 class PermalinkExistsConstraint
-  #NotRoutingError       = /\/(?!routing_error)/
-  HasNoExtension        = /\/[^\.]+$/
-  LastSegmentPermalink  = /\/([^\/]+)$/
-  Permalink             = /^\/(?:nl\/)?([^\.]+)$/
+  # NotRoutingError       = /\/(?!routing_error)/
+  # HasNoExtension        = /\/[^\.]+$/
+  LastSegmentPermalink  = /\/([^\/]+)(\.\w+)?$/
+  Permalink             = /^\/(?:nl\/)?(.+)(\.\w+)?$/
 
   def initialize(last_segment_only = false)
     @last_segment_only = last_segment_only
@@ -13,7 +13,7 @@ class PermalinkExistsConstraint
     #request.path =~ NotRoutingError               &&
 
     # skip anything with an extension, as currently permalinks do not use extensions
-    request.path =~ HasNoExtension                &&
+    # request.path =~ HasNoExtension                &&
 
     # matches permalink?
     (permalink = request.path[@last_segment_only ? LastSegmentPermalink : Permalink, 1]) &&

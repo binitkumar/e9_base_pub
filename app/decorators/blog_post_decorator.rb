@@ -1,0 +1,2 @@
+class BlogPostDecorator < ContentViewDecorator
+end

@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
   add_dynamic_breadcrumbs
 
-  respond_to :html
+  respond_to :html, :json
 
   protected
 
@@ -24,7 +24,7 @@ class PagesController < ApplicationController
         end
 
         current_page.increment_hits! if current_page.kind_of?(Hittable)
-        current_page
+        PageDecorator.decorate(current_page)
       end
     end
     alias :find_current_page :resource

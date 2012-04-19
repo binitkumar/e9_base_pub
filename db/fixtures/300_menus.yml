@@ -142,12 +142,12 @@ marketing_nav_0:
   <<: *hard_link_defaults
   parent: marketing_nav
   name: "Affiliates & Salespeople"
-  href: "/admin/crm/campaigns/1/activity"
+  href: "/admin/crm/contacts/payments"
 marketing_nav_1: 
   <<: *hard_link_defaults
   parent: marketing_nav
   name: "Campaign Report"
-  href: "/admin/crm/marketing_report"
+  href: "/admin/crm/campaigns/1/activity"
 marketing_nav_2: 
   <<: *hard_link_defaults
   parent: marketing_nav

@@ -26,7 +26,8 @@ module E9
 
     module ClassMethods
       def permalink_exists?(permalink)
-        base_class.exists?(:permalink => permalink.sub(/^\//,''))
+        permalink = permalink.sub(/^\//, '').sub(/\.\w+$/, '')
+        base_class.exists?(:permalink => permalink)
       end
 
       def permalinkify(string)
