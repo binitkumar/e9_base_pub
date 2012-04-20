@@ -2,7 +2,7 @@ class ContentViewDecorator < BaseDecorator
   def as_json(options = {})
     {}.tap do |hash|
       hash[:id]             = model.id
-      hash[:type]           = model.class.name
+      hash[:type]           = model.class.name.underscore
       hash[:param]          = model.to_param
       hash[:title]          = model.title
       hash[:description]    = model.description

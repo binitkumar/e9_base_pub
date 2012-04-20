@@ -144,7 +144,7 @@ module E9
           puts "Loading #{fixture}"
           yaml = YAML.load(ERB.new(IO.read(fixture)).result)
           fixtures = Seeds.prepare_fixture(klass, yaml)
-          puts "  #{fixtures.keys.length} #{klass_name} records loaded"
+          puts "  #{fixtures.keys.length} #{klass_name} records loaded" if fixtures.present?
 
           # after hook
           if File.exists?(process_script = "#{File.dirname(fixture)}/after_#{collection}.rb")
