@@ -102,7 +102,7 @@ class EmailDelivery < ActiveRecord::Base
         })
 
         update_attributes(
-          :requests   => recipients.length,
+          :requests   => recipients,
           :recipients => recipients.to_s
         )
       else
