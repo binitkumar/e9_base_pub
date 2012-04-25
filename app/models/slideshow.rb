@@ -1,6 +1,22 @@
 class Slideshow < Category
   def self.liquid_scope() ordered end
 
+  def as_json(options={})
+    {}.tap do |json|
+      json[:title]  = title
+      json[:layout] = 'slideshow'
+      json[:type]   = 'slideshow'
+      json[:slides] = slides.map do |slide|
+        {}.tap do |hash|
+          hash[:id]             = slide.id
+          hash[:title]          = slide.title
+          hash[:image]          = slide.image.as_json
+          hash[:url]            = slide.url
+        end
+      end
+    end
+  end
+
   def thumb
     if slides.present?
       slides.first.thumb

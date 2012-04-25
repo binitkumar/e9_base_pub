@@ -3,9 +3,23 @@ class SlideshowsController < ApplicationController
   include E9::Controllers::Sortable
 
   inherit_resources
+
   methods :index
+  respond_to :json, :only => :index
 
   add_resource_breadcrumbs
+
+  def index
+    index! do |format|
+      format.html
+      format.json do
+        render :json => {
+          :type       => 'slideshows',
+          :slideshows => collection
+        }
+      end
+    end
+  end
 
   protected
 
@@ -14,7 +28,7 @@ class SlideshowsController < ApplicationController
   end
 
   def collection 
-    get_collection_ivar || set_collection_ivar(collection_scope.all)
+    @slideshows ||= collection_scope.all
   end
 
   def add_index_breadcrumb

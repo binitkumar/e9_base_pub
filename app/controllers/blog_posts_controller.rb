@@ -52,7 +52,14 @@ class BlogPostsController < ApplicationController
     end
 
     index! do |format|
-      format.json { render :json => { :blog_posts => collection }.to_json }
+      format.json do 
+        render :json =>  { 
+          :name       => parent && parent.title,
+          :layout     => parent && parent.layout && File.basename(parent.layout.template.to_s, '.*'),
+          :type       => 'blog',
+          :blog_posts => collection 
+        }
+      end
     end
   end
 
@@ -131,7 +138,7 @@ class BlogPostsController < ApplicationController
   # resource breadcrumb impl
   #
   def add_index_breadcrumb
-    add_breadcrumb(blog_index_page.title, :blogs_path) unless available_blogs.count == 1
+    add_breadcrumb(determine_blog_title, :blogs_path) unless available_blogs.count == 1
     add_breadcrumb parent.title, blog_path(parent) if parent
   end
 
@@ -140,7 +147,7 @@ class BlogPostsController < ApplicationController
   end
 
   def find_current_page
-    @current_page = params[:id] && resource || parent || blog_index_page
+    @current_page = params[:id] && resource || parent || blog_index_page || super
   end
 
   ##
@@ -163,7 +170,7 @@ class BlogPostsController < ApplicationController
   end
 
   def determine_blog_title
-    @blog_title ||= parent.try(:title) || find_current_page.title
+    @blog_title ||= parent.respond_to?(:title) && parent.title || find_current_page.respond_to?(:title) && find_current_page.title || 'Blog'
   end
 
   def blog_index_page

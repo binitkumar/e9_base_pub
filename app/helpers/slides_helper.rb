@@ -65,6 +65,48 @@ module SlidesHelper
     })
   end
 
+  #
+  # determine the appropriate url for a slide based on the current context
+  #
+  # when no slideshow            => standalone permalink
+  # when slideshow is new_record => within a custom/pseudo slideshow
+  # when slideshow persisted     => within an actual slideshow
+  #
+  # accepts options:
+  #   only_path : in the same way as url_for
+  #
+  def contextual_slide_url(*args)
+    options = args.extract_options!
+    options.slice!(:only_path, :page, :per_page)
+
+    # change determinant to fix issue with SlideDecorator
+    slideshow = args.find {|arg| arg.respond_to?(:slides) }
+    slide     = args.find {|arg| arg.respond_to?(:slideshows) }
+
+    if slideshow.blank?
+      if slide.present?
+        slide_url(slide, options)
+      else
+        ''
+      end
+    else
+      if slide.present?
+        options[:anchor] = slide.to_param
+      end
+
+      if slideshow.new_record?
+        slides_url options.reverse_merge(slide_query_params)
+      else
+        slideshow_url slideshow, options
+      end
+    end
+  end
+
+  def contextual_slide_path(*args)
+    options = args.extract_options!
+    contextual_slide_url(*args, options.merge(:only_path => true))
+  end
+
   private
 
   def _slide_pagination_link(*args)
