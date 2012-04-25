@@ -1,6 +1,8 @@
 require 'rack/recaptcha'
 
 module BaseController
+  FORCED_NOT_FOUND_HEADER = 'rack.force_not_found'.freeze
+
   extend ActiveSupport::Concern
 
   include E9::Roles::Controller
@@ -39,6 +41,7 @@ module BaseController
 
     before_filter {|c| Linkable.default_url_options = c.url_options }
 
+    before_filter :check_for_forced_not_found
     before_filter :check_for_old_browsers
     before_filter :set_pagination_parameters
     before_filter :set_liquid_controller
@@ -108,6 +111,12 @@ module BaseController
 
   def set_p3p
     response.headers["P3P"] = %q/CP="CAO PSA OUR"/
+  end
+
+  def check_for_forced_not_found
+    if request.headers[FORCED_NOT_FOUND_HEADER]
+      render_404 and return false
+    end
   end
 
   def set_no_caching
