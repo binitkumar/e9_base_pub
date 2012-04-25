@@ -109,6 +109,11 @@ module SlidesHelper
 
   private
 
+  # TODO slide query params should really be inclusive rather than exclusive
+  def slide_query_params
+    query_params.except(:format, :id, :html)
+  end
+
   def _slide_pagination_link(*args)
     opts = args.extract_options!
 
