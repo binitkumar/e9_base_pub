@@ -57,6 +57,9 @@ class BlogPostsController < ApplicationController
           :name       => parent && parent.title,
           :layout     => parent && parent.layout && File.basename(parent.layout.template.to_s, '.*'),
           :type       => 'blog',
+          :total      => base_collection_scope.count,
+          :per_page   => pagination_per_page_default,
+          :page       => params[:page] || 1,
           :blog_posts => collection 
         }
       end
