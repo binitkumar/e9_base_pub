@@ -67,7 +67,13 @@ class Slide < Page
   def to_polymorphic_args
     # NOTE if the @slideshow instance variable is set we'll get the slideshow url for this
     # slide, otherwise we'll just get the slides index url
-    [@slideshow || Slide, { :anchor => self }].compact
+    # [@slideshow || Slide, { :anchor => self }].compact
+
+    if @slideshow
+      [@slideshow, { :anchor => self }].compact
+    else
+      self
+    end
   end
 
   def _post_to_twitter?;  E9::Config[:twitter_slides_by_default] end

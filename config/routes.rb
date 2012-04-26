@@ -78,11 +78,11 @@ Rails.application.routes.draw do
     resources :comments, :only => [:create, :destroy, :index]
   end
 
-  resources :slides, :only => :index
+  resources :slides, :only => [:index, :show]
 
   # TODO  slide polymorphic_args don't use this route.  Is problematic?  The main issue is that slide_url(:foo => 'bar') appends query params after the anchor 
-  get "/slides#:id", :as => :slide, :to => 'slides#index'
-  get '/slides/:id', :to => redirect('/slides#%{id}')
+  # get "/slides#:id", :as => :slide, :to => 'slides#index'
+  # get '/slides/:id', :to => redirect('/slides#%{id}')
 
   get "/slideshows",               :as => :slideshows, :to => 'slideshows#index'
   get "/slideshows/:slideshow_id", :as => :slideshow, :to => 'slides#index'

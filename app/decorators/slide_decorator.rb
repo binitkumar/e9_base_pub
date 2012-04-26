@@ -56,7 +56,8 @@ class SlideDecorator < ContentViewDecorator
   protected
 
     def _url
-      h.contextual_slide_url(model)
+      # h.contextual_slide_url(model)
+      model.url
     end
 
     def render_slide_partial(partial)
