@@ -8,7 +8,7 @@ module SlidesHelper
 
   def slide_page_title(slide_or_title, slideshow = nil)
     slide_or_title = slide_or_title.meta_title if slide_or_title.respond_to?(:meta_title)
-    meta_title([slide_or_title, slideshow.presence && slideshow.title])
+    meta_title [slide_or_title, slideshow.presence && slideshow.title].compact
   end
 
   def slide_pagination_info(slide, slides_relation)
