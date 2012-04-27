@@ -1,0 +1,12 @@
+@import "blueprint/grid";
+
+// override container clearfix to default to pie as opposed to overflow hidden
+@mixin container($pie: true) {
+  width: $blueprint-container-size;
+  margin: 0 auto;
+  @if ($pie) {
+    @include pie-clearfix;
+  } @else {
+    @include clearfix;
+  }
+}

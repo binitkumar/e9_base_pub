@@ -6,6 +6,7 @@ class Slideshow < Category
       json[:title]  = title
       json[:layout] = 'slideshow'
       json[:type]   = 'slideshow'
+      json[:url]    = url
       json[:slides] = slides.map do |slide|
         {}.tap do |hash|
           hash[:id]             = slide.id
