@@ -8,6 +8,7 @@
       = f.text_field :title
     = render 'e9_tags/form', :f => f
     = render 'admin/views/body', :f => f
+    = render 'shared/form_partials/related_data', :f => f
     #blog-post-thumb
       = image_mount_field(resource.thumb, :f => f)
     = render 'admin/views/advanced_settings', :f => f
