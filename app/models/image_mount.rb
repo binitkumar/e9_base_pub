@@ -49,6 +49,8 @@ class ImageMount < ActiveRecord::Base
 
   scope :ordered, lambda { order(:position) }
 
+  scope :with_spec, lambda {|spec| where(:spec_type => 'ImageSpec', :spec_id => spec.id) }
+
   #
   # Delegations
   #
