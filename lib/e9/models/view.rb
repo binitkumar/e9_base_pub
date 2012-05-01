@@ -111,14 +111,18 @@ module E9::Models
     end
 
     def reset_layout!
-      _layout, self.layout = self.layout, nil
-      change_layout(_layout)
+      change_layout(self.layout, true) if self.layout.present?
     end
 
-    def change_layout(new_layout)
+    def change_layout(new_layout, allow_same_layout=false)
       begin
-        raise "You cannot change to the same layout"   if self.layout == new_layout
-        raise "There was an error updating the layout" unless prototype = new_layout.prototype(self.class)
+        if !allow_same_layout && self.layout == new_layout
+          raise "You cannot change to the same layout" 
+        end
+
+        unless prototype = new_layout.prototype(self.class)
+          raise "There was an error updating the layout"
+        end
 
         self.regions.clear()
         self.regions = prototype.regions

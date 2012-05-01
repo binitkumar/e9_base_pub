@@ -29,7 +29,7 @@ class Slide < Page
     super
   end
 
-  def change_layout(new_layout)
+  def change_layout(*args)
     super do |_self, _prototype|
       begin
         _self.image.spec = _prototype.image.spec
