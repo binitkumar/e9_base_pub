@@ -50,6 +50,8 @@ class User < ActiveRecord::Base
 
   before_save :handle_elevation, :only => :update
 
+  before_create :blank_password_data, :if => 'prospect?'
+
   #
   # for managing subscriptions tokens
   #
@@ -251,6 +253,7 @@ class User < ActiveRecord::Base
       end
     end
 
+    # allows for queries like user.prospect?
     def method_missing(method_name, *args)
       method_name =~ /(.*)\?$/ ? self.role == $1 :  super
     end
@@ -267,6 +270,11 @@ class User < ActiveRecord::Base
 
     def _assign_initialization_defaults
       self.status ||= 'user'
+    end
+
+    def blank_password_data
+      self.password_salt = ''
+      self.encrypted_password = ''
     end
 
 end
