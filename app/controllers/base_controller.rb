@@ -57,6 +57,7 @@ module BaseController
 
     if Rails.env.production?
       rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+      rescue_from ActionView::MissingTemplate, :with => :render_404
 
       # this is handled by routes and errors controller
       #rescue_from ActionController::RoutingError, :with => :render_404
