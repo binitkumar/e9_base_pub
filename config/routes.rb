@@ -369,6 +369,7 @@ Rails.application.routes.draw do
 
   # redirect menu show to its submenus
   get '/admin/menus/:id', :to => redirect('/admin/menus/%{id}/submenus')
+  get '/admin/menus', :to => redirect('/admin/menus/main/submenus')
 
   # redirect show to edit on resources that don't have show
   # NOTE it would probably be appropriate to just treat #show as #edit throughout the system, as it has become the paradigm
