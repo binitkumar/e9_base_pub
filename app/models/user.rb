@@ -50,6 +50,8 @@ class User < ActiveRecord::Base
 
   before_save :handle_elevation, :only => :update
 
+  before_create :blank_password_data_defaults, :if => 'prospect?'
+
   #
   # for managing subscriptions tokens
   #
@@ -267,6 +269,11 @@ class User < ActiveRecord::Base
 
     def _assign_initialization_defaults
       self.status ||= 'user'
+    end
+
+    def blank_password_data_defaults
+      self.password_salt = ''
+      self.encrypted_password = ''
     end
 
 end
