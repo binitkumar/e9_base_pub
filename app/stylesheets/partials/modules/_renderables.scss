@@ -143,31 +143,7 @@ $renderable-bottom-margin: .4em !default;
     }
   } 
 }
-#footer {
-  font-size:small;
 
-  .renderable {
-    width:250px;
-    display:block;	
-  }
-  .renderable .title-author-module{
-    a {
-      //display:inline;
-    }
-
-    .image {
-      width:$avatar_width;
-      height:$avatar_height;
-    }
-
-    h4{
-      float:left;
-    }
-  }
-}
-.renderable{
-  @include pie-clearfix;
-}
 .renderable-region{
   input[type="text"],select,textarea {
     display: inline-block;
