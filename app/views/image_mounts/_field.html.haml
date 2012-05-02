@@ -17,8 +17,8 @@
         - if resource.image_id.present?
           = mf.hidden_field :image_id, :class => 'tocopy'
         - if resource.spec_id.present?
-          = mf.hidden_field :spec_type, :class => 'tocopy'
-          = mf.hidden_field :spec_id, :class => 'tocopy'
+          = mf.hidden_field :spec_type
+          = mf.hidden_field :spec_id
         - if resource.instructions.present?
           = mf.hidden_field :instructions, :value => resource.instructions.to_hash.to_yaml, :class => 'tocopy'
 
