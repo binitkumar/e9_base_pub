@@ -48,7 +48,7 @@ class BlogPostsController < ApplicationController
 
   def index
     if !parent && available_blogs.count == 1
-      redirect_to available_blogs.first.url and return false
+      redirect_to available_blogs.first.url(pagination_parameters) and return false
     end
 
     index! do |format|
