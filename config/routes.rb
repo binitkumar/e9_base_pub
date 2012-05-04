@@ -388,9 +388,6 @@ Rails.application.routes.draw do
   # redirect /topics to /topics/new (in case of non form submit refresh on /topics, mainly)
   get '/topics', :to => redirect('/topics/new')
 
-  # TODO either A, put the favicon in public or B, do favicon redirect (or bounce) in middleware
-  get '/favicon.ico', :to => redirect('/images/favicon.ico')
-
   # Comment paths
   get '/topics/:id#c:comment_id',          :as => :topic_comment,          :to => 'topics#show'
   get '/:id#c:comment_id',                 :as => :page_comment,           :to => 'pages#show'
