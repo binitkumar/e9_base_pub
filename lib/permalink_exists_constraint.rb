@@ -1,24 +1,14 @@
 class PermalinkExistsConstraint
-  # NotRoutingError       = /\/(?!routing_error)/
-  # HasNoExtension        = /\/[^\.]+$/
-  LastSegmentPermalink  = /\/([^\/]+)(\.\w+)?$/
-  Permalink             = /^\/(?:nl\/)?(.+)(\.\w+)?$/
-
   def initialize(last_segment_only = false)
     @last_segment_only = last_segment_only
   end
 
   def matches?(request)
-    # vidibus routing_error re-routes to "/routing_error" route internally, skip
-    #request.path =~ NotRoutingError               &&
+    permalink = request.path.dup
 
-    # skip anything with an extension, as currently permalinks do not use extensions
-    # request.path =~ HasNoExtension                &&
+    permalink.sub!(/\..*$/, '')
+    permalink.sub!(/.*\//, '') if @last_segment_only
 
-    # matches permalink?
-    (permalink = request.path[@last_segment_only ? LastSegmentPermalink : Permalink, 1]) &&
-
-    # and finally, permalink exists?
-    ContentView.permalink_exists?(permalink)
+    !permalink.blank? && ContentView.permalink_exists?(permalink)
   end
 end
