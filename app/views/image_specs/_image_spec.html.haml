@@ -1,2 +1,2 @@
-- if image = current_page && current_page.images.with_spec(image_spec).first
+- if image = current_page && current_page.respond_to?(:images) && current_page.images.with_spec(image_spec).first
   = image_tag(image.url, :height => image.height, :width => image.width)
