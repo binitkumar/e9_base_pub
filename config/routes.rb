@@ -229,7 +229,7 @@ Rails.application.routes.draw do
     end
 
     # menus#show redirects to submenus
-    resources :menus, :except => :show do
+    resources :menus, :except => [:show, :index] do
       resources :submenus, :only => :index do
         collection do
           post :update_order
