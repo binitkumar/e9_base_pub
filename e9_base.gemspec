@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency('will_paginate', '3.0.2')
   s.add_dependency('carrierwave', '0.5.7')
   s.add_dependency('mini_magick', '3.3')
-  s.add_dependency('rack-cache', '1.0.2')
+  s.add_dependency('rack-cache', '1.2.0')
   s.add_dependency('rack-contrib', '1.1.0')
   s.add_dependency('uuidtools', '2.1.2')
   s.add_dependency('liquid', '2.2.2')
