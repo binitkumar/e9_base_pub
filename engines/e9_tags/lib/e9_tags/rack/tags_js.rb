@@ -11,9 +11,11 @@ module E9Tags::Rack
                  .select_rows(rel.to_sql, 'Tags JS')
                  .inject({}) {|h, row| (h[row.first] ||= []) << row.last; h } 
 
-        js   = "window.e9=window.e9||{};window.e9.tags=#{retv.to_json};"
+        js   = ";window.e9=window.e9||{};window.e9.tags=#{retv.to_json};"
 
-        [200, {"Content-Type" => "text/javascript", "Cache-Control" => "max-age=3600, must-revalidate"}, [js]]
+        ::E9::Rack::NoSession.set_header!(env)
+
+        [200, {"Content-Type" => "text/javascript", "Cache-Control" => "private, max-age=3600"}, [js]]
       else
         [404, {"Content-Type" => "text/html", "X-Cascade" => "pass"}, ["Not Found"]]
       end

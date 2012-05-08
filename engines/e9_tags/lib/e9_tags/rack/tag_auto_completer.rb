@@ -34,7 +34,9 @@ module E9Tags::Rack
           end
         end
 
-        [200, {"Content-Type" => "application/json", "Cache-Control" => "max-age=60, must-revalidate"}, [terms.to_json]]
+        ::E9::Rack::NoSession.set_header!(env)
+
+        [200, {"Content-Type" => "application/json", "Cache-Control" => "private, max-age=180"}, [terms.to_json]]
       else
         [404, {"Content-Type" => "text/html", "X-Cascade" => "pass"}, ["Not Found"]]
       end

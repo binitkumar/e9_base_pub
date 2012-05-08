@@ -45,6 +45,8 @@ module E9
 
   module Rack
     autoload :WWWRedirect,          'e9/rack/www_redirect'
+    autoload :Rerouting,            'e9/rack/www_redirect'
+    autoload :NoSession,            'e9/rack/www_redirect'
   end
 
   autoload :Roles,                  'e9/roles'
