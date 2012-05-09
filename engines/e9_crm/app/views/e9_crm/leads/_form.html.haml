@@ -1,6 +1,10 @@
-= form_for resource, :url => public_offer_deals_path(@offer) do |f|
+- @offer ||= resource.offer
+
+= form_for resource, :url => public_offer_deals_path(@offer), :html => { :class => "remote-lead" } do |f|
   .errors= resource_error_messages!
   .notice
+
+  = @offer.custom_form_header.to_s.html_safe
 
   - if f.object.user.blank?
     .field
@@ -10,7 +14,7 @@
       = f.label :lead_name, nil, :class => :req
       = f.text_field :lead_name, :class => 'required'
 
-  = @offer.custom_form_html.html_safe
+  = @offer.custom_form_html.to_s.html_safe
 
   - if @offer.mailing_lists.any?
     %fieldset

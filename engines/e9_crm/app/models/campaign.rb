@@ -38,6 +38,8 @@ class Campaign < ActiveRecord::Base
                    :uniqueness   => { :case_sensitive => false, :allow_blank => true, :unless => lambda {|c| c.code == NoCampaign::CODE } },
                    :exclusion    => { :in => [NoCampaign::CODE], :unless => lambda {|r| r.is_a?(NoCampaign) } }
 
+  belongs_to :offer
+
   validate do
     errors.add(:code, :taken_by_page) if ContentView.find_by_permalink(code)
   end

@@ -8,6 +8,19 @@ Rails.application.routes.draw do
   get '/users/email_test.json'        => E9Crm::Rack::EmailAvailabilityChecker
 
   scope :module => :e9_crm do
+
+    # specific_offer and default_offer actually return a new lead associated
+    # with the found offer and the <form> used to persist it.
+    #
+    # The default_offer is determined by the currently tracked campaign, 
+    # or the default offer specified in the admin.
+    #
+    # specific_offer is a just a prettier shortcut to /offers/XX/new to match
+    # the shorter '/offer'
+    #
+    get '/offer', :as => :default_offer, :to => 'leads#campaign_or_default_offer_lead_redirect'
+    get '/offer/:id', :to => redirect('/offers/%{id}/new')
+
     resources :offers, :as => :public_offer, :only => :show do
       resources :leads, :as => :deals, :only => [:new, :create], :path => ''
     end

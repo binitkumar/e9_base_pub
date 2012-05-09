@@ -16,6 +16,7 @@ class E9Crm::OffersController < E9Crm::ResourcesController
   def show
     clear_breadcrumbs
     add_home_crumb
+    show!
   end
 
   protected

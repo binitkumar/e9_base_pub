@@ -345,9 +345,7 @@ module BaseController
   def render_404(*args)
     opts = args.extract_options!
 
-    if url = landing_page_redirect_url
-      redirect_to url and return false
-    else
+    landing_page_redirect_or do
       respond_to do |format|
         format.js { head 404 }
 
@@ -536,8 +534,8 @@ module BaseController
     unless collect_mimes_from_class_level.member?(format.to_sym)
       respond_to do |format|
         format.html { render_404 }
-        format.js   { head 503   }
-        format.json { head 503   }
+        format.js   { head 503 }
+        format.json { head 503 }
       end
 
       return false

@@ -287,7 +287,7 @@
     })
   ; 
 
-  $('.renderable form.new_deal').livequery('submit', function(e) {
+  $('form.remote-lead').livequery('submit', function(e) {
     e.preventDefault();
 
     var $f = $(this);

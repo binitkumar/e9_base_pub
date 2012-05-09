@@ -21,12 +21,20 @@
       = label_tag "offer_mailing_list_ids_#{ml.id}", ml.name
 
 .field
+  = f.check_box :autoscroll, {}, '1', ''
+  = f.label :autoscroll
+
+.field.tinymce
   = help_label(f, :template, :markdown => true)
   = f.text_area :template
 
 .field.tinymce
   = f.label :success_page_text
   = f.text_area :success_page_text
+
+.field
+  = f.label :custom_form_header
+  = f.text_area :custom_form_header
 
 .field
   = f.label :custom_form_html

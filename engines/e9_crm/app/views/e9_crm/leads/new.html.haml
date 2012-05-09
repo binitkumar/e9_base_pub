@@ -1,4 +1,6 @@
-%h2= @offer.name
+- @offer ||= resource.offer
+
+%h2= resource.offer.name
 
 .offer-body
   = k @offer.template

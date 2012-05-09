@@ -9,9 +9,17 @@ class Offer < Renderable
   has_many :deals, :inverse_of => :offer, :dependent => :restrict
   has_many :leads, :class_name => 'Deal', :conditions => ["deals.status = ?", Deal::Status::Lead], :dependent => :restrict
 
+  has_many :campaigns
+
   validates :conversion_alert_email, :email => { :allow_blank => true }
 
   mount_uploader :file, FileUploader
+
+  after_save :make_only_default, :if => 'is_default? && is_default_changed?'
+
+  def self.default
+    where(:is_default => true).first || first
+  end
 
   self.delegate_options_methods = true
   self.options_parameters = [
@@ -19,8 +27,14 @@ class Offer < Renderable
     :success_page_text,
     :conversion_alert_email,
     :custom_form_html,
-    :mailing_list_ids
+    :mailing_list_ids,
+    :custom_form_header,
+    :autoscroll
   ]
+
+  def autoscroll?
+    autoscroll.present?
+  end
 
   def has_mailing_list?(ml)
     (mailing_list_ids || []).map(&:to_s).member?(ml.id.to_s)
@@ -59,6 +73,10 @@ class Offer < Renderable
   end
 
   protected
+
+    def make_only_default
+      self.class.update_all({:is_default => false}, ["id != ?", self.id])
+    end
 
     def _assign_initialization_defaults
       self.submit_button_text ||= 'Submit!'

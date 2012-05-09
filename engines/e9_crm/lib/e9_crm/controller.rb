@@ -36,16 +36,23 @@ module E9Crm
       end
     end
 
-    def landing_page_redirect_url
+    def landing_page_redirect_or
       if request.get? && request.path =~ /^\/([^\/]+)$/ && (campaign = Campaign.find_by_code($1))
-
-        args = request.GET.merge(:code => $1)
+        reset_tracking_cookie!($1)
 
         if campaign.link.present?
-          campaign.link.linkable.url(args)
+          url = campaign.link.linkable
         else
-          root_url(args)
+          url = root_url
+
+          if (offer = campaign.offer).present? && offer.autoscroll?
+            url << '#!/offer'
+          end
         end
+
+        redirect_to(url) and return false
+      else
+        yield if block_given?
       end
     end
 
@@ -57,14 +64,19 @@ module E9Crm
       @_user_from_params
     end
 
+    def reset_tracking_cookie!(code)
+      @_tracking_cookie = nil
+      tracking_cookie(code)
+    end
+
     #
     # Loads or installs the tracking cookie
     #
-    def tracking_cookie
+    def tracking_cookie(code=nil)
       @_tracking_cookie ||= begin
         E9Crm.log "Begin load or install cookie: cookie_name[#{E9Crm.cookie_name}] query_param[#{E9Crm.query_param}]"
 
-        code    = params.delete(E9Crm.query_param)
+        code ||= params.delete(E9Crm.query_param)
 
         if hid = cookies[E9Crm.cookie_name]
           E9Crm.log("Installed cookie found: hid(#{hid})")

@@ -17,5 +17,8 @@
     = f.label :user_page_id
     = f.select :user_page_id, campaign_link_select_options
   .field
+    = f.label :offer_id, 'Offer'
+    = f.collection_select :offer_id, Offer.all, :id, :name, :include_blank => 'Select Offer...'
+  .field
     = f.label :active
     = f.check_box :active

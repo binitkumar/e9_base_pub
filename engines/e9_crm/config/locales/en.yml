@@ -185,8 +185,9 @@ en:
         offer: Offer
         followed_up: Done
       offer:
+        autoscroll: Autoscroll to this offer after a landing page redirect?
         mailing_list_ids: Subscriptions
-        template: Teaser Text
+        template: Offer Body
         template_help: |
           <h3>Variables:</h3>
           <p>You can insert the following to render variable data in the field</p>
@@ -201,6 +202,7 @@ en:
         conversion_alert_email: Send Alert Email To
         success_page_text: Success Page Text
         custom_form_html: Custom Form Html
+        is_default: Default Offer
       page_view:
         month: Month Occurred
         new_visit: Event
