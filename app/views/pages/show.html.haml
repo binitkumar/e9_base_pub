@@ -1,2 +1,2 @@
-= title(resource, :hide_title => !resource.display_title?)
+= title(resource.title, :hide_title => !resource.display_title?)
 = render :partial => resource.class.model_name.partial_path, :object => resource
