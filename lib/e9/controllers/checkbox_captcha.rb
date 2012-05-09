@@ -1,6 +1,11 @@
 module E9::Controllers
   #
-  # This module is dependent on javascript code in base.js
+  # NOTE This module is dependent on javascript code in e9/base/checkbox_captcha.js
+  #
+  # NOTE The captcha will return from create and update using
+  # the #edit and #new templates, depending on the situation.  If
+  # the templates require instance variables, those variables must
+  # be set BEFORE the #checkbox_captcha_test
   #
   module CheckboxCaptcha
     extend ActiveSupport::Concern
