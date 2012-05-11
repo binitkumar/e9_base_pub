@@ -18,28 +18,14 @@ body.admin {
     }
   }
 
-  #banner { 
-    display: none; 
-  }
+  #banner { display: none; }
+
   .admin-sidebar-right{
-    h2, .h2{
-      border-bottom: theme-border-style();
-      .action-links{
-        a{
-          font-size:14px;
-          color:$theme-alt-text-color;
-          text-decoration:underline;
-          &:hover{
-            color:$theme-link-color;
-          }
-        }
-      }
-    }
-    a{
-      color:$theme-alt-text-color;
-      text-decoration:underline;
-      &:hover{
-        color:$theme-link-color;
+    h2, .h2 {
+      border-bottom: theme-border-style;
+      .action-links a {
+        font-size: 14px;
+        text-decoration: underline;
       }
     }
   }
@@ -55,14 +41,11 @@ body.admin {
   }
   .deals-sidebar{
     a{
-      text-decoration:underline;
-      color:$theme-alt-text-color;
-      &:hover{
-        color:$theme-link-color;
-      }
+      text-decoration: underline;
       img{
-        border:1px solid $theme-background-color;
-        &:hover{
+        border: 1px solid $theme-background-color;
+
+        &:hover {
           border:1px solid $theme-alt-text-color;
         }
       }
@@ -104,18 +87,17 @@ body.admin {
         float:left;
         // The <a> will include an icon, so just underline the "text" portion
         a { 
-          text-decoration: none; 
+          text-decoration: none;
           span.text { text-decoration: underline; }
         }
       }
     }
     td {
-      a{
-        text-decoration:underline;
-        color:$theme-alt-text-color;
-        &:hover{
-          color:$theme-link-color;
+      a { 
+        &, &:link, &:visited {
+          text-decoration: underline;
         }
+        span.text { text-decoration: underline; }
       }
       &.id {
         text-align: center;
@@ -127,30 +109,6 @@ body.admin {
         a {
           @include x-small;
           @include button;
-        }
-      }
-      &.record-campaign-name{
-        a{
-          text-decoration:underline;
-          color:$theme-alt-text-color;
-          &:hover{
-            color:$theme-link-color;
-          }
-        }
-      }
-      &.record-name{
-        a{
-          text-decoration:underline;
-          color:$theme-alt-text-color;
-          &:hover{
-            color:$theme-link-color;
-          }
-        }
-      }
-
-      &.link {
-        a, a:link, a:visited {
-          text-decoration: underline;
         }
       }
       &.actions{

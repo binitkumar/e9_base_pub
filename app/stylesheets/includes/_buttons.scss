@@ -51,30 +51,26 @@ $theme-button-line-height :                     1.4 !default;
   border: solid 1px darken($background, 4%);
   background:$top;
   @include linear-gradient($top, $bottom);
+
   &, &:visited, &:hover {
-    color: mix($color, $background, 95%) !important;
+    color: mix($color, $background, 95%);
   }
+
   &, &:visited {
-    
     $top : if($theme-button-gradient-top,$theme-button-gradient-top, lighten($background , 23%) );
     $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 11%));
     @include linear-gradient($top, $bottom);
-    
   }
   &:hover {
 		$top : if($theme-button-gradient-top,$theme-button-gradient-top, lighten($background , 10%) );
     $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 5%));
-    
     @include linear-gradient($top, $bottom);
-    background:lighten($top , 10%);
-
+    background: lighten($top, 10%);
   }
   &:active {
     $top : if($theme-button-gradient-top,$theme-button-gradient-top, $background  );
     $bottom : if($theme-button-gradient-bottom,$theme-button-gradient-bottom, lighten($background, 10%));
-    
-    color: mix($color,$background,70%);
     @include linear-gradient($top, $bottom);
-
+    color: mix($color, $background, 70%);
   }
 }
