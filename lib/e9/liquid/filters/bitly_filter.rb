@@ -6,7 +6,7 @@ module E9::Liquid::Filters
       uri = URI.parse(input)
       raise "invalid uri" unless uri.scheme
 
-      creds = ENV['bitly_username'], ENV['bitly_api_key']
+      creds = ENV['BITLY_USERNAME'], ENV['BITLY_API_KEY']
       raise "invalid creds" if creds.any?(&:blank?)
 
       bitly = Bitly.new(*creds)
