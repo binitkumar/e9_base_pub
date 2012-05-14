@@ -237,15 +237,6 @@ body.admin {
   #balance-table{
     td{padding-left:5px;}
   }
-  .edit_settings{
-    a{
-      color:$theme-alt-text-color;
-      text-decoration:underline;
-      &:hover{
-        color:$theme-link-color;
-      }
-    }
-  }
   #banner-images{
     .image{
       position:relative;
