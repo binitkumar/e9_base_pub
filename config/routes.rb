@@ -395,11 +395,9 @@ Rails.application.routes.draw do
   get '/blogs/:blog_id/:id/#c:comment_id', :as => :blog_blog_post_comment, :to => 'blog_posts#show'
 
   # page/blog_post catchall, note that pages controller *does not* use :id, but @path, which is resolved after, so the :id here is irrelevant
-  get '/:id', :to => 'pages#show', :as => :page, :constraints => PermalinkExistsConstraint.new
+  get '/*path', :to => 'pages#show', :as => :page, :constraints => PermalinkExistsConstraint.new
 
   root :to => "pages#show"
-
-  get '/errors/test', :to => 'errors#test'
 
   # NOTE catchall route is defined in the engine
 end
