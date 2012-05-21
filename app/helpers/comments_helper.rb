@@ -21,21 +21,27 @@ module CommentsHelper
       return content_tag(:span, link_text, :class => 'comments-link')
     end
 
-    link_args = []
+    # link_args = []
 
-    if commentable.respond_to?(:to_polymorphic_args)
+    # if commentable.respond_to?(:to_polymorphic_args)
 
-      # see Linkable for permalinked explanation
-      commentable.permalinked do |c|
-        link_args << c.to_polymorphic_args
-      end
-    end
+    #   # see Linkable for permalinked explanation
+    #   commentable.permalinked do |c|
+    #     link_args << c.to_polymorphic_args
+    #   end
+    # end
 
-    hash_arg = link_args.last.is_a?(Hash) ? link_args.pop : {}
-    hash_arg[:anchor] = :comments
-    link_args << hash_arg
+    # hash_arg = link_args.last.is_a?(Hash) ? link_args.pop : {}
+    # hash_arg[:anchor] = :comments
+    # link_args << hash_arg
+    # url = polymorphic_path(*link_args)
+    
+    # NOTE dirty hack for pnnd and a heretofore unfound bug with hardcoded 
+    # permalinks, skip the whole url_for business and just get the url 
+    # and tack #comments onto it.
+    url = commentable.url.dup << '#comments'
 
-    link_to link_text, polymorphic_path(*link_args), :class => 'action-link comments-link'
+    link_to link_text, url, :class => 'action-link comments-link'
   end
 
   def comments_count(commentable)

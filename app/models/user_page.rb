@@ -36,7 +36,11 @@ class UserPage < Page
   end
 
   def to_polymorphic_args
-    self.becomes(Page)
+    self.permalink
+  end
+
+  def to_param
+    self.id.to_param
   end
 
   def _post_to_twitter?;  E9::Config[:twitter_pages_by_default] end
