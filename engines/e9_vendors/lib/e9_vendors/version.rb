@@ -1,3 +1,3 @@
 module E9Vendors
-  VERSION = "2.0.2.gsi1"
+  VERSION = "2.0.2.gsi2"
 end
