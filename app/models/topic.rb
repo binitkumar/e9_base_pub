@@ -52,8 +52,10 @@ class Topic < ContentView
         find_scope = find_scope.where(:role => opts.delete(:roles))
       end
 
-      find_scope.where(conditions).
-          union_of(find_scope.tagged_with(term)).order('published_at DESC')
+      find_scope.
+        where(conditions).
+        # union_of(find_scope.tagged_with(term)).
+        order('published_at DESC')
     end
   }
 

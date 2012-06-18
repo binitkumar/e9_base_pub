@@ -1,5 +1,6 @@
 class Search < ActiveRecord::Base
   Searchables = [BlogPost, UserPage, Event, Slide, Topic, Comment, Question]
+  # Searchables = [UserPage]
 
   belongs_to :user
   before_create :update_counts
