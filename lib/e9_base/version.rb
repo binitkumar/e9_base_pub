@@ -1,3 +1,3 @@
 module E9Base
-  VERSION = "2.0.2.gsi"
+  VERSION = "2.0.2.gsi1"
 end
