@@ -370,10 +370,13 @@ class Contact < ActiveRecord::Base
       reject_record_attribute?(hash) || super 
     end
 
+    # special handling for User (email) attributes: if a user is a prospect
+    # (or a non-user record that doesn't respond to prospect) delete it normally, otherwise
+    # just delete it from this Contact's user array
     def assign_to_or_mark_for_destruction(record, attributes, allow_destroy)
       record.attributes = attributes.except(*UNASSIGNABLE_KEYS)
       if has_destroy_flag?(attributes) && allow_destroy
-        if record.prospect?
+        if !record.respond_to?(:prospect?) || record.prospect?
           record.mark_for_destruction
         else
           self.users.delete(record)
