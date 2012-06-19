@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
       collection do 
         get :templates
+        post :upload_csv
         get :payments, :to => 'dated_costs#payments'
       end
 

@@ -8,6 +8,7 @@ module E9Crm
   autoload :Model,                      'e9_crm/model'
   autoload :TrackingController,         'e9_crm/tracking_controller'
   autoload :SystemEmailsController,     'e9_crm/system_emails_controller'
+  autoload :ContactsCsv,                'e9_crm/contacts_csv'
 
   module Rack
     autoload :ContactAutoCompleter,       'e9_crm/rack/contact_auto_completer'

@@ -3,6 +3,7 @@ class E9Crm::ContactsController < E9Crm::ResourcesController
 
   include E9::Controllers::Orderable
   include E9Tags::Controller
+  include E9Crm::ContactsCsv
 
   respond_to :js, :html
   respond_to :json, :only => :index
@@ -123,4 +124,5 @@ class E9Crm::ContactsController < E9Crm::ResourcesController
   def default_ordered_dir
     'ASC'
   end
+
 end

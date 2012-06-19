@@ -39,11 +39,32 @@
       = toolbar_actions do
         = link_to_new_resource(Contact)
         = link_to_collection(Company)
+        %span#export-csv-link
+          = link_to_collection("Export CSV", resource_class, :format => 'csv')
+        %span#upload-csv-button
+          %a.button.browse
+            Import CSV
+            = file_field_tag 'upload-csv-field'
       = toolbar_forms do
+        #upload-csv-field-queue
         #email_delivery_form
           = render 'email_delivery_form'
 
 = render 'shared/admin/toolbar'
         
+- content_for :bottom_javascripts do
+  :javascript
+    $('#upload-csv-field').csv_upload('/admin/crm/contacts', {
+      queueID: 'upload-csv-field-queue',
+      scriptData: {
+        format: 'js',
+        #{session_key}: encodeURIComponent("#{u session_id }"),
+        #{request_forgery_protection_token }: encodeURIComponent('#{u form_authenticity_token if protect_against_forgery? }')
+      }
+    });
+
+    $('#export-csv-link a').csv_export();
+
 #records_table
   = render 'table', :resources => collection
+

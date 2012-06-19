@@ -60,7 +60,7 @@ class E9Crm::ResourcesController < E9Crm::BaseController
     get_collection_ivar || begin 
       scope = collection_scope
 
-      if should_paginate_index && request.format != :json
+      if should_paginate_index && request.format != :json && request.format != :csv
         scope = scope.paginate(pagination_parameters)
       end
 
