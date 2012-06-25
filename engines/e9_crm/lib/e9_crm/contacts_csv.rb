@@ -64,6 +64,7 @@ module E9Crm
             if r.email.present?
               # find of create the user with the given email
               user = User.find_by_email(r.email) || begin
+                key = :created
                 User.prospects.create({
                   :email         => r.email,
                   :first_name    => r.first_name,
