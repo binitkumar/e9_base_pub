@@ -103,6 +103,7 @@
       // do a tag update when tags are removed from the list
       $('a', $list).live('click', function(e) {
         e.preventDefault();
+        $(this).closest('li').remove();
         _.defer(function() { tag_update(get_tags()) });
       });
 
