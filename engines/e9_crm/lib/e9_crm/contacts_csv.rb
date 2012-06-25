@@ -53,6 +53,7 @@ module E9Crm
           lineno = 0
 
           CSV.foreach(csv.tempfile, :headers => true) do |row|
+            key = nil
             r = Row.new(*row.map(&:last))
 
             Rails.logger.error(r.inspect)
@@ -97,6 +98,7 @@ module E9Crm
                 end
 
                 unless user.contact.present?
+                  key = :created
                   user.create_contact_if_missing!
                   user.reload
                 end
@@ -106,6 +108,8 @@ module E9Crm
             end
 
             contact ||= Contact.new
+
+            key ||= contact.new_record? ? :created : :updated
 
             # basic columns
             contact.first_name   = r.first_name.presence || contact.first_name
@@ -158,8 +162,6 @@ module E9Crm
 
               contact.tag_lists = {'users__h__' => combined_tags }
             end
-
-            key = contact.new_record? ? :created : :updated
 
             if contact.save
               json[:info][key] += 1
