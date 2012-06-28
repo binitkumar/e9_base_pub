@@ -58,6 +58,16 @@ module E9Base
       :faq_and_question_observer
     ]
 
+    initializer 'e9_base.load_env', :before => 'initialize_cache' do |app|
+      env = File.join Rails.root, ".env"
+
+      if File.exists?(env)
+        YAML.load_file(env).each do |key, value|
+          ENV[key] = value
+        end
+      end
+    end
+
     initializer 'e9_base.include_controller_module' do
       ActiveSupport.on_load(:action_controller) do
         include BaseController
