@@ -58,7 +58,8 @@ module E9Base
       :faq_and_question_observer
     ]
 
-    initializer 'e9_base.load_env', :before => 'initialize_cache' do |app|
+    # Load config from .env if it exists
+    config.before_configuration do
       env = File.join Rails.root, ".env"
 
       if File.exists?(env)
