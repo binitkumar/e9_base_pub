@@ -244,31 +244,34 @@ module ActionView::Rendering
 end
 
 
-require 'rush'
+begin
+  require 'rush'
 
-# This dirty hack is thanks to the Rush gem which Heroku includes, which
-# mixes in a bunch of methods into Array, short circuiting 
-# ActiveRecord::Relation's method_missing lookup for both scopes and class
-# methods.
-class ActiveRecord::Relation
-  RUSH_METHODS = Array.included_modules.
-                    select {|mod| mod.to_s =~ /^Rush/ }.
-                    map {|mod| mod.instance_methods }.
-                    flatten.freeze
+  # This dirty hack is thanks to the Rush gem which Heroku includes, which
+  # mixes in a bunch of methods into Array, short circuiting 
+  # ActiveRecord::Relation's method_missing lookup for both scopes and class
+  # methods.
+  class ActiveRecord::Relation
+    RUSH_METHODS = Array.included_modules.
+                      select {|mod| mod.to_s =~ /^Rush/ }.
+                      map {|mod| mod.instance_methods }.
+                      flatten.freeze
 
-  protected
+    protected
 
-  def method_missing(method, *args, &block)
-    if !RUSH_METHODS.member?(method) && Array.method_defined?(method)
-      to_a.send(method, *args, &block)
-    elsif @klass.scopes[method]
-      merge(@klass.send(method, *args, &block))
-    elsif @klass.respond_to?(method)
-      scoping { @klass.send(method, *args, &block) }
-    elsif arel.respond_to?(method)
-      arel.send(method, *args, &block)
-    else
-      super
+    def method_missing(method, *args, &block)
+      if !RUSH_METHODS.member?(method) && Array.method_defined?(method)
+        to_a.send(method, *args, &block)
+      elsif @klass.scopes[method]
+        merge(@klass.send(method, *args, &block))
+      elsif @klass.respond_to?(method)
+        scoping { @klass.send(method, *args, &block) }
+      elsif arel.respond_to?(method)
+        arel.send(method, *args, &block)
+      else
+        super
+      end
     end
   end
+rescue LoadError
 end
