@@ -58,7 +58,7 @@ module E9Base
       :faq_and_question_observer
     ]
 
-    config.before_initialize do
+    config.before_configuration do
       env = File.join Rails.root, ".env"
 
       if File.exists?(env)
