@@ -5,6 +5,8 @@ class AttachmentsController < InheritedResources::Base
   before_filter :determine_index_title, :only => :index
   before_filter '@tag_instructions_scope = :"e9.attachments"'
 
+  filter_access_to :index, :select, :context => :admin, :require => :read
+
   skip_js_skippable_filters :only => [:create, :update]
   skip_after_filter :flash_to_headers, :only => [:create, :update]
 
