@@ -54,8 +54,16 @@ class E9Crm::DealsController < E9Crm::ResourcesController
   end
 
   has_scope :category, :only => :index
-  has_scope :status, :only => :index
   has_scope :owner, :only => :index
+  has_scope :status, :only => :index, :default => 'pending' do |controller, scope, value|
+    # NOTE make only valid deal statuses trigger this.  This way in the form "pending" can
+    # be a blank value to trigger the default and still appear as the selected option, while
+    # "all" (or anything) can be passed for all statuses.
+    if %w(pending won lost).member?(value)
+      scope = scope.status(value)
+    end
+    scope
+  end
 
   ##
   # Actions

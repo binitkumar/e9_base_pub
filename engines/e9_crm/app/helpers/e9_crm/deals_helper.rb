@@ -15,9 +15,10 @@ module E9Crm::DealsHelper
 
   def deal_status_select_options
     @_deal_status_select_options ||= begin
-      options = Deal::Status::OPTIONS - %w(lead)
+      options = Deal::Status::OPTIONS - %w(lead pending)
       options.map! {|o| [o.titleize, o] }
-      options.unshift ['All Statuses', nil]
+      options.unshift ['Pending', nil]
+      options.unshift ['All Statuses', 'all']
       options_for_select(options)
     end
   end
