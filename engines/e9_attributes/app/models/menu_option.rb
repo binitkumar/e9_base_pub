@@ -7,6 +7,10 @@ class MenuOption < ActiveRecord::Base
     @@keys || []
   end
 
+  def self.liquid_scope
+    scoped.order("position ASC")
+  end
+
   validates :value, :presence  => true
   validate { errors.add(:key, :inclusion) if key.present? && !keys.include?(key) }
 
