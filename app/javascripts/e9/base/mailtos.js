@@ -16,7 +16,7 @@
             text: '<img src="/images/spinner.gif" />',
             ajax: {
               url: '/admin/email/templates/select',
-              dataType: 'script',
+              dataType: 'html',
               data: {
                 to: $a.text(),
                 contact_id: $a.attr('data-contact-id'),
